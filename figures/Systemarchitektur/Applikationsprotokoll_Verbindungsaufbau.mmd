@@ -1,0 +1,17 @@
+sequenceDiagram
+    activate Client
+    Client-)+Server: Initialisierungspaket: "robot_1"
+    Client-)Server: Subscribe Paket: "vel", "geometry_msgs/Twist"
+    Client-)Server: Advertise Paket: "pose2D", "geometry_msgs/Pose2D"
+    Server-->>Client: Keep-Alive Paket: 7843000000
+    Client-->>Server: Keep-Alive Paket: 200000
+    Server-)Client: Publish Paket: "vel", 1.25, 0.00
+    Server-)Client: Publish Paket: "vel", 0.50, 0.20
+    Server-->>Client: Keep-Alive Paket: 7843500000
+    Client-->>Server: Keep-Alive Paket: 700000
+    Client-)Server: Publish Paket: "pose2D", 2.10, 1.30, 0.50
+    Server-->>Client: Keep-Alive Paket: 7844000000
+    Client-->>Server: Keep-Alive Paket: 1200000
+    
+    deactivate Client
+    deactivate Server

@@ -1,0 +1,189 @@
+% !TEX root = ../Projektdokumentation.tex
+\chapter{Systemarchitektur}\label{ch:systemueberblick}
+
+\section{Überblick}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/Systemarchitektur/Systemarchitektur.png}
+    \caption{Systemarchitektur}
+    \label{fig:systemarchitektur}
+\end{figure}
+
+Dieses Kapitel soll einen Überblick über den Aufbau und die Kommunikation zwischen den Software Modulen in diesem Projekt geben.
+Für genauere Informationen wie z.B. zur Implementierung wird auf das Kapitel \ref{ch:esp32} und Kapitel \ref{ch:ros} verwiesen.
+Die Abbildung \ref{fig:systemarchitektur} zeigt, dass sich das Gesamtsystem in drei Teile aufteilen lässt.
+Diese unterscheiden sich durch den Ausführungsort der jeweiligen Software.
+
+Jeder Roboter wird durch einen ESP32 Mikrocontroller gesteuert. 
+Die Firmware auf den Robotern ist identisch bis auf eine Stringkonstante im Flash des Mikrocontrollers.
+Dieser Name des Roboters dient als eindeutiges Identifikationsmerkmal für die oberen Softwareschichten.
+Über die Wifi Schnittstelle verbindet sich der Mikrocontroller mit einem WLAN Access Point und kann somit eine TCP Verbindung 
+mit einem Rechner im Netzwerk aufbauen.
+
+Dieser TCP Server ist eine ROS Node und stellt über ein eigenes Applikationsprotokoll ein Interface zwischen ROS Topics und ESP32 bereit.
+Mit der entsprechenden TCP Client Task auf dem ESP32 wirkt es so als wäre der Mikrocontroller direkt in das ROS Netzwerk eingebunden.
+Es werden somit Roboterposition "gepublisht" und Topics wie Robotergeschwindigkeit, Zielpunkt, LED-Farben/Muster und Trajektorien durch den Roboter "subscribed".
+Der Hintergedanke zur Verwendung des ROS Frameworks ist die Auslagerung der rechenleistungsintensiven Trajektoriengenerierung 
+von Mikrocontroller auf einen leistungsstarken Rechner. Der Roboterschwarm wird somit zentral durch ROS koordiniert.
+Während in diesem Projekt nur einfache Trajektorien unabhängig von den einzelnen Roboterpositionen generiert werden können, 
+sollte dies zukünftig durch eine komplexe Multiroboterpfadplanung ersetzt werden. 
+Die ROS Nodes tauschen sich über Topics aus. 
+Damit zwischen den einzelnen Roboter unterschieden werden kann, besteht der Topicname aus einem Namespace und der Topicbezeichung: 
+\begin{center}
+    \emph{/namespace/topicbezeichnung}
+\end{center}
+Der Namespace ist die Identifikationskonstante im Flash des ESP32 und wurde meist auf \emph{robot\_} + Nummerierung gesetzt.
+
+Damit das Gesamtsystem über eine benutzerfreundliche Schnittstelle einfach bedient werden kann, wurde eine Webb-App entwickelt.
+Die Webb-App läuft über den Browser auf verschiedenen Endgeräten und kommuniziert über das Websocket Protokoll mit einer weiteren ROS Node.
+Ursprünglich war geplant die Trajektoriengenerierung über ROS Service Calls aus der Webbapp zu steuern. Dies konnte allerdings nicht mehr umgesetzt werden.
+Das gleiche gilt für das Anzeigen der Roboterpose und setzten von Zielpunkten.
+Zum Ende der Projektarbeit ist es möglich die Robotergeschwindigkeit und LED Muster/Farben über das Web Interface zu steuern.
+
+\section{Applikationsprotokoll}
+Für die Kommunikation zwischen Mikrocontroller und Host Rechner wurde ein eigenes Applikationsprotokoll entwickelt. 
+Dieses soll als virtuelles Interface zwischen ROS und dem ESP32 wirken damit diese mithilfe von ROS Topics miteinander kommunizieren können.
+Für den Entwickler soll sich somit das "Subscriben" und "Advertisen" von Topics auf dem Mikrocontroller anfühlen wie in einer normalen ROS Applikation.
+Eine wichtige Hauptaufgabe des Protokolls im Projekt ist allerdings die Übertragung der Trajektorien über die Topic "/robot\_*/trajectory".
+
+Eine wichtige Überlegung für den Aufbau des Protokolls war die Entscheidungs zwischen UDP oder TCP als Transportunterschicht.
+Das User Datagram Protokoll ist ein verbindungsloses Protokoll. Es garantiert somit nicht die sichere, verlustfreie Übertragung der Nutzdaten.
+Da es zu keinen Neuübertragungen kommt, hat es geringe Latenzzeiten und eignet sich somit super zur Übertragung von Echtezeitdaten wie die Position des Roboters.
+Die Hauptaufgabe des Protokolls in diesem Projekt ist die Übertragung von Kilobyte großen Trajektorien. 
+Diese erfordert eine zuverlässige Verbindung ohne Datenverluste. 
+Desweiteren ist eine Übertragung der Daten in Echtezeit gut, aber nicht unbedingt erforderlich.
+Das Transmission Control Protocol baut eine virtuelle Verbindung zwischen Server und Client auf und 
+garantiert somit eine verlustfreie Übertragung der Daten. 
+Aus diesem Grund wurde TCP als Transportunterschicht für das eigene Protokoll verwendet.
+In diesem Kapitel wird der Aufbau des Protokolls beschrieben. 
+Für die genaue Implementierung der Server und Client Seite wird auf die Kapitel \ref{ch:esp32} und \ref{ch:ros} verwiesen. 
+
+\subsection{Datenpakete}
+Die Kommunikation mit dem Applikationsprotokoll ist Paketbasierend. 
+Diese müssen von der Software im Server oder Client aus dem TCP Datenstrom gefiltert werden.
+Das Protokoll definiert insgesamt 5 verschiedene Pakete:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|l}
+    ID & Paketname              \\ \hline
+    0x01  & Initialisierungspaket \\
+    0x02  & Advertise Paket        \\
+    0x03  & Subscribe Paket        \\
+    0x04  & Keep-Alive Paket       \\
+    0x05  & Publish Paket         
+    \end{tabular}
+    \caption{Applikationsprotokoll Paketarten}
+\end{table}
+
+Jedes Paket beginnt mit der jeweiligen Identifikationsnummer. Der restliche Aufbau ist Paketabhängig.
+Im Folgenden der Aufbau und der Nutzen der unterschiedlichen Pakete erklärt werden.
+
+\subsubsection{Initialisierungspaket}
+Das Initialisierungspaket ist das erste Paket, das nach Aufbau der TCP Verbindung vom Client an den Server geschickt wird.
+Dabei überträgt es den Roboternamen, der von der ROS Server Node als Topic Namespace genutzt wird.
+Das Initialisierungspaket wird nur vom Client an den Server geschickt werden.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    0x01   & Robotername & '\textbackslash{}0' \\ \hline
+    1 Byte & x Bytes     & 1 Byte              \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{Advertise Paket}
+Das Advertise Paket entspricht dem Aufruf der ROSCPP Methode advertise().
+Dieses Paket kann nur vom Client an den Server geschickt werden.
+Dabei fordert dieser den Server dazu auf die übermittelte Topic mit dem übermittelten Nachrichtentyp in ROS zu "advertisen".
+Erst nach dem Advertise Paket dürfen Nachrichten von der entsprechenden Topic mit dem Publish Paket verschickt werden.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    0x02   & Topic Name    & '\textbackslash{}0' & Nachrichtentyp & '\textbackslash{}0' \\ \hline
+    1 Byte & max. 32 Bytes & 1 Byte              & max. 32 Bytes  & 1 Byte              \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{Subscribe Paket}
+Ähnlich wie das Advertise Paket teilt das Subscribe Paket dem Server mit dass der Client eine Topic mit dem entsprechenden Nachrichtentyp "subscriben" möchte.
+Auch das Subscribe Paket wird nur vom Client an den Server geschickt.
+Der Server darf erst nach dem er ein Subscribe Paket zu einer Topic empfangen hat, Publish Pakete an den Client weiterleiten.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    0x03   & Topic Name    & '\textbackslash{}0' & Nachrichtentyp & '\textbackslash{}0' \\ \hline
+    1 Byte & max. 32 Bytes & 1 Byte              & max. 32 Bytes  & 1 Byte              \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{Keep-Alive Paket}
+Das Keep-Alive Paket wird alle $500ms$ vom Client an den Server und vom Server an den Client geschickt. 
+Empfängt eine der beiden Seiten kein Keep-Alive für $3000ms$ wird ein Verbindungsabbruch festgestellt.
+Dies ist vor allem notwendig wenn keine Nutzdaten übertragen werden und zum Beispiel der Client abstürzt.
+Der Server wird nach drei Sekunden feststellen, dass keine Keep Alive Pakete vom Client kommen und die TCP Verbindung schließen.
+Zusätzlich wird ein Zeitstempel des jeweiligen Senders an den Empfänger übertragen. 
+Dieser kann z.B. zur Zeitsynchronisation zwischen ROS und Roboter verwendet werden.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+    0x04   & Zeitstempel in $\mu s$                 \\ \hline
+    1 Byte & 8 Bytes (uint64\_t) \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{Publish Paket}
+Das Publish Paket dient der eigentlichen Übertragung von Nutzdaten vom Client zum Server und vom Server zum Client.
+Durch das Feld "Topic Name" können die Daten einer durch das Subscribe- und Advertise-Paket initialisierten Topic zugeordnet werden.
+Der Datenteil des Pakets unterscheidet zwischen Array- und Strukturdaten.
+
+Strukturdaten serialisieren den ROS Nachrichtentyp der jeweiligen Topic.
+Auf das serialisieren und deserialisieren der Nachrichten wird genauer in den Kapiteln \ref{ch:esp32} und \ref{ch:ros} eingegangen.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    0x05   & Topic Name    & Strukturdaten \\ \hline
+    1 Byte & max. 32 Bytes & x Bytes       \\ \hline
+    \end{tabular}
+\end{table}
+
+Arraydaten werden in diesem Projekt für die Übertragung der Trajektorien und zur Übertragung des ROS Nachrichtentyp std\_msgs::String verwendet.
+Nach dem Topic Namen folgt ein Feld für die jeweilige Arraylänge. Dieses beinhaltet die Größe des Arrays in Bytes.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    0x05   & Topic Name    & Arraylänge in Bytes & Arraydaten \\ \hline
+    1 Byte & max. 32 Bytes & 4 Bytes (int32\_t)  & x Bytes       \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Anwendungsbeispiel}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/Systemarchitektur/Applikationsprotokoll_Verbindungsaufbau.png}
+    \caption{Applikationsprotokoll Anwendungsbeispiel}
+    \label{fig:applikationsprotokoll_anwendungsbeispiel}
+\end{figure}
+
+Die Abbildung \ref{fig:applikationsprotokoll_anwendungsbeispiel} zeigt eine typische Kommunikation zwischen Client und Server.
+Der Client startet die Verbindung mit dem Initialisierungspaket und teilt dem Server mit welche Topics er "subscriben" und "advertisen" will.
+Alle $500ms$ tauschen beide Seiten ihr Keep-Alive Paket mit dem jeweiligen Zeitstempel aus. 
+Daten zu den Topics werden mithilfe des Publish Pakets vom Client zum Server oder vom Server zum Client geschickt.
+Ein Verbindungsabbruch würde durch ein fehlendes Keep-Alive bemerkt werden. 
+Das Verhalten beider Seiten in diesem Fall wird in den Kapiteln \ref{ch:esp32} und \ref{ch:ros} beschrieben.
+
+
+

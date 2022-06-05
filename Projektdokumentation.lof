@@ -1,0 +1,33 @@
+\babel@toc {ngerman}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Blockdiagramm PCB}}{3}{figure.16}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces ESP32 Pin Layout}}{5}{figure.20}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces ESP32 Pin Belegung}}{5}{figure.22}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces ESP32 Power-Up}}{5}{figure.25}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Pololu 20D Motor}}{7}{figure.37}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Pololu 20D Rückplatte}}{7}{figure.39}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces DRV8841 Pinout}}{7}{figure.42}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces DRV8841 H-Brücken Logik}}{7}{figure.44}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Marvelmind Molex Pinout}}{8}{figure.47}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Marvelmind Mic Pinout}}{8}{figure.49}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces WS2815B Pinout}}{8}{figure.52}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces TPS54331 Pinout}}{9}{figure.56}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces KiCad Hauptschalter und Verpolungsschutz}}{10}{figure.60}%
+\contentsline {figure}{\numberline {2.14}{\ignorespaces KiCad Eingangsquellenschutz}}{10}{figure.63}%
+\contentsline {figure}{\numberline {2.15}{\ignorespaces KiCad Reset- und Bootmodeschaltung}}{11}{figure.66}%
+\contentsline {figure}{\numberline {2.16}{\ignorespaces KiCad MainPCB Layout}}{12}{figure.69}%
+\contentsline {figure}{\numberline {2.17}{\ignorespaces KiCad LedPCB Layout}}{12}{figure.71}%
+\contentsline {figure}{\numberline {2.18}{\ignorespaces CP2102N Fehlerkorrektur}}{13}{figure.76}%
+\contentsline {figure}{\numberline {2.19}{\ignorespaces CP2102N Korrektur Layout}}{13}{figure.78}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Systemarchitektur}}{16}{figure.91}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Applikationsprotokoll Anwendungsbeispiel}}{20}{figure.103}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

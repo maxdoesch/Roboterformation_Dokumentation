@@ -1,0 +1,143 @@
+% !TEX root = ../Projektdokumentation.tex
+\chapter{Docker}\label{ch:docker}
+Zur Vereinfachung des Arbeitsflusses und Ordnung einzelner Softwarekomponenten wurde \texttt{Docker} und \texttt{Docker Compose} verwendet.\\
+Im folgenden Kapitel wird nun die Funktion und Vorgehensweise während der Nutzung von \texttt{Docker} erklärt.
+\vspace{12cm}
+\clearpage
+\section{Docker}
+
+
+
+
+\subsection{Einführung und Funktion von Docker}
+Docker ist eine offene Plattform für die Entwicklung, Bereitstellung und Ausführung von Anwendungen.
+Dabei verpackt Docker die Software in standardisierte Einheiten, sogenannte Container.
+Diese enthalten alles, was zum Ausführen der Software erforderlich ist, wie Bibliotheken, Systemtools, Code und Laufzeit.\footnote{weitere Infos unter \url{https://docs.docker.com/get-started/overview/}}\\
+Docker führt also Container aus.
+Dabei fungiert ein Container als eine Art von Virtueller Maschine.
+Allerdings ist hier der Aufbau relativ leicht, da dieser nicht virtualisiert ist und auf dem selben Kernel läuft.
+Gleichzeitig ist der Container trotzdem abgeschottet, was dem Prinzip des Sandboxings
+\footnote{Sandboxing ist eine Softwareverwaltungsstrategie, die Anwendungen von wichtigen Systemressourcen und anderen Programmen isoliert
+Sie bietet eine zusätzliche Sicherheitsebene, die verhindert, dass sich Malware oder schädliche Anwendungen negativ auf Ihr System auswirken.\\Nähere Infos unter: \url{https://techterms.com/definition/sandboxing}} ähnelt.\\[\baselineskip]
+Dabei erstellt man Container von einem Abbild.
+Diese kann man selbst erstellen und nennt man Container-Image.
+Der große Vorteil ist, dass man Container letztlich wie Rezepte zum Beschreiben verwendet, die ein leichtes Installieren der Software garantieren.\\
+Eine Erweiterung stellt Docker Compose dar.
+Dies erlaubt uns einen kompletten Stack zu beschreiben, also ganze Ansammlungen von Containern (und nicht nur einzelne Container) zusammen zu starten oder mit denen zu kommunizieren.\\[\baselineskip]
+Bei einem Start des Projekts muss nur das repository gecloned werden und ein Befehl gestartet werden.
+Diese Art zu Arbeiten ermöglicht einen schnellen Workflow.
+\section{Installation von Docker-Desktop}
+\begin{enumerate}
+  \item Stellen Sie zunächst sicher, dass Windows auf dem neuesten Stand ist
+  \begin{itemize}
+    \item Geben Sie in der Windows-Suche "Windows Update" ein und wählen Sie \texttt{Windows Update-Einstellung}.
+    \item Sie sollten ein grünes Häkchen sehen und "Sie sind auf dem neuesten Stand" . Falls nicht, klicken Sie auf "Nach Updates suchen". Sie müssen diesen Vorgang so lange wiederholen, bis Sie keine Updates mehr zu installieren haben.
+  \end{itemize}
+  \vspace{2cm}
+  \item Installation von \href{https://docs.microsoft.com/en-us/windows/wsl/install}{WSL2}
+  \begin{itemize}
+    \item Geben Sie in der Windows-Suche "powershell" ein, klicken Sie mit der rechten 
+    Maustaste auf \texttt{Windows PowerShell} und dann auf \texttt{Als Administrator ausführen}.
+    \item Klicken Sie auf "Ja", um PowerShell zu erlauben, Änderungen an Ihrem Gerät vorzunehmen.
+    \item Führen Sie im Windows PowerShell-Fenster den Befehl "wsl --install -d Ubuntu" aus.
+    \item Aktivieren Sie anschließend die Plattform für virtuelle Maschinen. Im Windows PowerShell ausführen. 
+    (kopieren und einfügen) "dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart".
+    \item Laden Sie das \href{https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi}{WSL2 Linux-Kernel-Update-Paket für x64-Maschinen} herunter und installieren Sie es.
+    \item Windows neu starten. 
+    \item Geben Sie nochmal in der Windows-Suche "powershell" ein, klicken Sie mit der rechten 
+    Maustaste auf \texttt{Windows PowerShell} und dann auf \texttt{Als Administrator ausführen}.
+    \item Führen Sie im Windows PowerShell-Fenster den Befehl "wsl --set-default-version 2" aus.
+    \item Als nächstes installieren Sie eine Linux-Distribution aus dem \href{https://aka.ms/wslstore}{Microsoft Store}. Ich empfehle \href{https://www.microsoft.com/store/productId/9MTTCL66CPXJ}{Ubuntu 20.04.4 LTS}
+    .(Das Herunterladen und Installieren wird einige Minuten dauern)
+    \item Sie werden aufgefordert, einen Linux-Benutzer einzurichten. Am besten Verwenden Sie dafür denselben Benutzernamen, den Sie für Windows verwenden.
+    \item Sie können nun Linux-Befehle im Ubuntu-Terminalfenster ausführen. Ich empfehle, das Ubuntu-Symbol an die Taskleiste zu heften.
+  \end{itemize}
+  \item Jetzt können Sie \href{https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe}{Docker Desktop} für Windows installieren
+  \begin{itemize}
+  \item Führen Sie das Installationsprogramm aus und starten Sie anschließend Windows neu.
+  \item Melden Sie sich bei Windows an und starten Sie Docker-Desktop.Lassen sie Docker die Einrichtung abschließen, dies kann je nach Rechner einige Minuten dauern.
+\end{itemize}
+\end{enumerate}
+\section{Unsere Verwendung von Docker}
+\subsection{Docker-Compose}
+\label{dockercompose}
+Sämtliche Software, die in unserem Projekt ausgeführt wird, läuft in Docker-Containern. Im folgenden werden die \texttt{Docker Compose}-Befehle, welche wir in unserem 
+\textit{dokcer-compose.yml} Datei verwenden auführlich erklärt. 
+\lstdefinelanguage{docker-compose-2}{
+  keywords={version, volumes,networks,services},
+  keywordstyle=\color{blue}\bfseries,
+  keywords=[2]{image, environment, ports,networks,command,depends_on,context, container_name, ports, links, build},
+  keywordstyle=[2]\color{olive}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{\#},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+\newpage
+\begin{lstlisting}[language=docker-compose-2,caption={docker-compose.yml}\label{buildBefehle},breaklines=true,basicstyle=\footnotesize]
+version: '3.9' #Compose file format wird definiert, hierfuer wird Docker Engine 19.03.0 und hoeher verwendet
+networks: #Mit diesen Befehlen erzeugen wir ein Netzwerk names rosnet
+  rosnet:
+
+services: #Unter services werden die einzelnen Containern definiert
+
+  master: #Hier wird ein Container mit dem Namen "master" angelegt
+    image: ros:noetic-robot # Als image wird hier "ros:noetic-robot" aus Docker-Hub verwendet 
+    command:
+      - roscore #Mit command wird der Befehl "roscore" in der Kommandozeile ausgefuehrt
+    networks:
+      - rosnet #networks definiert das Netzwerk des masters 
+
+#Da, die Einstellungen und Befehle von den letzten zwei Container sich aehneln, wird es nur fuer ein Container erklaert.  
+  rosbridge: #Hier wird ein Container mit dem Namen "rosbridge" angelegt
+    build: 
+      context: ./rosbridge #Als image, bzw build wird hier zu einem Dockerfile navigiert, welche unter dem Verzeichnis "./rosbridge" befindet
+    environment:
+      - "ROS_HOSTNAME=rosbridge"
+      - "ROS_MASTER_URI=http://master:11311" #Unter environment werden Environmentvariablen festgelegt, in dem Fall wie der HOSTNAME des Containers lautet und wo sich der master im Netzwerk befindet
+    networks:
+      - rosnet 
+    depends_on: 
+      - master #Der Container faehrt erst hoch, wenn der master bereits laeuft und schaltet sich vorm master aus 
+    ports:
+      - 9090:9090 #Hier werden Ports in diesem Form (HOST-PORT:CONTAINER-PORT) nach aussen freigegeben 
+
+  rosrobotbridge:
+    build:
+      context: ./rosrobotbridge
+    environment:
+      - "ROS_HOSTNAME=rosrobotbridge"
+      - "ROS_MASTER_URI=http://master:11311"
+    networks:
+      - rosnet
+    depends_on:
+      - master
+    ports:
+      - 2888:2888
+\end{lstlisting}
+\subsection{Dockerfile}
+Im Unterkapitel \hyperref[dockercompose]{Docker-Compose} werden in einem \textit{dokcer-compose.yml} Datei mehrere \hyperref[buildBefehle]{build-Befehle} aufgerufen, welche zu dem eigentlichen \textit{Dockerfile} nagivieren und diesen als 
+\newline Hauptimage bauen. Im folgenden werden die Befehle aus dem \textit{Dockerfile} und deren \newline Funktionen abhand eines Beispiels aus unserem Projekt erklärt und geschildert. 
+\lstdefinelanguage{Dockerfile}{
+  keywords={FROM, RUN,COPY,CMD},
+  keywordstyle=\color{blue},
+  identifierstyle=\color{orange},
+  sensitive=false,
+  comment=[l]{\#},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+\begin{lstlisting}[language=Dockerfile,caption={Dockerfile (rosbridge)},breaklines=true,basicstyle=\footnotesize]
+  FROM ros:noetic-robot #Hier wird ein bereits vorhandenes Image aus dem Dockerhub aufgerufen und als Basis verwendet
+  RUN apt-get -y update #Mit dem RUN-Befehl werden Befehle in der Kommandozeile ausgefuehrt
+  RUN apt-get -y upgrade # -y sorgt dafuer, dass wenn es nach dem ausfuehren von dem Befehl eine JA-NEIN-Frage erscheinen soll, diese automatisch mit JA bzw YES beantwortet wird
+  RUN apt-get -y install ros-noetic-rosbridge-server 
+  COPY ./start.sh start.sh #COPY-Befehl kopiert die Datei start.h auf unserem Image. COPY SOURCE-Verzeichnis DESTINATTION-Verzeichnis
+  RUN chmod +x start.sh
+  CMD ["./start.sh"] #Die Datei start.h wird ausgefuehrt
+\end{lstlisting}
