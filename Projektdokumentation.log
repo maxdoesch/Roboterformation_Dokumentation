@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.24)  5 JUN 2022 18:17
+This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.24)  5 JUN 2022 22:44
  system commands enabled.
  file:line:error style messages enabled.
 **c:/Users/Cara/Downloads/Doku_new_TH/Projektdokumentation.tex
@@ -927,7 +927,9 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip114
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count318
-)
+
+Local config file natbib.cfg used
+(./natbib.cfg))
 (C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/pdfpages/pdfpages.sty
 Package: pdfpages 2021/03/06 v0.5t Insert pages of external PDF documents (AM)
 
@@ -1299,7 +1301,7 @@ Package scrlayer Info: Setting magic \footheight to \baselineskip while
 (scrlayer)             \begin{document} on input line 17.
 
 (./Deckblatt.tex
-<figures/TH-Nuernberg-Logo.jpeg, id=266, 323.0469pt x 45.5301pt>
+<figures/TH-Nuernberg-Logo.jpeg, id=370, 323.0469pt x 45.5301pt>
 File: figures/TH-Nuernberg-Logo.jpeg Graphic file (type jpg)
 <use figures/TH-Nuernberg-Logo.jpeg>
 Package luatex.def Info: figures/TH-Nuernberg-Logo.jpeg  used on input line 5.
@@ -1352,11 +1354,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 
-])
-\tf@toc=\write5
-
-\openout5 = Projektdokumentation.toc
-
+]
 
 Package scrlayer-scrpage Warning: \headheight to low.
 (scrlayer-scrpage)                At least 43.58334pt needed,
@@ -1365,25 +1363,29 @@ Package scrlayer-scrpage Warning: \headheight to low.
 (scrlayer-scrpage)                processing, but you should do this yourself,
 (scrlayer-scrpage)                e.g., setting geometry's option
 (scrlayer-scrpage)                `head=43.58334pt'.
-(scrlayer-scrpage)                I'll also decrease \topmargin on input line 3
-6.
+(scrlayer-scrpage)                I'll also decrease \topmargin on input line 7
+8.
 
 
 Overfull \vbox (0.90422pt too high) has occurred while \output is active []
 
 
-[2] (./Projektdokumentation.lof)
+[2])
+\tf@toc=\write5
+
+\openout5 = Projektdokumentation.toc
+ [3] (./Projektdokumentation.lof)
 \tf@lof=\write6
 
 \openout6 = Projektdokumentation.lof
- [3
+ [4
 
 
 ] (./Projektdokumentation.lot)
 \tf@lot=\write7
 
 \openout7 = Projektdokumentation.lot
- [4
+ [5
 
 
 ]
@@ -1391,7 +1393,7 @@ Overfull \vbox (0.90422pt too high) has occurred while \output is active []
 \tf@lol=\write8
 
 \openout8 = Projektdokumentation.lol
- [5
+ [6
 
 
 ] (./Inhalt.tex (./Inhalt/1_intro.tex
@@ -1404,7 +1406,7 @@ Missing character: There is no „ (U+201E) in font ec-lmr10!
 Missing character: There is no “ (U+201C) in font ec-lmr10!
 ]) (./Inhalt/2_Platinenentwurf.tex [2]
 Kapitel 2.
-<figures/Platinenentwurf/PCB_Blockdiagramm.png, id=531, 1056.94875pt x 452.6912
+<figures/Platinenentwurf/PCB_Blockdiagramm.png, id=722, 1056.94875pt x 452.6912
 5pt>
 File: figures/Platinenentwurf/PCB_Blockdiagramm.png Graphic file (type png)
 <use figures/Platinenentwurf/PCB_Blockdiagramm.png>
@@ -1414,7 +1416,7 @@ Package luatex.def Info: figures/Platinenentwurf/PCB_Blockdiagramm.png  used on
 [3
 
 <./figures/Platinenentwurf/PCB_Blockdiagramm.png>]
-<figures/Platinenentwurf/ESP32_Pin_Layout.png, id=542, 354.57469pt x 542.025pt>
+<figures/Platinenentwurf/ESP32_Pin_Layout.png, id=733, 354.57469pt x 542.025pt>
 
 File: figures/Platinenentwurf/ESP32_Pin_Layout.png Graphic file (type png)
 <use figures/Platinenentwurf/ESP32_Pin_Layout.png>
@@ -1422,7 +1424,7 @@ Package luatex.def Info: figures/Platinenentwurf/ESP32_Pin_Layout.png  used on
 input line 49.
 (luatex.def)             Requested size: 159.33821pt x 243.57816pt.
  [4]
-<figures/Platinenentwurf/ESP32 Power-Up.png, id=548, 461.47406pt x 146.79843pt>
+<figures/Platinenentwurf/ESP32 Power-Up.png, id=740, 461.47406pt x 146.79843pt>
 
 File: figures/Platinenentwurf/ESP32 Power-Up.png Graphic file (type png)
 <use figures/Platinenentwurf/ESP32 Power-Up.png>
@@ -1431,13 +1433,13 @@ put line 99.
 (luatex.def)             Requested size: 227.62206pt x 72.40897pt.
  [5<./figures/Platinenentwurf/ESP32_Pin_Layout.png><./figures/Platinenentwurf/ES
 P32 Power-Up.png>]
-<figures/Platinenentwurf/Pololu_20D_Motor.jpg, id=563, 1204.5pt x 997.7275pt>
+<figures/Platinenentwurf/Pololu_20D_Motor.jpg, id=754, 1204.5pt x 997.7275pt>
 File: figures/Platinenentwurf/Pololu_20D_Motor.jpg Graphic file (type jpg)
 <use figures/Platinenentwurf/Pololu_20D_Motor.jpg>
 Package luatex.def Info: figures/Platinenentwurf/Pololu_20D_Motor.jpg  used on 
 input line 159.
 (luatex.def)             Requested size: 182.09486pt x 150.82492pt.
-<figures/Platinenentwurf/Pololu_20D_Rueckplatte.jpg, id=564, 289.08pt x 254.631
+<figures/Platinenentwurf/Pololu_20D_Rueckplatte.jpg, id=755, 289.08pt x 254.631
 3pt>
 File: figures/Platinenentwurf/Pololu_20D_Rueckplatte.jpg Graphic file (type jpg
 )
@@ -1447,7 +1449,7 @@ ed on input line 166.
 (luatex.def)             Requested size: 182.09486pt x 160.39525pt.
 
 [6]
-<figures/Platinenentwurf/DRV8841_Pinout.png, id=572, 430.60875pt x 507.39563pt>
+<figures/Platinenentwurf/DRV8841_Pinout.png, id=763, 430.60875pt x 507.39563pt>
 
 File: figures/Platinenentwurf/DRV8841_Pinout.png Graphic file (type png)
 <use figures/Platinenentwurf/DRV8841_Pinout.png>
@@ -1456,7 +1458,7 @@ put line 183.
 (luatex.def)             Requested size: 182.09486pt x 214.568pt.
  [7<./figures/Platinenentwurf/Pololu_20D_Motor.jpg><./figures/Platinenentwurf/Po
 lolu_20D_Rueckplatte.jpg><./figures/Platinenentwurf/DRV8841_Pinout.png>]
-<figures/Platinenentwurf/Marvelmind MiniRX Molex.png, id=583, 478.78876pt x 261
+<figures/Platinenentwurf/Marvelmind MiniRX Molex.png, id=774, 478.78876pt x 261
 .97874pt>
 File: figures/Platinenentwurf/Marvelmind MiniRX Molex.png Graphic file (type pn
 g)
@@ -1464,7 +1466,7 @@ g)
 Package luatex.def Info: figures/Platinenentwurf/Marvelmind MiniRX Molex.png  u
 sed on input line 220.
 (luatex.def)             Requested size: 204.85846pt x 112.09302pt.
-<figures/Platinenentwurf/Marvelmind MiniRX mic.png, id=584, 401.24907pt x 229.6
+<figures/Platinenentwurf/Marvelmind MiniRX mic.png, id=775, 401.24907pt x 229.6
 0782pt>
 File: figures/Platinenentwurf/Marvelmind MiniRX mic.png Graphic file (type png)
 
@@ -1472,7 +1474,7 @@ File: figures/Platinenentwurf/Marvelmind MiniRX mic.png Graphic file (type png)
 Package luatex.def Info: figures/Platinenentwurf/Marvelmind MiniRX mic.png  use
 d on input line 227.
 (luatex.def)             Requested size: 204.85846pt x 117.22806pt.
-<figures/Platinenentwurf/WS2815B_Pinout.png, id=587, 240.14719pt x 134.00063pt>
+<figures/Platinenentwurf/WS2815B_Pinout.png, id=778, 240.14719pt x 134.00063pt>
 
 File: figures/Platinenentwurf/WS2815B_Pinout.png Graphic file (type png)
 <use figures/Platinenentwurf/WS2815B_Pinout.png>
@@ -1482,7 +1484,7 @@ put line 243.
 
 [8<./figures/Platinenentwurf/Marvelmind MiniRX Molex.png><./figures/Platinenentw
 urf/Marvelmind MiniRX mic.png><./figures/Platinenentwurf/WS2815B_Pinout.png>]
-<figures/Platinenentwurf/TPS54331.png, id=599, 323.70938pt x 283.81032pt>
+<figures/Platinenentwurf/TPS54331.png, id=790, 323.70938pt x 283.81032pt>
 File: figures/Platinenentwurf/TPS54331.png Graphic file (type png)
 <use figures/Platinenentwurf/TPS54331.png>
 Package luatex.def Info: figures/Platinenentwurf/TPS54331.png  used on input li
@@ -1490,14 +1492,14 @@ ne 263.
 (luatex.def)             Requested size: 182.09486pt x 159.65157pt.
 
 [9<./figures/Platinenentwurf/TPS54331.png>]
-<figures/Platinenentwurf/KiCad_Powerswitch.png, id=612, 428.35031pt x 266.49562
+<figures/Platinenentwurf/KiCad_Powerswitch.png, id=803, 428.35031pt x 266.49562
 pt>
 File: figures/Platinenentwurf/KiCad_Powerswitch.png Graphic file (type png)
 <use figures/Platinenentwurf/KiCad_Powerswitch.png>
 Package luatex.def Info: figures/Platinenentwurf/KiCad_Powerswitch.png  used on
  input line 287.
 (luatex.def)             Requested size: 182.09486pt x 113.28963pt.
-<figures/Platinenentwurf/KiCad_Eingansquellen_Schutz.png, id=613, 608.2725pt x 
+<figures/Platinenentwurf/KiCad_Eingansquellen_Schutz.png, id=804, 608.2725pt x 
 404.26031pt>
 File: figures/Platinenentwurf/KiCad_Eingansquellen_Schutz.png Graphic file (typ
 e png)
@@ -1513,21 +1515,21 @@ Overfull \hbox (10.18448pt too wide) in paragraph at lines 307--316
 
 [10<./figures/Platinenentwurf/KiCad_Powerswitch.png><./figures/Platinenentwurf/K
 iCad_Eingansquellen_Schutz.png>]
-<figures/Platinenentwurf/KiCad_Boot_Reset.png, id=622, 467.49657pt x 325.215pt>
+<figures/Platinenentwurf/KiCad_Boot_Reset.png, id=813, 467.49657pt x 325.215pt>
 
 File: figures/Platinenentwurf/KiCad_Boot_Reset.png Graphic file (type png)
 <use figures/Platinenentwurf/KiCad_Boot_Reset.png>
 Package luatex.def Info: figures/Platinenentwurf/KiCad_Boot_Reset.png  used on 
 input line 320.
 (luatex.def)             Requested size: 182.09486pt x 126.67453pt.
-<figures/Platinenentwurf/KiCad_MainPCB_Layout.png, id=627, 864.98157pt x 528.47
+<figures/Platinenentwurf/KiCad_MainPCB_Layout.png, id=818, 864.98157pt x 528.47
 438pt>
 File: figures/Platinenentwurf/KiCad_MainPCB_Layout.png Graphic file (type png)
 <use figures/Platinenentwurf/KiCad_MainPCB_Layout.png>
 Package luatex.def Info: figures/Platinenentwurf/KiCad_MainPCB_Layout.png  used
  on input line 335.
 (luatex.def)             Requested size: 364.19667pt x 222.51413pt.
-<figures/Platinenentwurf/KiCad_LedPCB_Layout.png, id=628, 587.19376pt x 587.946
+<figures/Platinenentwurf/KiCad_LedPCB_Layout.png, id=819, 587.19376pt x 587.946
 56pt>
 File: figures/Platinenentwurf/KiCad_LedPCB_Layout.png Graphic file (type png)
 <use figures/Platinenentwurf/KiCad_LedPCB_Layout.png>
@@ -1537,7 +1539,7 @@ on input line 341.
  [11<./figures/Platinenentwurf/KiCad_Boot_Reset.png>] [12<./figures/Platinenentw
 urf/KiCad_MainPCB_Layout.png><./figures/Platinenentwurf/KiCad_LedPCB_Layout.png>
 ]
-<figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur.png, id=648, 365.86688pt
+<figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur.png, id=839, 365.86688pt
  x 161.85469pt>
 File: figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur.png Graphic file (t
 ype png)
@@ -1545,7 +1547,7 @@ ype png)
 Package luatex.def Info: figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur.
 png  used on input line 374.
 (luatex.def)             Requested size: 204.85846pt x 90.62811pt.
-<figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur_Layout.png, id=649, 480.
+<figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur_Layout.png, id=840, 480.
 29437pt x 280.79906pt>
 File: figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur_Layout.png Graphic 
 file (type png)
@@ -1567,7 +1569,7 @@ nput line 6.
 
 ]
 Kapitel 4.
-<figures/Systemarchitektur/Systemarchitektur.png, id=677, 1436.36626pt x 1004.7
+<figures/Systemarchitektur/Systemarchitektur.png, id=868, 1436.36626pt x 1004.7
 5375pt>
 File: figures/Systemarchitektur/Systemarchitektur.png Graphic file (type png)
 <use figures/Systemarchitektur/Systemarchitektur.png>
@@ -1577,7 +1579,7 @@ on input line 8.
 [16
 
 <./figures/Systemarchitektur/Systemarchitektur.png>] [17] [18]
-<figures/Systemarchitektur/Applikationsprotokoll_Verbindungsaufbau.png, id=703,
+<figures/Systemarchitektur/Applikationsprotokoll_Verbindungsaufbau.png, id=894,
  697.60625pt x 725.71124pt>
 File: figures/Systemarchitektur/Applikationsprotokoll_Verbindungsaufbau.png Gra
 phic file (type png)
@@ -1589,27 +1591,237 @@ dungsaufbau.png  used on input line 176.
 (./Inhalt/5_SoftwareESP32.tex [20<./figures/Systemarchitektur/Applikationsprotok
 oll_Verbindungsaufbau.png>]
 Kapitel 5.
-) (./Inhalt/6_ROS.tex [21
+[21
 
 ]
+<figures/Softwarearchitektur_ESP32/ESP32_Architektur.png, id=917, 683.55376pt x
+ 498.86375pt>
+File: figures/Softwarearchitektur_ESP32/ESP32_Architektur.png Graphic file (typ
+e png)
+<use figures/Softwarearchitektur_ESP32/ESP32_Architektur.png>
+Package luatex.def Info: figures/Softwarearchitektur_ESP32/ESP32_Architektur.pn
+g  used on input line 51.
+(luatex.def)             Requested size: 409.71692pt x 299.02368pt.
+ [22<./figures/Softwarearchitektur_ESP32/ESP32_Architektur.png>]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 7
+9.
+
+(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Overfull \hbox (3.5052pt too wide) in paragraph at lines 96--97
+[][]\T1/lmtt/m/n/10 Socket(int port, std::string ip_addr) \T1/lmr/m/n/10 Dem Kon
+-struk-tor müs-sen der Port so-wie die IP-Adresse
+ []
+
+[23]
+Overfull \hbox (8.55977pt too wide) in paragraph at lines 101--103
+[][]\T1/lmtt/m/n/10 int socket_receive(uint8_t* rx_buffer, int recv_bytes) \T1/
+lmr/m/n/10 emp-fängt die mit []\T1/lmtt/m/n/10 recv_bytes \T1/lmr/m/n/10 über-
+
+ []
+
+
+Overfull \hbox (2.004pt too wide) in paragraph at lines 103--105
+[][]\T1/lmtt/m/n/10 int socket_receive_string(std::string& rx_string, int max_by
+tes) \T1/lmr/m/n/10 dient zum Emp-fan-gen
+ []
+
+
+Overfull \hbox (30.50414pt too wide) in paragraph at lines 105--107
+[][]\T1/lmtt/m/n/10 int socket_receive_nonblock(uint8_t* rx_buffer, int recv_byt
+es) \T1/lmr/m/n/10 emp-fängt die mit []\T1/lmtt/m/n/10 recv_bytes
+ []
+
+
+Overfull \hbox (1.72734pt too wide) in paragraph at lines 107--111
+[]\T1/lmr/m/n/10 Mit []\T1/lmtt/m/n/10 int socket_send(uint8_t const* tx_buffer,
+ int buffer_len) \T1/lmr/m/n/10 wer-den []\T1/lmtt/m/n/10 buffer_len \T1/lmr/m/
+n/10 Bytes
+ []
+
+<figures/Softwarearchitektur_ESP32/RosBridgeClientClass.png, id=931, 713.66624p
+t x 891.33pt>
+File: figures/Softwarearchitektur_ESP32/RosBridgeClientClass.png Graphic file (
+type png)
+<use figures/Softwarearchitektur_ESP32/RosBridgeClientClass.png>
+Package luatex.def Info: figures/Softwarearchitektur_ESP32/RosBridgeClientClass
+.png  used on input line 118.
+(luatex.def)             Requested size: 455.24411pt x 568.57239pt.
+[24] [25<./figures/Softwarearchitektur_ESP32/RosBridgeClientClass.png>]
+Overfull \hbox (205.00404pt too wide) in paragraph at lines 148--150
+[][]\T1/lmtt/m/n/10 SubscriberImpl(std::string const& topic, Socket& sock, std::
+function<void(std::shared_ptr<T> ros_msg)> callback_function)
+ []
+
+[26]
+<figures/Softwarearchitektur_ESP32/NodeHandleAblauf.png, id=950, 490.83376pt x 
+571.13374pt>
+File: figures/Softwarearchitektur_ESP32/NodeHandleAblauf.png Graphic file (type
+ png)
+<use figures/Softwarearchitektur_ESP32/NodeHandleAblauf.png>
+Package luatex.def Info: figures/Softwarearchitektur_ESP32/NodeHandleAblauf.png
+  used on input line 170.
+(luatex.def)             Requested size: 227.62206pt x 264.85983pt.
+
+Overfull \hbox (149.56023pt too wide) in paragraph at lines 181--183
+[]\T1/lmr/m/n/10 Mit []\T1/lmtt/m/n/10 void subscribe(std::string const& topic, std::function<void(std::shared_ptr<T> ros_msg)> callback_function)
+ []
+
+
+Overfull \hbox (64.28302pt too wide) in paragraph at lines 183--186
+[]\T1/lmr/m/n/10 Der Me-tho-de []\T1/lmtt/m/n/10 void registerConnectionLostCall
+back(std::function<void()> connection_lost_callback)
+ []
+
+[27<./figures/Softwarearchitektur_ESP32/NodeHandleAblauf.png>]
+Overfull \hbox (39.83897pt too wide) in paragraph at lines 186--188
+[]\T1/lmtt/m/n/10 _send_init() \T1/lmr/m/n/10 das In-itia-li-sie-rungs-pa-ket ve
+r-sen-det und es wird der Haupt-pro-zess []\T1/lmtt/m/n/10 _communication_handle
+r()
+ []
+
+[28]
+<figures/Softwarearchitektur_ESP32/MotorController_Class.png, id=962, 508.90125
+pt x 527.9725pt>
+File: figures/Softwarearchitektur_ESP32/MotorController_Class.png Graphic file 
+(type png)
+<use figures/Softwarearchitektur_ESP32/MotorController_Class.png>
+Package luatex.def Info: figures/Softwarearchitektur_ESP32/MotorController_Clas
+s.png  used on input line 225.
+(luatex.def)             Requested size: 273.14923pt x 283.39299pt.
+ [29<./figures/Softwarearchitektur_ESP32/MotorController_Class.png>]
+[30]
+<figures/Softwarearchitektur_ESP32/OutputVelocity_Class.png, id=973, 834.11626p
+t x 352.31625pt>
+File: figures/Softwarearchitektur_ESP32/OutputVelocity_Class.png Graphic file (
+type png)
+<use figures/Softwarearchitektur_ESP32/OutputVelocity_Class.png>
+Package luatex.def Info: figures/Softwarearchitektur_ESP32/OutputVelocity_Class
+.png  used on input line 281.
+(luatex.def)             Requested size: 409.71692pt x 173.06116pt.
+
+Overfull \hbox (100.0698pt too wide) in paragraph at lines 286--292
+\T1/lmr/m/n/10 Echt-be-trieb mög-lich. Ou-put-Ve-lo-ci-ty ist nicht kom-plett 
+abs-trakt, da die Me-tho-de []\T1/lmtt/m/n/10 ros_msgs_lw::Twist2D getVelocity()
+ const
+ []
+
+[31<./figures/Softwarearchitektur_ESP32/OutputVelocity_Class.png>]
+<figures/Softwarearchitektur_ESP32/SensorPose_Class.png, id=980, 1057.9525pt x 
+1024.82875pt>
+File: figures/Softwarearchitektur_ESP32/SensorPose_Class.png Graphic file (type
+ png)
+<use figures/Softwarearchitektur_ESP32/SensorPose_Class.png>
+Package luatex.def Info: figures/Softwarearchitektur_ESP32/SensorPose_Class.png
+  used on input line 335.
+(luatex.def)             Requested size: 455.24411pt x 440.98053pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[32] [33]
+Overfull \hbox (189.25409pt too wide) in paragraph at lines 465--467
+[][]\T1/lmtt/m/n/10 SensorPose& init(std::initializer_list<KalmanSensor const*> const& sensor_list, OutputVelocity const& output_velocity)
+ []
+
+
+Overfull \hbox (1.25505pt too wide) in paragraph at lines 470--471
+[][]\T1/lmtt/m/n/10 void _kalman_filter_loop_timer(TimerHandle_t timer) \T1/lmr
+/m/n/10 ist die Call-back-funk-ti-on des Soft-ware-
+ []
+
+
+Overfull \hbox (451.75333pt too wide) in paragraph at lines 478--479
+[][]\T1/lmtt/m/n/10 bool calculateKalman(ros_msgs_lw::Pose2D const& a_priori_est
+imate, dspm::Mat const& a_priori_cov, ros_msgs_lw::Pose2D& a_posterior_estimate,
+ dspm::Mat& a_posterior_cov)
+ []
+
+
+Overfull \hbox (11.2281pt too wide) in paragraph at lines 480--481
+[][]\T1/lmtt/m/n/10 void getMeasurementNoiseCov(dspm::Mat& measurement_cov) \T1
+/lmr/m/n/10 gibt die Ko-va-ri-anz-ma-trix des Mess-
+ []
+
+[34]
+<figures/Softwarearchitektur_ESP32/Marvelmind_Positions_Paket.png, id=1008, 587
+.19376pt x 600.74437pt>
+File: figures/Softwarearchitektur_ESP32/Marvelmind_Positions_Paket.png Graphic 
+file (type png)
+<use figures/Softwarearchitektur_ESP32/Marvelmind_Positions_Paket.png>
+Package luatex.def Info: figures/Softwarearchitektur_ESP32/Marvelmind_Positions
+_Paket.png  used on input line 487.
+(luatex.def)             Requested size: 455.24411pt x 465.74625pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/Softwarearchitektur_ESP32/PositionController_Class.png, id=1011, 990.7
+0125pt x 894.34125pt>
+File: figures/Softwarearchitektur_ESP32/PositionController_Class.png Graphic fi
+le (type png)
+<use figures/Softwarearchitektur_ESP32/PositionController_Class.png>
+Package luatex.def Info: figures/Softwarearchitektur_ESP32/PositionController_C
+lass.png  used on input line 507.
+(luatex.def)             Requested size: 455.24411pt x 410.96527pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[35]
+Overfull \hbox (3.67139pt too wide) in paragraph at lines 522--524
+[][]\T1/lmtt/m/n/10 ControllerMaster& init(OutputVelocity& output_velocity, Sens
+orPose& sensor_pose) \T1/lmr/m/n/10 er-
+ []
+
+
+Overfull \hbox (136.75424pt too wide) in paragraph at lines 524--526
+[][]\T1/lmtt/m/n/10 void start_controller(PositionController* pos_controller, st
+d::function<void()>destination_reached_callback)
+ []
+
+<figures/Softwarearchitektur_ESP32/State_Machine_Class.png, id=1021, 1000.73875
+pt x 884.30376pt>
+File: figures/Softwarearchitektur_ESP32/State_Machine_Class.png Graphic file (t
+ype png)
+<use figures/Softwarearchitektur_ESP32/State_Machine_Class.png>
+Package luatex.def Info: figures/Softwarearchitektur_ESP32/State_Machine_Class.
+png  used on input line 555.
+(luatex.def)             Requested size: 455.24411pt x 402.27788pt.
+[36]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/Softwarearchitektur_ESP32/Zustandsdiagramm.png, id=1028, 638.385pt x 5
+08.90125pt>
+File: figures/Softwarearchitektur_ESP32/Zustandsdiagramm.png Graphic file (type
+ png)
+<use figures/Softwarearchitektur_ESP32/Zustandsdiagramm.png>
+Package luatex.def Info: figures/Softwarearchitektur_ESP32/Zustandsdiagramm.png
+  used on input line 569.
+(luatex.def)             Requested size: 364.19667pt x 290.32521pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./Inhalt/6_ROS.tex [37] [38<./figures/Softwarearchitektur_ESP32/SensorPose_Cl
+ass.png>] [39<./figures/Softwarearchitektur_ESP32/Marvelmind_Positions_Paket.png
+>] [40<./figures/Softwarearchitektur_ESP32/PositionController_Class.png>]
+[41<./figures/Softwarearchitektur_ESP32/State_Machine_Class.png>] [42<./figures/
+Softwarearchitektur_ESP32/Zustandsdiagramm.png>]
 Kapitel 6.
-) (./Inhalt/6.1_ROS_Trajektorie.tex [22
+) (./Inhalt/6.1_ROS_Trajektorie.tex [43
 
 ]
 Kapitel 7.
-) (./Inhalt/7_Marvelmind.tex [23
+) (./Inhalt/7_Marvelmind.tex [44
 
 ]
 Kapitel 8.
-) (./Inhalt/8_Docker.tex [24
+) (./Inhalt/8_Docker.tex [45
 
 ]
 Kapitel 9.
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
-.
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [25
+[46
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -1621,7 +1833,7 @@ Overfull \hbox (0.42813pt too wide) in paragraph at lines 13--29
 \T1/lmr/m/n/10 Da-bei er-stellt man Con-tai-ner von ei-nem Ab-bild. Die-se kann man selbst er-stel-len und nennt man Container-
  []
 
-[26
+[47
 
 ]
 Overfull \hbox (2.01134pt too wide) in paragraph at lines 53--54
@@ -1629,67 +1841,73 @@ Overfull \hbox (2.01134pt too wide) in paragraph at lines 53--54
 üh-ren. Ich emp-feh-le, das Ubuntu-
  []
 
-[27] [28]) (./Inhalt/9_WebApp.tex [29]
+[48] [49]) (./Inhalt/9_WebApp.tex [50]
 Kapitel 10.
-[30
+[51
 
-]) (./Inhalt/10_Fazit_Ausblick.tex [31]
+]) (./Inhalt/10_Fazit_Ausblick.tex [52]
 Kapitel 11.
-)) [32
+)) [53
 
-] (./Erklaerung.tex
-Underfull \hbox (badness 10000) in paragraph at lines 12--15
+] (./Projektdokumentation.bbl) (./Erklaerung.tex [54
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 13--16
 
  []
 
-) [33
+) [55
 
 
 ] (./Projektdokumentation.aux)
 Package rerunfilecheck Info: File `Projektdokumentation.out' has not changed.
-(rerunfilecheck)             Checksum: 5F7A8E880123FB536FBAFF19CAE3CDBA;10762.
+(rerunfilecheck)             Checksum: BF7C8A54ECE2766C58DE7FEC34379E93;14887.
 )
 
 Here is how much of LuaTeX's memory you used:
- 31246 strings out of 477887
- 596207,1373583 words of node,token memory allocated
- 896 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 7 glue, 4 kern, 1 glyph, 24 attribute, 114 glue_spe
-c, 14 attribute_list, 3 write nodes
-   avail lists: 2:9900,3:478,4:13112,5:11573,6:192,7:12502,8:144,9:28913,10:45,1
-1:1243
- 50013 multiletter control sequences out of 65536+600000
+ 31529 strings out of 477887
+ 596202,1373583 words of node,token memory allocated
+ 1028 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 7 glue, 4 kern, 1 glyph, 62 attribute, 114 glue_spe
+c, 33 attribute_list, 3 write, 3 pdf_action nodes
+   avail lists: 1:3,2:9894,3:579,4:13112,5:11574,6:222,7:12502,8:174,9:28913,10:
+45,11:1243
+ 50139 multiletter control sequences out of 65536+600000
  74 fonts using 6389151 bytes
  115i,21n,104p,577b,1287s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/U
 sers/Cara/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/C
-ara/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Cara/Ap
-pData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/Cara/AppD
-ata/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}<C:/Users/Cara/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Cara/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Cara/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Users/Cara/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/Users/Cara/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Cara/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Cara/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/lm/lmmi5.pfb><C:/Users/Cara/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/Cara/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/lm/lmr12.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/lm/lmr17.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/font
-s/type1/public/lm/lmr5.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/lm/lmr6.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/lm/lmr7.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/lm/lmr8.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
-m/lmr9.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
-ri10.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri
-12.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10
-.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pf
-b><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-<C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb>
-Output written on Projektdokumentation.pdf (39 pages, 1849831 bytes).
+ara/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/Car
+a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Users/Cara/
+AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Cara/AppDat
+a/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}<C:/Users/Cara/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Cara/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Cara/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Users/Cara/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/Users/Cara/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Cara/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Cara/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Cara/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/lm/lmmi5.pfb><C:/Users/Cara/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/lm/lmr10.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/lm/lmr12.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/lm/lmr17.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/lm/lmr5.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/lm/lmr6.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/lm/lmr7.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
+m/lmr8.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
+r9.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10
+.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.p
+fb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb
+><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy5.pfb><C
+:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/U
+sers/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Use
+rs/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb>
+Output written on Projektdokumentation.pdf (62 pages, 2338955 bytes).
 
-PDF statistics: 933 PDF objects out of 1000 (max. 8388607)
- 220 named destinations out of 1000 (max. 131072)
- 536 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 1295 PDF objects out of 1440 (max. 8388607)
+ 301 named destinations out of 1000 (max. 131072)
+ 744 words of extra memory for PDF output out of 10000 (max. 100000000)
 

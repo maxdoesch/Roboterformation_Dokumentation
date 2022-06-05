@@ -40,25 +40,51 @@
 \contentsline {subsubsection}{\numberline {4.2.1.5}Publish Paket}{19}{subsubsection.100}%
 \contentsline {subsection}{\numberline {4.2.2}Anwendungsbeispiel}{20}{subsection.101}%
 \contentsline {chapter}{\numberline {5}Softwarearchitektur auf dem ESP32}{21}{chapter.104}%
-\contentsline {chapter}{\numberline {6}ROS}{22}{chapter.105}%
-\contentsline {section}{\numberline {6.1}Softwarearchitektur in ROS}{22}{section.106}%
-\contentsline {section}{\numberline {6.2}rosbridge-server}{22}{section.107}%
-\contentsline {section}{\numberline {6.3}Trajektorienplanung}{22}{section.108}%
-\contentsline {chapter}{\numberline {7}ROS-Trajektorie}{23}{chapter.109}%
-\contentsline {section}{\numberline {7.1}Trajektorienplanung}{23}{section.110}%
-\contentsline {chapter}{\numberline {8}Marvelmind}{24}{chapter.111}%
-\contentsline {section}{\numberline {8.1}Marvelmind-Aufbau}{24}{section.112}%
-\contentsline {section}{\numberline {8.2}Probleme in der Nutzung von Marvelmind}{24}{section.113}%
-\contentsline {chapter}{\numberline {9}Docker}{25}{chapter.114}%
-\contentsline {section}{\numberline {9.1}Docker}{26}{section.115}%
-\contentsline {subsection}{\numberline {9.1.1}Einführung und Funktion von Docker}{26}{subsection.116}%
-\contentsline {section}{\numberline {9.2}Installation von Docker-Desktop}{26}{section.119}%
-\contentsline {section}{\numberline {9.3}Unsere Verwendung von Docker}{27}{section.123}%
-\contentsline {subsection}{\numberline {9.3.1}Docker-Compose}{27}{subsection.124}%
-\contentsline {subsection}{\numberline {9.3.2}Dockerfile}{28}{subsection.165}%
-\contentsline {chapter}{\numberline {10}Web-App}{30}{chapter.174}%
-\contentsline {section}{\numberline {10.1}React}{31}{section.175}%
-\contentsline {chapter}{\numberline {11}Fazit \& Ausblick}{32}{chapter.176}%
-\contentsline {section}{\numberline {11.1}Fazit}{32}{section.177}%
-\contentsline {section}{\numberline {11.2}Ausblick}{32}{section.178}%
-\contentsline {section}{\numberline {11.3}Eidesstattliche Erklärung}{33}{section.179}%
+\contentsline {section}{\numberline {5.1}ESP-IDF}{21}{section.105}%
+\contentsline {section}{\numberline {5.2}Überblick}{22}{section.106}%
+\contentsline {section}{\numberline {5.3}Wifi}{23}{section.109}%
+\contentsline {section}{\numberline {5.4}Socket}{23}{section.110}%
+\contentsline {section}{\numberline {5.5}RosBridgeClient}{25}{section.111}%
+\contentsline {subsection}{\numberline {5.5.1}Publisher und SubscriberImpl}{26}{subsection.114}%
+\contentsline {subsection}{\numberline {5.5.2}NodeHandle}{27}{subsection.115}%
+\contentsline {section}{\numberline {5.6}RosMsgs}{28}{section.118}%
+\contentsline {section}{\numberline {5.7}MotorController}{29}{section.119}%
+\contentsline {subsection}{\numberline {5.7.1}Motor}{30}{subsection.122}%
+\contentsline {subsection}{\numberline {5.7.2}MotorController}{30}{subsection.123}%
+\contentsline {section}{\numberline {5.8}OutputVelocity}{31}{section.124}%
+\contentsline {subsection}{\numberline {5.8.1}OuputVelocityImpl}{31}{subsection.127}%
+\contentsline {subsection}{\numberline {5.8.2}OutputVelocitySim}{32}{subsection.128}%
+\contentsline {section}{\numberline {5.9}SensorPose}{32}{section.129}%
+\contentsline {subsection}{\numberline {5.9.1}SensorPose}{32}{subsection.132}%
+\contentsline {subsection}{\numberline {5.9.2}KalmanFilter}{33}{subsection.133}%
+\contentsline {subsection}{\numberline {5.9.3}KalmanSensor}{34}{subsection.141}%
+\contentsline {subsection}{\numberline {5.9.4}Marvelmind}{35}{subsection.142}%
+\contentsline {subsection}{\numberline {5.9.5}SensorPoseSim}{35}{subsection.145}%
+\contentsline {section}{\numberline {5.10}PositionController}{35}{section.146}%
+\contentsline {subsection}{\numberline {5.10.1}ControllerMaster}{35}{subsection.149}%
+\contentsline {subsection}{\numberline {5.10.2}PositionController}{36}{subsection.150}%
+\contentsline {subsection}{\numberline {5.10.3}p2pController}{36}{subsection.151}%
+\contentsline {subsection}{\numberline {5.10.4}approxLin-, statInOutLin-, dynInOutLinController}{36}{subsection.152}%
+\contentsline {section}{\numberline {5.11}StateMachine}{37}{section.153}%
+\contentsline {chapter}{\numberline {6}ROS}{43}{chapter.158}%
+\contentsline {section}{\numberline {6.1}Softwarearchitektur in ROS}{43}{section.159}%
+\contentsline {section}{\numberline {6.2}rosbridge-server}{43}{section.160}%
+\contentsline {section}{\numberline {6.3}Trajektorienplanung}{43}{section.161}%
+\contentsline {chapter}{\numberline {7}ROS-Trajektorie}{44}{chapter.162}%
+\contentsline {section}{\numberline {7.1}Trajektorienplanung}{44}{section.163}%
+\contentsline {chapter}{\numberline {8}Marvelmind}{45}{chapter.164}%
+\contentsline {section}{\numberline {8.1}Marvelmind-Aufbau}{45}{section.165}%
+\contentsline {section}{\numberline {8.2}Probleme in der Nutzung von Marvelmind}{45}{section.166}%
+\contentsline {chapter}{\numberline {9}Docker}{46}{chapter.167}%
+\contentsline {section}{\numberline {9.1}Docker}{47}{section.168}%
+\contentsline {subsection}{\numberline {9.1.1}Einführung und Funktion von Docker}{47}{subsection.169}%
+\contentsline {section}{\numberline {9.2}Installation von Docker-Desktop}{47}{section.172}%
+\contentsline {section}{\numberline {9.3}Unsere Verwendung von Docker}{48}{section.176}%
+\contentsline {subsection}{\numberline {9.3.1}Docker-Compose}{48}{subsection.177}%
+\contentsline {subsection}{\numberline {9.3.2}Dockerfile}{49}{subsection.218}%
+\contentsline {chapter}{\numberline {10}Web-App}{51}{chapter.227}%
+\contentsline {section}{\numberline {10.1}React}{52}{section.228}%
+\contentsline {chapter}{\numberline {11}Fazit \& Ausblick}{53}{chapter.229}%
+\contentsline {section}{\numberline {11.1}Fazit}{53}{section.230}%
+\contentsline {section}{\numberline {11.2}Ausblick}{53}{section.231}%
+\contentsline {section}{\numberline {11.3}Eidesstattliche Erklärung}{55}{section.234}%
