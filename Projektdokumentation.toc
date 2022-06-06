@@ -1,0 +1,90 @@
+\babel@toc {ngerman}{}\relax 
+\contentsline {chapter}{\numberline {1}Einführung in die Projektarbeit}{1}{chapter.10}%
+\contentsline {section}{\numberline {1.1}Einordnung dieser Projektarbeit in das Gesamtprojekt}{2}{section.11}%
+\contentsline {section}{\numberline {1.2}Zielsetzung der Projektarbeit}{2}{section.12}%
+\contentsline {chapter}{\numberline {2}Platinenentwurf}{3}{chapter.13}%
+\contentsline {section}{\numberline {2.1}Blockschaltbild}{3}{section.14}%
+\contentsline {section}{\numberline {2.2}Bauteile}{4}{section.17}%
+\contentsline {subsection}{\numberline {2.2.1}ESP32}{4}{subsection.18}%
+\contentsline {subsubsection}{\numberline {2.2.1.1}Power-Up}{5}{subsubsection.23}%
+\contentsline {subsubsection}{\numberline {2.2.1.2}Boot-Mode}{5}{subsubsection.26}%
+\contentsline {subsubsection}{\numberline {2.2.1.3}UART0}{6}{subsubsection.29}%
+\contentsline {subsubsection}{\numberline {2.2.1.4}JTAG}{6}{subsubsection.30}%
+\contentsline {subsubsection}{\numberline {2.2.1.5}I2C}{6}{subsubsection.31}%
+\contentsline {subsection}{\numberline {2.2.2}CP2102N}{6}{subsection.32}%
+\contentsline {subsection}{\numberline {2.2.3}Pololu 20D 63:1 Getriebemotoren}{7}{subsection.35}%
+\contentsline {subsection}{\numberline {2.2.4}DRV8841}{7}{subsection.40}%
+\contentsline {subsection}{\numberline {2.2.5}Marvelmind Mini-RX}{8}{subsection.45}%
+\contentsline {subsection}{\numberline {2.2.6}WS2815B}{8}{subsection.50}%
+\contentsline {subsection}{\numberline {2.2.7}PI4ULS5V201}{9}{subsection.53}%
+\contentsline {subsection}{\numberline {2.2.8}TPS54331}{9}{subsection.54}%
+\contentsline {section}{\numberline {2.3}Schaltplan}{10}{section.57}%
+\contentsline {subsection}{\numberline {2.3.1}Hauptschalter und Verpolungsschutz}{10}{subsection.58}%
+\contentsline {subsection}{\numberline {2.3.2}Eingangsquellenschutz}{10}{subsection.61}%
+\contentsline {subsection}{\numberline {2.3.3}Reset- und Bootmodeschaltung}{11}{subsection.64}%
+\contentsline {section}{\numberline {2.4}Layout}{11}{section.67}%
+\contentsline {section}{\numberline {2.5}Designfehler}{13}{section.72}%
+\contentsline {subsection}{\numberline {2.5.1}3.3V Spannungswandler}{13}{subsection.73}%
+\contentsline {subsection}{\numberline {2.5.2}CP2102N Stromversorgung}{13}{subsection.74}%
+\contentsline {subsection}{\numberline {2.5.3}USB-C Anschluss}{14}{subsection.79}%
+\contentsline {section}{\numberline {2.6}Verbesserungen}{14}{section.80}%
+\contentsline {chapter}{\numberline {3}3D-Roboterdesign}{15}{chapter.81}%
+\contentsline {chapter}{\numberline {4}Systemarchitektur}{16}{chapter.88}%
+\contentsline {section}{\numberline {4.1}Überblick}{16}{section.89}%
+\contentsline {section}{\numberline {4.2}Applikationsprotokoll}{17}{section.92}%
+\contentsline {subsection}{\numberline {4.2.1}Datenpakete}{18}{subsection.93}%
+\contentsline {subsubsection}{\numberline {4.2.1.1}Initialisierungspaket}{18}{subsubsection.96}%
+\contentsline {subsubsection}{\numberline {4.2.1.2}Advertise Paket}{18}{subsubsection.97}%
+\contentsline {subsubsection}{\numberline {4.2.1.3}Subscribe Paket}{18}{subsubsection.98}%
+\contentsline {subsubsection}{\numberline {4.2.1.4}Keep-Alive Paket}{19}{subsubsection.99}%
+\contentsline {subsubsection}{\numberline {4.2.1.5}Publish Paket}{19}{subsubsection.100}%
+\contentsline {subsection}{\numberline {4.2.2}Anwendungsbeispiel}{20}{subsection.101}%
+\contentsline {chapter}{\numberline {5}Softwarearchitektur auf dem ESP32}{21}{chapter.104}%
+\contentsline {section}{\numberline {5.1}ESP-IDF}{21}{section.105}%
+\contentsline {section}{\numberline {5.2}Überblick}{22}{section.106}%
+\contentsline {section}{\numberline {5.3}Wifi}{23}{section.109}%
+\contentsline {section}{\numberline {5.4}Socket}{23}{section.110}%
+\contentsline {section}{\numberline {5.5}RosBridgeClient}{25}{section.111}%
+\contentsline {subsection}{\numberline {5.5.1}Publisher und SubscriberImpl}{26}{subsection.114}%
+\contentsline {subsection}{\numberline {5.5.2}NodeHandle}{27}{subsection.115}%
+\contentsline {section}{\numberline {5.6}RosMsgs}{28}{section.118}%
+\contentsline {section}{\numberline {5.7}MotorController}{29}{section.119}%
+\contentsline {subsection}{\numberline {5.7.1}Motor}{30}{subsection.122}%
+\contentsline {subsection}{\numberline {5.7.2}MotorController}{30}{subsection.123}%
+\contentsline {section}{\numberline {5.8}OutputVelocity}{31}{section.124}%
+\contentsline {subsection}{\numberline {5.8.1}OuputVelocityImpl}{31}{subsection.127}%
+\contentsline {subsection}{\numberline {5.8.2}OutputVelocitySim}{32}{subsection.128}%
+\contentsline {section}{\numberline {5.9}SensorPose}{32}{section.129}%
+\contentsline {subsection}{\numberline {5.9.1}SensorPose}{32}{subsection.132}%
+\contentsline {subsection}{\numberline {5.9.2}KalmanFilter}{33}{subsection.133}%
+\contentsline {subsection}{\numberline {5.9.3}KalmanSensor}{34}{subsection.141}%
+\contentsline {subsection}{\numberline {5.9.4}Marvelmind}{35}{subsection.142}%
+\contentsline {subsection}{\numberline {5.9.5}SensorPoseSim}{35}{subsection.145}%
+\contentsline {section}{\numberline {5.10}PositionController}{35}{section.146}%
+\contentsline {subsection}{\numberline {5.10.1}ControllerMaster}{35}{subsection.149}%
+\contentsline {subsection}{\numberline {5.10.2}PositionController}{36}{subsection.150}%
+\contentsline {subsection}{\numberline {5.10.3}p2pController}{36}{subsection.151}%
+\contentsline {subsection}{\numberline {5.10.4}approxLin-, statInOutLin-, dynInOutLinController}{36}{subsection.152}%
+\contentsline {section}{\numberline {5.11}StateMachine}{37}{section.153}%
+\contentsline {chapter}{\numberline {6}ROS}{43}{chapter.158}%
+\contentsline {section}{\numberline {6.1}Softwarearchitektur in ROS}{43}{section.159}%
+\contentsline {section}{\numberline {6.2}rosbridge-server}{43}{section.160}%
+\contentsline {section}{\numberline {6.3}Trajektorienplanung}{43}{section.161}%
+\contentsline {chapter}{\numberline {7}ROS-Trajektorie}{44}{chapter.162}%
+\contentsline {section}{\numberline {7.1}Trajektorienplanung}{44}{section.163}%
+\contentsline {chapter}{\numberline {8}Marvelmind}{45}{chapter.164}%
+\contentsline {section}{\numberline {8.1}Marvelmind-Aufbau}{45}{section.165}%
+\contentsline {section}{\numberline {8.2}Probleme in der Nutzung von Marvelmind}{45}{section.166}%
+\contentsline {chapter}{\numberline {9}Docker}{46}{chapter.167}%
+\contentsline {section}{\numberline {9.1}Docker}{47}{section.168}%
+\contentsline {subsection}{\numberline {9.1.1}Einführung und Funktion von Docker}{47}{subsection.169}%
+\contentsline {section}{\numberline {9.2}Installation von Docker-Desktop}{47}{section.172}%
+\contentsline {section}{\numberline {9.3}Unsere Verwendung von Docker}{48}{section.176}%
+\contentsline {subsection}{\numberline {9.3.1}Docker-Compose}{48}{subsection.177}%
+\contentsline {subsection}{\numberline {9.3.2}Dockerfile}{49}{subsection.218}%
+\contentsline {chapter}{\numberline {10}Web-App}{51}{chapter.227}%
+\contentsline {section}{\numberline {10.1}React}{52}{section.228}%
+\contentsline {chapter}{\numberline {11}Fazit \& Ausblick}{53}{chapter.229}%
+\contentsline {section}{\numberline {11.1}Fazit}{53}{section.230}%
+\contentsline {section}{\numberline {11.2}Ausblick}{53}{section.231}%
+\contentsline {section}{\numberline {11.3}Eidesstattliche Erklärung}{55}{section.234}%
