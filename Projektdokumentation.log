@@ -1,71 +1,29 @@
-This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.24)  5 JUN 2022 22:44
- system commands enabled.
+This is XeTeX, Version 3.141592653-2.6-0.999993 (MiKTeX 22.1) (preloaded format=xelatex 2022.3.8)  6 JUN 2022 11:02
+entering extended mode
+ \write18 enabled.
  file:line:error style messages enabled.
-**c:/Users/Cara/Downloads/Doku_new_TH/Projektdokumentation.tex
-(c:/Users/Cara/Downloads/Doku_new_TH/Projektdokumentation.tex
-LaTeX2e <2021-11-15>
-Lua module: luaotfload 2021-05-21 3.18 Lua based OpenType font support
-Lua module: lualibs 2021-05-20 2.74 ConTeXt Lua standard libraries.
-Lua module: lualibs-extended 2021-05-20 2.74 ConTeXt Lua libraries -- extended c
-ollection.
-luaotfload | conf : Root cache directory is "C:/Users/Cara/AppData/Local/MiKTeX/
-luatex-cache/generic/names".
-luaotfload | init : Loading fontloader "fontloader-2021-05-20.lua" from kpse-res
-olved path "C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/fo
-ntloader-2021-05-20.lua".
-Lua-only attribute luaotfload@noligature = 1
-Lua-only attribute luaotfload@syllabe = 2
-luaotfload | init : Context OpenType loader version 3.116
-Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
-Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
-Inserting `luaotfload.glyph_stream' at position 1 in `glyph_stream_provider'.
-Inserting `luaotfload.define_font' at position 1 in `define_font'.
-Lua-only attribute luaotfload_color_attribute = 3
-luaotfload | conf : Root cache directory is "C:/Users/Cara/AppData/Local/MiKTeX/
-luatex-cache/generic/names".
-Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_opentype_file'.
-Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_truetype_file'.
-Inserting `luaotfload.harf.finalize_vlist' at position 1 in `post_linebreak_filt
-er'.
-Inserting `luaotfload.harf.finalize_hlist' at position 2 in `hpack_filter'.
-Inserting `luaotfload.cleanup_files' at position 1 in `wrapup_run'.
-Inserting `luaotfload.harf.finalize_unicode' at position 1 in `finish_pdffile'.
-Inserting `luaotfload.glyphinfo' at position 1 in `glyph_info'.
-Lua-only attribute luaotfload.letterspace_done = 4
-Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
-font'.
-Inserting `luaotfload.aux.set_font_index' at position 2 in `luaotfload.patch_fon
-t'.
-Inserting `luaotfload.aux.patch_cambria_domh' at position 3 in `luaotfload.patch
-_font'.
-Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_fon
-t_unsafe'.
-Inserting `luaotfload.aux.set_capheight' at position 4 in `luaotfload.patch_font
-'.
-Inserting `luaotfload.aux.set_xheight' at position 5 in `luaotfload.patch_font'.
-Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'
-. L3 programming layer <2021-11-12>
-Inserting `tracingstacklevels' at position 1 in `input_level_string'.
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/base/report.cls
+ %&-line parsing enabled.
+**c:/Users/doesc/Documents/Roboterformation/new_TH-Roboterformation/Projektdokumentation.tex
+(c:/Users/doesc/Documents/Roboterformation/new_TH-Roboterformation/Projektdokumentation.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-21> (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
 Document Class: report 2021/10/04 v1.4n Standard LaTeX document class
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/base/size10.clo
+(C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
 File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
-luaotfload | db : Font names database loaded from C:/Users/Cara/AppData/Local/Mi
-KTeX/luatex-cache/generic/names/luaotfload-names.luc)
-\c@part=\count180
-\c@chapter=\count181
-\c@section=\count182
-\c@subsection=\count183
-\c@subsubsection=\count184
-\c@paragraph=\count185
-\c@subparagraph=\count186
-\c@figure=\count187
-\c@table=\count188
+)
+\c@part=\count181
+\c@chapter=\count182
+\c@section=\count183
+\c@subsection=\count184
+\c@subsubsection=\count185
+\c@paragraph=\count186
+\c@subparagraph=\count187
+\c@figure=\count188
+\c@table=\count189
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/base/inputenc.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks16
 \inpenc@posthook=\toks17
@@ -73,135 +31,33 @@ Package: inputenc 2021/02/14 v1.3d Input encoding file
 
 Package inputenc Warning: inputenc package ignored with utf8 based engines.
 
-) (./Meta.tex) (./Allgemein/Packages.tex
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty
-Package: babel 2021/11/08 3.66 The Babel package
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def
-\bbl@readstream=\read2
-\l@afrikaans=\language2
-Package babel Info: Non-standard hyphenation setup on input line 118.
-\l@ancientgreek=\language3
-\l@armenian=\language4
-\l@assamese=\language5
-\l@basque=\language6
-\l@belarusian=\language7
-\l@bengali=\language8
-\l@bokmal=\language9
-\l@bulgarian=\language10
-\l@catalan=\language11
-\l@churchslavonic=\language12
-\l@classiclatin=\language13
-\l@coptic=\language14
-\l@croatian=\language15
-\l@czech=\language16
-\l@danish=\language17
-\l@dutch=\language18
-\l@esperanto=\language19
-\l@estonian=\language20
-\l@ethiopic=\language21
-\l@finnish=\language22
-\l@french=\language23
-\l@friulan=\language24
-\l@galician=\language25
-\l@georgian=\language26
-\l@german=\language27
-\l@greek=\language28
-\l@gujarati=\language29
-\l@hindi=\language30
-\l@hungarian=\language31
-\l@icelandic=\language32
-\l@indonesian=\language33
-\l@interlingua=\language34
-\l@irish=\language35
-\l@italian=\language36
-\l@kannada=\language37
-\l@kurmanji=\language38
-\l@latin=\language39
-\l@latvian=\language40
-\l@lithuanian=\language41
-\l@liturgicallatin=\language42
-\l@macedonian=\language43
-\l@malayalam=\language44
-\l@marathi=\language45
-\l@mongolian=\language46
-\l@mongolianlmc=\language47
-\l@monogreek=\language48
-\l@ngerman=\language49
-\l@nynorsk=\language50
-\l@occitan=\language51
-\l@oriya=\language52
-\l@pali=\language53
-\l@panjabi=\language54
-\l@piedmontese=\language55
-\l@polish=\language56
-\l@portuguese=\language57
-\l@romanian=\language58
-\l@romansh=\language59
-\l@russian=\language60
-\l@sanskrit=\language61
-\l@serbian=\language62
-\l@serbianc=\language63
-\l@slovak=\language64
-\l@slovenian=\language65
-\l@spanish=\language66
-\l@swedish=\language67
-\l@swissgerman=\language68
-\l@tamil=\language69
-\l@telugu=\language70
-\l@thai=\language71
-\l@turkish=\language72
-\l@turkmen=\language73
-\l@ukenglish=\language74
-\l@ukrainian=\language75
-\l@uppersorbian=\language76
-\l@usenglishmax=\language77
-\l@welsh=\language78
-\babelcatcodetablenum=\catcodetable12
-\bbl@pattcodes=\catcodetable13
-)
-\babel@savecnt=\count189
+) (Meta.tex) (Allgemein/Packages.tex (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2022/02/13 3.71 The Babel package
+\babel@savecnt=\count190
 \U@D=\dimen139
 \l@unhyphenated=\language79
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/babel\xebabel.def (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def))
+\bbl@readstream=\read2
+\bbl@dirlevel=\count191
 
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def
-\bbl@attr@locale=\attribute5
-)
 *************************************
 * Local config file bblopts.cfg used
 *
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/arabi/bblopts.cfg
-File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
- babel
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/babel-german/ngerman.ldf
-Language: ngerman 2021/02/27 v2.13 German support for babel (post-1996 orthogra
-phy)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/babel-german/ngermanb.ld
-f
-Language: ngermanb 2021/02/27 v2.13 German support for babel (post-1996 orthogr
-aphy)
+(C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/babel-german\ngerman.ldf
+Language: ngerman 2021/02/27 v2.13 German support for babel (post-1996 orthography)
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/babel-german\ngermanb.ldf
+Language: ngermanb 2021/02/27 v2.13 German support for babel (post-1996 orthography)
 Package babel Info: Making " an active character on input line 122.
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/loadhyph/loa
-dhyph-de-1996.tex UTF-8 German hyphenation patterns (reformed orthography)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/patterns/tex
-/hyph-de-1996.tex
-German Hyphenation Patterns (Reformed Orthography, 2006) `dehyphn-x' 2021-02-26
- (WL))))))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty
+))) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
-2.
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/lm/t1lmr.fd
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 112.
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/base/textcomp.sty
+)) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/lm/lmodern.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty
 Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
@@ -235,14 +91,11 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/relsize/relsize.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/relsize\relsize.sty
 Package: relsize 2013/03/29 ver 4.1
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/tools/tabularx.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
 Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
 Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
 \col@sep=\dimen140
 \ar@mcellbox=\box50
@@ -257,30 +110,28 @@ Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
 \TX@old@col=\dimen144
 \TX@target=\dimen145
 \TX@delta=\dimen146
-\TX@cols=\count190
+\TX@cols=\count192
 \TX@ftn=\toks19
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
 \LTleft=\skip51
 \LTright=\skip52
 \LTpre=\skip53
 \LTpost=\skip54
-\LTchunksize=\count191
+\LTchunksize=\count193
 \LTcapwidth=\dimen147
 \LT@head=\box52
 \LT@firsthead=\box53
 \LT@foot=\box54
 \LT@lastfoot=\box55
 \LT@gbox=\box56
-\LT@cols=\count192
-\LT@rows=\count193
-\c@LT@tables=\count194
-\c@LT@chunks=\count195
+\LT@cols=\count194
+\LT@rows=\count195
+\c@LT@tables=\count196
+\c@LT@chunks=\count197
 \LT@p@ftn=\toks20
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/ragged2e/ragged2e.sty
-Package: ragged2e 2021/02/05 v3.0 ragged2e Package
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/ragged2e\ragged2e.sty
+Package: ragged2e 2021/12/15 v3.1 ragged2e Package
 \CenteringLeftskip=\skip55
 \RaggedLeftLeftskip=\skip56
 \RaggedRightLeftskip=\skip57
@@ -295,50 +146,42 @@ Package: ragged2e 2021/02/05 v3.0 ragged2e Package
 \RaggedLeftParindent=\skip66
 \RaggedRightParindent=\skip67
 \JustifyingParindent=\skip68
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/graphics/lscape.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphics.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/graphics.cf
-g
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: luatex.def on input line 107.
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def/luatex.def
-File: luatex.def 2021/06/01 v1.2c Graphics/color driver for luatex
+Package graphics Info: Driver file: xetex.def on input line 107.
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\xetex.def
+File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
 )))
 
 Package array Warning: Column w is already defined on input line 25.
 
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphicx.sty
+(C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks21
 )
 \Gin@req@height=\dimen148
 \Gin@req@width=\dimen149
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/floatflt/floatflt.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/floatflt\floatflt.sty
 Package: floatflt 1997/07/16 v. 1.31
-\c@OptionTest=\count196
+\c@OptionTest=\count198
 \figbox=\box57
 \tabbox=\box58
 \pagebox=\box59
-\ffigcount=\count197
-\ftabcount=\count198
-\fftest=\count199
-\hangcount=\count266
-\nosuccesstryfig=\count267
-\nosuccesstrytab=\count268
+\ffigcount=\count199
+\ftabcount=\count266
+\fftest=\count267
+\hangcount=\count268
+\nosuccesstryfig=\count269
+\nosuccesstrytab=\count270
 \figgutter=\dimen150
 \tabgutter=\dimen151
 \htdone=\dimen152
@@ -348,8 +191,7 @@ Package: floatflt 1997/07/16 v. 1.31
 \floatfltwidth=\dimen156
 \fltitemwidth=\dimen157
 \outputpretest=\toks22
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/tocloft/tocloft.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/tocloft\tocloft.sty
 Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
 Package tocloft Info: The document has chapter divisions on input line 51.
 \cftparskip=\skip69
@@ -381,41 +223,37 @@ Package tocloft Info: The document has chapter divisions on input line 51.
 \cftbeforefigskip=\skip95
 \cftfigindent=\skip96
 \cftfignumwidth=\skip97
-\c@lofdepth=\count269
-\c@lotdepth=\count270
+\c@lofdepth=\count271
+\c@lotdepth=\count272
 \cftbeforelottitleskip=\skip98
 \cftafterlottitleskip=\skip99
 \cftbeforetabskip=\skip100
 \cfttabindent=\skip101
 \cfttabnumwidth=\skip102
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2021/10/15 v2.17l AMS math features
 \@mathmargin=\skip103
 
 For additional information on amsmath, use the `?' option.
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty
+(C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks23
 \ex@=\dimen158
-))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty
+)) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen159
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2021/08/26 v2.02 operator names
 )
-\inf@bad=\count271
-LaTeX Info: Redefining \frac on input line 236.
-\uproot@=\count272
-\leftroot@=\count273
+\inf@bad=\count273
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count274
+\leftroot@=\count275
 LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count274
-\DOTSCASE@=\count275
+\classnum@=\count276
+\DOTSCASE@=\count277
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
@@ -424,15 +262,15 @@ LaTeX Info: Redefining \cdots on input line 620.
 \big@size=\dimen160
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count276
-\c@MaxMatrixCols=\count277
+\macc@depth=\count278
+\c@MaxMatrixCols=\count279
 \dotsspace@=\muskip16
-\c@parentequation=\count278
-\dspbrk@lvl=\count279
+\c@parentequation=\count280
+\dspbrk@lvl=\count281
 \tag@help=\toks24
-\row@=\count280
-\column@=\count281
-\maxfields@=\count282
+\row@=\count282
+\column@=\count283
+\maxfields@=\count284
 \andhelp@=\toks25
 \eqnshift@=\dimen161
 \alignsep@=\dimen162
@@ -446,59 +284,48 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \mathdisplay@stack=\toks27
 LaTeX Info: Redefining \[ on input line 2938.
 LaTeX Info: Redefining \] on input line 2939.
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/amsfonts.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/enumitem/enumitem.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip106
 \enit@outerparindent=\dimen167
 \enit@toks=\toks28
 \enit@inbox=\box62
-\enit@count@id=\count283
-\enitdp@description=\count284
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/tools/xspace.sty
+\enit@count@id=\count285
+\enitdp@description=\count286
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/tools\xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/base/makeidx.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/base\makeidx.sty
 Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/acronym/acronym.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/acronym\acronym.sty
 Package: acronym 2020/04/17 v1.47 Support for acronyms (Tobias Oetiker)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/bigfoot/suffix.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/bigfoot\suffix.sty
 Package: suffix 2006/07/15 1.5a Variant command support
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/xstring/xstring.sty
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/xstring/xstring.tex
-\integerpart=\count285
-\decimalpart=\count286
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex
+\integerpart=\count287
+\decimalpart=\count288
 )
 Package: xstring 2021/07/21 v1.84 String manipulations (CT)
 )
 \AC@clearlist=\toks29
-) (C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/setspace/setspace.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty
-Package: iftex 2020/03/06 v1.0d TeX engine tests
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
-\Gm@cnth=\count287
-\Gm@cntv=\count288
-\c@Gm@tempcnt=\count289
+\Gm@cnth=\count289
+\Gm@cntv=\count290
+\c@Gm@tempcnt=\count291
 \Gm@bindingoffset=\dimen168
 \Gm@wd@mp=\dimen169
 \Gm@odd@mp=\dimen170
@@ -508,44 +335,31 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \Gm@layouthoffset=\dimen174
 \Gm@layoutvoffset=\dimen175
 \Gm@dimlist=\toks30
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/nomencl/nomencl.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/nomencl\nomencl.sty
 Package: nomencl 2021/11/10 v5.6 Nomenclature package
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
 Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkeyval.tex
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkvutils.tex
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
 \XKV@toks=\toks31
 \XKV@tempa@toks=\toks32
 )
-\XKV@depth=\count290
+\XKV@depth=\count292
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) (C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/base/ifthen.sty
+)) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
 Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/koma-script/tocbasic.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\tocbasic.sty
 Package: tocbasic 2021/11/13 v3.35 KOMA-Script package (handling toc-files)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/koma-script/scrbase.sty
-Package: scrbase 2021/11/13 v3.35 KOMA-Script package (KOMA-Script-independent 
-basics and keyval usage)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/koma-script/scrlfile.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrbase.sty
+Package: scrbase 2021/11/13 v3.35 KOMA-Script package (KOMA-Script-independent basics and keyval usage)
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile.sty
 Package: scrlfile 2021/11/13 v3.35 KOMA-Script package (file load hooks)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/koma-script/scrlfile-hoo
-k.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile-hook.sty
 Package: scrlfile-hook 2021/11/13 v3.35 KOMA-Script package (using LaTeX hooks)
-
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/koma-script/scrlogo.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlogo.sty
 Package: scrlogo 2021/11/13 v3.35 KOMA-Script package (logo)
 )))
 Applying: [2021/05/01] Usage of raw or classic option list on input line 252.
-Already applied: [0000/00/00] Usage of raw or classic option list on input line
- 368.
+Already applied: [0000/00/00] Usage of raw or classic option list on input line 368.
 )
 \scr@dte@tocline@numberwidth=\skip107
 \scr@dte@tocline@numbox=\box63
@@ -555,38 +369,32 @@ Package tocbasic Info: setting babel extension for `nls' on input line 188.
 \nomlabelwidth=\dimen176
 \nom@tempdim=\dimen177
 \nomitemsep=\skip108
-) (C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/tools/varioref.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/tools\varioref.sty
 Package: varioref 2021/07/07 v1.6f package for extended references (FMi)
-\c@vrcnt=\count291
-) (C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty
+\c@vrcnt=\count293
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/chngcntr/chngcntr.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/chngcntr\chngcntr.sty
 Package: chngcntr 2018/04/09 v1.1a change counter resetting
 Package chngcntr Info: \counterwithout already defined.
 (chngcntr)             Quitting chngcntr on input line 21.
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/todonotes/todonotes.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/todonotes\todonotes.sty
 Package: todonotes 2021/06/04 v1.1.5 Todonotes source and documentation.
 Package: todonotes 2021/06/04
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: luatex.def on input line 227.
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/colortbl/colortbl.sty
+Package xcolor Info: Driver file: xetex.def on input line 227.
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\colortbl.sty
 Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
 \everycr=\toks33
 \minrowclearance=\skip109
 )
-\rownum=\count292
+\rownum=\count294
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
 Package xcolor Info: Model `RGB' extended on input line 1368.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
 Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
@@ -594,46 +402,22 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/pgf/frontendlayer/tikz.s
-ty
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgf.sty
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfrcs.sty
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil-
-common.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
 \pgfutil@everybye=\toks34
 \pgfutil@tempdima=\dimen178
 \pgfutil@tempdimb=\dimen179
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil-
-common-lists.tex))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil-
-latex.def
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common-lists.tex)) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
 \pgfutil@abb=\box64
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfrcs.c
-ode.tex
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/pgf.revision.tex)
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
 Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
 ))
 Package: pgf 2021/05/15 v3.1.9a (3.1.9a)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgfcore.s
-ty
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/pgf/systemlayer/pgfsys.s
-ty
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsys
-.code.tex
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
 Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys.
-code.tex
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks35
 \pgfkeys@temptoks=\toks36
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeysf
-iltered.code.tex
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeysfiltered.code.tex
 \pgfkeys@tmptoks=\toks37
 ))
 \pgf@x=\dimen180
@@ -648,84 +432,44 @@ iltered.code.tex
 \pgf@yd=\dimen189
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count293
-\c@pgf@countb=\count294
-\c@pgf@countc=\count295
-\c@pgf@countd=\count296
+\c@pgf@counta=\count295
+\c@pgf@countb=\count296
+\c@pgf@countc=\count297
+\c@pgf@countd=\count298
 \t@pgf@toka=\toks38
 \t@pgf@tokb=\toks39
 \t@pgf@tokc=\toks40
-\pgf@sys@id@count=\count297
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgf.cf
-g
+\pgf@sys@id@count=\count299
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
 File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
 )
-Driver file for pgf: pgfsys-luatex.def
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsys
--luatex.def
-File: pgfsys-luatex.def 2021/05/15 v3.1.9a (3.1.9a)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsys
--common-pdf.def
+Driver file for pgf: pgfsys-xetex.def
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-xetex.def
+File: pgfsys-xetex.def 2021/05/15 v3.1.9a (3.1.9a)
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-dvipdfmx.def
+File: pgfsys-dvipdfmx.def 2021/05/15 v3.1.9a (3.1.9a)
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
-)))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsys
-softpath.code.tex
-File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfsyssoftpath@smallbuffer@items=\count298
-\pgfsyssoftpath@bigbuffer@items=\count299
 )
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsys
-protocol.code.tex
+\pgfsys@objnum=\count300
+))) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfsyssoftpath@smallbuffer@items=\count301
+\pgfsyssoftpath@bigbuffer@items=\count302
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-.code.tex
+)) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
 Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code.
-tex
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathcalc.c
-ode.tex
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathutil.c
-ode.tex)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathparser
-.code.tex
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
 \pgfmath@dimen=\dimen190
-\pgfmath@count=\count300
+\pgfmath@count=\count303
 \pgfmath@box=\box65
 \pgfmath@toks=\toks41
 \pgfmath@stack@operand=\toks42
 \pgfmath@stack@operation=\toks43
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfuncti
-ons.code.tex
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfuncti
-ons.basic.code.tex)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfuncti
-ons.trigonometric.code.tex)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfuncti
-ons.random.code.tex)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfuncti
-ons.comparison.code.tex)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfuncti
-ons.base.code.tex)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfuncti
-ons.round.code.tex)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfuncti
-ons.misc.code.tex)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfuncti
-ons.integerarithmetics.code.tex)))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfloat.
-code.tex
-\c@pgfmathroundto@lastzeros=\count301
-))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfint.code.t
-ex)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-points.code.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex))) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count304
+)) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@picminx=\dimen191
 \pgf@picmaxx=\dimen192
@@ -741,135 +485,78 @@ File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@yy=\dimen258
 \pgf@zx=\dimen259
 \pgf@zy=\dimen260
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-pathconstruct.code.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@path@lastx=\dimen261
 \pgf@path@lasty=\dimen262
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-pathusage.code.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@shorten@end@additional=\dimen263
 \pgf@shorten@start@additional=\dimen264
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-scopes.code.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgfpic=\box66
 \pgf@hbox=\box67
 \pgf@layerbox@main=\box68
-\pgf@picture@serial@count=\count302
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-graphicstate.code.tex
+\pgf@picture@serial@count=\count305
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgflinewidth=\dimen265
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-transformations.code.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@pt@x=\dimen266
 \pgf@pt@y=\dimen267
 \pgf@pt@temp=\dimen268
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-quick.code.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-objects.code.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreobjects.code.tex
 File: pgfcoreobjects.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-pathprocessing.code.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathprocessing.code.tex
 File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-arrows.code.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgfarrowsep=\dimen269
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-shade.code.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@max=\dimen270
-\pgf@sys@shading@range@num=\count303
-\pgf@shadingcount=\count304
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-image.code.tex
+\pgf@sys@shading@range@num=\count306
+\pgf@shadingcount=\count307
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-external.code.tex
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgfexternal@startupbox=\box69
-))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-layers.code.tex
+)) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-transparency.code.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.tex
 File: pgfcoretransparency.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-patterns.code.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepatterns.code.tex
 File: pgfcorepatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcore
-rdf.code.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorerdf.code.tex
 File: pgfcorerdf.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodules
-hapes.code.tex
+))) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgfnodeparttextbox=\box70
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodulep
-lot.code.tex
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfcom
-p-version-0-65.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@nodesepstart=\dimen271
 \pgf@nodesepend=\dimen272
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfcom
-p-version-1-18.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2021/05/15 v3.1.9a (3.1.9a)
-))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgffor.sty
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfkeys.st
-y
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys.
-code.tex))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/pgf/math/pgfmath.sty
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code.
-tex))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgffor.c
-ode.tex
+)) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.sty (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex)) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.code.tex
 Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code.
-tex)
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)
 \pgffor@iter=\dimen273
 \pgffor@skip=\dimen274
 \pgffor@stack=\toks44
 \pgffor@toks=\toks45
-))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tikz
-/tikz.code.tex
+)) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
 Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibra
-ryplothandlers.code.tex
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@plot@mark@count=\count305
+\pgf@plot@mark@count=\count308
 \pgfplotmarksize=\dimen275
 )
 \tikz@lastx=\dimen276
@@ -884,56 +571,46 @@ File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \tikz@figbox@bg=\box72
 \tikz@tempbox=\box73
 \tikz@tempbox@bg=\box74
-\tikztreelevel=\count306
-\tikznumberofchildren=\count307
-\tikznumberofcurrentchild=\count308
-\tikz@fig@count=\count309
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodulem
-atrix.code.tex
+\tikztreelevel=\count309
+\tikznumberofchildren=\count310
+\tikznumberofcurrentchild=\count311
+\tikz@fig@count=\count312
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfmatrixcurrentrow=\count310
-\pgfmatrixcurrentcolumn=\count311
-\pgf@matrix@numberofcolumns=\count312
+\pgfmatrixcurrentrow=\count313
+\pgfmatrixcurrentcolumn=\count314
+\pgf@matrix@numberofcolumns=\count315
 )
-\tikz@expandcount=\count313
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tikz
-/libraries/tikzlibrarytopaths.code.tex
+\tikz@expandcount=\count316
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tikz
-/libraries/tikzlibrarypositioning.code.tex
+))) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/tools/calc.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count314
-\calc@Bcount=\count315
+\calc@Acount=\count317
+\calc@Bcount=\count318
 \calc@Adimen=\dimen284
 \calc@Bdimen=\dimen285
 \calc@Askip=\skip110
 \calc@Bskip=\skip111
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count316
+\calc@Ccount=\count319
 \calc@Cskip=\skip112
 )
-\c@@todonotes@numberoftodonotes=\count317
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/natbib/natbib.sty
+\c@@todonotes@numberoftodonotes=\count320
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip113
 \bibsep=\skip114
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count318
+\c@NAT@ctr=\count321
 
 Local config file natbib.cfg used
-(./natbib.cfg))
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/pdfpages/pdfpages.sty
-Package: pdfpages 2021/03/06 v0.5t Insert pages of external PDF documents (AM)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/eso-pic/eso-pic.sty
+(natbib.cfg)) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pdfpages.sty
+Package: pdfpages 2022/01/29 v0.5u Insert pages of external PDF documents (AM)
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
 Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
 \ESO@tempdima=\dimen286
 \ESO@tempdimb=\dimen287
@@ -941,87 +618,77 @@ Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
 \AM@pagewidth=\dimen288
 \AM@pageheight=\dimen289
 \AM@fboxrule=\dimen290
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/pdfpages/ppluatex.def
-File: ppluatex.def 2021/03/06 v0.5t Pdfpages driver for LuaTeX (AM)
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\ppxetex.def
+File: ppxetex.def 2022/01/29 v0.5u Pdfpages driver for XeTeX (AM)
 )
-\pdfpages@includegraphics@status=\count319
+\pdfpages@includegraphics@status=\count322
 \AM@pagebox=\box75
 \AM@global@opts=\toks46
-\AM@pagecnt=\count320
+\AM@pagecnt=\count323
 \AM@toc@title=\toks47
-\c@AM@survey=\count321
+\c@AM@survey=\count324
 \AM@templatesizebox=\box76
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hyperref.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2021-06-07 v7.00m Hypertext links for LaTeX
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/ltxcmds/ltxcmds.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pdftexcmds/pdftexcmds.
-sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/infwarerr/infwarerr.st
-y
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-\pdftexcmds@toks=\toks48
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/kvsetkeys/kvsetkeys.st
-y
+Package pdftexcmds Info: \pdfdraftmode not found.
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/kvsetkeys\kvsetkeys.sty
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/kvdefinekeys/kvdefinek
-eys.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/pdfescape/pdfescape.st
-y
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-) (C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/hycolor/hycolor.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/letltxmacro/letltxmacro.
-sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
-) (C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/auxhook/auxhook.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/kvoptions/kvoptions.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
 \@linkdim=\dimen291
-\Hy@linkcounter=\count322
-\Hy@pagecounter=\count323
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/pd1enc.def
+\Hy@linkcounter=\count325
+\Hy@pagecounter=\count326
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2021-06-07 v7.00m Hyperref: PDFDocEncoding definition (HO)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hyperref-langpa
-tches.def
-File: hyperref-langpatches.def 2021-06-07 v7.00m Hyperref: patches for babel la
-nguages
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/intcalc/intcalc.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref-langpatches.def
+File: hyperref-langpatches.def 2021-06-07 v7.00m Hyperref: patches for babel languages
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/etexcmds/etexcmds.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count324
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/puenc.def
+\Hy@SavedSpaceFactor=\count327
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2021-06-07 v7.00m Hyperref: PDF Unicode definition (HO)
 )
 Package hyperref Info: Option `bookmarks' set `true' on input line 4073.
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 4073
-.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 4073.
 Package hyperref Info: Option `bookmarksopen' set `true' on input line 4073.
 Package hyperref Info: Option `colorlinks' set `true' on input line 4073.
+
+
+C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty:4073: Package hyperref Error: Wrong driver option `pdftex',
+(hyperref)                because pdfTeX in PDF mode is not detected.
+
+See the hyperref package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4073 \ProcessKeyvalOptions{Hyp}
+                                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 Package hyperref Info: Option `plainpages' set `false' on input line 4073.
 Package hyperref Info: Option `pdfpagelabels' set `true' on input line 4073.
 Package hyperref Info: Option `hypertexnames' set `false' on input line 4073.
@@ -1032,19 +699,15 @@ Package hyperref Info: Plain pages OFF on input line 4207.
 Package hyperref Info: Backreferencing OFF on input line 4212.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4445.
-\c@Hy@tempcnt=\count325
+\c@Hy@tempcnt=\count328
 LaTeX Info: Redefining \url on input line 4804.
 \XeTeXLinkMargin=\dimen292
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/bitset/bitset.sty
+(C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/bigintcalc/bigintcalc.
-sty
-Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
-)
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count326
+\Fld@menulength=\count329
 \Field@Width=\dimen293
 \Fld@charsize=\dimen294
 Package hyperref Info: Hyper figures OFF on input line 6076.
@@ -1056,99 +719,74 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6101.
 Package hyperref Info: PDF/A mode OFF on input line 6106.
 LaTeX Info: Redefining \ref on input line 6146.
 LaTeX Info: Redefining \pageref on input line 6150.
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/base/atbegshi-ltx.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count327
-\c@Item=\count328
-\c@Hfootnote=\count329
+\Hy@abspage=\count330
+\c@Item=\count331
+\c@Hfootnote=\count332
 )
-
-Package hyperref Warning: Wrong driver `hpdftex.def';
-(hyperref)                pdfTeX is running in PDF mode.
-(hyperref)                Forcing driver `hluatex.def'.
-
-Package hyperref Info: Driver: hluatex.
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hluatex.def
-File: hluatex.def 2021-06-07 v7.00m Hyperref driver for luaTeX
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/stringenc/stringenc.st
-y
-Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+Package hyperref Info: Driver (autodetected): hxetex.
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hxetex.def
+File: hxetex.def 2021-06-07 v7.00m Hyperref driver for XeTeX
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/base/atveryend-ltx.sty
-Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
-kage
-with kernel methods
-)
-\Fld@listcount=\count330
-\c@bookmark@seq@number=\count331
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfile
-check.sty
+\pdfm@box=\box77
+\c@Hy@AnnotLevel=\count333
+\HyField@AnnotCount=\count334
+\Fld@listcount=\count335
+\c@bookmark@seq@number=\count336
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/uniquecounter/uniqueco
-unter.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
+with kernel methods
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-86.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
 )
 \Hy@SectionHShift=\skip115
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/listings/listings.sty
-\lst@mode=\count332
-\lst@gtempboxa=\box77
-\lst@token=\toks49
-\lst@length=\count333
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count337
+\lst@gtempboxa=\box78
+\lst@token=\toks48
+\lst@length=\count338
 \lst@currlwidth=\dimen295
-\lst@column=\count334
-\lst@pos=\count335
+\lst@column=\count339
+\lst@pos=\count340
 \lst@lostspace=\dimen296
 \lst@width=\dimen297
-\lst@newlines=\count336
-\lst@lineno=\count337
+\lst@newlines=\count341
+\lst@lineno=\count342
 \lst@maxwidth=\dimen298
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstmisc.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count338
-\lst@skipnumbers=\count339
-\lst@framebox=\box78
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/listings/listings.cfg
+\c@lstnumber=\count343
+\lst@skipnumbers=\count344
+\lst@framebox=\box79
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
-) (C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/float/float.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count340
-\float@exts=\toks50
-\float@box=\box79
-\@float@everytoks=\toks51
-\@floatcapt=\box80
-)
-(./Allgemein/Seitenstil.tex
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/koma-script/scrlayer-scr
-page.sty
-Package: scrlayer-scrpage 2021/11/13 v3.35 KOMA-Script package (end user interf
-ace for scrlayer)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/koma-script/scrlayer.sty
-Package: scrlayer 2021/11/13 v3.35 KOMA-Script package (defining layers and pag
-e styles)
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/koma-script/scrkbase.sty
-Package: scrkbase 2021/11/13 v3.35 KOMA-Script package (KOMA-Script-dependent b
-asics and keyval usage)
+\c@float@type=\count345
+\float@exts=\toks49
+\float@box=\box80
+\@float@everytoks=\toks50
+\@floatcapt=\box81
+) (Allgemein/Seitenstil.tex (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlayer-scrpage.sty
+Package: scrlayer-scrpage 2021/11/13 v3.35 KOMA-Script package (end user interface for scrlayer)
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlayer.sty
+Package: scrlayer 2021/11/13 v3.35 KOMA-Script package (defining layers and page styles)
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrkbase.sty
+Package: scrkbase 2021/11/13 v3.35 KOMA-Script package (KOMA-Script-dependent basics and keyval usage)
 )
 \footheight=\skip116
-Package scrlayer Info: patching LaTeX kernel macro \pagestyle on input line 216
-2.
+Package scrlayer Info: patching LaTeX kernel macro \pagestyle on input line 2162.
 ))
 Package scrlayer-scrpage Info: auto-selection of `pagestyleset=standard'.
 
@@ -1160,22 +798,27 @@ Package scrlayer-scrpage Info: auto-selection of `pagestyleset=standard'.
 Package scrlayer-scrpage Warning: replacing deprecated \clearscrheadfoot by
 (scrlayer-scrpage)                \clearpairofpagestyles on input line 17.
 
-) (./Allgemein/Befehle.tex
+) (Allgemein/Befehle.tex
 \myx=\skip117
 \myy=\skip118
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-luat
-ex.def
-File: l3backend-luatex.def 2021-10-18 L3 backend support: PDF output (LuaTeX)
-\l__color_backend_stack_int=\count341
-\l__pdf_internal_box=\box81
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-xetex.def
+File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
+ ()
+\c__kernel_sys_dvipdfmx_version_int=\count346
+\l__color_backend_stack_int=\count347
+\g__color_backend_stack_int=\count348
+\g__graphics_track_int=\count349
+\l__pdf_internal_box=\box82
+\g__pdf_backend_object_int=\count350
+\g__pdf_backend_annotation_int=\count351
+\g__pdf_backend_link_int=\count352
 )
 
 LaTeX Warning: Unused global option(s):
     [toc,footnotes,parskip,numbers].
 
-(./Projektdokumentation.aux)
-\openout1 = Projektdokumentation.aux
+(Projektdokumentation.aux)
+\openout1 = `Projektdokumentation.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
@@ -1186,10 +829,8 @@ LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-7.
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1cmr.fd
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 17.
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 17.
@@ -1204,42 +845,10 @@ LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mki
-i
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count342
-\scratchdimen=\dimen299
-\scratchbox=\box82
-\nofMPsegments=\count343
-\nofMParguments=\count344
-\everyMPshowfont=\toks52
-\MPscratchCnt=\count345
-\MPscratchDim=\dimen300
-\MPnumerator=\count346
-\makeMPintoPDFobject=\count347
-\everyMPtoPDFconversion=\toks53
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-ba
-se.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
- (C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/grfext/grfext.sty
-Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
-)
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 504.
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/00miktex/epstopdf-sys.cf
-g
-File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-))
 *geometry* driver: auto-detecting
-*geometry* detected driver: luatex
+*geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
-* driver: luatex
+* driver: xetex
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -1270,91 +879,109 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape.sty
+(C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
 Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
-Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
 )
 Package hyperref Info: Link coloring ON on input line 17.
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/nameref.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/refcount/refcount.sty
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-)
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/generic/gettitlestring/gettitl
-estring.sty
+) (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count348
+\c@section@level=\count353
 LaTeX Info: Redefining \Ref on input line 520.
 )
 LaTeX Info: Redefining \ref on input line 17.
 LaTeX Info: Redefining \pageref on input line 17.
 LaTeX Info: Redefining \nameref on input line 17.
- (./Projektdokumentation.out) (./Projektdokumentation.out)
 \@outlinefile=\write4
+\openout4 = `Projektdokumentation.out'.
 
-\openout4 = Projektdokumentation.out
 LaTeX Info: Redefining \Ref on input line 17.
-\c@lstlisting=\count349
+
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+\c@lstlisting=\count354
 Package scrlayer Info: Setting magic \footheight to \baselineskip while
 (scrlayer)             \begin{document} on input line 17.
-
-(./Deckblatt.tex
-<figures/TH-Nuernberg-Logo.jpeg, id=370, 323.0469pt x 45.5301pt>
-File: figures/TH-Nuernberg-Logo.jpeg Graphic file (type jpg)
-<use figures/TH-Nuernberg-Logo.jpeg>
-Package luatex.def Info: figures/TH-Nuernberg-Logo.jpeg  used on input line 5.
-(luatex.def)             Requested size: 258.43787pt x 36.42412pt.
+(Deckblatt.tex
+File: figures/TH-Nuernberg-Logo.jpeg Graphic file (type bmp)
+<figures/TH-Nuernberg-Logo.jpeg>
  [1
 
 
-{C:/Users/Cara/AppData/Local/MiKTeX/pdftex/config/pdftex.map}<./figures/TH-Nuern
-berg-Logo.jpeg>]) (./Projektdokumentation.toc
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
-.
+])
+\tf@toc=\write5
+\openout5 = `Projektdokumentation.toc'.
 
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/lm/ot1lmr.fd
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 36.
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
-.
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/lm/omllmm.fd
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 36.
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-2.
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/lm/omslmsy.fd
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 36.
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-2.
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/lm/omxlmex.fd
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 36.
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 2.
+(Font)              <10> on input line 36.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 2.
+(Font)              <7> on input line 36.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 2.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsa.fd
+(Font)              <5> on input line 36.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 36.
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
-
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsb.fd
+LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-[1
+) [1
 
 
 ]
+\tf@lof=\write6
+\openout6 = `Projektdokumentation.lof'.
+
+ [2
+
+
+]
+\tf@lot=\write7
+\openout7 = `Projektdokumentation.lot'.
+
+ [3
+
+
+]
+
+Package hyperref Warning: old lol file detected, not used; run LaTeX again.
+
+\tf@lol=\write8
+\openout8 = `Projektdokumentation.lol'.
+
+[4
+
+
+] (Inhalt.tex (Inhalt/1_intro.tex
+Kapitel 1.
+Missing character: There is no „ in font ec-lmr10!
+Missing character: There is no “ in font ec-lmr10!
+[1
+
+
+]) (Inhalt/2_Platinenentwurf.tex
 
 Package scrlayer-scrpage Warning: \headheight to low.
 (scrlayer-scrpage)                At least 43.58334pt needed,
@@ -1363,461 +990,335 @@ Package scrlayer-scrpage Warning: \headheight to low.
 (scrlayer-scrpage)                processing, but you should do this yourself,
 (scrlayer-scrpage)                e.g., setting geometry's option
 (scrlayer-scrpage)                `head=43.58334pt'.
-(scrlayer-scrpage)                I'll also decrease \topmargin on input line 7
-8.
+(scrlayer-scrpage)                I'll also decrease \topmargin on input line 2.
 
 
 Overfull \vbox (0.90422pt too high) has occurred while \output is active []
 
-
-[2])
-\tf@toc=\write5
-
-\openout5 = Projektdokumentation.toc
- [3] (./Projektdokumentation.lof)
-\tf@lof=\write6
-
-\openout6 = Projektdokumentation.lof
- [4
-
-
-] (./Projektdokumentation.lot)
-\tf@lot=\write7
-
-\openout7 = Projektdokumentation.lot
- [5
-
-
-]
-(./Projektdokumentation.lol)
-\tf@lol=\write8
-
-\openout8 = Projektdokumentation.lol
- [6
-
-
-] (./Inhalt.tex (./Inhalt/1_intro.tex
-Kapitel 1.
-[1
-
-
-
-Missing character: There is no „ (U+201E) in font ec-lmr10!
-Missing character: There is no “ (U+201C) in font ec-lmr10!
-]) (./Inhalt/2_Platinenentwurf.tex [2]
+ [2]
 Kapitel 2.
-<figures/Platinenentwurf/PCB_Blockdiagramm.png, id=722, 1056.94875pt x 452.6912
-5pt>
-File: figures/Platinenentwurf/PCB_Blockdiagramm.png Graphic file (type png)
-<use figures/Platinenentwurf/PCB_Blockdiagramm.png>
-Package luatex.def Info: figures/Platinenentwurf/PCB_Blockdiagramm.png  used on
- input line 13.
-(luatex.def)             Requested size: 455.24411pt x 194.97809pt.
+File: figures/Platinenentwurf/PCB_Blockdiagramm.png Graphic file (type bmp)
+<figures/Platinenentwurf/PCB_Blockdiagramm.png>
 [3
 
-<./figures/Platinenentwurf/PCB_Blockdiagramm.png>]
-<figures/Platinenentwurf/ESP32_Pin_Layout.png, id=733, 354.57469pt x 542.025pt>
+]
 
-File: figures/Platinenentwurf/ESP32_Pin_Layout.png Graphic file (type png)
-<use figures/Platinenentwurf/ESP32_Pin_Layout.png>
-Package luatex.def Info: figures/Platinenentwurf/ESP32_Pin_Layout.png  used on 
-input line 49.
-(luatex.def)             Requested size: 159.33821pt x 243.57816pt.
- [4]
-<figures/Platinenentwurf/ESP32 Power-Up.png, id=740, 461.47406pt x 146.79843pt>
+LaTeX Warning: Reference `fig:esp32pinlayout' on page 4 undefined on input line 43.
 
-File: figures/Platinenentwurf/ESP32 Power-Up.png Graphic file (type png)
-<use figures/Platinenentwurf/ESP32 Power-Up.png>
-Package luatex.def Info: figures/Platinenentwurf/ESP32 Power-Up.png  used on in
-put line 99.
-(luatex.def)             Requested size: 227.62206pt x 72.40897pt.
- [5<./figures/Platinenentwurf/ESP32_Pin_Layout.png><./figures/Platinenentwurf/ES
-P32 Power-Up.png>]
-<figures/Platinenentwurf/Pololu_20D_Motor.jpg, id=754, 1204.5pt x 997.7275pt>
-File: figures/Platinenentwurf/Pololu_20D_Motor.jpg Graphic file (type jpg)
-<use figures/Platinenentwurf/Pololu_20D_Motor.jpg>
-Package luatex.def Info: figures/Platinenentwurf/Pololu_20D_Motor.jpg  used on 
-input line 159.
-(luatex.def)             Requested size: 182.09486pt x 150.82492pt.
-<figures/Platinenentwurf/Pololu_20D_Rueckplatte.jpg, id=755, 289.08pt x 254.631
-3pt>
-File: figures/Platinenentwurf/Pololu_20D_Rueckplatte.jpg Graphic file (type jpg
-)
-<use figures/Platinenentwurf/Pololu_20D_Rueckplatte.jpg>
-Package luatex.def Info: figures/Platinenentwurf/Pololu_20D_Rueckplatte.jpg  us
-ed on input line 166.
-(luatex.def)             Requested size: 182.09486pt x 160.39525pt.
 
+LaTeX Warning: Reference `tab:esp32pinbelegung' on page 4 undefined on input line 43.
+
+File: figures/Platinenentwurf/ESP32_Pin_Layout.png Graphic file (type bmp)
+<figures/Platinenentwurf/ESP32_Pin_Layout.png>
+[4]
+File: figures/Platinenentwurf/ESP32 Power-Up.png Graphic file (type bmp)
+<figures/Platinenentwurf/ESP32 Power-Up.png>
+
+
+LaTeX Warning: Reference `fig:esp32powerup' on page 5 undefined on input line 103.
+
+[5]
+
+LaTeX Warning: Reference `tab:cp2102n_dtr_rts' on page 6 undefined on input line 139.
+
+File: figures/Platinenentwurf/Pololu_20D_Motor.jpg Graphic file (type bmp)
+<figures/Platinenentwurf/Pololu_20D_Motor.jpg>
+File: figures/Platinenentwurf/Pololu_20D_Rueckplatte.jpg Graphic file (type bmp)
+<figures/Platinenentwurf/Pololu_20D_Rueckplatte.jpg>
 [6]
-<figures/Platinenentwurf/DRV8841_Pinout.png, id=763, 430.60875pt x 507.39563pt>
+File: figures/Platinenentwurf/DRV8841_Pinout.png Graphic file (type bmp)
+<figures/Platinenentwurf/DRV8841_Pinout.png>
 
-File: figures/Platinenentwurf/DRV8841_Pinout.png Graphic file (type png)
-<use figures/Platinenentwurf/DRV8841_Pinout.png>
-Package luatex.def Info: figures/Platinenentwurf/DRV8841_Pinout.png  used on in
-put line 183.
-(luatex.def)             Requested size: 182.09486pt x 214.568pt.
- [7<./figures/Platinenentwurf/Pololu_20D_Motor.jpg><./figures/Platinenentwurf/Po
-lolu_20D_Rueckplatte.jpg><./figures/Platinenentwurf/DRV8841_Pinout.png>]
-<figures/Platinenentwurf/Marvelmind MiniRX Molex.png, id=774, 478.78876pt x 261
-.97874pt>
-File: figures/Platinenentwurf/Marvelmind MiniRX Molex.png Graphic file (type pn
-g)
-<use figures/Platinenentwurf/Marvelmind MiniRX Molex.png>
-Package luatex.def Info: figures/Platinenentwurf/Marvelmind MiniRX Molex.png  u
-sed on input line 220.
-(luatex.def)             Requested size: 204.85846pt x 112.09302pt.
-<figures/Platinenentwurf/Marvelmind MiniRX mic.png, id=775, 401.24907pt x 229.6
-0782pt>
-File: figures/Platinenentwurf/Marvelmind MiniRX mic.png Graphic file (type png)
 
-<use figures/Platinenentwurf/Marvelmind MiniRX mic.png>
-Package luatex.def Info: figures/Platinenentwurf/Marvelmind MiniRX mic.png  use
-d on input line 227.
-(luatex.def)             Requested size: 204.85846pt x 117.22806pt.
-<figures/Platinenentwurf/WS2815B_Pinout.png, id=778, 240.14719pt x 134.00063pt>
+LaTeX Warning: Reference `tab:drv8841_hbridgelogic' on page 7 undefined on input line 211.
 
-File: figures/Platinenentwurf/WS2815B_Pinout.png Graphic file (type png)
-<use figures/Platinenentwurf/WS2815B_Pinout.png>
-Package luatex.def Info: figures/Platinenentwurf/WS2815B_Pinout.png  used on in
-put line 243.
-(luatex.def)             Requested size: 182.09486pt x 101.60841pt.
+[7]
+File: figures/Platinenentwurf/Marvelmind MiniRX Molex.png Graphic file (type bmp)
+<figures/Platinenentwurf/Marvelmind MiniRX Molex.png>
+File: figures/Platinenentwurf/Marvelmind MiniRX mic.png Graphic file (type bmp)
+<figures/Platinenentwurf/Marvelmind MiniRX mic.png>
 
-[8<./figures/Platinenentwurf/Marvelmind MiniRX Molex.png><./figures/Platinenentw
-urf/Marvelmind MiniRX mic.png><./figures/Platinenentwurf/WS2815B_Pinout.png>]
-<figures/Platinenentwurf/TPS54331.png, id=790, 323.70938pt x 283.81032pt>
-File: figures/Platinenentwurf/TPS54331.png Graphic file (type png)
-<use figures/Platinenentwurf/TPS54331.png>
-Package luatex.def Info: figures/Platinenentwurf/TPS54331.png  used on input li
-ne 263.
-(luatex.def)             Requested size: 182.09486pt x 159.65157pt.
 
-[9<./figures/Platinenentwurf/TPS54331.png>]
-<figures/Platinenentwurf/KiCad_Powerswitch.png, id=803, 428.35031pt x 266.49562
-pt>
-File: figures/Platinenentwurf/KiCad_Powerswitch.png Graphic file (type png)
-<use figures/Platinenentwurf/KiCad_Powerswitch.png>
-Package luatex.def Info: figures/Platinenentwurf/KiCad_Powerswitch.png  used on
- input line 287.
-(luatex.def)             Requested size: 182.09486pt x 113.28963pt.
-<figures/Platinenentwurf/KiCad_Eingansquellen_Schutz.png, id=804, 608.2725pt x 
-404.26031pt>
-File: figures/Platinenentwurf/KiCad_Eingansquellen_Schutz.png Graphic file (typ
-e png)
-<use figures/Platinenentwurf/KiCad_Eingansquellen_Schutz.png>
-Package luatex.def Info: figures/Platinenentwurf/KiCad_Eingansquellen_Schutz.pn
-g  used on input line 303.
-(luatex.def)             Requested size: 182.09486pt x 121.01994pt.
+LaTeX Warning: Reference `fig:marvelmind_molexpinout' on page 8 undefined on input line 236.
+
+
+LaTeX Warning: Reference `fig:marvelmind_micpinout' on page 8 undefined on input line 238.
+
+File: figures/Platinenentwurf/WS2815B_Pinout.png Graphic file (type bmp)
+<figures/Platinenentwurf/WS2815B_Pinout.png>
+[8]
+File: figures/Platinenentwurf/TPS54331.png Graphic file (type bmp)
+<figures/Platinenentwurf/TPS54331.png>
+
+
+LaTeX Warning: Reference `fig:tps54331_pinout' on page 9 undefined on input line 270.
+
+[9]
+File: figures/Platinenentwurf/KiCad_Powerswitch.png Graphic file (type bmp)
+<figures/Platinenentwurf/KiCad_Powerswitch.png>
+File: figures/Platinenentwurf/KiCad_Eingansquellen_Schutz.png Graphic file (type bmp)
+<figures/Platinenentwurf/KiCad_Eingansquellen_Schutz.png>
 
 Overfull \hbox (10.18448pt too wide) in paragraph at lines 307--316
-\T1/lmr/m/n/10 ver-sorgt, muss der Buck Con-ver-ter über die LiI-on Ak-kus (12V
-), USB (5V) und JTAG-/Programmierinterface
+\T1/lmr/m/n/10 ver-sorgt, muss der Buck Con-ver-ter über die LiI-on Ak-kus (12V), USB (5V) und JTAG-/Programmierinterface
  []
 
-[10<./figures/Platinenentwurf/KiCad_Powerswitch.png><./figures/Platinenentwurf/K
-iCad_Eingansquellen_Schutz.png>]
-<figures/Platinenentwurf/KiCad_Boot_Reset.png, id=813, 467.49657pt x 325.215pt>
+[10]
+File: figures/Platinenentwurf/KiCad_Boot_Reset.png Graphic file (type bmp)
+<figures/Platinenentwurf/KiCad_Boot_Reset.png>
 
-File: figures/Platinenentwurf/KiCad_Boot_Reset.png Graphic file (type png)
-<use figures/Platinenentwurf/KiCad_Boot_Reset.png>
-Package luatex.def Info: figures/Platinenentwurf/KiCad_Boot_Reset.png  used on 
-input line 320.
-(luatex.def)             Requested size: 182.09486pt x 126.67453pt.
-<figures/Platinenentwurf/KiCad_MainPCB_Layout.png, id=818, 864.98157pt x 528.47
-438pt>
-File: figures/Platinenentwurf/KiCad_MainPCB_Layout.png Graphic file (type png)
-<use figures/Platinenentwurf/KiCad_MainPCB_Layout.png>
-Package luatex.def Info: figures/Platinenentwurf/KiCad_MainPCB_Layout.png  used
- on input line 335.
-(luatex.def)             Requested size: 364.19667pt x 222.51413pt.
-<figures/Platinenentwurf/KiCad_LedPCB_Layout.png, id=819, 587.19376pt x 587.946
-56pt>
-File: figures/Platinenentwurf/KiCad_LedPCB_Layout.png Graphic file (type png)
-<use figures/Platinenentwurf/KiCad_LedPCB_Layout.png>
-Package luatex.def Info: figures/Platinenentwurf/KiCad_LedPCB_Layout.png  used 
-on input line 341.
-(luatex.def)             Requested size: 364.19667pt x 364.65767pt.
- [11<./figures/Platinenentwurf/KiCad_Boot_Reset.png>] [12<./figures/Platinenentw
-urf/KiCad_MainPCB_Layout.png><./figures/Platinenentwurf/KiCad_LedPCB_Layout.png>
-]
-<figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur.png, id=839, 365.86688pt
- x 161.85469pt>
-File: figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur.png Graphic file (t
-ype png)
-<use figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur.png>
-Package luatex.def Info: figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur.
-png  used on input line 374.
-(luatex.def)             Requested size: 204.85846pt x 90.62811pt.
-<figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur_Layout.png, id=840, 480.
-29437pt x 280.79906pt>
-File: figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur_Layout.png Graphic 
-file (type png)
-<use figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur_Layout.png>
-Package luatex.def Info: figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur_
-Layout.png  used on input line 381.
-(luatex.def)             Requested size: 204.85846pt x 119.76862pt.
- [13<./figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur.png><./figures/Plat
-inenentwurf/KiCad_CP2102N_Fehlerkorrektur_Layout.png>]) (./Inhalt/3_3D-Roboterd
-esign.tex [14]
+
+LaTeX Warning: Reference `sub:cp2102n' on page 11 undefined on input line 324.
+
+
+LaTeX Warning: Reference `tab:cp2102n_dtr_rts' on page 11 undefined on input line 325.
+
+
+LaTeX Warning: Reference `fig:kicad_mainpcb_layout' on page 11 undefined on input line 330.
+
+
+LaTeX Warning: Reference `fig:kicad_ledpcb_layout' on page 11 undefined on input line 330.
+
+File: figures/Platinenentwurf/KiCad_MainPCB_Layout.png Graphic file (type bmp)
+<figures/Platinenentwurf/KiCad_MainPCB_Layout.png>
+File: figures/Platinenentwurf/KiCad_LedPCB_Layout.png Graphic file (type bmp)
+<figures/Platinenentwurf/KiCad_LedPCB_Layout.png>
+[11] [12]
+
+LaTeX Warning: Reference `sub:tps54331' on page 13 undefined on input line 354.
+
+
+LaTeX Warning: Reference `fig:cp2102nfehlerkorrektur' on page 13 undefined on input line 365.
+
+
+LaTeX Warning: Reference `fig:cp2102nfehlerkorrekturlayout' on page 13 undefined on input line 366.
+
+
+LaTeX Warning: Reference `fig:cp2102nfehlerkorrekturlayout' on page 13 undefined on input line 367.
+
+File: figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur.png Graphic file (type bmp)
+<figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur.png>
+File: figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur_Layout.png Graphic file (type bmp)
+<figures/Platinenentwurf/KiCad_CP2102N_Fehlerkorrektur_Layout.png>
+[13]
+
+LaTeX Warning: Reference `fig:esp32pinlayout' on page 14 undefined on input line 401.
+
+) (Inhalt/3_3D-Roboterdesign.tex [14]
 Kapitel 3.
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstlang1.sty
+(C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 6.
-)
-(./Inhalt/4_Systemarchitektur.tex [15
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 6.
+) (Inhalt/4_Systemarchitektur.tex [15
 
 ]
 Kapitel 4.
-<figures/Systemarchitektur/Systemarchitektur.png, id=868, 1436.36626pt x 1004.7
-5375pt>
-File: figures/Systemarchitektur/Systemarchitektur.png Graphic file (type png)
-<use figures/Systemarchitektur/Systemarchitektur.png>
-Package luatex.def Info: figures/Systemarchitektur/Systemarchitektur.png  used 
-on input line 8.
-(luatex.def)             Requested size: 409.71692pt x 286.6031pt.
+File: figures/Systemarchitektur/Systemarchitektur.png Graphic file (type bmp)
+<figures/Systemarchitektur/Systemarchitektur.png>
+
+LaTeX Warning: Reference `ch:esp32' on page 16 undefined on input line 14.
+
+
+LaTeX Warning: Reference `ch:ros' on page 16 undefined on input line 14.
+
+
+LaTeX Warning: Reference `fig:systemarchitektur' on page 16 undefined on input line 15.
+
 [16
 
-<./figures/Systemarchitektur/Systemarchitektur.png>] [17] [18]
-<figures/Systemarchitektur/Applikationsprotokoll_Verbindungsaufbau.png, id=894,
- 697.60625pt x 725.71124pt>
-File: figures/Systemarchitektur/Applikationsprotokoll_Verbindungsaufbau.png Gra
-phic file (type png)
-<use figures/Systemarchitektur/Applikationsprotokoll_Verbindungsaufbau.png>
-Package luatex.def Info: figures/Systemarchitektur/Applikationsprotokoll_Verbin
-dungsaufbau.png  used on input line 176.
-(luatex.def)             Requested size: 318.66948pt x 331.5058pt.
- [19])
-(./Inhalt/5_SoftwareESP32.tex [20<./figures/Systemarchitektur/Applikationsprotok
-oll_Verbindungsaufbau.png>]
+]
+
+LaTeX Warning: Reference `ch:esp32' on page 17 undefined on input line 60.
+
+
+LaTeX Warning: Reference `ch:ros' on page 17 undefined on input line 60.
+
+[17] [18]
+
+LaTeX Warning: Reference `ch:esp32' on page 19 undefined on input line 149.
+
+
+LaTeX Warning: Reference `ch:ros' on page 19 undefined on input line 149.
+
+File: figures/Systemarchitektur/Applikationsprotokoll_Verbindungsaufbau.png Graphic file (type bmp)
+<figures/Systemarchitektur/Applikationsprotokoll_Verbindungsaufbau.png>
+[19]
+
+LaTeX Warning: Reference `fig:applikationsprotokoll_anwendungsbeispiel' on page 20 undefined on input line 181.
+
+
+LaTeX Warning: Reference `ch:esp32' on page 20 undefined on input line 186.
+
+
+LaTeX Warning: Reference `ch:ros' on page 20 undefined on input line 186.
+
+) (Inhalt/5_SoftwareESP32.tex [20]
 Kapitel 5.
+
+Package natbib Warning: Citation `ESP-IDFProgrammingGuide' on page 21 undefined on input line 10.
+
 [21
 
 ]
-<figures/Softwarearchitektur_ESP32/ESP32_Architektur.png, id=917, 683.55376pt x
- 498.86375pt>
-File: figures/Softwarearchitektur_ESP32/ESP32_Architektur.png Graphic file (typ
-e png)
-<use figures/Softwarearchitektur_ESP32/ESP32_Architektur.png>
-Package luatex.def Info: figures/Softwarearchitektur_ESP32/ESP32_Architektur.pn
-g  used on input line 51.
-(luatex.def)             Requested size: 409.71692pt x 299.02368pt.
- [22<./figures/Softwarearchitektur_ESP32/ESP32_Architektur.png>]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 7
-9.
+File: figures/Softwarearchitektur_ESP32/ESP32_Architektur.png Graphic file (type bmp)
+<figures/Softwarearchitektur_ESP32/ESP32_Architektur.png>
 
-(C:/Users/Cara/AppData/Local/Programs/MiKTeX/tex/latex/lm/t1lmtt.fd
+
+LaTeX Warning: Reference `fig:esp32architektur_ueberblick' on page 22 undefined on input line 56.
+
+[22]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 79.
+ (C:\Users\doesc\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 Overfull \hbox (3.5052pt too wide) in paragraph at lines 96--97
-[][]\T1/lmtt/m/n/10 Socket(int port, std::string ip_addr) \T1/lmr/m/n/10 Dem Kon
--struk-tor müs-sen der Port so-wie die IP-Adresse
+[][][]\T1/lmtt/m/n/10 Socket(int port, std::string ip_addr) []\T1/lmr/m/n/10 Dem Kon-struk-tor müs-sen der Port so-wie die IP-Adresse
  []
 
 [23]
 Overfull \hbox (8.55977pt too wide) in paragraph at lines 101--103
-[][]\T1/lmtt/m/n/10 int socket_receive(uint8_t* rx_buffer, int recv_bytes) \T1/
-lmr/m/n/10 emp-fängt die mit []\T1/lmtt/m/n/10 recv_bytes \T1/lmr/m/n/10 über-
-
+[][][]\T1/lmtt/m/n/10 int socket_receive(uint8_t* rx_buffer, int recv_bytes) []\T1/lmr/m/n/10 emp-fängt die mit [][]\T1/lmtt/m/n/10 recv_bytes []\T1/lmr/m/n/10 über-
  []
 
 
 Overfull \hbox (2.004pt too wide) in paragraph at lines 103--105
-[][]\T1/lmtt/m/n/10 int socket_receive_string(std::string& rx_string, int max_by
-tes) \T1/lmr/m/n/10 dient zum Emp-fan-gen
+[][][]\T1/lmtt/m/n/10 int socket_receive_string(std::string& rx_string, int max_bytes) []\T1/lmr/m/n/10 dient zum Emp-fan-gen
  []
 
 
 Overfull \hbox (30.50414pt too wide) in paragraph at lines 105--107
-[][]\T1/lmtt/m/n/10 int socket_receive_nonblock(uint8_t* rx_buffer, int recv_byt
-es) \T1/lmr/m/n/10 emp-fängt die mit []\T1/lmtt/m/n/10 recv_bytes
+[][][]\T1/lmtt/m/n/10 int socket_receive_nonblock(uint8_t* rx_buffer, int recv_bytes) []\T1/lmr/m/n/10 emp-fängt die mit [][]\T1/lmtt/m/n/10 recv_bytes
  []
 
 
 Overfull \hbox (1.72734pt too wide) in paragraph at lines 107--111
-[]\T1/lmr/m/n/10 Mit []\T1/lmtt/m/n/10 int socket_send(uint8_t const* tx_buffer,
- int buffer_len) \T1/lmr/m/n/10 wer-den []\T1/lmtt/m/n/10 buffer_len \T1/lmr/m/
-n/10 Bytes
+[]\T1/lmr/m/n/10 Mit [][]\T1/lmtt/m/n/10 int socket_send(uint8_t const* tx_buffer, int buffer_len) []\T1/lmr/m/n/10 wer-den [][]\T1/lmtt/m/n/10 buffer_len []\T1/lmr/m/n/10 Bytes
  []
 
-<figures/Softwarearchitektur_ESP32/RosBridgeClientClass.png, id=931, 713.66624p
-t x 891.33pt>
-File: figures/Softwarearchitektur_ESP32/RosBridgeClientClass.png Graphic file (
-type png)
-<use figures/Softwarearchitektur_ESP32/RosBridgeClientClass.png>
-Package luatex.def Info: figures/Softwarearchitektur_ESP32/RosBridgeClientClass
-.png  used on input line 118.
-(luatex.def)             Requested size: 455.24411pt x 568.57239pt.
-[24] [25<./figures/Softwarearchitektur_ESP32/RosBridgeClientClass.png>]
+File: figures/Softwarearchitektur_ESP32/RosBridgeClientClass.png Graphic file (type bmp)
+<figures/Softwarearchitektur_ESP32/RosBridgeClientClass.png>
+[24]
+
+LaTeX Warning: Reference `fig:ros_bridge_client_class' on page 25 undefined on input line 125.
+
+[25]
 Overfull \hbox (205.00404pt too wide) in paragraph at lines 148--150
-[][]\T1/lmtt/m/n/10 SubscriberImpl(std::string const& topic, Socket& sock, std::
-function<void(std::shared_ptr<T> ros_msg)> callback_function)
+[][][]\T1/lmtt/m/n/10 SubscriberImpl(std::string const& topic, Socket& sock, std::function<void(std::shared_ptr<T> ros_msg)> callback_function)
  []
+
+
+LaTeX Warning: Reference `fig:node_handle_ablauf' on page 26 undefined on input line 163.
 
 [26]
-<figures/Softwarearchitektur_ESP32/NodeHandleAblauf.png, id=950, 490.83376pt x 
-571.13374pt>
-File: figures/Softwarearchitektur_ESP32/NodeHandleAblauf.png Graphic file (type
- png)
-<use figures/Softwarearchitektur_ESP32/NodeHandleAblauf.png>
-Package luatex.def Info: figures/Softwarearchitektur_ESP32/NodeHandleAblauf.png
-  used on input line 170.
-(luatex.def)             Requested size: 227.62206pt x 264.85983pt.
+File: figures/Softwarearchitektur_ESP32/NodeHandleAblauf.png Graphic file (type bmp)
+<figures/Softwarearchitektur_ESP32/NodeHandleAblauf.png>
 
 Overfull \hbox (149.56023pt too wide) in paragraph at lines 181--183
-[]\T1/lmr/m/n/10 Mit []\T1/lmtt/m/n/10 void subscribe(std::string const& topic, std::function<void(std::shared_ptr<T> ros_msg)> callback_function)
+[]\T1/lmr/m/n/10 Mit [][]\T1/lmtt/m/n/10 void subscribe(std::string const& topic, std::function<void(std::shared_ptr<T> ros_msg)> callback_function)
  []
 
 
 Overfull \hbox (64.28302pt too wide) in paragraph at lines 183--186
-[]\T1/lmr/m/n/10 Der Me-tho-de []\T1/lmtt/m/n/10 void registerConnectionLostCall
-back(std::function<void()> connection_lost_callback)
+[]\T1/lmr/m/n/10 Der Me-tho-de [][]\T1/lmtt/m/n/10 void registerConnectionLostCallback(std::function<void()> connection_lost_callback)
  []
 
-[27<./figures/Softwarearchitektur_ESP32/NodeHandleAblauf.png>]
+[27]
 Overfull \hbox (39.83897pt too wide) in paragraph at lines 186--188
-[]\T1/lmtt/m/n/10 _send_init() \T1/lmr/m/n/10 das In-itia-li-sie-rungs-pa-ket ve
-r-sen-det und es wird der Haupt-pro-zess []\T1/lmtt/m/n/10 _communication_handle
-r()
+[][]\T1/lmtt/m/n/10 _send_init() []\T1/lmr/m/n/10 das In-itia-li-sie-rungs-pa-ket ver-sen-det und es wird der Haupt-pro-zess [][]\T1/lmtt/m/n/10 _communication_handler()
  []
 
 [28]
-<figures/Softwarearchitektur_ESP32/MotorController_Class.png, id=962, 508.90125
-pt x 527.9725pt>
-File: figures/Softwarearchitektur_ESP32/MotorController_Class.png Graphic file 
-(type png)
-<use figures/Softwarearchitektur_ESP32/MotorController_Class.png>
-Package luatex.def Info: figures/Softwarearchitektur_ESP32/MotorController_Clas
-s.png  used on input line 225.
-(luatex.def)             Requested size: 273.14923pt x 283.39299pt.
- [29<./figures/Softwarearchitektur_ESP32/MotorController_Class.png>]
-[30]
-<figures/Softwarearchitektur_ESP32/OutputVelocity_Class.png, id=973, 834.11626p
-t x 352.31625pt>
-File: figures/Softwarearchitektur_ESP32/OutputVelocity_Class.png Graphic file (
-type png)
-<use figures/Softwarearchitektur_ESP32/OutputVelocity_Class.png>
-Package luatex.def Info: figures/Softwarearchitektur_ESP32/OutputVelocity_Class
-.png  used on input line 281.
-(luatex.def)             Requested size: 409.71692pt x 173.06116pt.
+File: figures/Softwarearchitektur_ESP32/MotorController_Class.png Graphic file (type bmp)
+<figures/Softwarearchitektur_ESP32/MotorController_Class.png>
+ [29] [30]
+File: figures/Softwarearchitektur_ESP32/OutputVelocity_Class.png Graphic file (type bmp)
+<figures/Softwarearchitektur_ESP32/OutputVelocity_Class.png>
 
-Overfull \hbox (100.0698pt too wide) in paragraph at lines 286--292
-\T1/lmr/m/n/10 Echt-be-trieb mög-lich. Ou-put-Ve-lo-ci-ty ist nicht kom-plett 
-abs-trakt, da die Me-tho-de []\T1/lmtt/m/n/10 ros_msgs_lw::Twist2D getVelocity()
- const
+Overfull \hbox (69.65308pt too wide) in paragraph at lines 286--292
+\T1/lmr/m/n/10 trieb mög-lich. Ou-put-Ve-lo-ci-ty ist nicht kom-plett abs-trakt, da die Me-tho-de [][]\T1/lmtt/m/n/10 ros_msgs_lw::Twist2D getVelocity() const
  []
 
-[31<./figures/Softwarearchitektur_ESP32/OutputVelocity_Class.png>]
-<figures/Softwarearchitektur_ESP32/SensorPose_Class.png, id=980, 1057.9525pt x 
-1024.82875pt>
-File: figures/Softwarearchitektur_ESP32/SensorPose_Class.png Graphic file (type
- png)
-<use figures/Softwarearchitektur_ESP32/SensorPose_Class.png>
-Package luatex.def Info: figures/Softwarearchitektur_ESP32/SensorPose_Class.png
-  used on input line 335.
-(luatex.def)             Requested size: 455.24411pt x 440.98053pt.
+[31]
+File: figures/Softwarearchitektur_ESP32/SensorPose_Class.png Graphic file (type bmp)
+<figures/Softwarearchitektur_ESP32/SensorPose_Class.png>
+ [32] [33]
+
+Package natbib Warning: Citation `ReSiSchwa' on page 34 undefined on input line 384.
+
+[34]
+
+LaTeX Warning: Reference `eq:zustandsgleichung' on page 35 undefined on input line 436.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[32] [33]
 Overfull \hbox (189.25409pt too wide) in paragraph at lines 465--467
-[][]\T1/lmtt/m/n/10 SensorPose& init(std::initializer_list<KalmanSensor const*> const& sensor_list, OutputVelocity const& output_velocity)
+[][][]\T1/lmtt/m/n/10 SensorPose& init(std::initializer_list<KalmanSensor const*> const& sensor_list, OutputVelocity const& output_velocity)
  []
 
 
 Overfull \hbox (1.25505pt too wide) in paragraph at lines 470--471
-[][]\T1/lmtt/m/n/10 void _kalman_filter_loop_timer(TimerHandle_t timer) \T1/lmr
-/m/n/10 ist die Call-back-funk-ti-on des Soft-ware-
+[][][]\T1/lmtt/m/n/10 void _kalman_filter_loop_timer(TimerHandle_t timer) []\T1/lmr/m/n/10 ist die Call-back-funk-ti-on des Soft-ware-
  []
 
-
+[35]
 Overfull \hbox (451.75333pt too wide) in paragraph at lines 478--479
-[][]\T1/lmtt/m/n/10 bool calculateKalman(ros_msgs_lw::Pose2D const& a_priori_est
-imate, dspm::Mat const& a_priori_cov, ros_msgs_lw::Pose2D& a_posterior_estimate,
- dspm::Mat& a_posterior_cov)
+[][][]\T1/lmtt/m/n/10 bool calculateKalman(ros_msgs_lw::Pose2D const& a_priori_estimate, dspm::Mat const& a_priori_cov, ros_msgs_lw::Pose2D& a_posterior_estimate, dspm::Mat& a_posterior_cov)
  []
 
 
 Overfull \hbox (11.2281pt too wide) in paragraph at lines 480--481
-[][]\T1/lmtt/m/n/10 void getMeasurementNoiseCov(dspm::Mat& measurement_cov) \T1
-/lmr/m/n/10 gibt die Ko-va-ri-anz-ma-trix des Mess-
+[][][]\T1/lmtt/m/n/10 void getMeasurementNoiseCov(dspm::Mat& measurement_cov) []\T1/lmr/m/n/10 gibt die Ko-va-ri-anz-ma-trix des Mess-
  []
 
-[34]
-<figures/Softwarearchitektur_ESP32/Marvelmind_Positions_Paket.png, id=1008, 587
-.19376pt x 600.74437pt>
-File: figures/Softwarearchitektur_ESP32/Marvelmind_Positions_Paket.png Graphic 
-file (type png)
-<use figures/Softwarearchitektur_ESP32/Marvelmind_Positions_Paket.png>
-Package luatex.def Info: figures/Softwarearchitektur_ESP32/Marvelmind_Positions
-_Paket.png  used on input line 487.
-(luatex.def)             Requested size: 455.24411pt x 465.74625pt.
+File: figures/Softwarearchitektur_ESP32/Marvelmind_Positions_Paket.png Graphic file (type bmp)
+<figures/Softwarearchitektur_ESP32/Marvelmind_Positions_Paket.png>
+[36]
+
+Package natbib Warning: Citation `MarvelHaIn' on page 37 undefined on input line 492.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `fig:marvelmind_pose_paket' on page 37 undefined on input line 493.
 
-<figures/Softwarearchitektur_ESP32/PositionController_Class.png, id=1011, 990.7
-0125pt x 894.34125pt>
-File: figures/Softwarearchitektur_ESP32/PositionController_Class.png Graphic fi
-le (type png)
-<use figures/Softwarearchitektur_ESP32/PositionController_Class.png>
-Package luatex.def Info: figures/Softwarearchitektur_ESP32/PositionController_C
-lass.png  used on input line 507.
-(luatex.def)             Requested size: 455.24411pt x 410.96527pt.
+[37]
+File: figures/Softwarearchitektur_ESP32/PositionController_Class.png Graphic file (type bmp)
+<figures/Softwarearchitektur_ESP32/PositionController_Class.png>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
 
-[35]
+Package natbib Warning: Citation `ReSiSchwa' on page 38 undefined on input line 514.
+
+[38]
 Overfull \hbox (3.67139pt too wide) in paragraph at lines 522--524
-[][]\T1/lmtt/m/n/10 ControllerMaster& init(OutputVelocity& output_velocity, Sens
-orPose& sensor_pose) \T1/lmr/m/n/10 er-
+[][][]\T1/lmtt/m/n/10 ControllerMaster& init(OutputVelocity& output_velocity, SensorPose& sensor_pose) []\T1/lmr/m/n/10 er-
  []
 
 
 Overfull \hbox (136.75424pt too wide) in paragraph at lines 524--526
-[][]\T1/lmtt/m/n/10 void start_controller(PositionController* pos_controller, st
-d::function<void()>destination_reached_callback)
+[][][]\T1/lmtt/m/n/10 void start_controller(PositionController* pos_controller, std::function<void()>destination_reached_callback)
  []
 
-<figures/Softwarearchitektur_ESP32/State_Machine_Class.png, id=1021, 1000.73875
-pt x 884.30376pt>
-File: figures/Softwarearchitektur_ESP32/State_Machine_Class.png Graphic file (t
-ype png)
-<use figures/Softwarearchitektur_ESP32/State_Machine_Class.png>
-Package luatex.def Info: figures/Softwarearchitektur_ESP32/State_Machine_Class.
-png  used on input line 555.
-(luatex.def)             Requested size: 455.24411pt x 402.27788pt.
-[36]
+[39]
+File: figures/Softwarearchitektur_ESP32/State_Machine_Class.png Graphic file (type bmp)
+<figures/Softwarearchitektur_ESP32/State_Machine_Class.png>
+ [40]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `fig:state_machine_class' on page 41 undefined on input line 563.
 
-<figures/Softwarearchitektur_ESP32/Zustandsdiagramm.png, id=1028, 638.385pt x 5
-08.90125pt>
-File: figures/Softwarearchitektur_ESP32/Zustandsdiagramm.png Graphic file (type
- png)
-<use figures/Softwarearchitektur_ESP32/Zustandsdiagramm.png>
-Package luatex.def Info: figures/Softwarearchitektur_ESP32/Zustandsdiagramm.png
-  used on input line 569.
-(luatex.def)             Requested size: 364.19667pt x 290.32521pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `fig:zustandsdiagramm' on page 41 undefined on input line 564.
 
-) (./Inhalt/6_ROS.tex [37] [38<./figures/Softwarearchitektur_ESP32/SensorPose_Cl
-ass.png>] [39<./figures/Softwarearchitektur_ESP32/Marvelmind_Positions_Paket.png
->] [40<./figures/Softwarearchitektur_ESP32/PositionController_Class.png>]
-[41<./figures/Softwarearchitektur_ESP32/State_Machine_Class.png>] [42<./figures/
-Softwarearchitektur_ESP32/Zustandsdiagramm.png>]
+File: figures/Softwarearchitektur_ESP32/Zustandsdiagramm.png Graphic file (type bmp)
+<figures/Softwarearchitektur_ESP32/Zustandsdiagramm.png>
+[41]) (Inhalt/6_ROS.tex [42]
 Kapitel 6.
-) (./Inhalt/6.1_ROS_Trajektorie.tex [43
+) (Inhalt/6.1_ROS_Trajektorie.tex [43
 
 ]
 Kapitel 7.
-) (./Inhalt/7_Marvelmind.tex [44
+) (Inhalt/7_Marvelmind.tex [44
 
 ]
 Kapitel 8.
-) (./Inhalt/8_Docker.tex [45
+) (Inhalt/8_Docker.tex [45
 
 ]
 Kapitel 9.
@@ -1833,81 +1334,76 @@ Overfull \hbox (0.42813pt too wide) in paragraph at lines 13--29
 \T1/lmr/m/n/10 Da-bei er-stellt man Con-tai-ner von ei-nem Ab-bild. Die-se kann man selbst er-stel-len und nennt man Container-
  []
 
+
+Overfull \hbox (33.58922pt too wide) in paragraph at lines 33--34
+[]\T1/lmr/m/n/10 Geben Sie in der Windows-Suche "Win-dows Up-dateëin und wäh-len Sie \T1/lmtt/m/n/10 Windows Update-Einstellung\T1/lmr/m/n/10 . 
+ []
+
+
+Overfull \hbox (57.30525pt too wide) in paragraph at lines 43--45
+\T1/lmr/m/n/10 aus-füh-ren. (ko-pie-ren und ein-fü-gen) "dism.exe /on-line /enable-feature /fea-ture-na-me:VirtualMachinePlatform
+ []
+
 [47
 
 ]
 Overfull \hbox (2.01134pt too wide) in paragraph at lines 53--54
-[]\T1/lmr/m/n/10 Sie kön-nen nun Linux-Befehle im Ubuntu-Terminalfenster aus-f
-üh-ren. Ich emp-feh-le, das Ubuntu-
+[]\T1/lmr/m/n/10 Sie kön-nen nun Linux-Befehle im Ubuntu-Terminalfenster aus-füh-ren. Ich emp-feh-le, das Ubuntu-
  []
 
-[48] [49]) (./Inhalt/9_WebApp.tex [50]
+[48]
+
+LaTeX Warning: Hyper reference `dockercompose' on page 49 undefined on input line 122.
+
+
+LaTeX Warning: Hyper reference `buildBefehle' on page 49 undefined on input line 122.
+
+[49]) (Inhalt/9_WebApp.tex [50]
 Kapitel 10.
 [51
 
-]) (./Inhalt/10_Fazit_Ausblick.tex [52]
+]) (Inhalt/10_Fazit_Ausblick.tex [52]
 Kapitel 11.
 )) [53
 
-] (./Projektdokumentation.bbl) (./Erklaerung.tex [54
-
-
 ]
+No file Projektdokumentation.bbl.
+(Erklaerung.tex
 Underfull \hbox (badness 10000) in paragraph at lines 13--16
 
  []
 
-) [55
+) [54
 
 
-] (./Projektdokumentation.aux)
-Package rerunfilecheck Info: File `Projektdokumentation.out' has not changed.
-(rerunfilecheck)             Checksum: BF7C8A54ECE2766C58DE7FEC34379E93;14887.
-)
 
-Here is how much of LuaTeX's memory you used:
- 31529 strings out of 477887
- 596202,1373583 words of node,token memory allocated
- 1028 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 7 glue, 4 kern, 1 glyph, 62 attribute, 114 glue_spe
-c, 33 attribute_list, 3 write, 3 pdf_action nodes
-   avail lists: 1:3,2:9894,3:579,4:13112,5:11574,6:222,7:12502,8:174,9:28913,10:
-45,11:1243
- 50139 multiletter control sequences out of 65536+600000
- 74 fonts using 6389151 bytes
- 115i,21n,104p,577b,1287s stack positions out of 5000i,500n,10000p,200000b,80000s
-{C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/U
-sers/Cara/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/C
-ara/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/Car
-a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Users/Cara/
-AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Cara/AppDat
-a/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}<C:/Users/Cara/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Cara/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Cara/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Users/Cara/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/Users/Cara/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/Cara/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Cara/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Cara/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/lm/lmmi5.pfb><C:/Users/Cara/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/lm/lmr10.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/lm/lmr12.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/lm/lmr17.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/lm/lmr5.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/lm/lmr6.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/lm/lmr7.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
-m/lmr8.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
-r9.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10
-.pfb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.p
-fb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb
-><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy5.pfb><C
-:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/U
-sers/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Use
-rs/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb>
-Output written on Projektdokumentation.pdf (62 pages, 2338955 bytes).
+]
 
-PDF statistics: 1295 PDF objects out of 1440 (max. 8388607)
- 301 named destinations out of 1000 (max. 131072)
- 744 words of extra memory for PDF output out of 10000 (max. 100000000)
+Package natbib Warning: There were undefined citations.
 
+(Projektdokumentation.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `Projektdokumentation.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Projektdokumentation.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  AF1988A58C202408F21A72570434D53E;14887.
+ ) 
+Here is how much of TeX's memory you used:
+ 29255 strings out of 410969
+ 559987 string characters out of 2823811
+ 1371139 words of memory out of 3000000
+ 49387 multiletter control sequences out of 15000+600000
+ 556339 words of font info for 81 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 115i,21n,109p,616b,2118s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on Projektdokumentation.xdv (59 pages, 231568 bytes).

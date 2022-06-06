@@ -165,7 +165,7 @@ Dabei wird zyklisch alle $500ms$ ein Keep-Alive Paket versendet, Daten aus dem S
 und überprüft ob das letzte empfangene Keep-Alive Paket älter als $3000ms$ ist. 
 Falls das letzte Keep-Alive älter ist oder beim empfangen und interpretieren der Daten etwas schief gelaufen ist, wird das Protokoll neu gestartet.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/Softwarearchitektur_ESP32/NodeHandleAblauf.png}
     \caption{Ablaufdiagramm NodeHandle}
@@ -220,7 +220,7 @@ Aus dem Grund müssen alle Nachrichtenklassen die folgenden Methoden implementie
 
 \section{MotorController}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{figures/Softwarearchitektur_ESP32/MotorController_Class.png}
     \caption{Klassendiagramm MotorController}
@@ -276,7 +276,7 @@ Im Folgenden wird auf die Methoden der Klasse MotorController eingegangen:
 
 \section{OutputVelocity}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{figures/Softwarearchitektur_ESP32/OutputVelocity_Class.png}
     \caption{Klassendiagramm OutputVelocity}
@@ -330,7 +330,7 @@ In ROS können diese dann als Eingangssignal für z.B. den "Turtlesim" Simulator
 
 \section{SensorPose}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/Softwarearchitektur_ESP32/SensorPose_Class.png}
     \caption{Klassendiagramm SensorPose}
@@ -482,7 +482,7 @@ Ein KalmanSensor muss die folgenden Methoden implementieren:
 \end{itemize}
 
 \subsection{Marvelmind}
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/Softwarearchitektur_ESP32/Marvelmind_Positions_Paket.png}
     \caption{Marvelmind Positions Paket}
@@ -502,7 +502,7 @@ Die Roboterpose wird auf der Topic "/robotername/pose" empfangen. Diese wird im 
 
 \section{PositionController}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/Softwarearchitektur_ESP32/PositionController_Class.png}
     \caption{PositionController Klassendiagramm}
@@ -550,7 +550,7 @@ Da die Trajektorien als Nachrichten aus dem ROS-System entspringen, stimmt der W
 
 \section{StateMachine}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/Softwarearchitektur_ESP32/State_Machine_Class.png}
     \caption{StateMachine Klassendiagramm}
@@ -564,7 +564,7 @@ Abbildung \ref{fig:state_machine_class} zeigt das Klassendiagramm dieses Entwurf
 Abbildung \ref{fig:zustandsdiagramm} zeigt die in diesem Projekt umgesetzte Zustandsmaschine. Die Methoden aus StateMachine werden als Callbackfunktion des RosBridgeClient Subscribers verwendet. 
 Somit würde z.B. eine empfangene Geschwindigkeitsvektor Nachricht einen Zustandsübergang von Idle nach DriveWithVelocity veranlassen.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/Softwarearchitektur_ESP32/Zustandsdiagramm.png}
     \caption{Zustandsdiamm Roboter}
