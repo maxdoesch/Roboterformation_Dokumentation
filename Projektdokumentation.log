@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.24)  5 JUN 2022 22:44
+This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.24)  6 JUN 2022 16:55
  system commands enabled.
  file:line:error style messages enabled.
 **c:/Users/Cara/Downloads/Doku_new_TH/Projektdokumentation.tex
@@ -1701,10 +1701,9 @@ Package luatex.def Info: figures/Softwarearchitektur_ESP32/OutputVelocity_Class
 .png  used on input line 281.
 (luatex.def)             Requested size: 409.71692pt x 173.06116pt.
 
-Overfull \hbox (100.0698pt too wide) in paragraph at lines 286--292
-\T1/lmr/m/n/10 Echt-be-trieb mög-lich. Ou-put-Ve-lo-ci-ty ist nicht kom-plett 
-abs-trakt, da die Me-tho-de []\T1/lmtt/m/n/10 ros_msgs_lw::Twist2D getVelocity()
- const
+Overfull \hbox (69.65308pt too wide) in paragraph at lines 286--292
+\T1/lmr/m/n/10 trieb mög-lich. Ou-put-Ve-lo-ci-ty ist nicht kom-plett abs-trakt
+, da die Me-tho-de []\T1/lmtt/m/n/10 ros_msgs_lw::Twist2D getVelocity() const
  []
 
 [31<./figures/Softwarearchitektur_ESP32/OutputVelocity_Class.png>]
@@ -1867,15 +1866,15 @@ Package rerunfilecheck Info: File `Projektdokumentation.out' has not changed.
 
 Here is how much of LuaTeX's memory you used:
  31529 strings out of 477887
- 596202,1373583 words of node,token memory allocated
+ 596195,1373583 words of node,token memory allocated
  1028 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 7 glue, 4 kern, 1 glyph, 62 attribute, 114 glue_spe
 c, 33 attribute_list, 3 write, 3 pdf_action nodes
-   avail lists: 1:3,2:9894,3:579,4:13112,5:11574,6:222,7:12502,8:174,9:28913,10:
+   avail lists: 1:3,2:9894,3:577,4:13112,5:11574,6:223,7:12502,8:174,9:28913,10:
 45,11:1243
  50139 multiletter control sequences out of 65536+600000
  74 fonts using 6389151 bytes
- 115i,21n,104p,577b,1287s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 115i,21n,104p,577b,1285s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/U
 sers/Cara/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/C
 ara/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/Car
@@ -1905,7 +1904,7 @@ fb><C:/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb
 :/Users/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/U
 sers/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Use
 rs/Cara/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb>
-Output written on Projektdokumentation.pdf (62 pages, 2338955 bytes).
+Output written on Projektdokumentation.pdf (62 pages, 2338867 bytes).
 
 PDF statistics: 1295 PDF objects out of 1440 (max. 8388607)
  301 named destinations out of 1000 (max. 131072)
