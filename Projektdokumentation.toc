@@ -90,7 +90,10 @@
 \contentsline {section}{\numberline {10.1}React}{56}{section.236}%
 \contentsline {section}{\numberline {10.2}Einrichten der Web-App}{56}{section.237}%
 \contentsline {section}{\numberline {10.3}Bedienung der Web-App-Oberfläche}{57}{section.249}%
-\contentsline {chapter}{\numberline {11}Fazit \& Ausblick}{58}{chapter.252}%
-\contentsline {section}{\numberline {11.1}Fazit}{58}{section.253}%
-\contentsline {section}{\numberline {11.2}Ausblick}{58}{section.254}%
-\contentsline {section}{\numberline {11.3}Eidesstattliche Erklärung}{60}{section.257}%
+\contentsline {subsection}{\numberline {10.3.1}Home-Button}{57}{subsection.252}%
+\contentsline {subsection}{\numberline {10.3.2}LED-Button}{58}{subsection.255}%
+\contentsline {subsection}{\numberline {10.3.3}Controller-Button}{59}{subsection.258}%
+\contentsline {chapter}{\numberline {11}Fazit \& Ausblick}{60}{chapter.262}%
+\contentsline {section}{\numberline {11.1}Fazit}{60}{section.263}%
+\contentsline {section}{\numberline {11.2}Ausblick}{60}{section.264}%
+\contentsline {section}{\numberline {11.3}Eidesstattliche Erklärung}{62}{section.267}%
