@@ -1,6 +1,6 @@
 \chapter{Web-App}\label{ch:webapp}
 Die Web-App ist eine Browserapplikation, die manuelle Echtzeit Steuerung der Roboter und deren LED-Farben, unabhängig von deren Anzahl ermöglicht. Die Steuerung erfolgt
-über eine ROS-Schnittstelle "rosbridge" mit der sich die Web-App, über ein Javabibliothek \href{http://wiki.ros.org/roslibjs}{"roslibjs"}, mit dem Rosserver verbinden kann, 
+über eine ROS-Schnittstelle "'rosbridge"' mit der sich die Web-App, über ein Javabibliothek "'\href{http://wiki.ros.org/roslibjs}{roslibjs}"', mit dem Rosserver verbinden kann, 
 um Daten einzulesen oder zusenden.
 \newpage
 \section{React}
@@ -11,4 +11,52 @@ Um in React Web-Applikationen zuerstellen, braucht man Grundkenntnisse in CSS, H
 Die wichtigste Eigenschaft von React ist, dass die Zustände der Applikation und der Benutzeroberfläche synchronisiert agieren, das heißt, wenn Änderungen am Sourcecode vorgenommen werden
 , verändert sich auch die Benutzeroberfläche.
 React ist Komponenten basiert, ein Reactapp besteht daher aus vielen kleinen React-Komponenten, welche das Programmieren und die Wiederverwendbarkeit von Objekten erleichtern.
-
+\lstdefinelanguage{npm}{
+  keywords={npm},
+  keywordstyle=\color{blue}\bfseries,
+  keywords=[2]{install, start},
+  keywordstyle=[2]\color{olive}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{\#},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+\section{Einrichten der Web-App}
+\begin{enumerate}
+    \item Vorbereiten der Umgebung 
+    \begin{itemize}
+        \item Zuallererst muss ein geeigneter Editor auf dem Rechner installiert sein. Empfohlen wird \href{https://code.visualstudio.com}{Visual Studio Code}, welches ebenfalls zum Entwickeln der Web-App verwendet wurde.
+        \item Installation von \href{https://nodejs.org/en/}{Node.js} und npm\footnote[1]{npm ist ein Packet Manager, welcher bei der Installation von Node.js mit geliefert wird. Durch npm wird das Installieren und 
+        Aktualisieren von Drittbibliotheken für Entwickeler mit kurzen \href{https://docs.npmjs.com/cli/v6/commands}{Befehlen} erleichtert.}. Bitte installiert hierzu die empfohlene Version und nicht die neuste, da es sein kann, dass 
+        manche Befehle nicht mehr verfügbar oder überarbeitet wurden. 
+    \end{itemize}
+    \item Die \href{https://git.efi.th-nuernberg.de/gitea/sammarimo78617/Webapp-th.git}{Git-Repository} von der Web-App in einem Projekt-Ordner klonen. 
+    \item Den Ordner "'Webapp-th"' in Visual Studio Code öffnen.
+    \item Ein \href{https://thomaskrause.github.io/nlp-mit-python/01-python-starten/index.html#:~:text=Um%20ein%20neues%20Terminal%20in,”%20oder%20“sh”).}{neues Terminal} in VS-Code öffnen und folgende Befehle eingeben.
+ 
+    \begin{lstlisting}[language=npm,caption={Befehle zum Starten der Web-App},breaklines=true,basicstyle=\footnotesize]
+        npm install #installiert alle Packet, die sich in package.json befinden, welche fuer die Web-App essential sind. Dies kann je nach Internetverbindung eine gewisse Zeit in Anspruch nehmen 
+        npm start #Startet die Web-App. Im Anschluss erscheint die Web-App in dem eingestellten Standardbrowser. 
+    \end{lstlisting}
+    \item Wenn alle Schritte erfolgreich abgeschlossen sind, erscheint folgendes im Terminalfenster.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{figures/Web-App/Web-App-Erfolgreich.png}
+        \caption{Erfolgreicher Web-App-Start}
+        \label{fig:erfolgreich-Web-App-Start}
+    \end{figure}
+Die Web-App wird nun Lokal auf dem Rechner und in unserem Netzwerk, wie es in Abbildung \ref{fig:erfolgreich-Web-App-Start} zu sehen ist, gehostet. Man kann daher 
+die Web-App mit anderen Endgeräten, welches sich im unserem Netzwerk befinden, steuern. 
+\end{enumerate}
+\section{Bedienung der Web-App-Oberfläche}
+Die Web-App besteht aus eine Hauptschaltfälche, die je sich je nach Funktion ändert. Die Änderung der Hauptschaltfläche erfolgt mit einem Rechtsklick auf die Funktions-Buttons, welche in der Sidebar vertikal untereinander platziert sind. Die Sidebar kann mit dem Switch-Button
+auf- und zugeklappt werden. Oberhalb der Hauptschaltfläche ist der Topbar, welche das Logo der Hochschule und den Switch-Button beinhaltet. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/Web-App/Web-App-Fläche.jpeg}
+    \caption{Web-App Oberfläche}
+    \label{fig:Web-App-Oberflaeche}
+\end{figure}
