@@ -33,7 +33,6 @@ Diese Art zu Arbeiten ermöglicht einen schnellen Workflow.
     \item Geben Sie in der Windows-Suche "Windows Update" ein und wählen Sie \texttt{Windows Update-Einstellung}.
     \item Sie sollten ein grünes Häkchen sehen und "Sie sind auf dem neuesten Stand" . Falls nicht, klicken Sie auf "Nach Updates suchen". Sie müssen diesen Vorgang so lange wiederholen, bis Sie keine Updates mehr zu installieren haben.
   \end{itemize}
-  \vspace{2cm}
   \item Installation von \href{https://docs.microsoft.com/en-us/windows/wsl/install}{WSL2}
   \begin{itemize}
     \item Geben Sie in der Windows-Suche "powershell" ein, klicken Sie mit der rechten 
@@ -58,6 +57,7 @@ Diese Art zu Arbeiten ermöglicht einen schnellen Workflow.
   \item Melden Sie sich bei Windows an und starten Sie Docker-Desktop.Lassen sie Docker die Einrichtung abschließen, dies kann je nach Rechner einige Minuten dauern.
 \end{itemize}
 \end{enumerate}
+\newpage
 \section{Unsere Verwendung von Docker}
 \subsection{Docker-Compose}
 \label{dockercompose}
@@ -76,7 +76,6 @@ Sämtliche Software, die in unserem Projekt ausgeführt wird, läuft in Docker-C
   morestring=[b]',
   morestring=[b]"
 }
-\newpage
 \begin{lstlisting}[language=docker-compose-2,caption={docker-compose.yml}\label{buildBefehle},breaklines=true,basicstyle=\footnotesize]
 version: '3.9' #Compose file format wird definiert, hierfuer wird Docker Engine 19.03.0 und hoeher verwendet
 networks: #Mit diesen Befehlen erzeugen wir ein Netzwerk names rosnet
@@ -118,6 +117,7 @@ services: #Unter services werden die einzelnen Containern definiert
     ports:
       - 2888:2888
 \end{lstlisting}
+\newpage
 \subsection{Dockerfile}
 Im Unterkapitel \hyperref[dockercompose]{Docker-Compose} werden in einem \textit{dokcer-compose.yml} Datei mehrere \hyperref[buildBefehle]{build-Befehle} aufgerufen, welche zu dem eigentlichen \textit{Dockerfile} nagivieren und diesen als 
 \newline Hauptimage bauen. Im folgenden werden die Befehle aus dem \textit{Dockerfile} und deren \newline Funktionen abhand eines Beispiels aus unserem Projekt erklärt und geschildert. 

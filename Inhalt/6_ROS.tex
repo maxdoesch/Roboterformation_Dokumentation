@@ -1,5 +1,114 @@
 % !TEX root = ../Projektdokumentation.tex
 \chapter{ROS}\label{ch:ros}
-\section{Softwarearchitektur in ROS}
-\section{rosbridge-server}
+Damit sich die einzelnen Roboter als Roboterschwarm bewegen können, muss es einen zentralen Computer geben, der die Roboter koordiniert.
+Diese Projekt stützt die Entscheidung vorherige Roboterformations Projekte, ROS als Framework für die Programme auf diesem zentralen Computer zu nutzen.
+Das Framework bietet eine Robotik orientierte Schnittstelle zum Nachrichtenaustausch zwischen verschiedenen Programmen. Außerdem bietet es auch viele Analysetools die das Roboterdebugging und die Robotervisualiserung vereinfachen.
+
+\section{Ros Bridge Server}
+Da der ESP32 als externer Mikrocontroller nicht direkt in das ROS System eingebunden werden kann, wurde das Programm ROS Bridge Server entwickelt. 
+Dieser Server verbindet sich mit der Komponente RosBridgeClient auf dem ESP32 und kommuniziert über das Applikationsprotokoll ROS-Topics mit dem Roboter.
+Somit erscheint es innerhalb des ROS Systems als wäre der Mikrocontroller des Roboters in das ROS System eingebunden.
+Das ROS Programm setzt sich aus den Klassen Socket, CommunicationHandler, PublisherImpl, Subscriber und den RosMsgs Nachrichten zusammen.
+
+\subsection{Socket}
+Die Klasse ist ähnlich wie die namensgleichen Klasse der ESP32 Sourcen aufgebaut. Allerdings abstrahiert Socket nun die POSIX API für einen TCP Server.
+Dieser Server wartet bis sich ein Client über den entsprechenden Serverport verbinden will und baut dann eine TCP Verbindung mit diesem Client auf.
+Diese TCP Verbindung wird über das Socket Objekt gekapselt. Allerdings wird auch der Verbindungsaufbau bereits über ein Socket Objekt getätigt.
+
+\begin{itemize}
+    \item Die Methode \verb|void _create_socket()| konfiguriert einen TCP Server über die POSIX API. Dieser wird über einen "File Descriptor" repräsentiert und ist statisch in jedem Socket Objekt hinterlegt.
+    Die Methode wird beendet sobald der Server erstellt ist. Wenn es nach vier Versuchen nicht möglich war einen Server zu erstellen, wird das Programm beendet.
+    \item Der Konstruktor \verb|Socket()| ruft die Methode \verb|_create_socket()| auf, wenn noch kein Server "File Descriptor" existiert.
+    \item Über \verb|int accept_connection()| werden Verbindungen von einem Client akzeptiert. Die Verbindung wird von der POSIX API ebenfalls durch einen "File Descriptor" repräsentiert.
+    Dieser "File Descriptor" wird in dem jeweiligen Socket Objekt abgespeichert. Das Socket Objekt ist anschließend für diese Verbindung verwantwortlich.
+    \item \verb|void close_connection()| schließt die Verbindung mit dem jeweiligen Client.
+    \item \verb|int socket_receive(uint8_t* rx_buffer, int recv_bytes)| empfängt die mit \verb|recv_bytes| übergebene Anzahl an Bytes aus dem internen TCP-Puffer. Die Methode blockiert solange bis
+    alle Bytes vollständig empfangen wurden oder ein Fehler beim Emfangen auftritt. Es wird die Anzahl empfangener Bytes oder bei einem Fehler das Makro \verb|SOCKET_FAIL| zurück gegeben.
+    \item \verb|int socket_receive_string(std::string& rx_string, int max_bytes)| dient zum Empfangen von mit \verb|'\0'| beendeten Zeichenketten. Die Methode blockiert solange bis eine vollständige Zeichenkette
+    empfangen wurde, \verb|max_bytes| aus dem Puffer entnommen wurden oder ein Fehler beim Empfangen auftritt. Es wird die Anzahl empfangener Bytes oder bei einem Fehler das Makro \verb|SOCKET_FAIL| zurück gegeben.
+    \item \verb|int socket_receive_nonblock(uint8_t* rx_buffer, int recv_bytes)| empfängt die mit \verb|recv_bytes| übergebene Anzahl an Bytes aus dem internen TCP-Puffer. 
+    Falls nicht genügend Bytes vorhanden sind oder ein Fehler beim Empfangen auftritt, endet die Methode sofort. Es wird die Anzahl empfangener Bytes oder bei einem Fehler das Makro \verb|SOCKET_FAIL| zurück gegeben.
+    \item Mit \verb|int socket_send(uint8_t const* tx_buffer, int buffer_len)| werden \verb|buffer_len| Bytes an den Server gesendet. 
+    Es wird die Anzahl gesendeter Bytes oder bei einem Fehler das Makro \verb|SOCKET_FAIL| zurück gegeben. 
+\end{itemize}
+
+\subsection{RosMsgs}
+Unter dem C++ Namespace \verb|ros_msgs| befinden sich die Nachrichtentypen mit denen über das Applikationsprotokoll zwischen ROS-Server und dem ESP32 Client kommuniziert wird.
+Eine ähnliche Datei existiert auch in den Sourcen der ESP32 Komponente RosBridgeClient. Im Gegensatz dazu erben die einzelnen Nachrichtentypen aus RosBridgeServer von den entsprechenden ROS Datentypen.
+
+\subsection{Subscriber und PublisherImpl}
+
+Subscriber und PublisherImpl kapseln jeweils ein Publisher oder Subscriber Objekt aus ROS. Subscriber abboniert über das interne ros::Subscriber Objekt eine ROS-Topic. 
+Außerdem stellt die Klasse eine Callbackfunktion \verb|_subscribtion_callback()| bereit, die beim empfangen einer Topic aus ROS ausgeführt wird. 
+Diese Callbackfunktion serialisiert die ROS-Nachricht und sendet diese anschließend über das Applikationsprotokoll an den Mikrocontroller.
+Der Publisher inseriert eine ROS-Topic über das ros::Publisher Objekt. Wenn eine Nachricht vom Mikrocontroller empfangen wurde, wird diese durch den Publisher in das ROS-System weitergeleitet.
+
+Im Folgenden wird auf die Methoden der Klasse Subscriber eingegangen:
+\begin{itemize}
+    \item \verb|void _subscribtion_callback(T const& msg)| wird als Callbackfunktion vom ros::Subscriber ausgeführt. Die Methode wird mit den beiden Parametern T und S parametriert.
+    T ist ein Nachrichtentyp aus dem ROS-System. S ist der entsprechende selbstdefinierte Datentyp aus ros\_msgs. Zunächst wird die Nachricht von dem Typ T in den Typ S umgewandelt.
+    Anschließend wird ein Publish-Paket aus Publish-ID, Topic-Name und den serialisierten Daten über Socket an den Client gesendet.
+    \item Über \verb|void subscribe(std::string const& topic, ros::NodeHandle* node_handle)| wird mit dem internen ros::Subscriber eine Topic abboniert.
+    Diese Methode wird von CommunicationHandler nach dem Empfangen eines Subscribe-Pakets ausgeführt.
+\end{itemize}
+
+Die Klasse PublisherImpl muss im Gegensatz zu Subscriber mit T und S parametriert werden.  T ist ein Nachrichtentyp aus dem ROS-System. S ist der entsprechende selbstdefinierte Datentyp aus ros\_msgs.
+Im Folgenden wird auf die Methoden von PublisherImpl eingegangen:
+
+\begin{itemize}
+    \item \verb|bool recvMessage()| wird von CommunicationHandler nach dem Empfangen eines Publish-Pakets ausgeführt. Die Methode deserialisiert den Datenteil des Pakets, wobei zwischen Array- und Strukturdaten unterschieden wird.
+    Nach dem Deserialisieren werden die Daten von dem Datentyp S nach T umgewandelt und dann nach ROS gepublisht.
+    \item \verb|bool compareTopic(std::string const& topic)| vergleicht den übergebenen Topic-Namen mit dem Internen. Die Methode wird von CommunicationHandler verwendet, um für ein empfangenes Publish-Paket den richtigen Publisher zu finden.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/ROS/RosBridgeServerClass.png}
+    \caption{Klassendiagramm RosBridgeServer}
+    \label{fig:ros_bridge_server_class}
+\end{figure}
+
+\subsection{CommunicationHandler}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/ROS/CommunicationHandlerAblauf.png}
+    \caption{Ablaufdiagramm CommunicationHandler}
+    \label{fig:communication_handler_ablauf}
+\end{figure}
+
+Die Klasse CommunicationHandler steuert die Verbindung über das Applikationsprotokoll mit dem ESP32. Somit gibt es für jeden Client auch ein CommunicationHandler Objekt im RosBridgeServer Programm.
+Jedes CommunicationHandler Objekt kapselt einen eigenen Prozess. Dieser Prozess durchläuft ähnlich wie NodeHandle alle $50ms$ eine Schleife, die das Applikationsprotokoll steuert.
+Nach dem Empfangen des Init-Pakets ist die Verbindung über das Applikationsprotokoll aufgebaut. Dann wird zyklisch ein Advertise-Paket versendet und die empfangenen Pakete ausgewertet. 
+Wenn für mehr als $3000ms$ kein Advertise-Paket empfangen wurde oder beim Empfangen ein Fehler auftritt, wird die Verbindung mit dem Client geschlossen.
+Das entsprechende Socket und CommunicationHandler Objekt werden gelöscht.
+
+\begin{itemize}
+    \item \verb|void _communication_handler(CommunicationHandler *conn_handle)| ist der Prozess von CommunicationHandler.
+    \item Der Konstruktor \verb|CommunicationHandler(Socket& sock)| erstellt den Prozess \verb|_communication_handler()|.
+    \item \verb|int _interpret_receive()| interpretiert die empfangenen Daten aus Socket. Hierfür wird zunächst basierend auf dem ersten Message ID Byte entschieden,
+    ob ein Init, KeepAlive, Advertise, Subscribe oder ein Publish Paket empfangen wurde. Bei einem Init-Paket wird der Robotername entnommen und ein ros::NodeHandle Objekt mit dem Roboternamen erstellt. 
+    Falls ein Keep-Alive Paket empfangen wurde, wird der übertragene Zeitstempel aus dem Socket Puffer entnommen und abgespeichert.
+    Bei einem Subscribe oder Advertise Paket werden die CommunicationHandler Methoden \verb|_subscribe()| oder \verb|_advertise()| ausgeführt.
+    Falls ein PublishPaket empfangen wurde, wird basierend auf dem übertragenen Topicnamen mithilfe der Methode \verb|_getPublisher()| das richtige Publisher Objekt ermittelt und mit \verb|recvMessage()| der Datenteil interpretiert.
+    Läuft beim empfangen oder interpretieren etwas schief gibt die Methode das Makro \verb|SOCKET_FAIL| zurück.
+    \item \verb|void _send_keep_alive()| sendet das Keep-Alive Paket an den ROS-Server.
+    \item \verb|Publisher* _getPublisher(std::string const& topic)| gibt das jeweilige Publisher Objekt zu der Topic zurück.
+    \item Mit \verb|void _advertise(std::string const& topic, std::string const& message_type)| wird ein Publisher Objekt von der jeweiligen Topic erstellt. Dieses Objekt ist mit den entsprechenden Datentypen parametriert.
+    \item \verb|void _subscribe(std::string const& topic, std::string const& message_type)| erstellt ein Subscriber Objekt und ruft die \verb|subscribe()| Methode mit den entsprechenden ROS-Datentyp Parametern auf.
+    
+\end{itemize}
+
+\section{DataLogger}
+
+Das ROS Programm DataLogger ist das Back-End zu der DataLogger Komponente im ESP32 Code. Nach Start des Programms wird eine Nachricht auf der Topic "'robotername/start\_log"' veröffentlicht. 
+Die durch den ESP32 nach ROS gesendete LOG-Pakete werden auf der Topic "'robotername/data\_log"' empfangen und in einer Datei abgespeichert. 
+Das Programm kann über ROS Parameter konfiguriert werden. Es können der Robotername, Logging Dauer, Dateiname und ein Logging Modus konfiguriert werden.
+
+\section{RvizMsgTransformer}
+
+Rviz ist ein von ROS bereitgestelltes Programm zur Roboter Visualisierung. Es können aber auch z.B. Zielpunkte in einem Koordinatensystem gesetzt werden.
+In diesem Projekt wird Rviz zur Darstellung der Trajektorie und des Roboters in einem Koordinatensystem genutzt. Außerdem soll ein Zielpunkt für den Punkt zu Punkt Regler gesetzt werden können.
+Da Rviz mit zu diesem Projekt verschiedenen ROS Nachrichtentypen arbeitet, dient RvizMsgTransformer zur Übersetzung der Rviz Nachrichten.
+
 \section{Trajektorienplanung}
