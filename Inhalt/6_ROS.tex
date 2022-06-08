@@ -99,6 +99,16 @@ Das entsprechende Socket und CommunicationHandler Objekt werden gelöscht.
     
 \end{itemize}
 
+\section{DataLogger}
 
+Das ROS Programm DataLogger ist das Back-End zu der DataLogger Komponente im ESP32 Code. Nach Start des Programms wird eine Nachricht auf der Topic "'robotername/start\_log"' veröffentlicht. 
+Die durch den ESP32 nach ROS gesendete LOG-Pakete werden auf der Topic "'robotername/data\_log"' empfangen und in einer Datei abgespeichert. 
+Das Programm kann über ROS Parameter konfiguriert werden. Es können der Robotername, Logging Dauer, Dateiname und ein Logging Modus konfiguriert werden.
+
+\section{RvizMsgTransformer}
+
+Rviz ist ein von ROS bereitgestelltes Programm zur Roboter Visualisierung. Es können aber auch z.B. Zielpunkte in einem Koordinatensystem gesetzt werden.
+In diesem Projekt wird Rviz zur Darstellung der Trajektorie und des Roboters in einem Koordinatensystem genutzt. Außerdem soll ein Zielpunkt für den Punkt zu Punkt Regler gesetzt werden können.
+Da Rviz mit zu diesem Projekt verschiedenen ROS Nachrichtentypen arbeitet, dient RvizMsgTransformer zur Übersetzung der Rviz Nachrichten.
 
 \section{Trajektorienplanung}

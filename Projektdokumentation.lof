@@ -30,12 +30,14 @@
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Ablaufdiagramm NodeHandle}}{27}{figure.117}%
 \contentsline {figure}{\numberline {5.4}{\ignorespaces Klassendiagramm MotorController}}{29}{figure.121}%
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Klassendiagramm OutputVelocity}}{31}{figure.126}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Klassendiagramm SensorPose}}{38}{figure.131}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Marvelmind Positions Paket}}{39}{figure.144}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces PositionController Klassendiagramm}}{40}{figure.148}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces StateMachine Klassendiagramm}}{41}{figure.155}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Zustandsdiamm Roboter}}{42}{figure.157}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Klassendiagramm SensorPose}}{32}{figure.131}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Marvelmind Positions Paket}}{36}{figure.144}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces PositionController Klassendiagramm}}{37}{figure.148}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces StateMachine Klassendiagramm}}{40}{figure.155}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Zustandsdiamm Roboter}}{41}{figure.157}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Klassendiagramm RosBridgeServer}}{45}{figure.166}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Ablaufdiagramm CommunicationHandler}}{46}{figure.169}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

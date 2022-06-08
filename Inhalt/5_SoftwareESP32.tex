@@ -558,7 +558,7 @@ Da die Trajektorien als Nachrichten aus dem ROS-System entspringen, stimmt der W
 \end{figure}
 
 Die Komponente StateMachine steuert das Verhalten des Roboters auf der höchsten Ebene. Eine Zustandsmaschine kontrolliert das Verhalten bei bestimmten Aktionen.
-Die Zustandsmaschine ist nach dem "State Pattern" Entwurfsmuster implementiert. Für jede Methode des Objektes StateMachine definiert der Zustand eine Methode mit dem selben Namen.
+Die Zustandsmaschine ist nach dem "'State Pattern"' Entwurfsmuster implementiert. Für jede Methode des Objektes StateMachine definiert der Zustand eine Methode mit dem selben Namen.
 Ein Aufruf von StateMachine wird an die Methode des derzeitigen Zustandes weitergereicht. Somit ändert sich das Verhalten des StateMachine Objektes basierend auf dem internen Zustand.
 Abbildung \ref{fig:state_machine_class} zeigt das Klassendiagramm dieses Entwurfmusters. Die Übergänge der Zustandsmaschine sind von der Implementierung der Unterklassen von State abhängig.
 Abbildung \ref{fig:zustandsdiagramm} zeigt die in diesem Projekt umgesetzte Zustandsmaschine. Die Methoden aus StateMachine werden als Callbackfunktion des RosBridgeClient Subscribers verwendet. 
@@ -587,5 +587,18 @@ DataLogger definiert auch einige KConfig Menüeinstellungen. Die Komponente Data
     Es wird ein Formatstring und die in dem Formatstring definierten Variablen übergeben.
     \item \verb|void logData(const char* format, ...)| wird von dem Makro \verb|LOG_DATA()| aufgerufen. Es speichert die Logeinträge in einem Puffer zwischen.
     \item \verb|void _data_logger_task(void *pvParameters)| sendet den Puffer an das ROS-System, falls dieser eine maximale Größe erreicht hat.
+\end{itemize}
+
+\section{Main}
+
+Die Main Komponente beinhaltet die \verb|main()| Funktion der ESP32 Software. Diese ist der erste von FreeRTOS gestartete Prozess. Zunächst werden alle Komponenten konfiguriert. Dann geht der main Prozess in eine unendlich Schleife über. 
+Diese sendet alle $100ms$ die aktuelle Postion des Roboters auf der Topic "'robotername/pose2D"' an ROS. Die main Komponente besitzt zwei Einstellungspunkte im KConfig Menü zum einstellen der ROS Server IP- und Port-Adresse.
+Über defines am Beginn der main.cpp Datei kann die Konfigurationen des Roboters verändert werden.
+
+\begin{itemize}
+    \item Mit \verb|#define Data_Logging| wird die DataLogging Komponente aktiviert und konfiguriert.
+    \item \verb|#define KALMAN| aktiviert den Kalman Filter. Das SensorPose Objekt im Roboter ist somit vom Typ KalmanFilter.
+    \item \verb|#define USE_SIM| konfiguriert den Roboter im Simulationsmodus. SensorPoseSim dient somit als Quelle der Postionsdaten und die Geschwindigkeitdaten werden an OutputVelocitySim gegeben.
+    \item \verb|#define STEP_RESPONSE| deaktiviert den PI Regler und kann z.B. zum Aufzeichnen der Sprungantwort des Roboters genutzt werden.
 \end{itemize}
 
