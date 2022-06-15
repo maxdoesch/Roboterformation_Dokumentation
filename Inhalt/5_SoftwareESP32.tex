@@ -38,10 +38,40 @@ Die folgende Auflistung enthält die für dieses Projekt wichtigsten Befehle:
 \end{itemize}
 
 FreeRTOS ist ein Echtzeitbetriebssystem für Mikrocontroller. 
-Ähnlich wie ein normales Betriebssystem arbeitet es mit Tasks, so dass mehrere Programmzweige parallel ablaufen können.
+Ähnlich wie ein normales Betriebssystem arbeitet es mit Tasks/Prozessen, so dass mehrere Programmzweige parallel ablaufen können.
 Die ESP-IDF Software portiert FreeRTOS auf den ESP32.
 Neben den Tasks implementiert FreeRTOS auch andere Konzepte wie "Queues", "Message Buffer", "Semaphors" und "Mutexes".
 Diese dienen unter anderem der Synchronisierung von Prozessen und verhindern "Race Conditions" beim Zugriff auf geteilte Ressourcen.
+
+Mit der Funktion \verb|static inline BaseType_t xTaskCreate(TaskFunction_t pvTaskCode, const char *const pcName, const uint32_t usStackDepth, void *const pvParameters, UBaseType_t uxPriority, TaskHandle_t *const pxCreatedTask)|
+kann ein neuer Prozess erzeugt werden.
+\begin{itemize}
+    \item Der Pointer \verb|pvTaskCode| zeigt auf die Funktion die den Code des jeweiligen Prozesses beinhaltet. Diese Funktion muss eine Endlosschleife implementieren und darf nicht enden.
+    \item \verb|pcName| ist der Name der FreeRTOS Task
+    \item \verb|usStackDepth| Jeder Prozess hat einen eigenen Stack. Die Größe wird beim erstellen der Task statisch festgelegt und muss somit vom Programmierer geeignet dimensioniert werden.
+    Große lokale Arrays oder viele verschachtelte Funktionsaufrufe im Prozess benötigen einen größeren Stack.
+    \item Über \verb|pvParameters| können der Task Daten übergeben werden.
+    \item \verb|uxPriority| Jeder Prozess hat eine Priorität. Eine höhere Zahl bedeutet eine höhere Priorität. Prozesse mit höhere Priorität werden vom FreeRTOS Scheduler bevorzugt.
+    \item Das Objekt \verb|pxCreatedTask| repräsentiert den Prozess und kann z.B. zum löschen oder stoppen des Prozesses genutzt werden.
+\end{itemize}
+
+Die Tabelle \ref{tab:freertos_task} gibt einen Überblick über alle im ESP32 Code existierenden Tasks:
+
+\begin{table}[H]
+    \begin{tabular}{c|c|c|c|c}
+    Name                           & Komponente         & Klasse           & Priorität & \begin{tabular}[c]{@{}c@{}}Stackgröße\\ (Byte)\end{tabular} \\ \hline
+    app\_main()                    & main               &                  & 0         &                                                             \\
+    \_communication\_handler()     & RosBridgeClient    & NodeHandle       & 5         & 8192                                                        \\
+    \_kalman\_filter\_loop\_task() & SensorPose         & KalmanFilter     & 9         & 8192                                                        \\
+    \_motor\_control\_loop\_task() & MotorController    & MotorController  & 10        & 2048                                                        \\
+    \_uart\_read\_data\_task()     & SensorPose         & Marvelmind       & 5         & 2048                                                        \\
+    \_control\_loop\_task()        & PositionController & ControllerMaster & 8         & 8192                                                        \\
+    \_data\_logger\_task()         & DataLogger         & DataLogger       & 3         & 2048                                                        \\
+    led\_handler()                 & LedStrip           & LedStrip         & 2         & 4096                                                       
+    \end{tabular}
+    \caption{FreeRTOS Tasks}
+    \label{tab:freertos_task}
+\end{table}
 
 
 \section{Überblick}
