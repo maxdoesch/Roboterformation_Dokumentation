@@ -5,15 +5,15 @@ Ein wichtiges Ziel dieser Projektarbeit war einen Roboter zu bauen, der den Traj
 Aus diesem Grund wird in diese Kapitel hauptsächlich diese Fähigkeit bewertet. Da der Roboter drei Regler implementiert, macht es Sinn die Performance für jeden dieser Regler darzustellen.
 Als Trajektorien wurden eine Ellipse und ein geschlossener Catmull-Rom Spline gewählt. Diese wurden mit dem linearen Zeitgesetz generiert.
 Die Trajektoriengenerierung läuft in einer Schleife. Das bedeutet, dass der Roboter immer wieder die gleiche Trajektorie zugesendet bekommt.
-Die Aufzeichung wurde zu einem zufälligen Zeitpunkt in dem Verlauf dieser Schleife gestartet.
+Die Aufzeichung wurde zu einem zufälligen Zeitpunkt in dem Verlauf dieser Schleife gestartet. Die Markierungen des Start- und Endpunktes in den nachfolgenden Diagrammen bezieht sich auf den Start und das Ende der Aufzeichung.
 Als Indikator wie gut der Roboter der Trajektorie folgt, dient die mittlere Distanz zwischen Soll- und Istposition des Roboters.
 
 
 Aus Zeitgründen konnten am Ende dieses Projektes nur wenige Messungen gemacht werden. Aus diesem Grund fehlt z.B. die Aufzeichung der Catmull-Rom Trajektorie des Reglers mit dynamischer Ein-/ Ausgangslinearisierung 
-und auch die Zeitgesetztkonstante der Ellipse beim Regler mit statischer Ein- und Ausgangslinearisierung wurde höher als bei den anderen beiden Reglern gewählt.
+Außerdem unterscheiden sich die Parameter der Ellipse bei den unterschiedlichen Reglern.
 Die Folgenden Darstellungen sollen somit nur als grobes Bewertungskriterium dienen.
 
-In allen Trajektorien ist ein Sprung der Position sichtbar. Dieser ist auf die Zeitdifferenz zwischen Beenden der alten Trajektorie und empfangen, starten der neuen Trajektorie zurückzuführen.
+In allen Trajektorien ist ein Sprung der Soll- und Istposition sichtbar. Dieser ensteht durch eine $10cm$ große Differenz des Start- und Zielpunktes bei der Trajektoriengenerierung.
 
 
 
