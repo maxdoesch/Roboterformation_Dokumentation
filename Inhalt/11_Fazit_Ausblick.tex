@@ -1,3 +1,37 @@
 \chapter{Fazit \& Ausblick}\label{ch:fazit}
 \section{Fazit}
+
+Die Projektarbeit Roboterformation verfolgte drei Hauptziele. 
+Zunächst wurde basierend auf den Ergebnissen der vorherigen Projektarbeiten ein Roboter (Hardware und Software) entwickelt. Um in zukünftigen Projektarbeiten einen Scharm bestehend aus mehreren Robotern zu erschaffen, 
+muss der Roboter leicht zu vervielfachen sein. Hardwareseitig wurden hierfür zwei Platinen erstellt. Bei der Bauteileauswahl für die Platine wurde darauf geachtet, dass die Platine möglichst komplett bestückt gekauft werden kann. 
+Somit fallen aufwendige Lötarbeiten und Verkabelung am Roboter nahezu weg. Des Weiteren dienen die beiden Platinen als "'Skelett"' des Roboters. Dies minimiert die Anzahl notwendiger mechanischer Bauteile aus dem 3D Drucker.
+Softwareseitig wurde eine Firmware entwickelt, die einfach ohne große Änderungen auf jeden Roboter geflasht werden kann. Auf der Mikroebene haben die einzelnen Roboter keine Kenntnis voneinander. 
+Erst durch die Koordination des zentralen Computersystems, können die Roboter als Schwarm auf der Makroebene wahrgenommen werden. Das zweite Ziel war somit die Erschaffung einer einheitlichen, skalierbaren Schnittstelle
+zwischen Roboter und Computer. Dies wurde durch das Applikationsprotokoll basierend auf TCP erreicht. Auf dem Computersystem können außerdem die Trajektorien der vorherigen Projektgruppe generiert und an die Roboter gesendet werden.
+Das dritte Ziel war es eine benutzfreundliche Web-App zu entwickeln. Über die Weboberfläche kann die Geschwindgkeit, sowie die Farbe und das Muster des LED-Arrays der Roboter gesteuert werden.
+Ein Zwischenziel der Webentwicklung war es außerdem einen Mechanismus zu entwickeln, über den Roboter im unterliegenden Computersystem erkannt werden und somit ohne spezielle Registrierung über die Web-App ansteuerbar sind.
+
+Bis zum Ende der Projektarbeit wurden zwei Roboter gebaut. Diese beiden Roboter konnten gleichzeitig am Computer generierte Trajektoren abfahren. 
+Es wurden außerdem beide Roboter von der Webb-App erkannt und Geschwindgkeit und LED-Farbe/Muster gesteuert.
+
 \section{Ausblick}
+
+Zuletzt sollen noch Verbesserungsmöglichkeiten und Ideen für die zukünftige Entwicklung des Projektes diskutiert werden. 
+
+Hardwareverbesserungen wurden im Kapitel \ref{ch:verbesserungen_hardware} schon besprochen. Letzendlich lassen sich die Vorschläge mit Kostensenkung und Fehlerkorrektur zusammenfassen.
+
+Die Robotersoftware hat noch viel Verbesserungspotential. Zunächst sollte die Lokalisierung des Roboters verbessert werden. Hierfür kann der Zustandsvektor des Kalman Filters mit Linear- und Rotationsgeschwindigkeit erweitert werden.
+Durch zusätzliche Sensorfusion mit Motordrehzahl oder Messdaten der Beschleunigungs-, Gyroskop- und Kompasssensoren der 9DOF IMU, können Ungenauigkeiten der Marvelmind Messung korrigiert werden.
+
+Trotz drittem stationärem Beacon gibt es immer noch gelegentlich Ausreißer bei den Marvelmind Messdaten. Diese Ausreißer könnten erkannt werden und durch dynamisches Anheben der Kovarianzen des Messrauschens verworfen werden.
+
+Ein weiteres Problem sind große Trajektorien. Diese Beanspruchen viel Speicherplatz im ESP32 Mikrocontroller und Belasten außerdem die Kommunikation. Um zukünftig auch mehrere Minuten lange Trajektorien abfahren zu können, 
+muss deshalb der Zeitabstand zwischen den einzelnen Punkten erhöht werden. Da der PositionsController mit $100Hz$ Aktualisierungsrate arbeitet, ist es sinnvoll eine Interpolation zwischen den einzelnen Trajektorienpunkten zu implementieren.
+
+Zukünftig sollen mehrere Roboter in Formation fahren. Um Kollisionen zu vermeiden, muss ein kollisionsfreier Pfad für jeden Roboter im vorraus am Computer berechnet werden. Dies könnte eine zentrale Multiroboter Pfadsuche ermöglichen.
+
+Zuletzt ist es sinnvoll die Funktionalität der Webb-App zu erweitern. Es könnten zum Beispiel die Roboterpositionen und Trajektorien in einem Koordinatensystem angezeigt werden. 
+Des Weiteren wäre es auch sinvoll die Parametrierung und Steuerung der Trajektoriengenerierung über die Weboberfläche zu ermöglichen.
+
+
+
