@@ -93,7 +93,7 @@ Diagramm \ref{fig:esp32pinlayout} und Tabelle \ref{tab:esp32pinbelegung} beschre
     \end{minipage}
 \end{figure}
 
-\subsubsection{Power-Up}
+\subsubsection*{Power-Up}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/Platinenentwurf/ESP32 Power-Up.png}
@@ -103,7 +103,7 @@ Diagramm \ref{fig:esp32pinlayout} und Tabelle \ref{tab:esp32pinbelegung} beschre
 Wie die Illustation \ref{fig:esp32powerup} zeigt muss der Enable Pin (im Datenblatt CHIP\_PU genannt) für eine bestimmte Zeit $t_0 = 50\mu s$ nach dem Power-Up auf Low gehalten werden.
 Das gleiche gilt für den Reset des Mikrocontrollers $t_1 = 50\mu s$. Die Power-Up/Reset Schaltung könnte zum Beispiel als Parallelschaltung eines RC Tiefpasses mit einem Taster umgesetzt werden.
 
-\subsubsection{Boot-Mode}
+\subsubsection*{Boot-Mode}
 Der ESP32 verfügt über zwei verschiedene Boot Modis. Beim SPI Boot wird die Firmware aus dem Flash in den Arbeitsspeicher geladen.
 Der Download Boot dient zum flashen einer neuen Firmware. Für den Wechsel zwischen den Modis wertet der Mikrocontroller beim Power-Up die Strapping Pins GPIO0 und GPIO2 aus.
 \begin{table}[H]
@@ -119,14 +119,14 @@ Der Download Boot dient zum flashen einer neuen Firmware. Für den Wechsel zwisc
 \end{table}
 Da GPIO2 intern auf LOW gezogen wird, muss dieser Pin nicht verbunden werden. Die Boot Modus Wahl geschieht dann alleine über GPIO0.
 
-\subsubsection{UART0}
+\subsubsection*{UART0}
 Über die Pins UART0-RX/TX wird eine serielle Verbindung erstellt. 
 Diese ermöglicht das Schreiben in den Flash-Speicher im Dowload-Boot und einen seriellen Monitor für z.B. printf Debugging im SPI-Boot.
 
-\subsubsection{JTAG}
+\subsubsection*{JTAG}
 TMS, TDI, TCK, TDO können für JTAG-Debugging verwendet werden.
 
-\subsubsection{I2C}
+\subsubsection*{I2C}
 Auf beiden Platinen sind Anschlüsse an den I2C-Bus des ESP32 vorgesehen. Über diesen soll aber primär eine 9DOF-IMU (Intertial Measurement Unit) betrieben werden.
 
 \subsection{CP2102N}
@@ -281,7 +281,7 @@ Die beiden Schaltpläne MainPCB und LedPCB für dieses Projekt liegen als KiCad 
 Die Bauteile wurden nach den Vorgaben und Applikationsbeispielen in den Datenblättern verschaltet.
 Aus diesem Grund wird im Folgenden nur auf Besonderheiten eingegangen.
 
-\subsection{Hauptschalter und Verpolungsschutz}
+\subsection*{Hauptschalter und Verpolungsschutz}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{figures/Platinenentwurf/KiCad_Powerswitch.png}
@@ -297,7 +297,7 @@ Q2 wirkt als Verpolungsschutz für die gesamte Schaltung. Bei richtiger Polung v
 $V_{GS} \approx -12V$. Bei Verpolung hat das Transistor Gate das Potential 12V. $V_{GS} < 0V$ ist somit unmöglich und der Mosfet sperrt.
 Die Sicherung F1 schützt den Rest der Schaltung vor Überlast und Kurzschluss.
 
-\subsection{Eingangsquellenschutz}
+\subsection*{Eingangsquellenschutz}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{figures/Platinenentwurf/KiCad_Eingansquellen_Schutz.png}
@@ -314,7 +314,7 @@ Da die 12V den Roboter im Normalbetrieb mit teilweise großer Stromaufnahme vers
 Der PMOS Transistor AO3401 hat einen geringen Drain-Source Widerstand und somit wenig Leistungsverlust bei großem Strom.
 Sind 12V verbunden schaltet Q3 immer durch da $V_{GS} < 0V$. Falls nur VBUS oder 5VD aktiv ist, wird $V_{GS} = 0V$. Die 12V Schiene bleibt somit Spannungsfrei.
 
-\subsection{Reset- und Bootmodeschaltung}
+\subsection*{Reset- und Bootmodeschaltung}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{figures/Platinenentwurf/KiCad_Boot_Reset.png}
@@ -346,7 +346,7 @@ Im Folgenden wird somit nicht weiter darauf eingegangen.
 \section{Designfehler}
 Beim Schaltplan Design wurden leider 3 Fehler gemacht. Diese können allerdings ausgebessert werden oder beinträchtigen die Nutzung der Platine nur gering.
 Der Dokumentation liegen einmal das fehlerhafte KiCad Projekt und eines mit ausgebesserten Fehlern bei.
-\subsection{3.3V Spannungswandler}
+\subsection*{3.3V Spannungswandler}
 \begin{description}
     \item[Fehlerbeschreibung:] Der 3.3V Spannungwandler schaltet bei der Wandlung von 5V (USB, JTAG-/Programmierinterface) zu 3.3V ab. 
     Die Wandlung von 12V zu 3.3V funktioniert. 
@@ -356,7 +356,7 @@ Der Dokumentation liegen einmal das fehlerhafte KiCad Projekt und eines mit ausg
     \item[Fehlerbehebung:] Um den Unterspannungsschutz zu deaktivieren, können die Widerstände $R_{en1} = R1$ und $R_{en2} = R5 + R7$ entfernt werden.
 \end{description}
 
-\subsection{CP2102N Stromversorgung}
+\subsection*{CP2102N Stromversorgung}
 \begin{description}
     \item[Fehlerbeschreibung:] Der Mikrocontroller startet nicht richtig, wenn die Platine nur über 12V verorgt wird und USB nicht verbunden ist.
     \item[Grund:] Da der CP2102N direkt über VBUS der USB Schnittstelle versorgt wird, ist der Chip nicht aktiv wenn nur die 12V Versorgung vorhanden ist.
@@ -384,7 +384,7 @@ Der Dokumentation liegen einmal das fehlerhafte KiCad Projekt und eines mit ausg
     \end{minipage}
 \end{figure}
 
-\subsection{USB-C Anschluss}
+\subsection*{USB-C Anschluss}
 \begin{description}
     \item[Fehlerbeschreibung:] Die Signalübertragung über USB-C funktioniert nur in einer Steckrichtung. 
     \item[Grund:] Die Pins B6 und B7 wurden nicht mit D+/D- auf der Platine verbunden.

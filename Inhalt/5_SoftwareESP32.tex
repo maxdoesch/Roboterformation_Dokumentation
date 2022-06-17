@@ -154,7 +154,7 @@ Ein Ziel des Applikationsprotokolls ist es die TCP Kommunikation zu abstrahieren
 Aus diesem Grund sind Klassen- und Funktionsnamen, sowie die Funktionsweise der Programmierschnittstelle stark an ROS orientiert.
 Das Klassendiagramm in Abbildung \ref{fig:ros_bridge_client_class} zeigt den Aufbau von RosBridgeClient. 
 
-\subsection{Publisher und SubscriberImpl}
+\subsection*{Publisher und SubscriberImpl}
 Für jede im Protokoll verwendete Topic wird ein Objekt der Klasse \verb|Publisher| oder \verb|SubscriberImpl| erstellt.
 Über Objekte der Klasse \verb|Publisher| kann der Programmierer Nachrichten auf der jeweiligen Topic verschicken. 
 Objekte vom Typ \verb|SubscriberImpl| werden nur intern von NodeHandle zum empfangen von Topics verwendet.
@@ -186,7 +186,7 @@ Im Folgenden wird auf die Methoden der Klasse \verb|SubscriberImpl| eingegangen:
 \end{itemize}
 
 
-\subsection{NodeHandle}
+\subsection*{NodeHandle}
 NodeHandle ist eine Singleton Klasse. Es existiert somit nur ein NodeHandle Objekt im Programm. Dieses wird beim Aufruf von init() einmalig erstellt.
 Parallel dazu wird das Initialisierungspaket an den ROS-Server über die Methode \verb|_send_init()| versendet. 
 Anschließend startet der Hauptprozess \verb|_communication_handler|. Dieser läuft parallel zum restlichen Programm.
@@ -257,21 +257,20 @@ Aus dem Grund müssen alle Nachrichtenklassen die folgenden Methoden implementie
     \label{fig:motor_controller_class}
 \end{figure}
 
-Die Komponente MotorController steuert die beiden Motoren des Roboters. Die Drehzahl der Motoren wird über einen PI-Regler geregelt.
-Das Stellsginal ist hierbei die Pulsbreite der Ausgangssignale für den Motortreiber. In der Software haben diese einen Wertebereich von -100.0 bis 100.0 Prozent.
-Ein Überschreiten des Wertebereichs wird durch eine Stellbegrenzung mit Begrenzungsbeobachter verhindert.
+Die Komponente MotorController steuert die beiden Motoren des Roboters. Die Drehzahl der Motoren wird jeweils über einen PI-Regler geregelt.
+Das Stellsginal ist die Pulsbreite der Ausgangssignale für den Motortreiber. In der Software hat diese einen Wertebereich von -100.0 bis 100.0 Prozent.
+Ein Überschreiten des Wertebereichs wird durch eine Stellbegrenzung mit Begrenzungsbeobachter verhindert. 
 Die beiden Regelkreise laufen mit einer Widerholungsrate von $1000Hz$. Des Weiteren besitzt die Komponente einige Einstellungspunkte im KConfig Menü. 
 Es können die Pinbelegungen für die Signale xIN1, xIN2, Enable des Motortreibers DRV8841, die Hallsensoreingängen und die PWM Frequenz des Stellsignals verändert werden.
-Die Standardeinstellung passt allerdings schon zur Pinbelegung der Platine.
 Die Komponente MotorController ist in die Klassen Motor und MotorController aufgeteilt.
 
-\subsection{Motor}
+\subsection*{Motor}
 Die Klasse Motor interagiert sehr viel mit der Hardware. Aus diesem Grund können nur zwei Objekte (Motor\_a, Motor\_b) für jeweils einen Motor erzeugt werden.
-Der ESP32 besitzt ein Hardwaremodul "MCPWM\_UNIT" zur Steuerung von Motoren. Dieses Hardwaremodul hat mehrere Timer Kanäle über die ein PWM Signal zur Steuerung 
-der IN1 oder IN2 Eingänge des Motortreibers erzeugt werden kann. Zur Erfassung der Motordrehzahl besitzt die "MCPWM\_UNIT" mehrere "Capture" Eingänge. 
+Der ESP32 besitzt ein Hardwaremodul "'MCPWM\_UNIT"' zur Steuerung von Motoren. Dieses Hardwaremodul hat mehrere Timer Kanäle über die ein PWM Signal zur Steuerung 
+der IN1 oder IN2 Eingänge des Motortreibers erzeugt werden kann. Zur Erfassung der Motordrehzahl besitzt die "'MCPWM\_UNIT"' mehrere "Capture" Eingänge. 
 Mit diesen werden die beiden Hallsensoren eines Motors verbunden. Eine positive Flanke erzeugt ein Interrupt, in dem die Zeitdifferenz zwischen zwei Hallsensorflanken berechnet wird.
 Basierend darauf kann dann die Motordrehzahl ermittelt werden.
-Die Klasse Motor übernimmt somit die Einrichtung der "MCPWM\_UNIT" über die Hardwareabstraktionsschicht von Espressife und stellt die Interruptfunktion zur Verfügung.
+Die Klasse Motor übernimmt somit die Einrichtung der "'MCPWM\_UNIT"' über die Hardwareabstraktionsschicht von Espressife und stellt die Interruptfunktion zur Verfügung.
 Außerdem befindet sich auch eine Methode zur Aktualisierung des PI-Reglers in der Motor Klasse. Diese Methode wird periodisch für beide Motoren von MotorController aufgerufen.
 
 Im Folgenden wird auf die Methoden der Klasse Motor eingegangen:
@@ -282,11 +281,11 @@ Im Folgenden wird auf die Methoden der Klasse Motor eingegangen:
     \item \verb|float getActualVelocity()| gibt die aktuelle Motordrehzahl zurück. Diese wird aus der im Interrupt berechneten Zeitdifferenz ermittelt.
     \item \verb|float updatePIControl(float actual_velocity)| aktualisiert den PI-Regler. Die Methode gibt die Pulsbreite des PWM Stellsignals zurück. 
     \item \verb|void setDuty(float duty_cycle)| setzt die Pulsbreite für den Motortreiber.
-    \item \verb|bool _encoder_callback(...)| wird von der "MCPWM\_UNIT" bei einem Interrupt durch eine positive Flanke auf einem der Hallsensoreingängen ausgeführt.
+    \item \verb|bool _encoder_callback(...)| wird von der "'MCPWM\_UNIT"' bei einem Interrupt durch eine positive Flanke auf einem der Hallsensoreingängen ausgeführt.
     Es wird die Zeitdifferenz zum letzten Aufruf ermittelt und über die Art der letzten Flanke (positiv/negativ) des zweiten Hallsignals die Drehrichtung bestimmt.
 \end{itemize}
 
-\subsection{MotorController}
+\subsection*{MotorController}
 Die Klasse MotorController steuert den PI-Regler in Motor. Ein Timer Interrupt des ESP32 führt jede Millisekunde eine Interruptfunktion aus MotorController aus.
 Die \verb|updatePIControl()| Methode aus Motor wird allerdings nicht aus dem Interrupt ausgeführt. Der Aufruf befindet sich in einem FreeRTOS Prozess \verb|_motor_control_loop_task()|.
 Dieser blockiert solange bis er aus der Interruptfunktion aufgeweckt wird. Dann holt sich der Prozess die aktuelle Drehzahl der Motoren \verb|getActualVelocity()|, aktualisiert die PI-Regler \verb|updatePIControl()|, setzt die neue Pulsbreite \verb|setDuty()| und wartet
@@ -320,7 +319,7 @@ Durch die abstrakte Oberklasse ist ein einfacher Wechsel zwischen Simulation und
 OuputVelocity ist nicht komplett abstrakt, da die Methode \verb|ros_msgs_lw::Twist2D getVelocity() const| implementiert wird.
 Über diese Methode kann der aktuelle Geschwindigkeitsvektor des Roboters abgefragt werden.
 
-\subsection{OuputVelocityImpl}
+\subsection*{OuputVelocityImpl}
 Die Unterklasse OutputVelocityImpl transformiert den Sollgeschwindigkeitsvektor des Roboters in Drehzahlen ($\omega_L \ und \ \omega_R$) für die Motoren und gibt diese an den MotorController weiter.
 Der Geschwindigkeitsvektor eines Roboters mit Differentialantrieb besteht aus einer lineare Geschwindigkeit $v$ und einer Rotationsgeschwindigkeit $\omega$.
 Für die Transformation muss außerdem der Radabstand $d$ und der Raddurchmesser $r$ bekannt sein.
@@ -348,7 +347,7 @@ Ergibt die Transformation eine größere Drehzahl werden beide Drehzahlen um den
     \item \verb|void setVelocity(ros_msgs_lw::Twist2D const& velocity)| setzt einen neuen Geschwindigkeitsvektor, transformiert diesen in Drehzahlen und gibt diese an MotorController weiter.
 \end{itemize}
 
-\subsection{OutputVelocitySim}
+\subsection*{OutputVelocitySim}
 Die Unterklasse OutputVelocitySim ermöglicht den Simulationsbetrieb. 
 Geschwindigkeitvektoren werden nicht in Drehzahlen umgewandelt, sondern über einen Publisher an ROS gesendet.
 In ROS können diese dann als Eingangssignal für z.B. den "Turtlesim" Simulator verwendet werden.
@@ -374,7 +373,7 @@ KalmanFilter besitzt eine Liste von sogenannten KalmanSensoren. Marvelmind und S
 Die Positionsdaten der KalmanSensoren werden aufgwertet, so dass Positionsdaten mit einer höheren Aktualisierungsrate von $100Hz$ verfügbar sind.
 Ursprünglich war auch eine Sensorfusion mit z.B. Motordrehzahl und Messungen einer IMU geplant. Dies konnte allerdings nicht mehr aus Zeitgründen umgesetzt werden.
 
-\subsection{SensorPose}
+\subsection*{SensorPose}
 Die Klasse SensorPose definiert die gemeinsame Schnittstelle aller Sensoren und ermöglicht somit eine einfaches Wechseln zwischen unterschiedlichen Sensoren.
 SensorPose definiert zwei Möglichkeiten die Pose des Roboters zu lesen. 
 
@@ -385,7 +384,7 @@ SensorPose definiert zwei Möglichkeiten die Pose des Roboters zu lesen.
 \end{itemize}
 
 
-\subsection{KalmanFilter}
+\subsection*{KalmanFilter}
 Die Positionsmessungen der Klassen Marvelmind und SensorPoseSim haben eine relativ geringe Aktualisierungsrate. Marvelmind gibt z.B. nur $7Hz\ - \ 15Hz$ an.
 Da für die Positionsregelung allerdings eine Aktualisierungsrate von $100Hz$ vorgesehen ist, müssen über einen Kalman Filter öfter Positionsdaten bereitgestellt werden.
 Der Kalman Filter schätzt über die Systemgleichung des Roboters zyklisch eine neue Position. Wenn eine Messung verfügbar wird, wird die Plausibilität der Positionsmessung und der geschätzten Position anhand
@@ -500,7 +499,7 @@ Die Berechnung geschieht in einem FreeRTOS Prozess \verb|_kalman_filter_loop_tas
     \item \verb|void _kalman_filter_loop_timer(TimerHandle_t timer)| ist die Callbackfunktion des Softwaretimers und entblockt den \verb|_kalman_filter_loop_task()| Prozess.
 \end{itemize}
 
-\subsection{KalmanSensor}
+\subsection*{KalmanSensor}
 Die Klasse KalmanSensor definiert eine Schnittstelle für alle Sensoren, die von KalmanFilter fusioniert werden sollen.
 Ein KalmanSensor muss die folgenden Methoden implementieren:
 
@@ -511,7 +510,7 @@ Ein KalmanSensor muss die folgenden Methoden implementieren:
     \item \verb|void calculateMeasurementNoiseCov()| ermittelt das Messrauschen des jeweiligen Sensors.
 \end{itemize}
 
-\subsection{Marvelmind}
+\subsection*{Marvelmind}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/Softwarearchitektur_ESP32/Marvelmind_Positions_Paket.png}
@@ -525,7 +524,7 @@ Die Klasse Marvelmind liest die seriellen Pakete über einen FreeRTOS Prozess \v
 Die Pose kann dann über die Methoden der SensorsPose Schnittstelle ausgelesen werden oder als KalmanSensor von der Klasse KalmanFilter vewendet werden. 
 Marvelmind definiert auch einige KConfig Menüeinstellungen für die UART Pins am ESP32, Geschwindigkeit der UART Kommunikation und die Größe eines Empfangspuffers.
 
-\subsection{SensorPoseSim}
+\subsection*{SensorPoseSim}
 SensorPoseSim ist auch eine Unterklasse von SensorPose und KalmanSensor. Die Klasse dient zur Simulation des Roboters in ROS über z.B. den Turtlesim.
 Die Roboterpose wird auf der Topic "/robotername/pose" empfangen. Diese wird im Konstruktor des SensorPoseSim Objektes abonniert. Die Methode \verb|void _setPose()| dient dabei als Callbackfunktion für den Subscriber. 
 
@@ -543,7 +542,7 @@ Die Komponente PositionController setzt den äußeren Regelkreise des Roboters u
 die über eine gemeinsame Schnittstelle angesteuert werden. Im Projekt wurde der p2pController, approxLinController, statInOutLinController und dynInOutLinController Regler implementiert. Mit dem ersten können Punkte angefahren werden. Die letzen drei dienen zum Folgen von Trajektorien.
 Da Funktionsweise und mathematische Herleitung dieser Regler in der vorhergehenden Projektarbeit "Regelung und Simulation von Schwarmrobotern" \cite{ReSiSchwa} behandelt wurde, wird in diesem Kapitel nur auf Besonderheiten der Implementierung eingegangen.
 
-\subsection{ControllerMaster}
+\subsection*{ControllerMaster}
 Die Klasse ControllerMaster schließt den Regelkreis der Positionsregelung. Es wird zunächst die aktuelle Position aus dem SensorPose Objekt bezogen, anschließend wird ein neuer Geschwindigkeitsvektor als Stellgröße über das PositionController Objekt berechnet und dieser Vektor an das OutputVelocity Objekt weitergereicht.
 Zuletzt überprüft der ControllerMaster, ob das Ziel der Regelung erreicht wurde und beendet den Regelungszyklus. Durch eine Callbackfunktion werden andere Komponenten über das Ende der Regelung informiert. 
 Der FreeRTOS Prozess \verb|_control_loop_task()| beinhaltet den Regelkreislauf und ein Softwaretimer taktet diesen auf $100Hz$.
@@ -558,7 +557,7 @@ Der FreeRTOS Prozess \verb|_control_loop_task()| beinhaltet den Regelkreislauf u
     \item \verb|void _control_loop_timer(TimerHandle_t timer)| ist die Callbackfunktion des Softwaretimers über den der Prozess getaktet wird.
 \end{itemize}
 
-\subsection{PositionController}
+\subsection*{PositionController}
 Die Klasse PositionController definiert die gemeinsame Schnittstelle über die die Regler vom ControllerMaster gesteuert werden.
 Die Regelung ist komplett innerhalb der Unterklassen dieser Schnittstelle gekapselt. ControllerMaster besitzt somit keine Information über die Art der Regelung.
 
@@ -568,10 +567,10 @@ Die Regelung ist komplett innerhalb der Unterklassen dieser Schnittstelle gekaps
     \item Mit \verb|bool destination_reached()| kann der ControllerMaster überpüfen, ob das Ziel der Regelung (Zielpunkt oder Trajektorienende) erreicht wurde.
 \end{itemize}
 
-\subsection{p2pController}
+\subsection*{p2pController}
 Über den Punkt zu Punkt Regler können einzelne Punkte angefahren werden. Dieser Zielpunkt wird dem Konstruktor des Reglers übergeben.
 
-\subsection{approxLin-, statInOutLin-, dynInOutLinController}
+\subsection*{approxLin-, statInOutLin-, dynInOutLinController}
 Mit den Reglern approximierte Linearisierung, statische Ein- und Ausgangslinearisierung und dynamische Ein- und Ausgangslinearisierung können Trajektorien abgefahren werden.
 Eine Trajektorie besteht aus einem Array von Trajektorienpunkten. Jeder Trajektorienpunkte beinhaltet Positions-, Geschwindigkeits, Beschleunigungsvektoren und einen Zeitstempel.
 Über den Zeitstempel wird bei jedem Aufruf der \verb|update()| Funktion der aktuellste Trajektorienpunkt als Sollwert für die Trajektorienregelung genommen.

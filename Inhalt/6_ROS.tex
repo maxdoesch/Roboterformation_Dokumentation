@@ -10,7 +10,7 @@ Dieser Server verbindet sich mit der Komponente RosBridgeClient auf dem ESP32 un
 Somit erscheint es innerhalb des ROS Systems als wäre der Mikrocontroller des Roboters in das ROS System eingebunden.
 Das ROS Programm setzt sich aus den Klassen Socket, CommunicationHandler, PublisherImpl, Subscriber und den RosMsgs Nachrichten zusammen.
 
-\subsection{Socket}
+\subsection*{Socket}
 Die Klasse ist ähnlich wie die namensgleichen Klasse der ESP32 Sourcen aufgebaut. Allerdings abstrahiert Socket nun die POSIX API für einen TCP Server.
 Dieser Server wartet bis sich ein Client über den entsprechenden Serverport verbinden will und baut dann eine TCP Verbindung mit diesem Client auf.
 Diese TCP Verbindung wird über das Socket Objekt gekapselt. Allerdings wird auch der Verbindungsaufbau bereits über ein Socket Objekt getätigt.
@@ -32,11 +32,11 @@ Diese TCP Verbindung wird über das Socket Objekt gekapselt. Allerdings wird auc
     Es wird die Anzahl gesendeter Bytes oder bei einem Fehler das Makro \verb|SOCKET_FAIL| zurück gegeben. 
 \end{itemize}
 
-\subsection{RosMsgs}
+\subsection*{RosMsgs}
 Unter dem C++ Namespace \verb|ros_msgs| befinden sich die Nachrichtentypen mit denen über das Applikationsprotokoll zwischen ROS-Server und dem ESP32 Client kommuniziert wird.
 Eine ähnliche Datei existiert auch in den Sourcen der ESP32 Komponente RosBridgeClient. Im Gegensatz dazu erben die einzelnen Nachrichtentypen aus RosBridgeServer von den entsprechenden ROS Datentypen.
 
-\subsection{Subscriber und PublisherImpl}
+\subsection*{Subscriber und PublisherImpl}
 
 Subscriber und PublisherImpl kapseln jeweils ein Publisher oder Subscriber Objekt aus ROS. Subscriber abboniert über das interne ros::Subscriber Objekt eine ROS-Topic. 
 Außerdem stellt die Klasse eine Callbackfunktion \verb|_subscribtion_callback()| bereit, die beim empfangen einer Topic aus ROS ausgeführt wird. 
@@ -68,7 +68,7 @@ Im Folgenden wird auf die Methoden von PublisherImpl eingegangen:
     \label{fig:ros_bridge_server_class}
 \end{figure}
 
-\subsection{CommunicationHandler}
+\subsection*{CommunicationHandler}
 
 \begin{figure}[H]
     \centering

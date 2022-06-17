@@ -115,7 +115,7 @@ Das Protokoll definiert insgesamt 5 verschiedene Pakete:
 Jedes Paket beginnt mit der jeweiligen Identifikationsnummer. Der restliche Aufbau ist Paketabhängig.
 Im Folgenden der Aufbau und der Nutzen der unterschiedlichen Pakete erklärt werden.
 
-\subsubsection{Initialisierungspaket}
+\subsubsection*{Initialisierungspaket}
 Das Initialisierungspaket ist das erste Paket, das nach Aufbau der TCP Verbindung vom Client an den Server geschickt wird.
 Dabei überträgt es den Roboternamen, der von der ROS Server Node als Topic Namespace genutzt wird.
 Das Initialisierungspaket wird nur vom Client an den Server geschickt werden.
@@ -129,7 +129,7 @@ Das Initialisierungspaket wird nur vom Client an den Server geschickt werden.
     \end{tabular}
 \end{table}
 
-\subsubsection{Advertise Paket}
+\subsubsection*{Advertise Paket}
 Das Advertise Paket entspricht dem Aufruf der ROSCPP Methode advertise().
 Dieses Paket kann nur vom Client an den Server geschickt werden.
 Dabei fordert dieser den Server dazu auf die übermittelte Topic mit dem übermittelten Nachrichtentyp in ROS zu "advertisen".
@@ -144,7 +144,7 @@ Erst nach dem Advertise Paket dürfen Nachrichten von der entsprechenden Topic m
     \end{tabular}
 \end{table}
 
-\subsubsection{Subscribe Paket}
+\subsubsection*{Subscribe Paket}
 Ähnlich wie das Advertise Paket teilt das Subscribe Paket dem Server mit dass der Client eine Topic mit dem entsprechenden Nachrichtentyp "subscriben" möchte.
 Auch das Subscribe Paket wird nur vom Client an den Server geschickt.
 Der Server darf erst nach dem er ein Subscribe Paket zu einer Topic empfangen hat, Publish Pakete an den Client weiterleiten.
@@ -158,7 +158,7 @@ Der Server darf erst nach dem er ein Subscribe Paket zu einer Topic empfangen ha
     \end{tabular}
 \end{table}
 
-\subsubsection{Keep-Alive Paket}
+\subsubsection*{Keep-Alive Paket}
 Das Keep-Alive Paket wird alle $500ms$ vom Client an den Server und vom Server an den Client geschickt. 
 Empfängt eine der beiden Seiten kein Keep-Alive für $3000ms$ wird ein Verbindungsabbruch festgestellt.
 Dies ist vor allem notwendig wenn keine Nutzdaten übertragen werden und zum Beispiel der Client abstürzt.
@@ -175,7 +175,7 @@ Dieser kann z.B. zur Zeitsynchronisation zwischen ROS und Roboter verwendet werd
     \end{tabular}
 \end{table}
 
-\subsubsection{Publish Paket}
+\subsubsection*{Publish Paket}
 Das Publish Paket dient der eigentlichen Übertragung von Nutzdaten vom Client zum Server und vom Server zum Client.
 Durch das Feld "Topic Name" können die Daten einer durch das Subscribe- und Advertise-Paket initialisierten Topic zugeordnet werden.
 Der Datenteil des Pakets unterscheidet zwischen Array- und Strukturdaten.
