@@ -112,3 +112,52 @@ In diesem Projekt wird Rviz zur Darstellung der Trajektorie und des Roboters in 
 Da Rviz mit zu diesem Projekt verschiedenen ROS Nachrichtentypen arbeitet, dient RvizMsgTransformer zur Übersetzung der Rviz Nachrichten.
 
 \section{Trajektorienplanung}
+
+\section{Starthilfe}
+Die Sourcen für den ROS Code befinden sich im Projektordner oder können von dem GitHub Repository \url{https://github.com/maxdoesch/Roboterformation_ROS.git} geklont werden.
+Im Projekt wird die Noetic Distribution von ROS genutzt. Diese muss zunächst installiert werden. Der Installtionsprozess wird im ROS Wiki \cite{ROS-Wiki} beschrieben.
+Anschließend müssen die folgenden Schritte befolgt werden, um die ROS Programme zu bauen und zu starten:
+
+\begin{enumerate}
+    \item GitHub Repository klonen \newline
+    \verb|git clone https://github.com/maxdoesch/Roboterformation_ROS.git|
+    \item Bauen des ROS Workspace \newline
+    \verb|catkin_make| im Oberverzeichnis des Workspace
+    \item Den Workspace initialisieren \newline
+    \verb|source ./devel/setup.bash| 
+    \item Rosmaster starten \newline
+    \verb|roscore|
+    \item Zuletzt können die verschiedenen Nodes gestartet werden
+    \begin{itemize}
+        \item \verb|rosrun ros_bridge_server ros_bridge_server|
+        \item \verb|rosrun trajecgenerator trajecgenerator_node|
+        \item \verb|rosrun rviz_msg_tranformer rviz_msg_transformer|
+        \item \verb|rosrun data_logger data_logger|
+    \end{itemize}
+\end{enumerate}
+
+Es muss mindestens die Node ROSBridgeServer gestartet werden. Die Roboter verbinden sich automatisch nach dem Einschalten mit dem Server und sind dann in ROS unter ihrem Namen als Namespace sichtbar.
+(Wenn ROS in einer virtuellen Maschine genutzt wird, muss eventuell der Serverport 2888 weitergeleitet werden. Außerdem könnte der Port von der Host Firewall blockiert werden.)
+Jetzt kann mit dem Roboter auf ihren Topics kommuniziert werden. Eine Liste aller verfügbarbaren Topics bekommt man mit \verb|rostopic list|.
+
+Mit \verb|rostopic pub <topic_name> <nachrichtentyp> <daten>| kann eine Nachricht auf einer Topic versendet werden und mit \verb|rostopic echo <topic_name>| können Nachrichten empfangen werden. 
+Zum Beispiel kann mit dem Befehl \verb|rostopic pub --once /robotername/goal_point geometry_msgs/Point "x: -2.0 y: 7.0 z: 0.0"| der Punkt (-2.0; 7.0) angefahren werden oder mit \verb|rostopic echo /robot_1/pose2D| die Istposition ausgegeben werden.
+
+Über das ROS Tool "'Teleop Keyboard"' kann die Robotergeschwindigkeit über die Tasten "'WASD"' gesteuert werden. Das Tool kann z.B. mit dem Apt Package Manager installiert werden \verb|sudo apt-get install ros-noetic-teleop-twist-keyboard| 
+und wird über den Befehl \verb|rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/<roboter_name>/vel| gestartet. Am Ende des Befehls wird die Standardtopic \verb|cmd_vel| auf die im Projekt verwendete Topic geändert.
+
+Die Trajektoriengenerierung wird über die folgenden ROS Service gesteuert:
+\begin{itemize}
+    \item \verb|rosservice call /m1/addCircleTrajecHandler|
+    \item \verb|rosservice call /m1/addCrSplineTrajecHandler|
+    \item \verb|rosservice call /m1/addCSplineTrajecHandler|
+    \item \verb|rosservice call /m1/removeTrajecHandler|
+\end{itemize}
+Die Bedeutung der Parameter für die Service kann kann der Dokumentation \cite{ReSiSchwa} der vorherigen Projektgruppe entnommen werden.
+
+Zuletzt soll noch auf den Simulationsmodus des Roboters eingegangen werden. Zunächst muss der Roboter im ESP32 Code in den Simulationsmodus versetzt werden. 
+Da der Simulator mit dem ROS Namespace \verb|/turtle1| arbeitet, wird der Roboter auf diesen Namen umbenannt.
+Im Simulationsmodus sind zwei zusätzliche Topics (/turtle1/cmd\_vel und /turtle1/pose) in ROS sichtbar. Diese werden als Stellgröße und Istgröße des Roboters vom Simulator "'Turtlesim"' genutzt.
+Der Turtlesim Simulator wird mit dem Befehl \verb|rosrun turtlesim turtlesim_node| gestartet.
+
+
