@@ -631,3 +631,35 @@ Diese sendet alle $100ms$ die aktuelle Postion des Roboters auf der Topic "'robo
     \item \verb|#define STEP_RESPONSE| deaktiviert den PI Regler und kann z.B. zum Aufzeichnen der Sprungantwort des Roboters genutzt werden.
 \end{itemize}
 
+\section{Starthilfe}
+
+Die Sourcen für den ESP32 Code befinden sich im Projektordner oder können von dem GitHub Repository \url{https://github.com/maxdoesch/Roboterformation_ESP-IDF.git} geklont werden.
+Zunächst muss die ESP-IDF Toolchain installiert werden. Für das Projekt wird die Version ESP-IDF 4.4 oder neuer benötigt. Die Installation ist im Programming-Guide \cite{ESP-IDFProgrammingGuide} von Espressife beschrieben.
+Anschließend müssen die folgenden Schritte zur Einrichtung des Repositories und Programmierung des Roboters durchgeführt werden:
+
+\begin{enumerate}
+    \item GitHub Repository klonen \newline
+    \verb|git clone https://github.com/maxdoesch/Roboterformation_ESP-IDF.git|
+    \item Das esp-dsp Submodul initialisieren \newline
+    \verb|git submodule update --init --recursive| 
+    \item Das Arbeitsterminal mit den Skripten aus esp/esp-idf initialisieren \newline
+    \verb|export.bat| (Windows) oder \verb|source export.sh| (Unix)
+    \item Den Chip auf ESP32 einstellen \newline
+    \verb|idf.py set-target esp32|
+    \item Konfigurationsmenü starten \newline
+    \verb|idf.py menuconfig|
+    \begin{itemize}
+        \item Unter \verb|Serial flasher config| die Einstellung \verb|Flash size| auf \verb|8MB| setzen
+        \item Unter \verb|Component config/ESP32-specific| die Option \verb|Support for external, SPI-connected RAM| auswählen
+        \item Unter \verb|Wifi Configuration| Wifi-SSID und Passowrt eingeben
+        \item Unter \verb|Socket Configuration| die IP-Adresse des ROS-Bridge-Server Computers eingeben
+    \end{itemize}
+    \item Falls der Roboter im Simulationsmodus betrieben werden soll \verb|#define USE_SIM| in der main.cpp auskommentieren
+    \item Projekt bauen \newline
+    \verb|idf.py build|
+    \item Mikrocontroller per USB verbinden und Flashen \newline
+    \verb|idf.py flash|
+    \item Serielle Ausgabe überprüfen \newline
+    \verb|idf.py monitor|
+    \item ROS-Applikationen starten
+\end{enumerate}
