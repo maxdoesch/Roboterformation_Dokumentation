@@ -34,7 +34,7 @@ Da die Led Bausteine 5V Logikpegel benötigen, wird das 3.3V Signal vom ESP32 mi
 \subsection{ESP32}
 Das Herzstück des Roboters bildet ein ESP32-WROVER-E in der 8MB Flash Variante. 
 Dieses SOM (System On Module) von Espressife beinhaltet einen Xtensa LX6 Dualcore Mikrocontroller mit 520kB internen
-und 8MB externen SRAM, sowie 2MB internen und 8MB externen Flash Speicher. 
+und 8MB externen SRAM, sowie 8MB externen Flash Speicher. \cite{ESP32WROVER-E}
 Die externen Speicher sind über SPI verbunden und werden über eine MMU (Memory Management Unit) in den Speicherbereich gemappt.
 Des Weiteren bietet der ESP32 verschiedene Peripherie wie Timer, GPIO, UART, I2C, PWM und Wifi.
 Espressife stellt mit dem ESP-IDF Framework unter anderem ein Hardwareabstraktions Layer bereit über welches Peripherie leicht initialisiert und gesteuert werden kann.
@@ -100,7 +100,7 @@ Diagramm \ref{fig:esp32pinlayout} und Tabelle \ref{tab:esp32pinbelegung} beschre
     \caption{ESP32 Power-Up}
     \label{fig:esp32powerup}
 \end{figure}
-Wie die Illustation \ref{fig:esp32powerup} zeigt muss der Enable Pin (im Datenblatt CHIP\_PU genannt) für eine bestimmte Zeit $t_0 = 50\mu s$ nach dem Power-Up auf Low gehalten werden.
+Wie die Illustation \ref{fig:esp32powerup} zeigt muss der Enable Pin (im Datenblatt \cite{ESP32} CHIP\_PU genannt) für eine bestimmte Zeit $t_0 = 50\mu s$ nach dem Power-Up auf Low gehalten werden.
 Das gleiche gilt für den Reset des Mikrocontrollers $t_1 = 50\mu s$. Die Power-Up/Reset Schaltung könnte zum Beispiel als Parallelschaltung eines RC Tiefpasses mit einem Taster umgesetzt werden.
 
 \subsubsection*{Boot-Mode}
@@ -117,25 +117,25 @@ Der Download Boot dient zum flashen einer neuen Firmware. Für den Wechsel zwisc
     \caption{ESP32 Boot Mode}
     \label{tab:esp32bootmode}
 \end{table}
-Da GPIO2 intern auf LOW gezogen wird, muss dieser Pin nicht verbunden werden. Die Boot Modus Wahl geschieht dann alleine über GPIO0.
+Da GPIO2 intern auf LOW gezogen wird, muss dieser Pin nicht verbunden werden. Die Boot Modus Auswahl geschieht dann alleine über GPIO0.
 
 \subsubsection*{UART0}
-Über die Pins UART0-RX/TX wird eine serielle Verbindung erstellt. 
-Diese ermöglicht das Schreiben in den Flash-Speicher im Dowload-Boot und einen seriellen Monitor für z.B. printf Debugging im SPI-Boot.
+Über die Pins UART0-RX/TX wird eine serielle Verbindung hergestellt. 
+Diese ermöglicht zum Beispiel das Schreiben in den Flash-Speicher im Dowload-Boot und einen seriellen Monitor für z.B. printf Debugging im SPI-Boot.
 
 \subsubsection*{JTAG}
-TMS, TDI, TCK, TDO können für JTAG-Debugging verwendet werden.
+TMS, TDI, TCK, TDO können für das JTAG-Debugging verwendet werden. 
 
 \subsubsection*{I2C}
-Auf beiden Platinen sind Anschlüsse an den I2C-Bus des ESP32 vorgesehen. Über diesen soll aber primär eine 9DOF-IMU (Intertial Measurement Unit) betrieben werden.
+Auf beiden Platinen sind Anschlüsse an den I2C-Bus des ESP32 vorgesehen. Über diesen soll primär eine 9DOF-IMU (Intertial Measurement Unit) betrieben werden.
 
 \subsection{CP2102N}
 \label{sub:cp2102n}
-Der CP2102N wirkt als "Übersetzer" zwischen der USB2.0 Fullspeed Schnittstelle und dem UART Interface.
+Der Chip CP2102N \cite{CP2102N} wirkt als "'Übersetzer"' zwischen der USB2.0 Fullspeed Schnittstelle und dem UART Interface.
 Somit kann durch einen Virtual COM Port Treiber am Host-PC über USB- auf die UART-Schnittstelle zugegriffen werden.
 Die UART Seite wird über die Pins RXD/TXD und das differenzielle USB Signal über die D+/D- Pins mit dem CP2102N verbunden.
 Dies ermöglicht das Programmieren des ESP32 einfach über USB. Außerdem kann auch auf den seriellen Monitor zugegriffen werden.
-Des Weiteren kann das RTS (Ready to Send; LOW aktiv) und DTR (Data Terminal Ready; LOW aktiv) Signal zur Auswahl des Boot Modus und Neustarten des Mikrocontrollers verwendet werden.
+Des Weiteren kann das RTS (Ready to Send; LOW aktiv) und DTR (Data Terminal Ready; LOW aktiv) Signal zur Auswahl des Boot Modus und Neustarten des ESP32 Mikrocontrollers verwendet werden.
 Die folgende Tabelle \ref{tab:cp2102n_dtr_rts} zeigt die notwendige logische Verknüfung der Signale.
 
 \begin{table}[H]
@@ -201,14 +201,14 @@ Die Drehrichtung wird über das Vorzeichen der Phasendifferenz der Signale von d
     \label{tab:drv8841_hbridgelogic}        
     \end{minipage}
 \end{figure}
-Mit der doppel H-Brücke DRV8841 von Texas Instruments können zwei DC-Motoren im 2 Quadranten-Betrieb betrieben werden.
+Mit der doppel H-Brücke DRV8841 \cite{DRV8841} von Texas Instruments können zwei DC-Motoren im 2 Quadranten-Betrieb betrieben werden.
 Die beiden Motorausgänge (AOUT/BOUT) dürfen jeweils mit bis zu 2.5A belastet werden. 
 Die Pololu 20D Motoren haben einen Stillstandsstrom von maximal 1.6A. 
 Somit sollte der Treiber auch ohne die interne Strombegrenzung sicher betrieben werden können.
 Dies bedeutet die Pins AI0, AI1, BI0, BI1 müssen nicht verbunden werden, ISENA und ISENB können direkt mit GND verbunden werden
 und AVREF, BVREF werden auf 3.3V gezogen.
-Geschwindigkeit und Drehrichtung der Motoren wird über die Pegel und Pulseweite der (AIN1/AIN2; BIN1/BIN2) 
-Eingangssignale gesteuert. \ref{tab:drv8841_hbridgelogic}
+Geschwindigkeit und Drehrichtung der Motoren wird über die Pulseweite der (AIN1/AIN2; BIN1/BIN2) 
+Eingangssignale gesteuert. Abbildung \ref{tab:drv8841_hbridgelogic} zeigt die logische Verknüfung der Eingangs- und Ausgangssignale der H-Brücke.
 Um den Motortreiber zu aktivieren müssen nRESET und nSLEEP auf 3.3V gezogen werden.
 Des Weiteren ist auch noch ein Bootstrap-Kondensator zwischen den Pins CP1/CP2 als Ladepumpe notwendig.
 
@@ -229,13 +229,13 @@ Des Weiteren ist auch noch ein Bootstrap-Kondensator zwischen den Pins CP1/CP2 a
         \label{fig:marvelmind_micpinout}      
     \end{minipage}
 \end{figure}
-Der Marvelmind Mini-Rx Beacon empfängt die Ultraschallsignale der HW4.9 Beacons für die Berechnung der Pose des Roboters.
-Über die integrierte UART Schnittstelle kann dann die Pose an den Mikrocontroller gesendet werden.
-Da durch das Modul effektiv eine dritte Platine entsteht, wurde darauf geachtet diese möglichst platzschonend in den Platinenstack zu integrieren.
-Hierfür wird das Gehäuse und der eingebaute Akku entfernt. Die Stromversorgung wird über auf der LED Platine erzeugte 5V gewährleistet.
+Der Marvelmind Mini-Rx Beacon \cite{Marvelmind} empfängt die Ultraschallsignale der HW4.9 Beacons für die Berechnung der Pose des Roboters.
+Über die integrierte UART Schnittstelle wird die Pose an den Mikrocontroller gesendet.
+Da das Modul eine dritte Platine ist, wurde darauf geachtet diese möglichst platzschonend in den Platinenstack zu integrieren.
+Hierfür musste das Gehäuse und der eingebaute Akku entfernt werden. Die 5V Stromversorgung wird von der LED Platine gewährleistet.
 Die 5V Spannung sowie die seriellen Signale RX/TX sind über die interne Molex PicoBlade Steckverbindung \ref{fig:marvelmind_molexpinout} mit dem Modul verbunden.
 Da die UART Schnittstelle mit 3.3V Logikpegeln arbeitet kann diese ohne Probleme direkt mit dem ESP32 verbunden werden.
-Des Weiteren soll das eingebaute Mikrofon durch zwei externe ersetzt werden. Diese sind über das 2.0mm 2x4 Pinout mit dem Mini-RX verbunden \ref{fig:marvelmind_micpinout}.
+Des Weiteren wurde das eingebaute Mikrofon durch zwei Externe ersetzt. Diese sind über das 2.0mm 2x4 Pinout mit dem Mini-RX verbunden \ref{fig:marvelmind_micpinout}.
 
 \subsection{WS2815B}
 \begin{figure}[H]
@@ -244,17 +244,17 @@ Des Weiteren soll das eingebaute Mikrofon durch zwei externe ersetzt werden. Die
     \caption{WS2815B Pinout}
     \label{fig:ws2815B_pinout}
 \end{figure}
-Der WS2815B ist eine RGB-Led mit eingebautem LED-Treiber. Dieser Baustein kann über die Pins DO, DIN in Reihe zu einem Led-Array verschalten werden. 
+Der Chip WS2815B ist eine RGB-Led mit integriertem LED-Treiber. Dieser Baustein kann über die Pins DO, DIN in Reihe zu einem Led-Array verschalten werden. 
 Der RGB Farbwert wird in einem 24Bit (8Bit grün, 8 Bit rot, 8 Bit blau) Feld codiert. Dieser Wert wird für alle LEDs in einem Datenstrom kaskadiert und an den Eingang DIN der erste LED gesendet.
 Diese schneidet sich den ersten Farbwert ab und gibt den restlichen Datenstrom über DO an die nächste LED weiter. Somit sind alle Bausteine einzeln adressierbar.
 Des Weiteren wird 0 und 1 nicht über den Wert der Spannungspegel codiert. Um ein Bit zu übertragen benötigt es zu Beginn eine positive Flanke, dann eine negative und zum Schluss wieder ein positive Flanke.
 Der Wert wird dann in die Dauer der High und Low-Phasen codiert.
 Die LED wird mit 12V gespeist. Die Logikpegel der Datensignale arbeiten allerdings mit 5V Spannung. An den VCC Pin kann ein Entkopplungskondensator angeschlossen werden.
-Außerdem wird der Eingang BIN mit DO der vorletzten LED verbunden und bringt somit Redundanz beim Aufall eines Treibers.
+Außerdem wird der Eingang BIN mit DO der vorletzten LED verbunden und bringt somit Redundanz beim Aufall einer LED.
 
 \subsection{PI4ULS5V201}
 Da die LED-Treiber 5V Signalpegel benötigen, können diese nicht direkt mit dem ESP32 angesteuert werden.
-Der PI4ULS5V201 ist ein Level-Shifter IC und kann somit den 3.3V Pegel des ESP32 auf die benötigten 5V verstärken. 
+Der Chip PI4ULS5V201 \cite{PI4ULS5V201} ist ein Level-Shifter IC und kann den 3.3V Pegel des ESP32 auf die benötigten 5V verstärken. 
 
 \subsection{TPS54331}
 \label{sub:tps54331}
@@ -264,22 +264,23 @@ Der PI4ULS5V201 ist ein Level-Shifter IC und kann somit den 3.3V Pegel des ESP32
     \caption{TPS54331 Pinout}
     \label{fig:tps54331_pinout}
 \end{figure}
-Auf den beiden Platinen gibt es insgesamt drei Spannungen (12V, 5V, 3.3V). 
-Mit dem Buck Converter TPS54331 werden jeweils 5V und 3.3V aus den 12V erzeugt.
-Da mit 5V und 3.3V keine Leistung gespeist wird, ist der Baustein mit maximal 3A Dauerstrom ausreichend dimensioniert.
+Auf den beiden Platinen existieren insgesamt drei verschiedene Spannungen (12V, 5V, 3.3V). 
+Mit dem Buck Converter TPS54331 \cite{TPS54331} werden jeweils 5V und 3.3V aus 12V erzeugt.
+Da mit 5V und 3.3V kein großer Verbraucher gespeist wird, ist der Baustein mit maximal 3A Dauerstrom ausreichend dimensioniert.
 Abbildung \ref{fig:tps54331_pinout} zeigt eine typische Verschaltung des Buck Converters.
 Die Ausgangsspannung kann über die beiden Widerstände $R_{D1}$ und $R_{D2}$ eingestellt werden.
-Das Datenblatt liefert eine Tabelle für die Dimensionierung aller passiven Bauelemente je nach Eingangs- und Ausgangsspannung.
+Das Datenblatt liefert eine Tabelle zur Dimensionierung aller passiven Bauelemente je nach benötigter Eingangs- und Ausgangsspannung.
 Die beiden Widerstände $R_{en1}$ und $R_{en2}$ am EN Eingang dienen zur Einstellung des erlaubten Spannungsbereiches für VIN und werden mit folgender Formel berechnet:
 $$R_{en1} = \frac{V_{start} - V_{stop}}{3\mu A}$$
 $$R_{en2} = \frac{1.25V}{\frac{V_{start} - 1.25V}{R_{en1}} + 1\mu A}$$
 
 \section{Schaltplan}
 Die Schaltpläne für dieses Projekt wurden mit KiCad erstellt. KiCad ist ein freies ECAD Programm unter der GNU GPL Lizenz. 
-Es integriert unter anderem Tools wie einen Schaltplan Editor "Eeschema" und einen Layout Editor "PCBNew".
+Es beinhaltet unter anderem das Tool "'Eeschema"' ein Schaltplan Editor und "'PCBNew"' zur Erstellung des PCB Layouts.
 Die beiden Schaltpläne MainPCB und LedPCB für dieses Projekt liegen als KiCad und PDF Dateien bei.
 Die Bauteile wurden nach den Vorgaben und Applikationsbeispielen in den Datenblättern verschaltet.
-Aus diesem Grund wird im Folgenden nur auf Besonderheiten eingegangen.
+Aus diesem Grund wird im Folgenden nur auf Besonderheiten im Schaltplan eingegangen.
+Die vollständigen Schaltpläne für beide Platinen befinden sich im Anhang \ref{ch:mainpcb} und Anhang \ref{ch:ledpcb} am Ende dieser Dokumentation.
 
 \subsection*{Hauptschalter und Verpolungsschutz}
 \begin{figure}[H]
@@ -304,8 +305,8 @@ Die Sicherung F1 schützt den Rest der Schaltung vor Überlast und Kurzschluss.
     \caption{KiCad Eingangsquellenschutz}
     \label{fig:kicad_eingangsquellenschutz}
 \end{figure}
-Die obere Schaltung befindet sich am Eingang des 3.3V Spannungswandlers.
-Da dieser den Mikrocontroller versorgt, muss der Buck Converter über die LiIon Akkus (12V), USB (5V) und JTAG-/Programmierinterface (5V) betrieben werden können.
+Die obere Schaltung befindet sich am Eingang des 3.3V Spannungswandlers. 
+Da dieser den Mikrocontroller versorgt, muss der Buck Converter über die LiIon Akkus (12V), USB (5V) und JTAG-/Programmierinterface (5V) betrieben werden können. 
 Es reicht nicht aus die verschiedenen Spannungschienen direkt zu verbinden, 
 da sonst die Gefahr eines Kurzschlusses zwischen den Potentialen besteht, wenn mehrere Spannungsquellen gleichzeitig aktiv sind.
 VBUS und 5VD werden durch Dioden vor Potentialausgleich geschützt. Diese Spannungen werden nur zum Debuggen verwendet. 

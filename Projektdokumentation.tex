@@ -15,6 +15,7 @@
 \pagestyle{plain}
 %\cleardoublepage
 \pagestyle{scrheadings}
+\pagenumbering{arabic}
 % ---------------------------------------------------------------------------
 \phantomsection
 \thispagestyle{plain}
@@ -24,7 +25,6 @@
 
 % Preface --------------------------------------------------------------------
 \phantomsection
-\pagenumbering{Roman}
 \pdfbookmark[1]{Inhaltsverzeichnis}{inhalt}
 \tableofcontents
 
@@ -47,20 +47,25 @@
 % \clearpage
 
 % Inhalt ---------------------------------------------------------------------
-\pagenumbering{arabic}
 \input{Inhalt.tex}
 
 % Literatur ------------------------------------------------------------------
 \clearpage
 \renewcommand{\refname}{Literaturverzeichnis}
 \bibliography{Bibliographie}
-\bibliographystyle{Allgemein/natdin} % DIN-Stil des Literaturverzeichnisses
-\input{Erklaerung}
+\bibliographystyle{dinat} % DIN-Stil des Literaturverzeichnisses
+
 
 % Anhang ---------------------------------------------------------------------
 \clearpage
 \appendix
-\pagenumbering{roman}
 
+\input{Erklaerung}
+
+\chapter{Main-PCB} \label{ch:mainpcb}
+\includepdf[angle=90]{figures/Anhang/Main_PCB.pdf}
+
+\chapter{LED-PCB} \label{ch:ledpcb}
+\includepdf[angle=90]{figures/Anhang/LED_PCB.pdf}
 
 \end{document}
