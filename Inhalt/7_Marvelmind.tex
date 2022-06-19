@@ -1,5 +1,132 @@
 % !TEX root = ../Projektdokumentation.tex
 \chapter{Marvelmind}\label{ch:marvelmind}
+In diesem Kapitel wird beschrieben, wie der Aufbau seitens Marvelminds war.
+Es wird dargestellt, welche Verbesserungen gegenüber der Vorgängergruppe ermittelt werden konnten.
+An dieser Stelle soll auch auf die Dokumentation der Mastergruppe \cite{ReSiSchwa} hingewiesen werden.
+Diese erläutern das grundlegende Konzept und die Hintergründe der Marvelmind-Beacons, sowie erste Einrichtungsschritte.
+Wurde noch nicht mit dem Marvelmind Lokalisierungssystem gearbeitet, wird empfohlen das Kapitel 7 der Dokumentation \cite{ReSiSchwa} zu lesen und als Referenz zu verwenden.
+Um Redundanzen zu vermeiden, werden auf diese Details in dieser Projektarbeit-Dokumentation nicht mehr eingegangen.\\
+Im Folgenden werden die Einstellungen und der fortlaufende Lernprozess beschrieben, der zu wichtigen Erkenntnissen führte, die in der Nutzung des Marvelmind-Systems zu beachten sind.
+Diese sind die Grundlage für die herausgearbeiteten Ergebnisse.\\
+Zur weiteren Nutzung, Einrichtung und Weiterentwicklung durch eine spätere Gruppe sollte die nachfolgende Beschreibung ausreichend sein, um eine erfolgreiche Inbetriebnahme dés Marvelmind-Systems vornehmen zu können.
+
+
 \section{Marvelmind-Aufbau}
+Der Aufbau des Marvelmindsystems ist in dieser und den vorangegangenen Projektarbeiten als inverse Architektur realisiert.
+Dies bedeutet, dass die stationären Beacons Ultraschallsignale aussenden und die mobilen Beacons diese empfangen.
+Deshalb müssen die stationären Beacons jeweils unterschiedliche Frequenzen nutzen.\\[\baselineskip]
+Zu Beginn unserer Projektarbeit wurden uns zwei stationäre Beacons (1x 20,2 kHz und 1x 32,7 kHz) sowie ein mobiler Beacon und ein dem Marvelmind-System dazugehöriges Modem übergeben.
+Diese wurden wie in der Abbildung \ref{fig:marv_two_beacons} in einer Ebene angeordnet.
+Hierzu wurden sie mit circa 6 m Abstand voneinander an einer Wand angebracht.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/Marvelmind/zweiBeaconsAufbau}
+    \caption{Schematischer Aufbau bei einer Nutzung von zwei stationären Beacons}
+    \label{fig:marv_two_beacons}
+\end{figure}
+An dieser Stelle soll betont werden, dass bei der Platzierung der Beacons grundsätzlich darauf geachtet werden muss, dass sowohl die stationären als auch die mobilen Beacons zueinander jeweils Sichtkontakt haben müssen.
+Somit werden störende Reflexionen der Ultraschallsignale vermieden, die zu fehlerhaften und ungenauen Lokalisationsdaten führen können.\\
+Trotz eines solchen Aufbaus konnten mit zwei vorhandenen statiionären Beacons keine zuverlässigen Messdaten bestimmt werden.
+Die Position des Roboters, an dem ein mobiler Beacon befestigt wurde, konnte nicht genau ermittelt werden.
+Vielmehr gab es häufige "`Sprünge"' des Roboters auf der Karte im Marvelmind-Dashboard, da zeitweise die Verbindung zum mobilen Beacon scheinbar abgebrochen ist.\\[\baselineskip]
+Aufgrund dessen wurde ein dritter stationärer Beacon bestellt, der mit einer Frequenz von 45 kHz betrieben wurde.
+Dadurch erhoffte man sich mittels der Trilateration bessere, genauere und stabile Messdaten zu erhalten.\\
+Für zukünftige Gruppen ist hier zu erwähnen, dass bei Nachbestellungen (Austausch, Reparatur oder Ergänzung eines stationären Beacons) explizit die gewünschte Ultraschallfrequenz anzugeben ist.
+Nach Erfahrungsberichten scheinen Onlineshops gerne, trotz Angabe der Wunschfrequenz, standardmä{\ss}ig einen 20 kHz Beacon zu liefern.\\
+Nachdem der dritte Beacon geliefert wurde, ergänzten wir diesen zum bereits existierenden Aufbau.
+So platzierten wir den neuen Beacon an einer weiteren Wand, während die zwei vorherigen Beacons aufgebaut in einer Ebene verblieben.
+Somit ergab sich circa eine "`L-förmige"' Anordnung.
+Diese ist schematisch in Abbildung xx zu sehen.
+<Bild einfügen>
+
+Trotz des Hinzufügens eines dritten Beacons war allerdings weiterhin keine wirkliche Verbesserung in der Lokalsierung des Roboters und in der Stabilität der Marvelmind-Messdaten zu erkennen.
+Daher probierten wir eine unterschiedliche Anordnung, die letztlich zu deutlich besseren Messergebnissen führte.\\
+So wurden die drei stationären Beacons nun jeweils an einer unterschiedlichen Wand angeordnet.
+Dadurch bildeten die Beacons ungefähr Eckpunkte eines Dreiecks ab, was in Abbildung \ref{fig:marv_three_beacons} sichtbar wird.
+Hierbei waren die Eckpunkte ungefähr fünf Meter voneinander entfernt.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/Marvelmind/dreiBeaconsAufbau}
+    \caption{Verbesserter schematischer Aufbau bei einer Nutzung von drei stationären Beacons}
+    \label{fig:marv_three_beacons}
+\end{figure}
+Nachdem die Karte im Dashboard entsprechend des Hardware-Aufbaus geändert wurde, konnte eindeutig eine Besserung der Lokalisierung festgestellt werden: 
+Der mobile Beacon auf dem Roboter wurde genauer lokalisiert, stabilere Messdaten ermittelt und nun passierten auch deutlich weniger häufige Verbindungsabbrüche, bei denen der Roboter in der Lokalisierungskarte augenscheinlich "`Sprünge"' vornahm.
+Auffällig war jetzt auch au{\ss}erdem, dass wenn doch eine völlig falsche Position des Roboters angezeigt wurde, diese relativ schnell korrigiert wurden, sodass der Roboter nach einigen wenigen Augenblicken wieder korrekt in der Karte zu verordnen war.\\[\baselineskip]
+%
+Gleichzeitig konnte festgestellt werden, dass auch die räumliche Gegebenheit die Qualität der Marvelmind Ergebnisse beeinflusst.
+In den Gebäuden der Hochschule in der Wassertorstraße gibt es einige Räume, die keine geschlossene Deckenabhängung haben.
+Dies hat sich tatsächlich als Vorteil erwiesen, da im ersten Versuch ein Raum verwendet wurde, bei dem die Decke völlig geschlossen war.
+Unter diesen Bedingungen war zu beobachten, dass sich die Messdaten im Vergleich zu einem Raum mit offener Decke als schlechter erwiesen.
+Daher vermuten wir, dass durch die geschlossene Decke und der somit zusätzlichen Reflexionsfläche das Marvelmindsystem Schwierigkeiten hatte die Laufzeiten korrekt zu berechnen.
+Dadurch war auch mit drei Beacons keine deutliche Verbesserung unter diesen Umständen in der Lokalisierung zu beobachten.\\
+Für die Zukunft ist als Projekt-Arbeitsstätte, wenn möglich, ein leerer Seminarraum zu empfehlen.
+Dieser sollte circa eine freie Bodenfläche mit den Dimensionen von 7 x 7 Metern besitzen.
+Wichtig ist, dass keine unnötigen Reflexionen, wie zum Beispiel durch Tische oder Ähnliches, geschaffen werden.
+Daher sind beispielsweise das Regelungstechnik-Labor oder ein Büro ungeeignet, da die Raum- und Bodenfläche schlichtweg zu gering ist.\\
+Genauso ist es wichtig, dass die stationären Beacons jederzeit eine direkte Sichtverbindung haben können.\\[\baselineskip]
+
+\section{Marvelmind-Dashboard}
+Marvelmind bietet in den verschiedenen Betriebssystem-Umgebungen jeweils ein \texttt{Marvelmind-Dashboard} an, das eine grafische Übersicht der Marvelmind-Beacons und zudem Einstellungsmöglichkeiten bietet.
+Allerdings ist nach Erfahrungsberichten eine Installation unter Windows zu empfehlen. Diese funktionierte tendenziell eher reibungslos als unter Linux.\\
+Für die grundsätzliche Trajektorienplanung und die entsprechende Ausführung der Trajektorien ist die Software eigentlich nicht notwendig.
+Vielmehr sind die durch Marvelmind bereitgestellten Lokalisierungsdaten essentiell.
+Allerdings ist ein grafischer Überblick definitiv von Vorteil, da es dadurch optisch leicht festzustellen ist, ob die Lokalisierung fehlerhaft ist, somit den Reglern falsche Positionsdaten weitergegeben werden und letzlich die Trajektorie nicht korrekt ausgeführt wird.\\[\baselineskip]
+\subsection{(Erst-)Einrichtung des Marvelmind-Systems}
+Die erstmalige Treiberinstallation der Beacons ist durch uns schon vorgenommen worden.
+Werden Beacons allerdings ausgetauscht beziehungsweise neue hinzugefügt, darf nicht vergessen, dass vor der Nutzung noch die Ersteinrichtung durchzuführen ist. 
+Die Inbetriebnahme wird im Detail im Kapitel 7.5 der Dokumentation \cite{ReSiSchwa} beschrieben.
+\subsection{Einstellungen im Marvelmind-Dashboard}
+Hier werden im nachfolgenden Teil die wichtigsten Einstellungen, die im Dashboard vorgenommen werden, zusammenfassend dargestellt.
+Da in der Projektarbeit die inverse Architektur als Marvelmind-Systemstruktur verwendet wird, können die stationären Beacons nicht automatisch ihre Positionen in der Karte anzeigen.
+Daher muss dies manuell im Dashboard eingestellt werden.
+Am unteren Rand des Dashboards werden alle 250 möglichen Beacons aufgelistet.
+Das System erkennt nicht automatisch, welche Beacons mit der entsprechenden Adresse aktiv sind und verwendet werden sollen.
+Damit die genutzten Beacons aktiviert werden, müssen diese "`aufgeweckt"' werden.
+Dies geschieht, indem man in der Auflistung der gesamt möglichen Beacons jeweils der Beacon mit der korrekten Adresse angeklickt werden.\\[\baselineskip]
+In dieser Projektarbeit wurden folgende Beacons mit den entsprechenden Adressen verwendet:
+\begin{table}[H]
+    \begin{tabular}{|l|c|c|l|}
+    \hline
+    \textbf{Marvelmind-Bestandteil} & \textbf{Frequenz} & \textbf{Adresse} & \textbf{Beschreibung}                 \\ \hline
+    Super Beacon HW 4.9             & 20,2 kHz          & 44               & stationärer Beacon                    \\
+    Super Beacon HW 4.9             & 32,7 kHz          & 77               & stationärer Beacon                    \\
+    Super Beacon HW 4.9             & 49 kHz            & xx               & stationärer Beacon                    \\
+    Beacon-Mini-RX                  & /                 & 58               & mobiler Beacon (Hedgehog) auf Roboter \\
+    Beacon-Mini-RX                  & /                 & 70               & mobiler Beacon (Hedgehog) auf Roboter \\
+    Modem HW 4.9                    & /                 & 01               & Modem                                 \\ \hline
+    \end{tabular}
+    \end{table}
+Dementsprechend müssen diese Beacons mit den jeweiligen Geräteadressen im unteren Feld des Marvelmind-Dashboards ausgewählt werden.
+Nachdem sie aufgeweckt wurden, sollten die Beacons in der Dashboard-Oberfläche nun auftauchen.\\
+Um die Einstellungen zu bearbeiten, muss die Schaltfläche \texttt{unfreeze submap} betätigt werden, da somit die Karte in den Bearbeitungsmodus übergeht.\\
+Mit einem Rechtsklick auf die Beacons im unteren Feld des Dashboards können nun weitere Einstellungen vorgenommen werden.
+Bei einer Ersteinrichtung müssen in diesem Schritt zum Beispiel die stationären Beacons noch jeweils einer Submap hinzugefügt.
+Alle Beacons sollten dann der gleichen Submap hinzugefügt werden.
+Da momentan drei stationäre Beacons verwendet werden, reicht hierzu eine Submap aus, da maximal vier Stück pro Submap verwendet werden können.\\
+Nach dem Markieren des Beacons werden zudem alle Parameter aufgelistet.
+So kann die Position der Beacons festgelegt werden, indem die Parameter in der Tabelle eingetragen werden.
+Hier wird die relative Position der Beacons zueinander eingetragen.
+Genauso ist es möglich die absolute Position der Beacons zum Koordinatensystem festzulegen.
+Dies kann über "`Manual setup coordinates"' nach einem Rechtsklick auf den entsprechenden Beacon geändert werden.
+So können die X, Y und Z-Koordinate im Koordinatensystem, welches im Dashboard angezeigt wird, eingetragen werden.
+Diese Angaben erfolgen in Metern und beziehen sich als Anhaltspunkt jeweils auf die Mitte des Beacons.\\[\baselineskip]
+Au{\ss}erdem müssen als Grundeinstellungen folgende Parameter konfiguriert werden:
+\begin{itemize}
+    \item "`Radio frequency band"' \rightarrow  868 MHz
+    \item "`Parameters of radio \rightarrow  Radio profile"' \rightarrow 153 Kbps
+    \item "`Device address"' \rightarrow  Festlegen der einzelnen Geräteadressen 
+\end{itemize}
+Nachdem alle Einstellungen vorgenommen wurden, kann der Bearbeitungsmodus verlassen werden.
+Hierzu muss die Schaltfläche \texttt{freeze submap} betätigt werden.
+
 \section{Probleme in der Nutzung von Marvelmind}
+Obwohl während dieser Projektarbeit einige sehr wichtige Erkenntnisse gewonnen wurden, die die Genauigkeit und Stabilität der Lokalisierungsdaten des Marvelmind-Systems verbesserten, bleiben für einige Punkten weiterhin ein Raum für Verbesserungen.
+Selbst wenn die Lokalisierung mit der ergänzten Hardware und dem verbesserten Aufbau deutlich optimiert wurden, kann Stand jetzt keine hundertprozentige Zuverlässigkeit gewährleistet werden.
+In einigen Momenten bleibt weiterhin das Problem bestehen, dass Marvelmind ungenaue Lokalisationsdaten ermittelt, wenngleich das System diese meist zeitnah korrigiert.
+Allerdings können zu diesem Zeitpunkt keine weiteren expliziten Lösungsansätze vorgeschlagen werden, da diese von unserer Projektgruppe letztlich bereits durchgeführt wurden.
+Allerdings besteht die Hoffnung und die Zielsetzung mit der Erweiterung des Kalman-Filters der zeitweisen (Un-)Genauigkeit der Positionsdaten entgegenzuwirken.\\[\baselineskip]
+Einige dieser Erkenntnisse konnten auch durch den Dialog mit Marvelmind als direkter Kontakt gewonnen werden.
+Falls somit zukünftig Probleme mit dem Marvelmind-System auftreten, kann daher eine Anfrage an Marvelmind in Erwägung gezogen werden, da nach einem Beitrag in deren Forum zeitnah auch eine hilfreiche Rückmeldung kam.
+
 

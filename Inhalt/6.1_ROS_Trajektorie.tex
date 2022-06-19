@@ -1,3 +1,25 @@
 % !TEX root = ../Projektdokumentation.tex
 \chapter{ROS-Trajektorie}\label{ch:ros-trajec}
+Dieses Kapitel behandelt die Umsetzung der durch die Vorgänger-Mastergruppe entwickelte Trajektorienplanung.
+Genauso wird beschrieben, wie diese in ROS durchgeführt wird.
+Falls zukünftig Änderungen und Erweiterungen vorgenommen werden, sollte die Vorgehensweise dazu ersichtlich werden.
+
 \section{Trajektorienplanung}
+\begin{lstlisting}[language=cs,caption={},captionpos=b]
+    void ToRobot::storeInTrajectory(pos_d trajectory_state)
+    {
+    trajecgenerator::c_trajec trajectory_state_vector;
+
+    trajectory_state_vector.x = trajectory_state.x;
+    trajectory_state_vector.y = trajectory_state.y;
+    trajectory_state_vector.dx = trajectory_state.dx;
+    trajectory_state_vector.dy = trajectory_state.dy;
+    trajectory_state_vector.ddx = trajectory_state.ddx;
+    trajectory_state_vector.ddy = trajectory_state.ddy;
+    trajectory_state_vector.timestamp = ros::Time::now().toNSec();
+
+    trajectory.points.push_back(trajectory_state_vector);
+    }
+    
+\end{lstlisting}
+
