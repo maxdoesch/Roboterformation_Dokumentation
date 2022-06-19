@@ -11,33 +11,68 @@
 \end{figure}
 
 Dieses Kapitel soll einen Überblick über den Aufbau und die Kommunikation zwischen den Software Modulen in diesem Projekt geben.
-Für genauere Informationen wie z.B. zur Implementierung wird auf das Kapitel \ref{ch:esp32} und Kapitel \ref{ch:ros} verwiesen.
+Für genauere Informationen wird auf das Kapitel \ref{ch:esp32} und Kapitel \ref{ch:ros} verwiesen.
 Die Abbildung \ref{fig:systemarchitektur} zeigt, dass sich das Gesamtsystem in drei Teile aufteilen lässt.
 Diese unterscheiden sich durch den Ausführungsort der jeweiligen Software.
 
 Jeder Roboter wird durch einen ESP32 Mikrocontroller gesteuert. 
 Die Firmware auf den Robotern ist identisch bis auf eine Stringkonstante im Flash des Mikrocontrollers.
 Dieser Name des Roboters dient als eindeutiges Identifikationsmerkmal für die oberen Softwareschichten.
-Über die Wifi Schnittstelle verbindet sich der Mikrocontroller mit einem WLAN Access Point und kann somit eine TCP Verbindung 
+Über die Wifi Schnittstelle verbindet sich der Mikrocontroller mit einem WLAN Access Point und kann dann eine TCP Verbindung 
 mit einem Rechner im Netzwerk aufbauen.
 
-Dieser TCP Server ist eine ROS Node und stellt über ein eigenes Applikationsprotokoll ein Interface zwischen ROS Topics und ESP32 bereit.
-Mit der entsprechenden TCP Client Task auf dem ESP32 wirkt es so als wäre der Mikrocontroller direkt in das ROS Netzwerk eingebunden.
-Es werden somit Roboterposition "gepublisht" und Topics wie Robotergeschwindigkeit, Zielpunkt, LED-Farben/Muster und Trajektorien durch den Roboter "subscribed".
+Dieser TCP Server ist eine ROS Node und stellt über ein eigenes Applikationsprotokoll eine Schnittstelle zwischen ROS Topics und ESP32 bereit.
+Durch den entsprechenden TCP Client auf dem ESP32, wirkt es so als wäre der Mikrocontroller direkt in das ROS Netzwerk eingebunden.
+Es werden zum Beispiel Roboterposition "'gepublisht"' und Topics wie Robotergeschwindigkeit, Zielpunkt, etc. durch den Roboter "'subscribed"'.
 Der Hintergedanke zur Verwendung des ROS Frameworks ist die Auslagerung der rechenleistungsintensiven Trajektoriengenerierung 
 von Mikrocontroller auf einen leistungsstarken Rechner. Der Roboterschwarm wird somit zentral durch ROS koordiniert.
 Während in diesem Projekt nur einfache Trajektorien unabhängig von den einzelnen Roboterpositionen generiert werden können, 
-sollte dies zukünftig durch eine komplexe Multiroboterpfadplanung ersetzt werden. 
+sollte zukünftig eine komplexe Multiroboterpfadplanung die Trajektorien generieren. 
 Die ROS Nodes tauschen sich über Topics aus. 
 Damit zwischen den einzelnen Roboter unterschieden werden kann, besteht der Topicname aus einem Namespace und der Topicbezeichung: 
 \begin{center}
-    \emph{/namespace/topicbezeichnung}
+    \verb|/namespace/topicbezeichnung|
 \end{center}
-Der Namespace ist die Identifikationskonstante im Flash des ESP32 und wurde meist auf \emph{robot\_} + Nummerierung gesetzt.
+\verb|namespace| ist die Identifikationskonstante im Flash des ESP32 und wurde in diesem Projekt auf \verb|robot_| + Nummerierung gesetzt.
+Damit der ESP32 mit den Nachrichten auf der Topics umgehen kann, wurde für alle verwendeten ROS-Nachrichtentypen ein entsprechender Datentyp in der ESP32 Software implementiert.
+Tabelle \ref{tab:ros_topics} zeigt eine Auflistung aller vom Roboter genutzten Topics.
 
-Damit das Gesamtsystem über eine benutzerfreundliche Schnittstelle einfach bedient werden kann, wurde eine Webb-App entwickelt.
-Die Webb-App läuft über den Browser auf verschiedenen Endgeräten und kommuniziert über das Websocket Protokoll mit einer weiteren ROS Node.
-Ursprünglich war geplant die Trajektoriengenerierung über ROS Service Calls aus der Webbapp zu steuern. Dies konnte allerdings nicht mehr umgesetzt werden.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|}
+        Topic-Name   & ROS-Nachrichtentyp                 & ESP32 Datentyp                      \\ \hline
+        /goal\_point & geometry\_msgs::Point              & ros\_msgs::Point2D                  \\
+        /vel         & geometry\_msgs::Twist              & ros\_msgs::Twist2D                  \\
+        /trajectory  & trajecgenerator::c\_trajec\_vector & ros\_msgs::Trajectory               \\
+        /pose2D      & geometry\_msgs::Pose2D             & ros\_msgs::Pose2D                   \\
+        /cmd\_vel    & geometry\_msgs::Twist              & ros\_msgs::Twist2D                  \\
+        /pose        & geometry\_msgs::Pose2D             & ros\_msgs::Pose2D                   \\
+        /start\_log  & std\_msgs::String                  & ros\_msgs::String                   \\
+        /data\_log   & std\_msgs::String                  & ros\_msgs::String                   \\
+        /led         & std\_msgs::String                  & std\_msgs::String                  
+    \end{tabular}
+    \vspace{0.5cm}
+
+    \begin{tabular}{c|c|c|c}
+        Topic-Name   & sub & pub & Beschreibung                            \\ \hline
+        /goal\_point & X   &     & Anfahren eines bestimmten Punktes       \\
+        /vel         & X   &     & Steuerung der Robotergeschwindigkeit    \\
+        /trajectory  & X   &     & Abfahren der übertragenen Trajektorie   \\
+        /pose2D      &     & X   & Istposition des Roboters                \\
+        /cmd\_vel    &     & X   & Stellgeschwindigkeit (Simulationsmodus) \\
+        /pose        & X   &     & Istposition Roboter (Simulationsmodus)  \\
+        /start\_log  & X   &     & Starten des Datenloggings               \\
+        /data\_log   &     & X   & Logging Daten                           \\
+        /led         & X   &     & LED-Farben/Muster                      
+    \end{tabular}
+
+    \caption{Roboter ROS Topics}
+    \label{tab:ros_topics}
+\end{table}
+
+Damit das Gesamtsystem über eine benutzerfreundliche Schnittstelle einfach bedient werden kann, wurde eine Web-App entwickelt.
+Die Web-App läuft über den Browser auf verschiedenen Endgeräten und kommuniziert über das Websocket Protokoll mit einer weiteren ROS Node.
+Ursprünglich war geplant die Trajektoriengenerierung über ROS Service Calls aus der Web-App zu steuern. Dies konnte allerdings nicht mehr umgesetzt werden.
 Das gleiche gilt für das Anzeigen der Roboterpose und setzten von Zielpunkten.
 Zum Ende der Projektarbeit ist es möglich die Robotergeschwindigkeit und LED Muster/Farben über das Web Interface zu steuern.
 
@@ -80,7 +115,7 @@ Das Protokoll definiert insgesamt 5 verschiedene Pakete:
 Jedes Paket beginnt mit der jeweiligen Identifikationsnummer. Der restliche Aufbau ist Paketabhängig.
 Im Folgenden der Aufbau und der Nutzen der unterschiedlichen Pakete erklärt werden.
 
-\subsubsection{Initialisierungspaket}
+\subsubsection*{Initialisierungspaket}
 Das Initialisierungspaket ist das erste Paket, das nach Aufbau der TCP Verbindung vom Client an den Server geschickt wird.
 Dabei überträgt es den Roboternamen, der von der ROS Server Node als Topic Namespace genutzt wird.
 Das Initialisierungspaket wird nur vom Client an den Server geschickt werden.
@@ -94,7 +129,7 @@ Das Initialisierungspaket wird nur vom Client an den Server geschickt werden.
     \end{tabular}
 \end{table}
 
-\subsubsection{Advertise Paket}
+\subsubsection*{Advertise Paket}
 Das Advertise Paket entspricht dem Aufruf der ROSCPP Methode advertise().
 Dieses Paket kann nur vom Client an den Server geschickt werden.
 Dabei fordert dieser den Server dazu auf die übermittelte Topic mit dem übermittelten Nachrichtentyp in ROS zu "advertisen".
@@ -109,7 +144,7 @@ Erst nach dem Advertise Paket dürfen Nachrichten von der entsprechenden Topic m
     \end{tabular}
 \end{table}
 
-\subsubsection{Subscribe Paket}
+\subsubsection*{Subscribe Paket}
 Ähnlich wie das Advertise Paket teilt das Subscribe Paket dem Server mit dass der Client eine Topic mit dem entsprechenden Nachrichtentyp "subscriben" möchte.
 Auch das Subscribe Paket wird nur vom Client an den Server geschickt.
 Der Server darf erst nach dem er ein Subscribe Paket zu einer Topic empfangen hat, Publish Pakete an den Client weiterleiten.
@@ -123,7 +158,7 @@ Der Server darf erst nach dem er ein Subscribe Paket zu einer Topic empfangen ha
     \end{tabular}
 \end{table}
 
-\subsubsection{Keep-Alive Paket}
+\subsubsection*{Keep-Alive Paket}
 Das Keep-Alive Paket wird alle $500ms$ vom Client an den Server und vom Server an den Client geschickt. 
 Empfängt eine der beiden Seiten kein Keep-Alive für $3000ms$ wird ein Verbindungsabbruch festgestellt.
 Dies ist vor allem notwendig wenn keine Nutzdaten übertragen werden und zum Beispiel der Client abstürzt.
@@ -140,7 +175,7 @@ Dieser kann z.B. zur Zeitsynchronisation zwischen ROS und Roboter verwendet werd
     \end{tabular}
 \end{table}
 
-\subsubsection{Publish Paket}
+\subsubsection*{Publish Paket}
 Das Publish Paket dient der eigentlichen Übertragung von Nutzdaten vom Client zum Server und vom Server zum Client.
 Durch das Feld "Topic Name" können die Daten einer durch das Subscribe- und Advertise-Paket initialisierten Topic zugeordnet werden.
 Der Datenteil des Pakets unterscheidet zwischen Array- und Strukturdaten.

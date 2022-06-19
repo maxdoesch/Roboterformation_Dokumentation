@@ -1,11 +1,4 @@
-\documentclass[
-	ngerman,
-	toc=listof, % Abbildungsverzeichnis sowie Tabellenverzeichnis in das Inhaltsverzeichnis aufnehmen
-	toc=bibliography, % Literaturverzeichnis in das Inhaltsverzeichnis aufnehmen
-	footnotes=multiple, % Trennen von direkt aufeinander folgenden Fußnoten
-	parskip=half, % vertikalen Abstand zwischen Absätzen verwenden anstatt horizontale Einrückung von Folgeabsätzen
-	numbers=noendperiod % Den letzten Punkt nach einer Nummerierung entfernen (nach DIN 5008)
-]{report}
+\documentclass[ngerman]{report}
 %\pdfminorversion=5 % erlaubt das Einfügen von pdf-Dateien bis Version 1.7, ohne eine Fehlermeldung zu werfen (keine Garantie für fehlerfreies Einbetten!)
 \usepackage[utf8]{inputenc} % muss als erstes eingebunden werden, da Meta/Packages ggfs. Sonderzeichen enthalten
 
@@ -14,38 +7,36 @@
 \input{Allgemein/Seitenstil} % Definitionen zum Aussehen der Seiten
 \input{Allgemein/Befehle} % eigene allgemeine Befehle, die z.B. die Arbeit mit LaTeX erleichtern
 
+\setlength{\headheight}{43.6pt}
+
 \begin{document}
 
 % kann nach dem Lesen entfernt werden ---------------------------------------
 \pagestyle{plain}
-\cleardoublepage
+%\cleardoublepage
 \pagestyle{scrheadings}
+\pagenumbering{arabic}
 % ---------------------------------------------------------------------------
 \phantomsection
 \thispagestyle{plain}
 \pdfbookmark[1]{Deckblatt}{deckblatt}
 \input{Deckblatt}
-\cleardoublepage
+%\cleardoublepage
 
 % Preface --------------------------------------------------------------------
 \phantomsection
-\pagenumbering{Roman}
 \pdfbookmark[1]{Inhaltsverzeichnis}{inhalt}
 \tableofcontents
 
-\cleardoublepage
+%\cleardoublepage
 
 \phantomsection
 \listoffigures
-\cleardoublepage
+%\cleardoublepage
 
 \phantomsection
 \listoftables
-\cleardoublepage
-
-\phantomsection
-\lstlistoflistings
-\cleardoublepage
+%\cleardoublepage
 
 % \newcommand{\abkvz}{Abkürzungsverzeichnis}
 % \renewcommand{\nomname}{\abkvz}
@@ -56,20 +47,25 @@
 % \clearpage
 
 % Inhalt ---------------------------------------------------------------------
-\pagenumbering{arabic}
 \input{Inhalt.tex}
 
 % Literatur ------------------------------------------------------------------
 \clearpage
 \renewcommand{\refname}{Literaturverzeichnis}
 \bibliography{Bibliographie}
-\bibliographystyle{Allgemein/natdin} % DIN-Stil des Literaturverzeichnisses
-\input{Erklaerung}
+\bibliographystyle{dinat} % DIN-Stil des Literaturverzeichnisses
+
 
 % Anhang ---------------------------------------------------------------------
 \clearpage
 \appendix
-\pagenumbering{roman}
 
+\input{Erklaerung}
+
+\chapter{MainPCB} \label{ch:mainpcb}
+\includepdf[angle=90]{figures/Anhang/Main_PCB.pdf}
+
+\chapter{LedPCB} \label{ch:ledpcb}
+\includepdf[angle=90]{figures/Anhang/LED_PCB.pdf}
 
 \end{document}
