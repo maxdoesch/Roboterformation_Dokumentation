@@ -22,9 +22,10 @@ Hierfür müssen die Spannungen elektronisch getrennt werden, um einen Kurzschlu
 Der ESP32 kann über die USB-C Schnittstelle und eine separate serielle Schnittstelle programmiert werden.
 Für den 2 Quadranten betrieb der Motoren ist eine doppel H-Brücke vorgesehen. 
 Die Ist-Geschwindigkeit wird über Hallsensoren auf den Bürstenmotoren ermittelt.
+Die Motoren werden jeweils über das Molex Micro-Fit Stecksystem auf die MainPCB Platine aufgesteckt und werden anschließend mittels 3D-Druck Halterung an die Platine angeschraubt.
 Auf die zweite Platine wird der Marvelmind Mini-RX Empfänger aufgesteckt. Dieser kommuniziert über UART mit dem Mikrocontroller. 
-Die beiden externen Mikrofone können einfach auf die LED\_PCB Platine gelötet werden. 
-Da das Marvelmind Modul 5V benötigt werden diese über einen zweiten Buck-Converter erzeugt.
+Die beiden externen Marvelmind Mikrofone können einfach auf die LED\_PCB Platine gelötet werden. 
+Das Marvelmind benötigt 5V. Diese werden auf der LED\_PCB Platine erzeugt.
 Die 43 RGB Led-ICs werden über die 12V Spannung versorgt und mittels einer Datenleitung vom Mikrocontroller angesteuert.
 Da die Led Bausteine 5V Logikpegel benötigen, wird das 3.3V Signal vom ESP32 mittels 1-Bit Level Shifter verstärkt.
 
@@ -277,8 +278,7 @@ $$R_{en2} = \frac{1.25V}{\frac{V_{start} - 1.25V}{R_{en1}} + 1\mu A}$$
 \section{Schaltplan}
 Die Schaltpläne für dieses Projekt wurden mit KiCad erstellt. KiCad ist ein freies ECAD Programm unter der GNU GPL Lizenz. 
 Es beinhaltet unter anderem das Tool "'Eeschema"' ein Schaltplan Editor und "'PCBNew"' zur Erstellung des PCB Layouts.
-Die beiden Schaltpläne MainPCB und LedPCB für dieses Projekt liegen als KiCad und PDF Dateien bei.
-Die Bauteile wurden nach den Vorgaben und Applikationsbeispielen in den Datenblättern verschaltet.
+Der Schaltplan wurde nach den Vorgaben und Applikationsbeispielen in den Datenblättern der Bauelemente erstellt.
 Aus diesem Grund wird im Folgenden nur auf Besonderheiten im Schaltplan eingegangen.
 Die vollständigen Schaltpläne für beide Platinen befinden sich im Anhang \ref{ch:mainpcb} und Anhang \ref{ch:ledpcb} am Ende dieser Dokumentation.
 
@@ -295,7 +295,7 @@ Der IRF7404 ist ein PMOS Transistor mit niedrigem Drain-Source Widerstand.
 Befindet sich der Schalter SW1 in der dargestellten Stellung ist $V_{GS} = 0V$ und der Mosfet sperrt.
 In der zweiten Schalterstellung wird $V_{GS} = 0V - V_{+BATT} \approx -12V$ und der Mosfet wird leitend.
 Q2 wirkt als Verpolungsschutz für die gesamte Schaltung. Bei richtiger Polung von $V_{+BATT}$ ist die Body-Diode leitend und
-$V_{GS} \approx -12V$. Bei Verpolung hat das Transistor Gate das Potential 12V. $V_{GS} < 0V$ ist somit unmöglich und der Mosfet sperrt.
+$V_{GS} \approx -12V$. Bei Verpolung hat das Transistor Gate das Potential 12V. $V_{GS} < 0V$ ist somit nicht möglich und der Mosfet sperrt.
 Die Sicherung F1 schützt den Rest der Schaltung vor Überlast und Kurzschluss.
 
 \subsection*{Eingangsquellenschutz}
@@ -322,15 +322,15 @@ Sind 12V verbunden schaltet Q3 immer durch da $V_{GS} < 0V$. Falls nur VBUS oder
     \caption{KiCad Reset- und Bootmodeschaltung}
     \label{fig:kicad_resetboot}
 \end{figure}
-In \ref{sub:cp2102n} wurde gezeigt, dass es möglich ist den ESP32 über das DTR und RTS Signal neuzustarten und den Bootmodus zu wechseln.
+In Kapitel \ref{sub:cp2102n} wurde gezeigt, dass es möglich ist den ESP32 über das DTR und RTS Signal des CP2102N neuzustarten und den Bootmodus zu wechseln.
 Die obere Schaltung setzt die hierfür notwendige logische Verknüfung zwischen DTR/RTS und EN/GPIO0 \ref{tab:cp2102n_dtr_rts} um.
-Die beiden SS8050 sind npn-Bipolartransistoren. Diese Schaltung ist parallel geschaltet zu der Möglichkeit ESP\_EN und ESP\_IO0 über einen Taster auf GND zu ziehen.
+Der SS8050 Baustein ist ein npn-Bipolartransistoren. Diese Schaltung ist parallel geschaltet zu der Möglichkeit ESP\_EN und ESP\_IO0 über einen Taster auf GND zu ziehen.
 
 \section{Layout}
 Das Layout wurde mit dem Tool PCBNew aus KiCad erstellt. 
-Die MainPCB Platine \ref{fig:kicad_mainpcb_layout} wurde als 4 Layer PCB umgesetzt (1. Schicht: Signal, 2.: 3.3V, 3.: 12V, 4.: GND) und LedPCB \ref{fig:kicad_ledpcb_layout} als 2 Layer (1.: 12V/Signal, 2.: GND).
-Bei der Erstellung wurde versucht Angaben in den Datenblättern der Bauteile sowie "Good Practices" des Leiterplattenentwurf zu befolgen.
-Im Folgenden wird somit nicht weiter darauf eingegangen.
+Die MainPCB Platine \ref{fig:kicad_mainpcb_layout} besitzt vier Kupferschichten (1. Schicht: Signal, 2.: 3.3V, 3.: 12V, 4.: GND) und das LedPCB \ref{fig:kicad_ledpcb_layout} besitzt zwei Kupferschichten (1.: 12V/Signal, 2.: GND).
+Bei der Erstellung wurde versucht Angaben in den Datenblättern zu befolgen.
+Im Folgenden wird deshalb nicht weiter darauf eingegangen.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/Platinenentwurf/KiCad_MainPCB_Layout.png}
@@ -345,27 +345,27 @@ Im Folgenden wird somit nicht weiter darauf eingegangen.
 \end{figure}
 
 \section{Designfehler}
-Beim Schaltplan Design wurden leider 3 Fehler gemacht. Diese können allerdings ausgebessert werden oder beinträchtigen die Nutzung der Platine nur gering.
-Der Dokumentation liegen einmal das fehlerhafte KiCad Projekt und eines mit ausgebesserten Fehlern bei.
+Der Schaltplan enthält drei Fehler. Diese können allerdings ausgebessert werden oder beinträchtigen die Nutzung der Platine nur gering.
+Der Dokumentation liegen einmal das fehlerhafte KiCad Projekt V1.0 und ein Projekt V1.1 mit ausgebesserten Fehlern bei.
 \subsection*{3.3V Spannungswandler}
 \begin{description}
-    \item[Fehlerbeschreibung:] Der 3.3V Spannungwandler schaltet bei der Wandlung von 5V (USB, JTAG-/Programmierinterface) zu 3.3V ab. 
-    Die Wandlung von 12V zu 3.3V funktioniert. 
+    \item[Fehlerbeschreibung:] Der 3.3V Spannungwandler auf der MainPCB Platine schaltet bei einer Eingangsspannung von 5V (USB, JTAG-/Programmierinterface) ab. 
+    Die Spannungswandlung von 12V zu 3.3V funktioniert. 
     \item[Grund:] Über den Eingang EN des TPS54331 wird ein Unterspannungsschutz (UVLO) realisiert. Fällt die Spannung an EN unter $V_{EN} = 1.25V$ schaltet der Spannungswandler ab.
     Wie im Kapitel \ref{sub:tps54331} beschrieben lässt sich die minimal erlaubt Eingangsspannung über den Spannungsteiler $R_{en1}$ und $R_{en2}$ einstellen. 
-    Diese ist für 5V falsch gewählt worden.
+    Diese Widerstände wurden für 5V falsch dimensioniert.
     \item[Fehlerbehebung:] Um den Unterspannungsschutz zu deaktivieren, können die Widerstände $R_{en1} = R1$ und $R_{en2} = R5 + R7$ entfernt werden.
 \end{description}
 
 \subsection*{CP2102N Stromversorgung}
 \begin{description}
-    \item[Fehlerbeschreibung:] Der Mikrocontroller startet nicht richtig, wenn die Platine nur über 12V verorgt wird und USB nicht verbunden ist.
+    \item[Fehlerbeschreibung:] Der Mikrocontroller startet nicht richtig, wenn die Platine über 12V versorgt wird und USB-C nicht verbunden ist.
     \item[Grund:] Da der CP2102N direkt über VBUS der USB Schnittstelle versorgt wird, ist der Chip nicht aktiv wenn nur die 12V Versorgung vorhanden ist.
-    Die Ausgangssignale RTS und DTR sind somit "floatend"/undefiniert und können beim Einschalten der 12V einen Start in den Download Boot-Modus triggern.
-    \item[Fehlerbehebung:] Damit die Ausgänge RTS und DTR immer auf definiertem Pegel sind, muss der CP2102N dauerhaft über die 3.3V versorgt sein. 
-    Dazu muss REGIN mit 3.3V verbunden werden. Da der interne 5V zu 3.3V Regulator nicht mehr genutzt wird, kann das Label "CP2102N\_VDD" \ref{fig:cp2102nfehlerkorrektur} auch direkt mit 3.3V verbunden werden.
-    Auf den bestehenden Platinen kann der Fehler behoben werden indem der CP210N Chip abgelötet wird und die Leiterspur zwischen VBUS und REGIN aufgetrennt wird. (Abbildung \ref{fig:cp2102nfehlerkorrekturlayout} grün)
-    Anschließend muss REGIN mit VDD verbunden werden (Lötbrücke) und mithilfe von z.B. einem Kupferdraht mit 3.3V versorgt werden. (Abbildung \ref{fig:cp2102nfehlerkorrekturlayout} blau)
+    Die Ausgangssignale RTS und DTR sind somit "'floatend"'/undefiniert und können beim Einschalten der 12V einen Start in den Download Boot-Modus triggern.
+    \item[Fehlerbehebung:] Damit die Ausgänge RTS und DTR immer einen definiertem Pegel haben, muss der CP2102N dauerhaft über die 3.3V des Spannungswandlers versorgt sein. 
+    Dazu muss REGIN mit 3.3V verbunden werden. Abbildung \ref{fig:cp2102nfehlerkorrektur} zeigt, dass die Eingänge mit dem Label \bverb{CP2102N_VDD} direkt mit 3.3V verbunden werden können
+    Auf den bestehenden Platinen kann der Fehler behoben werden indem der CP2102N Chip abgelötet wird und die Leiterspur zwischen VBUS und REGIN aufgetrennt wird. (Abbildung \ref{fig:cp2102nfehlerkorrekturlayout} grün)
+    Anschließend muss REGIN mit VDD verbunden werden (Lötbrücke blau) und mithilfe von z.B. einem Kupferdraht mit 3.3V versorgt werden. (Abbildung \ref{fig:cp2102nfehlerkorrekturlayout} blau)
 \end{description}
 
 \begin{figure}[H]
@@ -393,13 +393,13 @@ Der Dokumentation liegen einmal das fehlerhafte KiCad Projekt und eines mit ausg
 \end{description}
 
 \section{Verbesserungen} \label{ch:verbesserungen_hardware}
-In zukünftigen Projektarbeiten wird die Platine wahrscheinlich weiter entwickelt.
+Zukünftige Projektarbeiten werden die Platine weiter entwickeln.
 Im Folgenden sollen deshalb mögliche Verbesserungsvorschläge aufgelistet werden.
 \begin{itemize}
-    \item Da das Ziel des Gesamtprojektes eine Roboterformation mit möglichst vielen einzelnen Robotern ist, muss zukünftig die Ladeinfrastruktur möglichst einfach gehalten werden.
+    \item Da das Ziel des Gesamtprojektes eine Roboterformation mit vielen einzelnen Robotern ist, muss zukünftig die Ladeinfrastruktur einfach gehalten werden.
     Aus diesem Grund ist es sinnvoll die Ladeelektronik für die LiIon Zellen direkt in die Platine zu integrieren. Über USB-C Power Delivery könnten die Roboter dann sehr einfach geladen werden.
     \item Momentan ist das Main\_PCB als 4 Layer Platine ausgelegt. Um die kosten der einzelnen Platine zu senken, sollte das Layout auf 2 Layer reduziert werden.
     \item Die Pinbelegung \ref{fig:esp32pinlayout} des ESP32 zeigt, dass es kaum mehr freie Pins am Mikrocontroller gibt. Die Regelung der Motoren belegt alleine neun dieser Pins.
-    Diese könnte auf einen zweiten/sekundären Mikrocontroller ausgelagert werden. Somit würden wieder mehr Pins am ESP32 nutzbar sein. 
+    Diese könnte auf einen zweiten Mikrocontroller ausgelagert werden. Somit würden wieder mehr Pins am ESP32 nutzbar sein. 
     Außerdem wird die ESP32 Software-Architektur vereinfacht und Rechenleistung für zukünftige Software Erweiterungen frei.
 \end{itemize}
