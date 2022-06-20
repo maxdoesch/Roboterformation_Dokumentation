@@ -49,14 +49,14 @@ Anschlie{\ss}end wird die fertige Trajektorie als Vektor komplett gepublisht.
     }
 
 \end{lstlisting}
-Beide Funktionen werden hierbei vom \texttt{Trajechandler} aufgerufen.\\[\baselineskip]
+Beide Funktionen werden hierbei vom \texttt{Trajechandler} aufgerufen und in dessen \texttt{updateTrajectory}-Funktion ausgeführt.\\[\baselineskip]
 Mit diesen Parametern dauerte es circa 20 Sekunden bis alle Punkte der Trajektorie berechnet, die gesamte Trajektorie gepublisht und vom Roboter letztlich ausgeführt wurde.
 
 \section{Erstellen eines individuellen ROS Message-Types}
 \label{sec:msg-type}
- Um die Trajektorie in einem Array speichern zu können, in dem alle für die auf dem Mikrocontroller implementierten Regler wichtigen Informationen enthalten sind, musste ein neuer, individueller "`message type"' in ROS implementiert.
+ Um die Trajektorie in einem Array speichern zu können, in dem alle für die auf dem Mikrocontroller implementierten Regler wichtigen Informationen enthalten sind, musste ein neuer, individueller "`message type"' in ROS implementiert werden.
 Da die Beschreibungen und Anleitungen hierzu im Internet etwas spärlich ausfallen, wird im Folgenden anhand des in der Projektarbeit verwendeten custom message Types "`c\_trajec.msg"' erklärt, wie ein neuer message Typ erstellt wird.
- Dies kann im Falle einer Erweiterung oder Änderung der ROS-Software von Bedeutung sein.
+Dies kann im Falle einer Erweiterung oder Änderung der ROS-Software von Bedeutung sein.
  \begin{enumerate}
     \item \textbf{Navigieren zum entsprechenden ROS Paket} \newline
     \bverb|roscd trajecgenerator|
@@ -64,7 +64,7 @@ Da die Beschreibungen und Anleitungen hierzu im Internet etwas spärlich ausfall
     \bverb|mkdir msg|
     \item \textbf{Navigieren zum \texttt{msg} Ordner} \newline
     \bverb|cd msg| 
-    \item \textbf{Definitionen des neuen Message Typs erstellen (entweder per Kommandozeile oder direkt in der Datei)} \newline
+    \item \textbf{Erstellen der Definitionen des neuen Message Typs (entweder per Kommandozeile oder direkt in der Datei)} \newline
     \bverb|echo "float32 x" > msg/c_trajec.msg| \newline
     \bverb|echo "float32 y" > msg/c_trajec.msg| \newline
     \bverb|echo "float32 dx" > msg/c_trajec.msg| \newline
@@ -77,7 +77,7 @@ Da die Beschreibungen und Anleitungen hierzu im Internet etwas spärlich ausfall
     \item \textbf{Editieren der \texttt{package.xml} Datei} \newline
     In der Datei \texttt{package.xml} sicherstellen, dass die Inhalte \newline
     \bverb|<build_depend>message_generation</build_depend>| \newline
-    \bverb|<run_depend>message_runtime</run_depend>| vorhanden und auskommentiert sind.
+    \bverb|<run_depend>message_runtime</run_depend>| \newline vorhanden und auskommentiert sind.
     \item \textbf{Editieren der \texttt{CmakeLists.txt} Datei} \newline
     In der Datei \texttt{CmakeLists.txt} bei \texttt{COMPONENTS} den Inhalt \texttt{message\_generation} hinzufügen, damit mindestens Folgendes zu sehen ist: \newline
     \bverb|find_package(catkin REQUIRED COMPONENTS| \newline
