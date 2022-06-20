@@ -1,7 +1,7 @@
 % !TEX root = ../Projektdokumentation.tex
 \chapter{Platinenentwurf}\label{ch:platinenentwurf}
 Ein Ziel dieser Projektarbeit war die Entwicklung einer Platform, welche alle notwendigen Komponenten kompakt zusammenfasst.
-Hierfür müssen elektronische Bauteile und mechanische wie Motoren oder 3D-Druckteile gut aufeinander abgestimmt werden.
+Hierfür müssen elektronische Bauteile und mechanische, wie Motoren oder 3D-Druckteile, gut aufeinander abgestimmt werden.
 Während auf der einen Seite die Funktionalität des Gesamtsystems wichtig ist, soll andererseits jeder Roboter auch visuell durch ein Array von RGB-Leds auffallen.
 Mithilfe eines doppel Platinenstack wurde erreicht, dass die Motoren direkt auf die untere Platine (Main\_PCB) aufgeschraubt werden können und 
 die Leds auf der oberen Platine (Led\_PCB) den richtigen Abstand zum Led-Diffusor haben. 
@@ -17,7 +17,7 @@ Das Blockdiagramm zeigt den Leistungs- und Signalfluss zwischen den Bauteilen au
 Die primäre Stromversorgung übernehmen drei 18650 LiIon Zellen. Diese haben im geladenen Zustand eine Gesamtspannung von $3*4.2 = 12.6V$ 
 und können über einen Schalter an- und ausgeschalten werde. Der Roboter ist gegenüber Verpolung aller Zellen geschützt.
 Für die Versorgung des Mikrocontrollers müssen die 12V mit einem Buck-Converter auf 3.3V gewandelt werden.
-Außerdem soll der Roboter für den Test-/Programmierbetrieb auch über die 5V der USB-C oder der JTAG/Programmierschnittstelle stationär betrieben werden können.
+Au{\ss}erdem soll der Roboter für den Test-/Programmierbetrieb auch über die 5V der USB-C oder der JTAG/Programmierschnittstelle stationär betrieben werden können.
 Hierfür müssen die Spannungen elektronisch getrennt werden, um einen Kurzschluss zwischen den Potentialen zu verhindern.
 Der ESP32 kann über die USB-C Schnittstelle und eine separate serielle Schnittstelle programmiert werden.
 Für den 2 Quadranten betrieb der Motoren ist eine doppel H-Brücke vorgesehen. 
@@ -38,7 +38,7 @@ Dieses SOM (System On Module) von Espressife beinhaltet einen Xtensa LX6 Dualcor
 und 8MB externen SRAM, sowie 8MB externen Flash Speicher. \cite{ESP32WROVER-E}
 Die externen Speicher sind über SPI verbunden und werden über eine MMU (Memory Management Unit) in den Speicherbereich gemappt.
 Des Weiteren bietet der ESP32 verschiedene Peripherie wie Timer, GPIO, UART, I2C, PWM und Wifi.
-Espressife stellt mit dem ESP-IDF Framework unter anderem ein Hardwareabstraktions Layer bereit über welches Peripherie leicht initialisiert und gesteuert werden kann.
+Espressife stellt mit dem ESP-IDF Framework unter anderem ein Hardwareabstraktions Layer bereit, über welches Peripherie leicht initialisiert und gesteuert werden kann.
 Aus diesem Grund bleibt es dem Programmierer erspart sich mit der Hardware auf Registerebene zu beschäftigen.
 Dies macht den ESP32 zu einem beliebten IOT-Mikrocontroller im Hobbybereich.
 Diagramm \ref{fig:esp32pinlayout} und Tabelle \ref{tab:esp32pinbelegung} beschreibt die Pinbelegung am ESP32.
@@ -101,12 +101,12 @@ Diagramm \ref{fig:esp32pinlayout} und Tabelle \ref{tab:esp32pinbelegung} beschre
     \caption{ESP32 Power-Up}
     \label{fig:esp32powerup}
 \end{figure}
-Wie die Illustation \ref{fig:esp32powerup} zeigt muss der Enable Pin (im Datenblatt \cite{ESP32} CHIP\_PU genannt) für eine bestimmte Zeit $t_0 = 50\mu s$ nach dem Power-Up auf Low gehalten werden.
-Das gleiche gilt für den Reset des Mikrocontrollers $t_1 = 50\mu s$. Die Power-Up/Reset Schaltung könnte zum Beispiel als Parallelschaltung eines RC Tiefpasses mit einem Taster umgesetzt werden.
+Wie die Illustation \ref{fig:esp32powerup} zeigt, muss der Enable Pin (im Datenblatt \cite{ESP32} CHIP\_PU genannt) für eine bestimmte Zeit $t_0 = 50\mu s$ nach dem Power-Up auf Low gehalten werden.
+Das Gleiche gilt für den Reset des Mikrocontrollers $t_1 = 50\mu s$. Die Power-Up/Reset Schaltung könnte zum Beispiel als Parallelschaltung eines RC Tiefpasses mit einem Taster umgesetzt werden.
 
 \subsubsection*{Boot-Mode}
 Der ESP32 verfügt über zwei verschiedene Boot Modis. Beim SPI Boot wird die Firmware aus dem Flash in den Arbeitsspeicher geladen.
-Der Download Boot dient zum flashen einer neuen Firmware. Für den Wechsel zwischen den Modis wertet der Mikrocontroller beim Power-Up die Strapping Pins GPIO0 und GPIO2 aus.
+Der Download Boot dient zum Flashen einer neuen Firmware. Für den Wechsel zwischen den Modis wertet der Mikrocontroller beim Power-Up die Strapping Pins GPIO0 und GPIO2 aus.
 \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|l|l|}
@@ -210,7 +210,7 @@ Dies bedeutet die Pins AI0, AI1, BI0, BI1 müssen nicht verbunden werden, ISENA 
 und AVREF, BVREF werden auf 3.3V gezogen.
 Geschwindigkeit und Drehrichtung der Motoren wird über die Pulseweite der (AIN1/AIN2; BIN1/BIN2) 
 Eingangssignale gesteuert. Abbildung \ref{tab:drv8841_hbridgelogic} zeigt die logische Verknüfung der Eingangs- und Ausgangssignale der H-Brücke.
-Um den Motortreiber zu aktivieren müssen nRESET und nSLEEP auf 3.3V gezogen werden.
+Um den Motortreiber zu aktivieren, müssen nRESET und nSLEEP auf 3.3V gezogen werden.
 Des Weiteren ist auch noch ein Bootstrap-Kondensator zwischen den Pins CP1/CP2 als Ladepumpe notwendig.
 
 \subsection{Marvelmind Mini-RX}
@@ -235,7 +235,7 @@ Der Marvelmind Mini-Rx Beacon \cite{Marvelmind} empfängt die Ultraschallsignale
 Da das Modul eine dritte Platine ist, wurde darauf geachtet diese möglichst platzschonend in den Platinenstack zu integrieren.
 Hierfür musste das Gehäuse und der eingebaute Akku entfernt werden. Die 5V Stromversorgung wird von der LED Platine gewährleistet.
 Die 5V Spannung sowie die seriellen Signale RX/TX sind über die interne Molex PicoBlade Steckverbindung \ref{fig:marvelmind_molexpinout} mit dem Modul verbunden.
-Da die UART Schnittstelle mit 3.3V Logikpegeln arbeitet kann diese ohne Probleme direkt mit dem ESP32 verbunden werden.
+Da die UART Schnittstelle mit 3.3V Logikpegeln arbeitet, kann diese ohne Probleme direkt mit dem ESP32 verbunden werden.
 Des Weiteren wurde das eingebaute Mikrofon durch zwei Externe ersetzt. Diese sind über das 2.0mm 2x4 Pinout mit dem Mini-RX verbunden \ref{fig:marvelmind_micpinout}.
 
 \subsection{WS2815B}
@@ -248,7 +248,7 @@ Des Weiteren wurde das eingebaute Mikrofon durch zwei Externe ersetzt. Diese sin
 Der Chip WS2815B ist eine RGB-Led mit integriertem LED-Treiber. Dieser Baustein kann über die Pins DO, DIN in Reihe zu einem Led-Array verschalten werden. 
 Der RGB Farbwert wird in einem 24Bit (8Bit grün, 8 Bit rot, 8 Bit blau) Feld codiert. Dieser Wert wird für alle LEDs in einem Datenstrom kaskadiert und an den Eingang DIN der erste LED gesendet.
 Diese schneidet sich den ersten Farbwert ab und gibt den restlichen Datenstrom über DO an die nächste LED weiter. Somit sind alle Bausteine einzeln adressierbar.
-Des Weiteren wird 0 und 1 nicht über den Wert der Spannungspegel codiert. Um ein Bit zu übertragen benötigt es zu Beginn eine positive Flanke, dann eine negative und zum Schluss wieder ein positive Flanke.
+Des Weiteren wird 0 und 1 nicht über den Wert der Spannungspegel codiert. Um ein Bit zu übertragen, benötigt es zu Beginn eine positive Flanke, dann eine negative und zum Schluss wieder ein positive Flanke.
 Der Wert wird dann in die Dauer der High und Low-Phasen codiert.
 Die LED wird mit 12V gespeist. Die Logikpegel der Datensignale arbeiten allerdings mit 5V Spannung. An den VCC Pin kann ein Entkopplungskondensator angeschlossen werden.
 Außerdem wird der Eingang BIN mit DO der vorletzten LED verbunden und bringt somit Redundanz beim Aufall einer LED.
@@ -313,7 +313,7 @@ VBUS und 5VD werden durch Dioden vor Potentialausgleich geschützt. Diese Spannu
 Es fließt nur wenig Strom und der Spannungsabfall über den Dioden ist somit hinnehmbar. 
 Da die 12V den Roboter im Normalbetrieb mit teilweise großer Stromaufnahme versorgen, darf es keinen großen Spannungsabfall über der schützenden Komponente geben.
 Der PMOS Transistor AO3401 hat einen geringen Drain-Source Widerstand und somit wenig Leistungsverlust bei großem Strom.
-Sind 12V verbunden schaltet Q3 immer durch da $V_{GS} < 0V$. Falls nur VBUS oder 5VD aktiv ist, wird $V_{GS} = 0V$. Die 12V Schiene bleibt somit Spannungsfrei.
+Sind 12V verbunden, schaltet Q3 immer durch da $V_{GS} < 0V$. Falls nur VBUS oder 5VD aktiv ist, wird $V_{GS} = 0V$. Die 12V Schiene bleibt somit Spannungsfrei.
 
 \subsection*{Reset- und Bootmodeschaltung}
 \begin{figure}[H]
@@ -352,7 +352,7 @@ Der Dokumentation liegen einmal das fehlerhafte KiCad Projekt V1.0 und ein Proje
     \item[Fehlerbeschreibung:] Der 3.3V Spannungwandler auf der MainPCB Platine schaltet bei einer Eingangsspannung von 5V (USB, JTAG-/Programmierinterface) ab. 
     Die Spannungswandlung von 12V zu 3.3V funktioniert. 
     \item[Grund:] Über den Eingang EN des TPS54331 wird ein Unterspannungsschutz (UVLO) realisiert. Fällt die Spannung an EN unter $V_{EN} = 1.25V$ schaltet der Spannungswandler ab.
-    Wie im Kapitel \ref{sub:tps54331} beschrieben lässt sich die minimal erlaubt Eingangsspannung über den Spannungsteiler $R_{en1}$ und $R_{en2}$ einstellen. 
+    Wie im Kapitel \ref{sub:tps54331} beschrieben, lässt sich die minimal erlaubt Eingangsspannung über den Spannungsteiler $R_{en1}$ und $R_{en2}$ einstellen. 
     Diese Widerstände wurden für 5V falsch dimensioniert.
     \item[Fehlerbehebung:] Um den Unterspannungsschutz zu deaktivieren, können die Widerstände $R_{en1} = R1$ und $R_{en2} = R5 + R7$ entfernt werden.
 \end{description}
@@ -360,12 +360,12 @@ Der Dokumentation liegen einmal das fehlerhafte KiCad Projekt V1.0 und ein Proje
 \subsection*{CP2102N Stromversorgung}
 \begin{description}
     \item[Fehlerbeschreibung:] Der Mikrocontroller startet nicht richtig, wenn die Platine über 12V versorgt wird und USB-C nicht verbunden ist.
-    \item[Grund:] Da der CP2102N direkt über VBUS der USB Schnittstelle versorgt wird, ist der Chip nicht aktiv wenn nur die 12V Versorgung vorhanden ist.
+    \item[Grund:] Da der CP2102N direkt über VBUS der USB Schnittstelle versorgt wird, ist der Chip nicht aktiv, wenn nur die 12V Versorgung vorhanden ist.
     Die Ausgangssignale RTS und DTR sind somit "'floatend"'/undefiniert und können beim Einschalten der 12V einen Start in den Download Boot-Modus triggern.
     \item[Fehlerbehebung:] Damit die Ausgänge RTS und DTR immer einen definiertem Pegel haben, muss der CP2102N dauerhaft über die 3.3V des Spannungswandlers versorgt sein. 
-    Dazu muss REGIN mit 3.3V verbunden werden. Abbildung \ref{fig:cp2102nfehlerkorrektur} zeigt, dass die Eingänge mit dem Label \bverb{CP2102N_VDD} direkt mit 3.3V verbunden werden können
-    Auf den bestehenden Platinen kann der Fehler behoben werden indem der CP2102N Chip abgelötet wird und die Leiterspur zwischen VBUS und REGIN aufgetrennt wird. (Abbildung \ref{fig:cp2102nfehlerkorrekturlayout} grün)
-    Anschließend muss REGIN mit VDD verbunden werden (Lötbrücke blau) und mithilfe von z.B. einem Kupferdraht mit 3.3V versorgt werden. (Abbildung \ref{fig:cp2102nfehlerkorrekturlayout} blau)
+    Dazu muss REGIN mit 3.3V verbunden werden. Abbildung \ref{fig:cp2102nfehlerkorrektur} zeigt, dass die Eingänge mit dem Label \bverb{CP2102N_VDD} direkt mit 3.3V verbunden werden können.
+    Auf den bestehenden Platinen kann der Fehler behoben werden, indem der CP2102N Chip abgelötet wird und die Leiterspur zwischen VBUS und REGIN aufgetrennt wird. (Abbildung \ref{fig:cp2102nfehlerkorrekturlayout} grün)
+    Anschlie{\ss}end muss REGIN mit VDD verbunden werden (Lötbrücke blau) und mithilfe von z.B. einem Kupferdraht mit 3.3V versorgt werden. (Abbildung \ref{fig:cp2102nfehlerkorrekturlayout} blau)
 \end{description}
 
 \begin{figure}[H]
@@ -398,7 +398,7 @@ Im Folgenden sollen deshalb mögliche Verbesserungsvorschläge aufgelistet werde
 \begin{itemize}
     \item Da das Ziel des Gesamtprojektes eine Roboterformation mit vielen einzelnen Robotern ist, muss zukünftig die Ladeinfrastruktur einfach gehalten werden.
     Aus diesem Grund ist es sinnvoll die Ladeelektronik für die LiIon Zellen direkt in die Platine zu integrieren. Über USB-C Power Delivery könnten die Roboter dann sehr einfach geladen werden.
-    \item Momentan ist das Main\_PCB als 4 Layer Platine ausgelegt. Um die kosten der einzelnen Platine zu senken, sollte das Layout auf 2 Layer reduziert werden.
+    \item Momentan ist das Main\_PCB als 4 Layer Platine ausgelegt. Um die Kosten der einzelnen Platine zu senken, sollte das Layout auf 2 Layer reduziert werden.
     \item Die Pinbelegung \ref{fig:esp32pinlayout} des ESP32 zeigt, dass es kaum mehr freie Pins am Mikrocontroller gibt. Die Regelung der Motoren belegt alleine neun dieser Pins.
     Diese könnte auf einen zweiten Mikrocontroller ausgelagert werden. Somit würden wieder mehr Pins am ESP32 nutzbar sein. 
     Außerdem wird die ESP32 Software-Architektur vereinfacht und Rechenleistung für zukünftige Software Erweiterungen frei.

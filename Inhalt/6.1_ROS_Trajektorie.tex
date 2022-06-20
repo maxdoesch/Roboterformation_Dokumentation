@@ -5,21 +5,39 @@ Genauso wird beschrieben, wie diese in ROS durchgeführt wird.
 Falls zukünftig Änderungen und Erweiterungen vorgenommen werden, sollte die Vorgehensweise dazu ersichtlich werden.
 
 \section{Trajektorienplanung}
-\begin{lstlisting}[language=cs,caption={},captionpos=b]
+\begin{lstlisting}[language=C++,caption={Speichern einzelner errechneter Punkte in einem Vektor},breaklines=true,basicstyle=\footnotesize]
     void ToRobot::storeInTrajectory(pos_d trajectory_state)
     {
-    trajecgenerator::c_trajec trajectory_state_vector;
+        trajecgenerator::c_trajec trajectory_state_vector;
 
-    trajectory_state_vector.x = trajectory_state.x;
-    trajectory_state_vector.y = trajectory_state.y;
-    trajectory_state_vector.dx = trajectory_state.dx;
-    trajectory_state_vector.dy = trajectory_state.dy;
-    trajectory_state_vector.ddx = trajectory_state.ddx;
-    trajectory_state_vector.ddy = trajectory_state.ddy;
-    trajectory_state_vector.timestamp = ros::Time::now().toNSec();
+        trajectory_state_vector.x = trajectory_state.x;
+        trajectory_state_vector.y = trajectory_state.y;
+        trajectory_state_vector.dx = trajectory_state.dx;
+        trajectory_state_vector.dy = trajectory_state.dy;
+        trajectory_state_vector.ddx = trajectory_state.ddx;
+        trajectory_state_vector.ddy = trajectory_state.ddy;
+        trajectory_state_vector.timestamp = ros::Time::now().toNSec();
 
-    trajectory.points.push_back(trajectory_state_vector);
+        trajectory.points.push_back(trajectory_state_vector);
     }
     
+\end{lstlisting}
+
+\begin{lstlisting}[language=C++,caption={Publishen der gesamten Trajektorie},breaklines=true,basicstyle=\footnotesize]
+    bool ToRobot::publish()
+    {
+        float dist = sqrt(pow(trajectory.points.front().x - trajectory.points.back().x, 2) + pow(trajectory.points.front().y - trajectory.points.back().y, 2));
+
+        if(dist < 0.1 && trajectory.points.size() > 100)
+        {
+            c_trajecPub.publish(trajectory);
+            trajectory.points.clear();
+
+            return true;
+        }
+
+        return false;
+    }
+
 \end{lstlisting}
 
