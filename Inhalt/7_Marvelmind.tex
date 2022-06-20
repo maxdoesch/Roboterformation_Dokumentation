@@ -36,14 +36,26 @@ Nach Erfahrungsberichten scheinen Onlineshops gerne, trotz Angabe der Wunschfreq
 Nachdem der dritte Beacon geliefert wurde, ergänzten wir diesen zum bereits existierenden Aufbau.
 So platzierten wir den neuen Beacon an einer weiteren Wand, während die zwei vorherigen Beacons aufgebaut in einer Ebene verblieben.
 Somit ergab sich circa eine "`L-förmige"' Anordnung.
-Diese ist schematisch in Abbildung xx zu sehen.
-<Bild einfügen>
+Diese ist schematisch in Abbildung \ref{fig:marv_three_beacons_L} zu sehen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/Marvelmind/Skizze_Beacons_L}
+    \caption{Schematische "`L-förmige"' Anordnung der stationären Beacons $\rightarrow$ nicht empfehlenswert}
+    \label{fig:marv_three_beacons_L}
+\end{figure}
 
-Trotz des Hinzufügens eines dritten Beacons war allerdings weiterhin keine wirkliche Verbesserung in der Lokalsierung des Roboters und in der Stabilität der Marvelmind-Messdaten zu erkennen.
+Trotz des Hinzufügens eines dritten Beacons war "`L-förmigen"' Anordnung allerdings weiterhin keine wirkliche Verbesserung in der Lokalsierung des Roboters und in der Stabilität der Marvelmind-Messdaten zu erkennen.
 Daher probierten wir eine unterschiedliche Anordnung, die letztlich zu deutlich besseren Messergebnissen führte.\\
 So wurden die drei stationären Beacons nun jeweils an einer unterschiedlichen Wand angeordnet.
 Dadurch bildeten die Beacons ungefähr Eckpunkte eines Dreiecks ab, was in Abbildung \ref{fig:marv_three_beacons} sichtbar wird.
 Hierbei waren die Eckpunkte ungefähr fünf Meter voneinander entfernt.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/Marvelmind/Skizze_Beacons_3}
+    \caption{Verbesserter schematischer Aufbau bei einer Nutzung von drei stationären Beacons}
+    \label{fig:marv_three_beacons_Skizze}
+\end{figure}
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/Marvelmind/dreiBeaconsAufbau}
@@ -53,9 +65,11 @@ Hierbei waren die Eckpunkte ungefähr fünf Meter voneinander entfernt.
 Nachdem die Karte im Dashboard entsprechend des Hardware-Aufbaus geändert wurde, konnte eindeutig eine Besserung der Lokalisierung festgestellt werden: 
 Der mobile Beacon auf dem Roboter wurde genauer lokalisiert, stabilere Messdaten ermittelt und nun passierten auch deutlich weniger häufige Verbindungsabbrüche, bei denen der Roboter in der Lokalisierungskarte augenscheinlich "`Sprünge"' vornahm.
 Auffällig war jetzt auch au{\ss}erdem, dass wenn doch eine völlig falsche Position des Roboters angezeigt wurde, diese relativ schnell korrigiert wurden, sodass der Roboter nach einigen wenigen Augenblicken wieder korrekt in der Karte zu verordnen war.\\[\baselineskip]
+
+
 %
 Gleichzeitig konnte festgestellt werden, dass auch die räumliche Gegebenheit die Qualität der Marvelmind Ergebnisse beeinflusst.
-In den Gebäuden der Hochschule in der Wassertorstraße gibt es einige Räume, die keine geschlossene Deckenabhängung haben.
+In den Gebäuden der Hochschule in der Wassertorstra{\ss}e gibt es einige Räume, die keine geschlossene Deckenabhängung haben.
 Dies hat sich tatsächlich als Vorteil erwiesen, da im ersten Versuch ein Raum verwendet wurde, bei dem die Decke völlig geschlossen war.
 Unter diesen Bedingungen war zu beobachten, dass sich die Messdaten im Vergleich zu einem Raum mit offener Decke als schlechter erwiesen.
 Daher vermuten wir, dass durch die geschlossene Decke und der somit zusätzlichen Reflexionsfläche das Marvelmindsystem Schwierigkeiten hatte die Laufzeiten korrekt zu berechnen.
@@ -113,13 +127,29 @@ So können die X, Y und Z-Koordinate im Koordinatensystem, welches im Dashboard 
 Diese Angaben erfolgen in Metern und beziehen sich als Anhaltspunkt jeweils auf die Mitte des Beacons.\\[\baselineskip]
 Au{\ss}erdem müssen als Grundeinstellungen folgende Parameter konfiguriert werden:
 \begin{itemize}
-    \item "`Radio frequency band"' \rightarrow \xspace 868 MHz
-    \item "`Parameters of radio \rightarrow  Radio profile"' \rightarrow \xspace 153 Kbps
-    \item "`Device address"' \rightarrow \xspace Festlegen der einzelnen Geräteadressen 
+    \item "`Radio frequency band"' $\rightarrow$ 868 MHz
+    \item "`Parameters of radio $\rightarrow$  Radio profile"' $\rightarrow$ 153 Kbps
+    \item "`Device address"' $\rightarrow$ Festlegen der einzelnen Geräteadressen 
 \end{itemize}
 Nachdem alle Einstellungen vorgenommen wurden, kann der Bearbeitungsmodus verlassen werden.
 Hierzu muss die Schaltfläche \texttt{freeze submap} betätigt werden.
 
+Mit all diesen Einstellungen konnten beispielsweise folgende zwei Formen mit Marvelmind aufgezeichnet werden.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/Marvelmind/Screenshot_liegendeAcht}
+    \caption{Screenshot eines erfolgreich durchgeführten Catmull-Rom Splines im Marvelmind Dashboard}
+    \label{fig:marv_screenshot8}
+\end{figure}
+%
+%\vspace*{2cm}
+%
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/Marvelmind/Screenshot_Kreis}
+    \caption{Screenshot einer erfolgreich durchgeführten Kreis-Trajektorie im Marvelmind Dashboard}
+    \label{fig:marv_screenshotCircle}
+\end{figure}
 \section{Probleme in der Nutzung von Marvelmind}
 Obwohl während dieser Projektarbeit einige sehr wichtige Erkenntnisse gewonnen wurden, die die Genauigkeit und Stabilität der Lokalisierungsdaten des Marvelmind-Systems verbesserten, bleiben für einige Punkten weiterhin ein Raum für Verbesserungen.
 Selbst wenn die Lokalisierung mit der ergänzten Hardware und dem verbesserten Aufbau deutlich optimiert wurden, kann Stand jetzt keine hundertprozentige Zuverlässigkeit gewährleistet werden.

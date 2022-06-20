@@ -22,7 +22,7 @@ Als Mikrocontroller verwendet unsere Projektgruppe den 2-Kern Prozessor ESP32.
 Dieser verfügt über WLAN, Bluetooth, effizientes Powermanagement und verschiedene Peripherien als Funktionen.
 Hierüber werden die Motoren angesteuert.
 Um die Geschwindigkeit einzustellen, wird eine Drehzahlregelung verwendet.
-Dazu wird an der Außenseite des Motors gemessen, wie oft sich das Rad innerhalb einer Sekunde vollständig gedreht hat.
+Dazu wird an der Au{\ss}enseite des Motors gemessen, wie oft sich das Rad innerhalb einer Sekunde vollständig gedreht hat.
 Über die ermittelte Drehzahl kann mit der Differenzbildung zum Sollwert die entsprechend benötigte Geschwindigkeit eingestellt werden.
 Gleichzeitig läuft auf dem ESP32 übergeordnet eine Top Level State machine.
 Diese bestimmt, ob zu einem gewissen Zeitpunkt Positionen eingelesen oder Trajektorien berechnet wurden und gibt letztlich den Befehl, dass eine Trajektorie ausgeführt werden soll.
@@ -35,12 +35,12 @@ In den Programmiersprachen CSS und react.js verfasst, bietet sie die Schnittstel
 Grundsätzlich kann man sich den Prozessablauf wie folgt vorstellen: Auf einem zentralgesteuerten PC wird die Trajektorie im ROS-System berechnet und über das selbst entwickelte Verbindungsprotokoll an den Mikrocontroller geschickt.
 Dieser sitzt auf der Platine, die auf dem Roboter aufgebracht ist.
 Dann setzt sich der Roboter zum angegebenen Ort oder in der vorgegeben Formation in Bewegung.
-Dem geht zuvor die Eingabe des gewünschten Punktes auf unserer Webseite einher.
-Zusätzlich können dort Einstellungen zur Geschwindigkeit und Licht vorgenommen werden.
+Dem geht zuvor die Eingabe der gewünschten Trajektorie im ROS-System einher.
+Zusätzlich können Einstellungen zur Geschwindigkeit und Licht in der WebApp vorgenommen werden.
 
 
 
-\section{Einordnung dieser Projektarbeit in das Gesamtprojekt}
-Verwendung der durch die Mastergruppe vorgegebenen Regelungen und Trajektoriengenerierung $\rightarrow$ Integration/Implementierung auf echte Hardware
-\section{Zielsetzung der Projektarbeit}
+% \section{Einordnung dieser Projektarbeit in das Gesamtprojekt}
+% Verwendung der durch die Mastergruppe vorgegebenen Regelungen und Trajektoriengenerierung $\rightarrow$ Integration/Implementierung auf echte Hardware
+% \section{Zielsetzung der Projektarbeit}
 
