@@ -2,12 +2,13 @@
 \chapter{ROS}\label{ch:ros}
 Damit sich die einzelnen Roboter als Roboterschwarm bewegen können, muss es einen zentralen Computer geben, der die Roboter koordiniert.
 Diese Projekt stützt die Entscheidung vorherige Roboterformations Projekte, ROS als Framework für die Programme auf diesem zentralen Computer zu nutzen.
-Das Framework bietet eine Robotik orientierte Schnittstelle zum Nachrichtenaustausch zwischen verschiedenen Programmen. Außerdem bietet es auch viele Analysetools die das Roboterdebugging und die Robotervisualiserung vereinfachen.
+Das Framework bietet eine Robotik orientierte Schnittstelle zum Nachrichtenaustausch zwischen verschiedenen Programmen.
+Au{\ss}erdem bietet es auch viele Analysetools, die das Roboterdebugging und die Robotervisualiserung vereinfachen.
 
 \section{Ros Bridge Server}
 Da der ESP32 als externer Mikrocontroller nicht direkt in das ROS System eingebunden werden kann, wurde das Programm ROS Bridge Server entwickelt. 
 Dieser Server verbindet sich mit der Komponente RosBridgeClient auf dem ESP32 und kommuniziert über das Applikationsprotokoll ROS-Topics mit dem Roboter.
-Somit erscheint es innerhalb des ROS Systems als wäre der Mikrocontroller des Roboters in das ROS System eingebunden.
+Somit erscheint es innerhalb des ROS Systems, als wäre der Mikrocontroller des Roboters in das ROS System eingebunden.
 Das ROS Programm setzt sich aus den Klassen Socket, CommunicationHandler, PublisherImpl, Subscriber und den RosMsgs Nachrichten zusammen.
 
 \subsection*{Socket}
@@ -16,12 +17,12 @@ Dieser Server wartet bis sich ein Client über den entsprechenden Serverport ver
 Diese TCP Verbindung wird über das Socket Objekt gekapselt. Allerdings wird auch der Verbindungsaufbau bereits über ein Socket Objekt getätigt.
 
 \begin{itemize}
-    \item Die Methode \bverb|void _create_socket()| konfiguriert einen TCP Server über die POSIX API. Dieser wird über einen "File Descriptor" repräsentiert und ist statisch in jedem Socket Objekt hinterlegt.
-    Die Methode wird beendet sobald der Server erstellt ist. Wenn es nach vier Versuchen nicht möglich war einen Server zu erstellen, wird das Programm beendet.
-    \item Der Konstruktor \bverb|Socket()| ruft die Methode \bverb|_create_socket()| auf, wenn noch kein Server "File Descriptor" existiert.
-    \item Über \bverb|int accept_connection()| werden Verbindungen von einem Client akzeptiert. Die Verbindung wird von der POSIX API ebenfalls durch einen "File Descriptor" repräsentiert.
-    Dieser "File Descriptor" wird in dem jeweiligen Socket Objekt abgespeichert. Das Socket Objekt ist anschließend für diese Verbindung verwantwortlich.
-    \item \bverb|void close_connection()| schließt die Verbindung mit dem jeweiligen Client.
+    \item Die Methode \bverb|void _create_socket()| konfiguriert einen TCP Server über die POSIX API. Dieser wird über einen "`File Descriptor"' repräsentiert und ist statisch in jedem Socket Objekt hinterlegt.
+    Die Methode wird beendet, sobald der Server erstellt ist. Wenn es nach vier Versuchen nicht möglich war einen Server zu erstellen, wird das Programm beendet.
+    \item Der Konstruktor \bverb|Socket()| ruft die Methode \bverb|_create_socket()| auf, wenn noch kein Server "`File Descriptor"' existiert.
+    \item Über \bverb|int accept_connection()| werden Verbindungen von einem Client akzeptiert. Die Verbindung wird von der POSIX API ebenfalls durch einen "`File Descriptor"' repräsentiert.
+    Dieser "`File Descriptor"' wird in dem jeweiligen Socket Objekt abgespeichert. Das Socket Objekt ist anschlie{\ss}end für diese Verbindung verwantwortlich.
+    \item \bverb|void close_connection()| schlie{\ss}t die Verbindung mit dem jeweiligen Client.
     \item \bverb|int socket_receive(uint8_t* rx_buffer, int recv_bytes)| empfängt die mit \bverb|recv_bytes| übergebene Anzahl an Bytes aus dem internen TCP-Puffer. Die Methode blockiert solange bis
     alle Bytes vollständig empfangen wurden oder ein Fehler beim Emfangen auftritt. Es wird die Anzahl empfangener Bytes oder bei einem Fehler das Makro \bverb|SOCKET_FAIL| zurück gegeben.
     \item \bverb|int socket_receive_string(std::string& rx_string, int max_bytes)| dient zum Empfangen von mit \bverb|'\0'| beendeten Zeichenketten. Die Methode blockiert solange bis eine vollständige Zeichenkette
@@ -33,13 +34,13 @@ Diese TCP Verbindung wird über das Socket Objekt gekapselt. Allerdings wird auc
 \end{itemize}
 
 \subsection*{RosMsgs}
-Unter dem C++ Namespace \bverb|ros_msgs| befinden sich die Nachrichtentypen mit denen über das Applikationsprotokoll zwischen ROS-Server und dem ESP32 Client kommuniziert wird.
+Unter dem C++ Namespace \bverb|ros_msgs| befinden sich die Nachrichtentypen, mit denen über das Applikationsprotokoll zwischen ROS-Server und dem ESP32 Client kommuniziert wird.
 Eine ähnliche Datei existiert auch in den Sourcen der ESP32 Komponente RosBridgeClient. Im Gegensatz dazu erben die einzelnen Nachrichtentypen aus RosBridgeServer von den entsprechenden ROS Datentypen.
 
 \subsection*{Subscriber und PublisherImpl}
 
 Subscriber und PublisherImpl kapseln jeweils ein Publisher oder Subscriber Objekt aus ROS. Subscriber abboniert über das interne ros::Subscriber Objekt eine ROS-Topic. 
-Außerdem stellt die Klasse eine Callbackfunktion \bverb|_subscribtion_callback()| bereit, die beim empfangen einer Topic aus ROS ausgeführt wird. 
+Au{\ss}erdem stellt die Klasse eine Callbackfunktion \bverb|_subscribtion_callback()| bereit, die beim Empfangen einer Topic aus ROS ausgeführt wird. 
 Diese Callbackfunktion serialisiert die ROS-Nachricht und sendet diese anschließend über das Applikationsprotokoll an den Mikrocontroller.
 Der Publisher inseriert eine ROS-Topic über das ros::Publisher Objekt. Wenn eine Nachricht vom Mikrocontroller empfangen wurde, wird diese durch den Publisher in das ROS-System weitergeleitet.
 
@@ -47,12 +48,12 @@ Im Folgenden wird auf die Methoden der Klasse Subscriber eingegangen:
 \begin{itemize}
     \item \bverb|void _subscribtion_callback(T const& msg)| wird als Callbackfunktion vom ros::Subscriber ausgeführt. Die Methode wird mit den beiden Parametern T und S parametriert.
     T ist ein Nachrichtentyp aus dem ROS-System. S ist der entsprechende selbstdefinierte Datentyp aus ros\_msgs. Zunächst wird die Nachricht von dem Typ T in den Typ S umgewandelt.
-    Anschließend wird ein Publish-Paket aus Publish-ID, Topic-Name und den serialisierten Daten über Socket an den Client gesendet.
+    Anschlie{\ss}end wird ein Publish-Paket aus Publish-ID, Topic-Name und den serialisierten Daten über Socket an den Client gesendet.
     \item Über \bverb|void subscribe(std::string const& topic, ros::NodeHandle* node_handle)| wird mit dem internen ros::Subscriber eine Topic abboniert.
     Diese Methode wird von CommunicationHandler nach dem Empfangen eines Subscribe-Pakets ausgeführt.
 \end{itemize}
 
-Die Klasse PublisherImpl muss im Gegensatz zu Subscriber mit T und S parametriert werden.  T ist ein Nachrichtentyp aus dem ROS-System. S ist der entsprechende selbstdefinierte Datentyp aus ros\_msgs.
+Die Klasse PublisherImpl muss im Gegensatz zu Subscriber mit T und S parametriert werden. T ist ein Nachrichtentyp aus dem ROS-System. S ist der entsprechende selbstdefinierte Datentyp aus ros\_msgs.
 Im Folgenden wird auf die Methoden von PublisherImpl eingegangen:
 
 \begin{itemize}
@@ -108,7 +109,7 @@ Das Programm kann über ROS Parameter konfiguriert werden. Es können der Robote
 \section{RvizMsgTransformer}
 
 Rviz ist ein von ROS bereitgestelltes Programm zur Roboter Visualisierung. Es können aber auch z.B. Zielpunkte in einem Koordinatensystem gesetzt werden.
-In diesem Projekt wird Rviz zur Darstellung der Trajektorie und des Roboters in einem Koordinatensystem genutzt. Außerdem soll ein Zielpunkt für den Punkt zu Punkt Regler gesetzt werden können.
+In diesem Projekt wird Rviz zur Darstellung der Trajektorie und des Roboters in einem Koordinatensystem genutzt. Au{\ss}erdem soll ein Zielpunkt für den Punkt zu Punkt Regler gesetzt werden können.
 Da Rviz mit zu diesem Projekt verschiedenen ROS Nachrichtentypen arbeitet, dient RvizMsgTransformer zur Übersetzung der Rviz Nachrichten.
 
 \section{Trajektorienplanung}
@@ -116,7 +117,7 @@ Da Rviz mit zu diesem Projekt verschiedenen ROS Nachrichtentypen arbeitet, dient
 \section{Starthilfe}
 Die Sourcen für den ROS Code befinden sich im Projektordner oder können von dem GitHub Repository \url{https://github.com/maxdoesch/Roboterformation_ROS.git} geklont werden.
 Im Projekt wird die Noetic Distribution von ROS genutzt. Diese muss zunächst installiert werden. Der Installtionsprozess wird im ROS Wiki \cite{ROS-Wiki} beschrieben.
-Anschließend müssen die folgenden Schritte befolgt werden, um die ROS Programme zu bauen und zu starten:
+Anschlie{\ss}end müssen die folgenden Schritte befolgt werden, um die ROS Programme zu bauen und zu starten:
 
 \begin{enumerate}
     \item GitHub Repository klonen \newline
@@ -153,7 +154,7 @@ Die Trajektoriengenerierung wird über die folgenden ROS Service gesteuert:
     \item \bverb|rosservice call /m1/addCSplineTrajecHandler|
     \item \bverb|rosservice call /m1/removeTrajecHandler|
 \end{itemize}
-Die Bedeutung der Parameter für die Service kann kann der Dokumentation \cite{ReSiSchwa} der vorherigen Projektgruppe entnommen werden.
+Die Bedeutung der Parameter für die Service kann der Dokumentation \cite{ReSiSchwa} der vorherigen Projektgruppe entnommen werden.
 
 Zuletzt soll noch auf den Simulationsmodus des Roboters eingegangen werden. Zunächst muss der Roboter im ESP32 Code in den Simulationsmodus versetzt werden. 
 Da der Simulator mit dem ROS Namespace \bverb|/turtle1| arbeitet, wird der Roboter auf diesen Namen umbenannt.

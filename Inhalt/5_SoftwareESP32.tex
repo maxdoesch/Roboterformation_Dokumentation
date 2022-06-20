@@ -7,7 +7,7 @@ Das Open Source Framework beinhaltet unter anderem Bibliotheken zur Hardwareabst
 ermöglicht über Automatisierungsskripte Compilieren und Flashen von Binaries.
 Der ESP32 lässt sich mit C oder C++ programmieren. 
 Compilieren und Linken der Software wird von dem Build System CMake übernommen.
-Die Installation der ESP-IDF wird im "Programming Guide" \cite{ESP-IDFProgrammingGuide} von Espressife beschrieben.
+Die Installation der ESP-IDF wird im "`Programming Guide"' \cite{ESP-IDFProgrammingGuide} von Espressife beschrieben.
 Das Projekt wurde mit der Version v4.4 und v5.0 getestet.
 
 Damit die Peripherie des ESP32 nicht über Register angesteuert werden muss, bietet Espressife eine Hardwareabstraktionsschicht.
@@ -19,11 +19,11 @@ Hier können z.B. hardwarespezifische Einstellungen für den ESP32 gemacht werde
 Es ist allerdings auch möglich eigene Einstellungspunkte über die KConfig Syntax zu erstellen.
 Im Projekt sind zum Beispiel Einstellungspunkte für Wifi SSID, Password und Server IP Addresse definiert.
 Die Konfigurationen werden in der Datei sdkconfig gespeichert. Beim Bauen wird diese in eine Header Datei umgewandelt.
-Durch Inkludieren der Datei sdkconfig.h werden die Einstellungen über "defines" in die C/C++ Programme eingebunden.
+Durch Inkludieren der Datei sdkconfig.h werden die Einstellungen über "`defines"' in die C/C++ Programme eingebunden.
 
 Die ESP-IDF ermöglicht die Unterteilung der Software in Komponenten. Dabei werden die Sourcen in einzelne Ordner unterteilt.
 Dies erhöht die Projektstruktur und Wiederverwendbarkeit des Codes. 
-Jedes neu erstellte ESP-IDF Projekt enthält eine standard "main" Komponente. Diese beinhaltet die main() Funktion des Programms.
+Jedes neu erstellte ESP-IDF Projekt enthält eine standard "`main"' Komponente. Diese beinhaltet die main() Funktion des Programms.
 Neue Komponenten können mit dem Befehl \emph{idf.py -C components create-component <Komponentenname>} erstellt werden.
 
 Mit Hilfe der von Espressife bereitgestellten Automatisierungsskripte können zum Beispiel Binaries gebaut und geflasht werden.

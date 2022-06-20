@@ -3,16 +3,16 @@ Die Web-App ist eine Browserapplikation, die manuelle Echtzeitsteuerung der Robo
 über eine ROS-Schnittstelle "'rosbridge"' genannt, mit der sich die Web-App über ein Javascriptbibliothek namens "'\href{http://wiki.ros.org/roslibjs}{roslibjs}"' mit dem \\Rosserver verbinden kann, 
 um Daten einzulesen oder zuzusenden.
 \\ \colorbox{yellow}{\textbf{\textcolor{red}{Wichtiger Hinweis! }}}\\
-\textbf{\textcolor{red}{Die Web-App verbindet sich nur mit der "'rosbridge"', wenn man die IP-Adresse des Hostsrechners manuel in "'rosserver.js"' ändert. Stellen Sie sicher, dass dort die richtige IP-Adresse des Hostsrechners steht. Die Portnummer bleibt unverändert.}}
+\textbf{\textcolor{red}{Die Web-App verbindet sich nur mit der "'rosbridge"', wenn man die IP-Adresse des Hostsrechners manuell in "'rosserver.js"' ändert. Stellen Sie sicher, dass dort die richtige IP-Adresse des Hostsrechners steht. Die Portnummer bleibt unverändert.}}
 \newpage
 \section{React}
 
 React ist eine Javascript Bibliothek zum Entwickeln und Erstellen von Benutzeroberflächen.
 React ist ein Opensource Projekt, welches damals von Facebook, heute Meta genannt, entwickelt wurde.
 Um in React Web-Applikationen zu erstellen, braucht man Grundkenntnisse in CSS, HTML und Javascript.\\
-Die wichtigste Eigenschaft von React ist, dass die Zustände der Applikation und der Benutzeroberfläche synchronisiert agieren, das heißt, wenn Änderungen am Sourcecode vorgenommen werden,
- verändert sich auch die Benutzeroberfläche.
-React ist Komponentenbasiert, ein Reactapp besteht daher aus vielen kleinen React-Komponenten, welche das Programmieren und die Wiederverwendbarkeit von Objekten erleichtern.
+Die wichtigste Eigenschaft von React ist, dass die Zustände der Applikation und der Benutzeroberfläche synchronisiert agieren.
+Das hei{\ss}t, wenn Änderungen am Sourcecode vorgenommen werden, verändert sich auch die Benutzeroberfläche.
+React ist komponentenbasiert. Somit besteht eine Reactapp aus vielen kleinen React-Komponenten, welche das Programmieren und die Wiederverwendbarkeit von Objekten erleichtern.
 \lstdefinelanguage{npm}{
   keywords={npm},
   keywordstyle=\color{blue}\bfseries,
@@ -30,27 +30,27 @@ React ist Komponentenbasiert, ein Reactapp besteht daher aus vielen kleinen Reac
 \begin{enumerate}
     \item Vorbereiten der Umgebung 
     \begin{itemize}
-        \item Zuallererst muss ein geeigneter Editor auf dem Rechner installiert sein. Empfohlen wird \href{https://code.visualstudio.com}{Visual Studio Code}, welches ebenfalls zum Entwickeln der Web-App verwendet wurde.
+        \item Zu Beginn muss ein geeigneter Editor auf dem Rechner installiert sein. Empfohlen wird \href{https://code.visualstudio.com}{Visual Studio Code}, welches ebenfalls zum Entwickeln der Web-App verwendet wurde.
         \item Installation von \href{https://nodejs.org/en/}{Node.js} und npm\footnote[1]{npm ist ein Packet Manager, welcher bei der Installation von Node.js mitgeliefert wird. Durch npm wird das Installieren und 
         Aktualisieren von Drittbibliotheken für Entwickler mit kurzen \href{https://docs.npmjs.com/cli/v6/commands}{Befehlen} erleichtert.}. Bitte installieren Sie hierzu die empfohlene Version und nicht die neueste, da es sein kann, dass 
-        manche Befehle nicht mehr verfügbar oder überarbeitet wurden. 
+        manche Befehle nicht mehr verfügbar sind oder überarbeitet wurden. 
     \end{itemize}
     \item Die \href{https://git.efi.th-nuernberg.de/gitea/sammarimo78617/Webapp-th.git}{Git-Repository} von der Web-App in einem Projekt-Ordner klonen. 
     \item Den Ordner "'Webapp-th"' in Visual Studio Code öffnen.
     \item Ein \href{https://thomaskrause.github.io/nlp-mit-python/01-python-starten/index.html#:~:text=Um%20ein%20neues%20Terminal%20in,”%20oder%20“sh”).}{neues Terminal} in VS-Code öffnen und folgende Befehle eingeben.
  
     \begin{lstlisting}[language=npm,caption={Befehle zum Starten der Web-App},breaklines=true,basicstyle=\footnotesize]
-        npm install #Installiert alle Packete, die sich in package.json befinden, welche fuer die Web-App essential sind. Dies kann je nach Internetverbindung eine gewisse Zeit in Anspruch nehmen. 
+        npm install #Installiert alle Packete, die sich in package.json befinden, welche fuer die Web-App essentiell sind. Dies kann je nach Internetverbindung eine gewisse Zeit in Anspruch nehmen. 
         npm start #Startet die Web-App. Im Anschluss erscheint die Web-App in dem eingestellten Standardbrowser. 
     \end{lstlisting}
-    \item Wenn alle Schritte erfolgreich abgeschlossen sind, erscheint folgendes im Terminalfenster.
+    \item Wenn alle Schritte erfolgreich abgeschlossen sind, erscheint Folgendes im Terminalfenster.
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.5\textwidth]{figures/Web-App/Web-App-Erfolgreich.png}
         \caption{Erfolgreicher Web-App-Start}
         \label{fig:erfolgreich-Web-App-Start}
     \end{figure}
-Die Web-App wird nun Lokal auf dem Rechner und in unserem Netzwerk, wie es in der Abbildung \ref{fig:erfolgreich-Web-App-Start} zu sehen ist, gehostet. Man kann daher 
+Die Web-App wird nun lokal auf dem Rechner und in unserem Netzwerk, wie es in der Abbildung \ref{fig:erfolgreich-Web-App-Start} zu sehen ist, gehostet. Man kann daher 
 die Web-App mit anderen Endgeräten, welche sich im unserem Netzwerk befinden, steuern. 
 \end{enumerate}
 \section{Bedienung der Web-App-Oberfläche}
@@ -64,7 +64,7 @@ auf- und zugeklappt werden. Oberhalb der Hauptschaltfläche ist die Topbar, welc
 \end{figure}
 Die Funktionsnamen der einzelnen Navigationsbuttons werden eingeblendet, wenn man mit der Maus über die Buttons hovert. 
 \subsection{Home-Button}
-Nach dem Bedienen vom Home-Button ändert sich die Hauptschaltfläche und es wird folgendes wie in der Abbildung \ref{fig:Web-App-Home} angezeigt. Mit dem Button "'Update State"' werden die Daten erneuert und die Anzahl der 
+Nach dem Bedienen des Home-Buttons ändert sich die Hauptschaltfläche und es wird Folgendes, wie in der Abbildung \ref{fig:Web-App-Home}, angezeigt. Mit dem Button "'Update State"' werden die Daten erneuert und die Anzahl der 
 verbundenen Roboter aktualisiert. 
 \begin{figure}[H]
     \centering
@@ -73,9 +73,9 @@ verbundenen Roboter aktualisiert.
     \label{fig:Web-App-Home}
 \end{figure}
 \subsection{LED-Button}
-Die Hauptschaltfläche ändert sich folgendermaßen wie in der Abbildung \ref{fig:Web-App-LED}, wenn man den LED-Button auswählt.\label{Dropdown-Menu} Oben links ist ein Dropdown-Menu, welche den jeweiligen Verbindungszustand
+Die Hauptschaltfläche ändert sich folgenderma{\ss}en, wie in der Abbildung \ref{fig:Web-App-LED}, wenn man den LED-Button auswählt.\label{Dropdown-Menu} Oben links ist ein Dropdown-Menu, welche den jeweiligen Verbindungszustand
 oder die \\ Roboternummer erfasst und anzeigen lässt. Diese wurde so eingestellt, dass jedesmal nach Aufruf der Menuleiste, die Verbindungszustände und die Roboternummern erneut erfasst werden, damit der 
-Benutzer keine falschen Daten senden kann und ebenfalls sofort erfassen kann, wo das Problem liegt. Falls Verbindungsprobleme angezeigt werden, werden mögliche Problembehebungsmaßnahmen dem Benutzer
+Benutzer keine falschen Daten senden und ebenfalls sofort erfassen kann, wo das Problem liegt. Falls Verbindungsprobleme angezeigt werden, werden mögliche Problembehebungsmaßnahmen dem Benutzer
 in der Menüleiste vorgeschlagen. Im besten Fall funktioniert alles und die verbundenen \\Roboternummern erscheinen in der Menüleiste. Nun kann der Benutzer einen Roboter selektieren, welcher nach dem Selektieren 
 in der Dropdown-Menu angezeigt wird. Die ausgewählte Roboternummer wird zwischengespeichert und man kann entweder die LED-Farben mit einem RGB-Generator einstellen und mit dem Set-Color-Button freigeben oder vorprogrammierte Abläufe abspielen lassen. 
 \begin{figure}[H]
@@ -86,8 +86,8 @@ in der Dropdown-Menu angezeigt wird. Die ausgewählte Roboternummer wird zwische
 \end{figure}
 \newpage
 \subsection{Controller-Button}
-Die Hauptschaltfläche vom Controller sieht wie folgt aus.(Siehe Abbildung \ref{fig:Web-App-Controller}). Das Dropdown-Menu funktioniert ähnlich wie bei der \hyperref[Dropdown-Menu]{LED-Hauptschaltfläche} außer, dass die selektierte 
-Roboternummer rechts davon angezeigt wird. Unten ist ein Schieberegler, mit dem man die Geschwindigkeit einstellen kann\footnote[1]{Die maximale Geschwindigkeit muss manuell im Code in der Datei "'Controller.js"' geändert werden, da die gepushte Geschwindigkeit ein prozentualer Anteil der Maximalgeschwindigkeit ist. Dieser Prozentualanteil kann mit dem Schieberegler eingestellt werden.}
+Die Hauptschaltfläche vom Controller sieht wie folgt aus.(Siehe Abbildung \ref{fig:Web-App-Controller}). Das Dropdown-Menu funktioniert ähnlich wie bei der \hyperref[Dropdown-Menu]{LED-Hauptschaltfläche} au{\ss}er, dass die selektierte 
+Roboternummer rechts davon angezeigt wird.Unten ist ein Schieberegler, mit dem man die Geschwindigkeit einstellen kann\footnote[1]{Die maximale Geschwindigkeit muss manuell im Code in der Datei "'Controller.js"' geändert werden, da die gepushte Geschwindigkeit ein prozentualer Anteil der Maximalgeschwindigkeit ist. Dieser Prozentualanteil kann mit dem Schieberegler eingestellt werden.}
 Der Benutzer hat die Wahl, den Roboter mit einem Joystick oder mit Controller-Buttons zu bedienen. Man kann zwischen den Bedieneroberflächen hin- und herwechseln, wenn man auf den jeweiligen Button drückt.  
 \begin{figure}[H]
     \centering
@@ -97,18 +97,18 @@ Der Benutzer hat die Wahl, den Roboter mit einem Joystick oder mit Controller-Bu
 \end{figure}
 \newpage
 \section{Web-App Ausblick}
-Die Hauptschaltfläche von der Trajektorie ist leer, da während der Entwicklung der Web-App große
+Die Hauptschaltfläche von der Trajektorie ist leer, da während der Entwicklung der Web-App gro{\ss}e
 Realisierungsprobleme entstanden sind. Die Idee bestand darin, eine Real-Time-Map mit den aktuellen
 Roboterpositionen zu entwickeln, indem sich die Roboter auf der Karte, auf den von den Sensoren erfasste
 Position, platzieren. Nach einigen Überlegungen und Versuchen konnte festgestellt werden, dass die Idee
-so nicht realisierbar ist. Die Sensoren erfassen schließlich nur absolute Positionsdaten, um so eine Karte zu
-realisieren, müsste die Fläche der Karte jedes Mal gleich bleiben und die Bildschirmgröße der Web-App
+so nicht realisierbar ist. Die Sensoren erfassen schlie{\ss}lich nur absolute Positionsdaten. Um eine solche Karte zu
+realisieren, müsste die Fläche der Karte jedes Mal gleich bleiben und die Bildschirmgrö{\ss}e der Web-App
 ebenfalls. Da diese zwei Faktoren je nach Umgebung und Bedieneroberfläche unterschiedlich sind, sollten die
 Roboterpositionsdaten relativ zu der Bildschirmweite des Endgerätes, auf dem sich die Web-App abspielt, auf einer Karte dargestellt werden.
 Ebenso sollten die Roboter als Buttons mit deren Roboternummer als Erkennungsmerkmal für eine leichtere Auswahl und Bedienung dargestellt werden. 
 Im Code sollen die Roboter als ein Array mit Buttons realisiert werden, welches alle $5ms$ deren Position auf der Karte und deren Verbindung zum Server aktualisieren sollte. 
 Dabei wird das Array alle $5ms$ geleert und mit den erfassten Roboter neu gefüllt. Dies wurde in den Anfangsphasen als die optimale Realisierungsvariante angesehen. Nach mehreren Testversuchen 
 konnte man feststellen, dass die Web-App nach jedem Aufruf der Karte abgestürzt ist. Die Warnungen, die in der Web-App-Console angezeigt wurden, wiesen auf zu viele Renders bzw. Performance pro Sekunde hin. 
-Auch eine Vergrößerung der Aktualisierungszeit ändert das Ausgangsproblem nicht. Nach einer langen Recherche ist eine neue Realisierungsvariante mit der Hilfe von "'\texttt{ros2djs}"', ein Javascriptbibliothek, für sinnvoll und möglich gehalten worden.
-Dazu gibt es leider genauso wie "'\texttt{roslibjs}"' sehr wenige Dokumentationsunterlagen und Beispiele zu den \\Funktionen. Allein das Einbinden und die Installation von "'\texttt{ros2djs}"' mit dem Packetmanager "'\texttt{npm}"'
- war nicht möglich.  Auch ein manuelles Einbinden und das Kontaktieren der Entwickler waren aussichtslos. Daher wurde die Realisierung der Trajektoriehauptschaltfläche nach Absprache mit den Teamkollegen abgebrochen.
+Auch eine Vergrö{\ss}erung der Aktualisierungszeit ändert das Ausgangsproblem nicht. Nach einer langen Recherche ist eine neue Realisierungsvariante mit der Hilfe von "'\texttt{ros2djs}"', eine Javascriptbibliothek, für sinnvoll und möglich gehalten worden.
+Dazu gibt es leider genauso wie zu "'\texttt{roslibjs}"' sehr wenige Dokumentationsunterlagen und Beispiele zu den \\Funktionen. Allein das Einbinden und die Installation von "'\texttt{ros2djs}"' mit dem Packetmanager "'\texttt{npm}"'
+ war nicht möglich. Auch ein manuelles Einbinden und das Kontaktieren der Entwickler waren aussichtslos. Daher wurde die Realisierung der Trajektoriehauptschaltfläche nach Absprache mit den Teamkollegen abgebrochen.
