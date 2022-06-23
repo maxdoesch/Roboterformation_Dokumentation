@@ -127,6 +127,7 @@ Das Initialisierungspaket wird nur vom Client an den Server geschickt werden.
     0x01   & Robotername & '\textbackslash{}0' \\ \hline
     1 Byte & x Bytes     & 1 Byte              \\ \hline
     \end{tabular}
+    \caption{Initialisierungspaket}
 \end{table}
 
 \subsubsection*{Advertise Paket}
@@ -142,6 +143,7 @@ Erst nach dem Advertise Paket dürfen Nachrichten von der entsprechenden Topic m
     0x02   & Topic Name    & '\textbackslash{}0' & Nachrichtentyp & '\textbackslash{}0' \\ \hline
     1 Byte & max. 32 Bytes & 1 Byte              & max. 32 Bytes  & 1 Byte              \\ \hline
     \end{tabular}
+    \caption{Advertise Paket}
 \end{table}
 
 \subsubsection*{Subscribe Paket}
@@ -156,6 +158,7 @@ Der Server darf erst nachdem er ein Subscribe Paket zu einer Topic empfangen hat
     0x03   & Topic Name    & '\textbackslash{}0' & Nachrichtentyp & '\textbackslash{}0' \\ \hline
     1 Byte & max. 32 Bytes & 1 Byte              & max. 32 Bytes  & 1 Byte              \\ \hline
     \end{tabular}
+    \caption{Subscribe Paket}
 \end{table}
 
 \subsubsection*{Keep-Alive Paket}
@@ -173,6 +176,7 @@ Dieser kann z.B. zur Zeitsynchronisation zwischen ROS und Roboter verwendet werd
     0x04   & Zeitstempel in $\mu s$                 \\ \hline
     1 Byte & 8 Bytes (uint64\_t) \\ \hline
     \end{tabular}
+    \caption{Keep-Alive Paket}
 \end{table}
 
 \subsubsection*{Publish Paket}
@@ -190,6 +194,7 @@ Auf das Serialisieren und Deserialisieren der Nachrichten wird genauer in den Ka
     0x05   & Topic Name    & Strukturdaten \\ \hline
     1 Byte & max. 32 Bytes & x Bytes       \\ \hline
     \end{tabular}
+    \caption{Publish Paket Strukturdaten}
 \end{table}
 
 Arraydaten werden in diesem Projekt für die Übertragung der Trajektorien und zur Übertragung des ROS Nachrichtentyp std\_msgs::String verwendet.
@@ -202,6 +207,7 @@ Nach dem Topic Namen folgt ein Feld für die jeweilige Arraylänge. Dieses beinh
     0x05   & Topic Name    & Arraylänge in Bytes & Arraydaten \\ \hline
     1 Byte & max. 32 Bytes & 4 Bytes (int32\_t)  & x Bytes       \\ \hline
     \end{tabular}
+    \caption{Publish Paket Arraydaten}
 \end{table}
 
 \subsection{Anwendungsbeispiel}
