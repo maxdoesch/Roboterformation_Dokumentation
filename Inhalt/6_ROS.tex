@@ -41,7 +41,7 @@ Eine ähnliche Datei existiert auch in den Sourcen der ESP32 Komponente RosBridg
 
 Subscriber und PublisherImpl kapseln jeweils ein Publisher oder Subscriber Objekt aus ROS. Subscriber abboniert über das interne ros::Subscriber Objekt eine ROS-Topic. 
 Au{\ss}erdem stellt die Klasse eine Callbackfunktion \bverb|_subscribtion_callback()| bereit, die beim Empfangen einer Topic aus ROS ausgeführt wird. 
-Diese Callbackfunktion serialisiert die ROS-Nachricht und sendet diese anschließend über das Applikationsprotokoll an den Mikrocontroller.
+Diese Callbackfunktion serialisiert die ROS-Nachricht und sendet diese anschlie{\ss}end über das Applikationsprotokoll an den Mikrocontroller.
 Der Publisher inseriert eine ROS-Topic über das ros::Publisher Objekt. Wenn eine Nachricht vom Mikrocontroller empfangen wurde, wird diese durch den Publisher in das ROS-System weitergeleitet.
 
 Im Folgenden wird auf die Methoden der Klasse Subscriber eingegangen:
@@ -92,7 +92,7 @@ Das entsprechende Socket und CommunicationHandler Objekt werden gelöscht.
     Falls ein Keep-Alive Paket empfangen wurde, wird der übertragene Zeitstempel aus dem Socket Puffer entnommen und abgespeichert.
     Bei einem Subscribe oder Advertise Paket werden die CommunicationHandler Methoden \bverb|_subscribe()| oder \bverb|_advertise()| ausgeführt.
     Falls ein PublishPaket empfangen wurde, wird basierend auf dem übertragenen Topicnamen mithilfe der Methode \bverb|_getPublisher()| das richtige Publisher Objekt ermittelt und mit \bverb|recvMessage()| der Datenteil interpretiert.
-    Läuft beim empfangen oder interpretieren etwas schief gibt die Methode das Makro \bverb|SOCKET_FAIL| zurück.
+    Läuft beim Empfangen oder Interpretieren etwas schief, gibt die Methode das Makro \bverb|SOCKET_FAIL| zurück.
     \item \bverb|void _send_keep_alive()| sendet das Keep-Alive Paket an den ROS-Server.
     \item \bverb|Publisher* _getPublisher(std::string const& topic)| gibt das jeweilige Publisher Objekt zu der Topic zurück.
     \item Mit \bverb|void _advertise(std::string const& topic, std::string const& message_type)| wird ein Publisher Objekt von der jeweiligen Topic erstellt. Dieses Objekt ist mit den entsprechenden Datentypen parametriert.
@@ -138,7 +138,7 @@ Anschlie{\ss}end müssen die folgenden Schritte befolgt werden, um die ROS Progr
 \end{enumerate}
 
 Es muss mindestens die Node ROSBridgeServer gestartet werden. Die Roboter verbinden sich automatisch nach dem Einschalten mit dem Server und sind dann in ROS unter ihrem Namen als Namespace sichtbar.
-\footnote{Wenn ROS in einer virtuellen Maschine genutzt wird, muss eventuell der Serverport 2888 weitergeleitet werden. Außerdem könnte der Port von der Host Firewall blockiert werden.}
+\footnote{Wenn ROS in einer virtuellen Maschine genutzt wird, muss eventuell der Serverport 2888 weitergeleitet werden. Au{\ss}erdem könnte der Port von der Host Firewall blockiert werden.}
 Jetzt kann mit dem Roboter auf ihren Topics kommuniziert werden. Eine Liste aller verfügbarbaren Topics bekommt man mit \bverb|rostopic list|.
 
 Mit \bverb|rostopic pub <topic_name> <nachrichtentyp> <daten>| kann eine Nachricht auf einer Topic versendet werden und mit \bverb|rostopic echo <topic_name>| können Nachrichten empfangen werden. 
@@ -158,7 +158,7 @@ Die Bedeutung der Parameter für die Service kann der Dokumentation \cite{ReSiSc
 
 Zuletzt soll noch auf den Simulationsmodus des Roboters eingegangen werden. Zunächst muss der Roboter im ESP32 Code in den Simulationsmodus versetzt werden. 
 Da der Simulator mit dem ROS Namespace \bverb|/turtle1| arbeitet, wird der Roboter auf diesen Namen umbenannt.
-Im Simulationsmodus sind zwei zusätzliche Topics (/turtle1/cmd\_vel und /turtle1/pose) in ROS sichtbar. Diese werden als Stellgröße und Istgröße des Roboters vom Simulator "'Turtlesim"' genutzt.
+Im Simulationsmodus sind zwei zusätzliche Topics (/turtle1/cmd\_vel und /turtle1/pose) in ROS sichtbar. Diese werden als Stellgrö{\ss}e und Istgrö{\ss}e des Roboters vom Simulator "'Turtlesim"' genutzt.
 Der Turtlesim Simulator wird mit dem Befehl \bverb|rosrun turtlesim turtlesim_node| gestartet.
 
 

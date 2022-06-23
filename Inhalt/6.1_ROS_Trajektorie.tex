@@ -9,8 +9,8 @@ Bisher wurde durch den Code der Mastergruppe jeder berechneter Trajektorienpunkt
 Da dies bei eventuell auftretenden Verbindungsschwierigkeiten dazu führen könnte, dass die Trajektorie nicht vollständig oder zeitversetzt übergeben wird, war es unsere Zielsetzung die komplett bestimmte Trajektorie gesammelt über das Verbindungsprotokoll zu verschicken.\\
 In der nachfolgend abgebildeten Funktion werden die einzelnen für die Trajektorie relevanten Parameter nacheinander in einem Vektor abgespeichert.
 Diesem wird jeweils ein Zeitstempel hinzugefügt, dass passend zu den errechneten Punkten und deren Ableitungen auch die entsprechenden Zeitinformationen vorhanden sind.
-Nachdem ein Punkt mit der x- und y-Koordinate sowie den dazugehörigen ersten und zweiten Ableitungen mit Zeitinformation nun den eigens erstellten message Typ \texttt{c\_trajec} innehaben, werden diese Informationen im Vektor gespeichert.\\
-In \ref{sec:msg-type} wird beschrieben, wie der message Typ individuell erstellt wird.
+Nachdem ein Punkt mit der x- und y-Koordinate sowie den dazugehörigen Geschwindigkeits- und Beschleunigungsvektoren mit Zeitinformation nun den eigens erstellten message Typ \texttt{c\_trajec} innehaben, werden diese Informationen im Vektor gespeichert.\\
+In Kapitel \ref{sec:msg-type} wird beschrieben, wie der message Typ individuell erstellt wird.
 \begin{lstlisting}[language=C++,caption={Speichern einzelner errechneter Punkte in einem Vektor},breaklines=true,basicstyle=\footnotesize]
     void ToRobot::storeInTrajectory(pos_d trajectory_state)
     {
@@ -50,8 +50,8 @@ Anschlie{\ss}end wird die fertige Trajektorie als Vektor komplett gepublisht.
 
 \end{lstlisting}
 Beide Funktionen werden hierbei vom \texttt{Trajechandler} aufgerufen und in dessen \texttt{updateTrajectory}-Funktion ausgeführt.\\[\baselineskip]
-Mit diesen Parametern dauerte es circa 20 Sekunden bis alle Punkte der Trajektorie berechnet, die gesamte Trajektorie gepublisht und vom Roboter letztlich ausgeführt wurde.
-
+Mit diesen Parametern dauerte es circa 20 Sekunden bis alle Punkte der Trajektorie berechnet, die gesamte Trajektorie gepublisht und vom Roboter letztlich ausgeführt wurde.\\[\baselineskip]
+Die Befehle, die notwendig sind, um eine Trajektoriengenerierung zu starten, werden in Kapitel \ref*{sec:ros-befehle} aufgelistet.
 \section{Erstellen eines individuellen ROS Message-Types}
 \label{sec:msg-type}
  Um die Trajektorie in einem Array speichern zu können, in dem alle für die auf dem Mikrocontroller implementierten Regler wichtigen Informationen enthalten sind, musste ein neuer, individueller "`message type"' in ROS implementiert werden.
@@ -89,6 +89,7 @@ Dies kann im Falle einer Erweiterung oder Änderung der ROS-Software von Bedeutu
     \item \textbf{Einstellen der Dependencies in der \texttt{CmakeLists.txt} Datei} \newline
     \bverb|catkin_package(| \newline
     \bverb|CATKIN_DEPENDS roscpp std_msgs| \newline
+    \bverb|)|
     \item \textbf{Hinzufügen der Message-Datei in der \texttt{CmakeLists.txt} Datei} \newline
     \bverb|add_message_files(| \newline
     \bverb|FILES| \newline 

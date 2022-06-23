@@ -25,7 +25,7 @@ Dieser TCP Server ist eine ROS Node und stellt über ein eigenes Applikationspro
 Durch den entsprechenden TCP Client auf dem ESP32, wirkt es so, als wäre der Mikrocontroller direkt in das ROS Netzwerk eingebunden.
 Es werden zum Beispiel Roboterposition "'gepublisht"' und Topics wie Robotergeschwindigkeit, Zielpunkt, etc. durch den Roboter "'subscribed"'.
 Der Hintergedanke zur Verwendung des ROS Frameworks ist die Auslagerung der rechenleistungsintensiven Trajektoriengenerierung 
-von Mikrocontroller auf einen leistungsstarken Rechner. Der Roboterschwarm wird somit zentral durch ROS koordiniert.
+vom Mikrocontroller auf einen leistungsstarken Rechner. Der Roboterschwarm wird somit zentral durch ROS koordiniert.
 Während in diesem Projekt nur einfache Trajektorien unabhängig von den einzelnen Roboterpositionen generiert werden können, 
 sollte zukünftig eine komplexe Multiroboterpfadplanung die Trajektorien generieren. 
 Die ROS Nodes tauschen sich über Topics aus. 
@@ -34,7 +34,7 @@ Damit zwischen den einzelnen Roboter unterschieden werden kann, besteht der Topi
     \verb|/namespace/topicbezeichnung|
 \end{center}
 \verb|namespace| ist die Identifikationskonstante im Flash des ESP32 und wurde in diesem Projekt auf \verb|robot_| + Nummerierung gesetzt.
-Damit der ESP32 mit den Nachrichten auf der Topics umgehen kann, wurde für alle verwendeten ROS-Nachrichtentypen ein entsprechender Datentyp in der ESP32 Software implementiert.
+Damit der ESP32 mit den Nachrichten auf den Topics umgehen kann, wurde für alle verwendeten ROS-Nachrichtentypen ein entsprechender Datentyp in der ESP32 Software implementiert.
 Tabelle \ref{tab:ros_topics} zeigt eine Auflistung aller vom Roboter genutzten Topics.
 
 \begin{table}[H]
@@ -79,13 +79,13 @@ Zum Ende der Projektarbeit ist es möglich die Robotergeschwindigkeit und LED Mu
 \section{Applikationsprotokoll}
 Für die Kommunikation zwischen Mikrocontroller und Host Rechner wurde ein eigenes Applikationsprotokoll entwickelt. 
 Dieses soll als virtuelles Interface zwischen ROS und dem ESP32 wirken, damit diese mithilfe von ROS Topics miteinander kommunizieren können.
-Für den Entwickler soll sich somit das "Subscriben" und "Advertisen" von Topics auf dem Mikrocontroller anfühlen wie in einer normalen ROS Applikation.
-Eine wichtige Hauptaufgabe des Protokolls im Projekt ist allerdings die Übertragung der Trajektorien über die Topic "/robot\_*/trajectory".
+Für den Entwickler soll sich somit das "`Subscriben"' und "`Advertisen"' von Topics auf dem Mikrocontroller anfühlen wie in einer normalen ROS Applikation.
+Eine wichtige Hauptaufgabe des Protokolls im Projekt ist allerdings die Übertragung der Trajektorien über die Topic "`/robot\_*/trajectory"'.
 
 Eine wichtige Überlegung für den Aufbau des Protokolls war die Entscheidung zwischen UDP oder TCP als Transportunterschicht.
 Das User Datagram Protokoll ist ein verbindungsloses Protokoll. Es garantiert somit nicht die sichere, verlustfreie Übertragung der Nutzdaten.
-Da es zu keinen Neuübertragungen kommt, hat es geringe Latenzzeiten und eignet sich somit super zur Übertragung von Echtezeitdaten wie die Position des Roboters.
-Die Hauptaufgabe des Protokolls in diesem Projekt ist die Übertragung von Kilobyte großen Trajektorien. 
+Da es zu keinen Neu-Übertragungen kommt, hat es geringe Latenzzeiten und eignet sich somit super zur Übertragung von Echtezeitdaten wie die Position des Roboters.
+Die Hauptaufgabe des Protokolls in diesem Projekt ist die Übertragung von Kilobyte gro{\ss}en Trajektorien. 
 Diese erfordert eine zuverlässige Verbindung ohne Datenverluste. 
 Des Weiteren ist eine Übertragung der Daten in Echtzeit gut, aber nicht unbedingt erforderlich.
 Das Transmission Control Protocol baut eine virtuelle Verbindung zwischen Server und Client auf und 
@@ -133,7 +133,7 @@ Das Initialisierungspaket wird nur vom Client an den Server geschickt werden.
 \subsubsection*{Advertise Paket}
 Das Advertise Paket entspricht dem Aufruf der ROSCPP Methode advertise().
 Dieses Paket kann nur vom Client an den Server geschickt werden.
-Dabei fordert dieser den Server dazu auf die übermittelte Topic mit dem übermittelten Nachrichtentyp in ROS zu "advertisen".
+Dabei fordert dieser den Server dazu auf die übermittelte Topic mit dem übermittelten Nachrichtentyp in ROS zu "`advertisen"'.
 Erst nach dem Advertise Paket dürfen Nachrichten von der entsprechenden Topic mit dem Publish Paket verschickt werden.
 
 \begin{table}[H]
@@ -147,9 +147,9 @@ Erst nach dem Advertise Paket dürfen Nachrichten von der entsprechenden Topic m
 \end{table}
 
 \subsubsection*{Subscribe Paket}
-Ähnlich wie das Advertise Paket, teilt das Subscribe Paket dem Server mit, dass der Client eine Topic mit dem entsprechenden Nachrichtentyp "subscriben" möchte.
+Ähnlich wie das Advertise Paket, teilt das Subscribe Paket dem Server mit, dass der Client eine Topic mit dem entsprechenden Nachrichtentyp "`subscriben"' möchte.
 Auch das Subscribe Paket wird nur vom Client an den Server geschickt.
-Der Server darf erst nachdem er ein Subscribe Paket zu einer Topic empfangen hat, Publish Pakete an den Client weiterleiten.
+Der Server darf erst, nachdem er ein Subscribe Paket zu einer Topic empfangen hat, Publish Pakete an den Client weiterleiten.
 
 \begin{table}[H]
     \centering
@@ -165,7 +165,7 @@ Der Server darf erst nachdem er ein Subscribe Paket zu einer Topic empfangen hat
 Das Keep-Alive Paket wird alle $500ms$ vom Client an den Server und vom Server an den Client geschickt. 
 Empfängt eine der beiden Seiten kein Keep-Alive für $3000ms$, wird ein Verbindungsabbruch festgestellt.
 Dies ist vor allem notwendig, wenn keine Nutzdaten übertragen werden und zum Beispiel der Client abstürzt.
-Der Server wird nach drei Sekunden feststellen, dass keine Keep Alive Pakete vom Client kommen und die TCP Verbindung schließen.
+Der Server wird nach drei Sekunden feststellen, dass keine Keep Alive Pakete vom Client kommen und die TCP Verbindung schlie{\ss}en.
 Zusätzlich wird ein Zeitstempel des jeweiligen Senders an den Empfänger übertragen. 
 Dieser kann z.B. zur Zeitsynchronisation zwischen ROS und Roboter verwendet werden.
 
@@ -181,7 +181,7 @@ Dieser kann z.B. zur Zeitsynchronisation zwischen ROS und Roboter verwendet werd
 
 \subsubsection*{Publish Paket}
 Das Publish Paket dient der eigentlichen Übertragung von Nutzdaten vom Client zum Server und vom Server zum Client.
-Durch das Feld "Topic Name" können die Daten einer durch das Subscribe- und Advertise-Paket initialisierten Topic zugeordnet werden.
+Durch das Feld "`Topic Name"' können die Daten einer durch das Subscribe- und Advertise-Paket initialisierten Topic zugeordnet werden.
 Der Datenteil des Pakets unterscheidet zwischen Array- und Strukturdaten.
 
 Strukturdaten serialisieren den ROS Nachrichtentyp der jeweiligen Topic.
@@ -198,7 +198,7 @@ Auf das Serialisieren und Deserialisieren der Nachrichten wird genauer in den Ka
 \end{table}
 
 Arraydaten werden in diesem Projekt für die Übertragung der Trajektorien und zur Übertragung des ROS Nachrichtentyp std\_msgs::String verwendet.
-Nach dem Topic Namen folgt ein Feld für die jeweilige Arraylänge. Dieses beinhaltet die Größe des Arrays in Bytes.
+Nach dem Topic Namen folgt ein Feld für die jeweilige Arraylänge. Dieses beinhaltet die Grö{\ss}e des Arrays in Bytes.
 
 \begin{table}[H]
     \centering
@@ -220,7 +220,7 @@ Nach dem Topic Namen folgt ein Feld für die jeweilige Arraylänge. Dieses beinh
 \end{figure}
 
 Die Abbildung \ref{fig:applikationsprotokoll_anwendungsbeispiel} zeigt eine typische Kommunikation zwischen Client und Server.
-Der Client startet die Verbindung mit dem Initialisierungspaket und teilt dem Server mit welche Topics er "subscriben" und "advertisen" will.
+Der Client startet die Verbindung mit dem Initialisierungspaket und teilt dem Server mit welche Topics er "`subscriben"' und "`advertisen"' will.
 Alle $500ms$ tauschen beide Seiten ihr Keep-Alive Paket mit dem jeweiligen Zeitstempel aus. 
 Daten zu den Topics werden mithilfe des Publish Pakets vom Client zum Server oder vom Server zum Client geschickt.
 Ein Verbindungsabbruch würde durch ein fehlendes Keep-Alive bemerkt werden. 

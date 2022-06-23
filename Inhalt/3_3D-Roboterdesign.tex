@@ -1,16 +1,158 @@
 % !TEX root = ../Projektdokumentation.tex
 \chapter{3D-Roboterdesign}\label{ch:3D}
 
-In this chapter, we're actually using some code!
+\section{Allgemeine Veränderung}
+Wie auch bei der Bachelor Vorgängergruppe, soll der Roboter schnell reproduziert werden. Jedoch gefiel uns nicht, dass die notwendigen Bauteile einzelnd auf der Grundplatte 
+des Roboters befestigt wurden. Zudem wurden diese Bauteile mit einzelnen Leitungen verbunden, was 
+das Innere vom Roboter allgemein unübersichtlich machte und auch das Schnelle austauschen eines defekten Bauteils nicht ermöglichte. Wir lösten das Problem, indem wir 
+zwei selbstentworfene Platinen benutzten, worauf die einzelnen Komponenten mit Leiterbahnen verbunden sind.
 
-\begin{lstlisting}[language=Python,caption={This is an example of inline listing},captionpos=b]
-x = 1
-if x == 1:
-    # indented four spaces
-    print("x is 1.")
+Im Vergleich zur Vorgängergruppe gab es auch eine Verbesserung für die LEDs. Die komplizierte Konstruktion, um vier einzelne LEDs anzusteuern, wurde durch die obere Platine ersetzt, welche mit LEDs bestückt war.
+So ist es nun auch möglich farbige Animationen abzuspielen. 
 
-\end{lstlisting}
+Aus den Erfahrungen der Vorgängergruppen entschieden wir uns auch für einen Differentialantrieb. Die Räder wurden 3D gedruckt und anschließend mit einem Gummi Ring überzogen. 
+Zu Beginn hatten wir als Stützrad eine Kugel, jedoch hatte diese eine zu große Reibung, sodass sie nur am Boden rumgeschliffen ist. Es wurde dann eine Konstruktion aus 
+zwei Kugellagern entworfen, wodurch das Rumfahren mit dem Roboter deutlich verbessert wurde. 
 
-You can also include listings from a file directly:
+Eine weitere Veränderung zur Vorgängergruppe ist, dass der Roboter nun ein kreisförmiges Design hat. Dies hat den Vorteil, dass man nicht so schnell 
+an Kanten oder auch an anderen Robotern hängen bleibt. Es wurde eine kreisförmige Hülle aus zwei halbkreisförmigen Hüllen mithilfe eines 3D Druckers gedruckt. 
+Zudem wird der Roboter auf der Oberseite von einem auch selbstgedruckten diffusen Glas abgedeckt. Das hat den Sinn, dass die einzelnen LEDs nicht blenden und die 
+gesamte Fläche vom Roboter gleichmäßig beleuchtet wird. 
 
+\section{Aufbauanleitung}
+
+\subsubsection*{Schritt 1: Stützrad}
+Um das Stützrad zusammenzubauen muss zuerst das erste Kugellager mithilfe einer Schraube mit der Verbindung, welche auf die Platine geschraubt wird, 
+verschraubt werden. Anschließend kann das zweite Kugellagerrad mithilfe eines gedruckten Bolzens in die zuvor zusammengeschraubte Halterung befestigt werden.
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Roboterdesign/Stützrad_1.png}
+        \caption{Einzelteile des Stützrads}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Roboterdesign/Stützrad_2.png}
+        \caption{Befestigtes Kugellager} 
+    \end{minipage} 
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Roboterdesign/Stützrad_3.png}
+        \caption{Bolzen mit Kugellager}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Roboterdesign/Stützrad_4.png}
+        \caption{Fertiges Stützrad} 
+    \end{minipage}
+\end{figure}
+
+\subsubsection*{Schritt 2: Befestigung von Motoren}
+
+Als nächstes werden die Motoren mit jeweils 4 Schrauben von der Oberen Platine montiert. 
+Zudem wird die Steckverbindung an der Platine angeschlossen.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Roboterdesign/Motoren_1.png}
+        \caption{Steckverbindung der Motoren}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Roboterdesign/Motoren_2.png}
+        \caption{Befestigung der Motoren} 
+    \end{minipage}
+\end{figure}
+
+\subsubsection*{Schritt 3: Montage der Räder}
+Die Beiden Räder werden jeweils an die Motorwellen gesteckt.
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Roboterdesign/raeder.png}
+        \caption{Einzelteile des Stützrads}
+    \end{minipage}
+
+\end{figure}
+
+\subsubsection*{Schritt 4: Diffuses Glas}
+Das diffuse Glas hat 2 kleine Löcher für die externen Mikrofone vom Marvelmind-sensor. 
+Diese wurden mithilfe von Heißkleber an die untere Seite geklebt. 
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Roboterdesign/diffuses_glas_1.png}
+        \caption{Befestigt mit Heißkleber}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Roboterdesign/diffuses_glas_2_1.png}
+        \caption{Befestigte Mikrofone} 
+    \end{minipage}
+\end{figure}
+
+\subsubsection*{Schritt 5: Verbinden der Oberen Platine mit der Unteren}
+Beim Verschrauben der beiden Platinen sollte zuerst sichergestellt werden, dass die Steckverbindung 
+verbunden sind. Anschließend wird die untere Platine mit der oberen mithilfe von 4 Schrauben verschraubt.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Roboterdesign/schritt_5_1.png}
+        \caption{Einzelteile}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Roboterdesign/schritt_5_2.png}
+        \caption{Verbundene Platinen} 
+    \end{minipage}
+\end{figure}
+
+\subsubsection*{Schritt 6: Außenhülle}
+Bevor die beiden Außenteile miteinander verschraubt werden, muss erst die Halterung vom Stützrad mit 2 
+Schrauben an der Platine verschraubt werden. Danach kann man die beiden Außenteile ebenfalls mit 2 Schrauben verschrauben. 
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Roboterdesign/aussenhuelle_1.png}
+        \caption{Einzelteile der Hülle}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Roboterdesign/aussenhuelle_2.png}
+        \caption{Zusammengesetzte Außenhülle} 
+    \end{minipage}
+\end{figure}
+
+\subsubsection*{Schritt 7: Fertigstellung}
+Abschließend wird das diffuse Glas mit 4 Schrauben von oben an den Roboter befestigt
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Roboterdesign/schritt_7.png}
+        \caption{Einzelteile des Stützrads}
+    \end{minipage}
+
+\end{figure}
 
