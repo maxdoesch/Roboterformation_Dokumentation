@@ -2,11 +2,7 @@
 \chapter{Docker}\label{ch:docker}
 Zur Vereinfachung des Arbeitsflusses und Ordnung einzelner Softwarekomponenten wurde \texttt{Docker} und \texttt{Docker Compose} verwendet.\\
 Im folgenden Kapitel wird nun die Funktion und Vorgehensweise während der Nutzung von \texttt{Docker} erklärt.
-\vspace{12cm}
-\clearpage
 \section{Docker}
-
-
 
 
 \subsection{Einführung und Funktion von Docker}
@@ -21,14 +17,14 @@ Gleichzeitig ist der Container trotzdem abgeschottet, was dem Prinzip des Sandbo
 Sie bietet eine zusätzliche Sicherheitsebene, die verhindert, dass sich Malware oder schädliche Anwendungen negativ auf Ihr System auswirken.\\Nähere Infos unter: \url{https://techterms.com/definition/sandboxing}} ähnelt.\\[\baselineskip]
 Dabei erstellt man Container von einem Abbild.
 Diese kann man selbst erstellen und nennt man Container-Image.
-Der große Vorteil ist, dass man Container letztlich wie Rezepte zum Beschreiben verwendet, die ein leichtes Installieren der Software garantieren.\\
+Der gro{\ss}e Vorteil ist, dass man Container letztlich wie Rezepte zum Beschreiben verwendet, die ein leichtes Installieren der Software garantieren.\\
 Eine Erweiterung stellt Docker Compose dar.
 Dies erlaubt uns einen kompletten Stack zu beschreiben, also ganze Ansammlungen von Containern (und nicht nur einzelne Container) zusammen zu starten oder mit denen zu kommunizieren.\\[\baselineskip]
 Bei einem Start des Projekts muss nur das repository gecloned werden und ein Befehl gestartet werden.
-Diese Art zu Arbeiten ermöglicht einen schnellen Workflow.
+Diese Art zu arbeiten ermöglicht einen schnellen Workflow.
 \section{Installation von Docker-Desktop}
 \begin{enumerate}
-  \item Stellen Sie zunächst sicher, dass Ihr Windows auf dem neuesten Stand ist
+  \item Stellen Sie zunächst sicher, dass Ihr Windows auf dem neuesten Stand ist.
   \begin{itemize}
     \item Geben Sie in der Windows-Suche "'Windows Update"' ein und wählen Sie "'Windows Update-Einstellung"'.
     \item Wenn Sie ein grünes Häkchen sehen, sind  Sie auf dem neuesten Stand. Falls nicht, klicken Sie auf "'Nach Updates suchen"'. Sie müssen diesen Vorgang so lange wiederholen, bis Sie keine Updates mehr zu installieren haben.
@@ -39,7 +35,7 @@ Diese Art zu Arbeiten ermöglicht einen schnellen Workflow.
     Maustaste auf "'Windows PowerShell"' und dann auf "'Als Administrator ausführen"'.
     \item Klicken Sie auf "'Ja"', um PowerShell zu erlauben, Änderungen an Ihrem Gerät vorzunehmen.
     \item Führen Sie im Windows PowerShell-Fenster den Befehl "'wsl --install -d Ubuntu"' aus.
-    \item Aktivieren Sie anschließend die Plattform für virtuelle Maschinen. Im Windows PowerShell ausführen. 
+    \item Aktivieren Sie anschlie{\ss}end die Plattform für virtuelle Maschinen. Im Windows PowerShell ausführen. 
     (kopieren und einfügen) "'dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart"'.
     \item Laden Sie das \href{https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi}{WSL2 Linux-Kernel-Update-Paket für x64-Maschinen} herunter und installieren Sie dies.
     \item Windows neu starten. 
@@ -52,8 +48,8 @@ Diese Art zu Arbeiten ermöglicht einen schnellen Workflow.
   \end{itemize}
   \item Jetzt können Sie \href{https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe}{Docker Desktop} für Windows installieren
   \begin{itemize}
-  \item Führen Sie das Installationsprogramm aus und starten Sie anschließend Windows neu.
-  \item Melden Sie sich bei Windows an und starten Sie Docker-Desktop. Lassen Sie Docker die Einrichtung abschließen, dies kann je nach Rechner einige Minuten dauern.
+  \item Führen Sie das Installationsprogramm aus und starten Sie anschlie{\ss}end Windows neu.
+  \item Melden Sie sich bei Windows an und starten Sie Docker-Desktop. Lassen Sie Docker die Einrichtung abschlie{\ss}en, dies kann je nach Rechner einige Minuten dauern.
 \end{itemize}
 \end{enumerate}
 \newpage
@@ -61,8 +57,8 @@ Diese Art zu Arbeiten ermöglicht einen schnellen Workflow.
 Die Einleitung zum Einrichten des Docker-Compose finden Sie in der \texttt{README.md} Datei von dem \href{https://git.efi.th-nuernberg.de/gitea/doeschma79099/Roboterformation_Docker}{Docker-Git-Repository}.
 \subsection{Docker-Compose}
 \label{dockercompose}
-Sämtliche Software, die in unserem Projekt ausgeführt wird, läuft in Docker-Containern. Im folgenden werden die \texttt{Docker Compose}-Befehle, welche wir in unserem 
-\textit{dokcer-compose.yml} Datei verwenden ausführlich erklärt. 
+Sämtliche Software, die in unserem Projekt ausgeführt wird, läuft in Docker-Containern. Im Folgenden werden die \texttt{Docker Compose}-Befehle, welche wir in unserem 
+\textit{docker-compose.yml} Datei verwenden, ausführlich erklärt. 
 \lstdefinelanguage{docker-compose-2}{
   keywords={version, volumes,networks,services},
   keywordstyle=\color{blue}\bfseries,
@@ -90,13 +86,13 @@ services: #Unter services werden die einzelnen Container definiert
     networks:
       - rosnet #networks definiert das Netzwerk des masters 
 
-#Da, die Einstellungen und Befehle von den letzten zwei Container sich aehneln, wird es nur fuer ein Container erklaert.  
+#Da, die Einstellungen und Befehle von den letzten zwei Container sich aehneln, wird es nur fuer einen Container erklaert.  
   rosbridge: #Hier wird ein Container mit dem Namen "rosbridge" angelegt
     build: 
       context: ./rosbridge #Als image, bzw build wird hier zu einem Dockerfile navigiert, welches sich unter dem Verzeichnis "./rosbridge" befindet
     environment:
       - "ROS_HOSTNAME=rosbridge"
-      - "ROS_MASTER_URI=http://master:11311" #Unter environment werden Environmentvariablen festgelegt, in dem Fall wie der HOSTNAME des Containers lautet und wo sich der master im Netzwerk befindet
+      - "ROS_MASTER_URI=http://master:11311" #Unter environment werden Environmentvariablen festgelegt, in diesem Fall, wie der HOSTNAME des Containers lautet und wo sich der master im Netzwerk befindet
     networks:
       - rosnet 
     depends_on: 
@@ -119,8 +115,8 @@ services: #Unter services werden die einzelnen Container definiert
 \end{lstlisting}
 \newpage
 \subsection{Dockerfile}
-Im Unterkapitel \hyperref[dockercompose]{Docker-Compose} werden in einer \textit{dokcer-compose.yml} Datei mehrere \hyperref[buildBefehle]{build-Befehle} aufgerufen, welche zu dem eigentlichen \textit{Dockerfile} nagivieren und diesen als 
-\newline Hauptimage bauen. Im folgenden werden die Befehle aus dem \textit{Dockerfile} und deren \newline Funktionen anhand eines Beispiels aus unserem Projekt erklärt und geschildert. 
+Im Unterkapitel \hyperref[dockercompose]{Docker-Compose} werden in einer \textit{docker-compose.yml} Datei mehrere \hyperref[buildBefehle]{build-Befehle} aufgerufen, welche zu dem eigentlichen \textit{Dockerfile} nagivieren und diesen als Hauptimage bauen.
+Im Folgenden werden die Befehle aus dem \textit{Dockerfile} und deren Funktionen anhand eines Beispiels aus unserem Projekt erklärt und geschildert. 
 \lstdefinelanguage{Dockerfile}{
   keywords={FROM, RUN,COPY,CMD},
   keywordstyle=\color{blue},
@@ -135,9 +131,9 @@ Im Unterkapitel \hyperref[dockercompose]{Docker-Compose} werden in einer \textit
 \begin{lstlisting}[language=Dockerfile,caption={Dockerfile (rosbridge)},breaklines=true,basicstyle=\footnotesize]
   FROM ros:noetic-robot #Hier wird ein bereits vorhandenes Image aus dem Dockerhub aufgerufen und als Basis verwendet
   RUN apt-get -y update #Mit dem RUN-Befehl werden Befehle in der Kommandozeile ausgefuehrt
-  RUN apt-get -y upgrade # -y sorgt dafuer, dass wenn es nach dem ausfuehren von dem Befehl eine JA-NEIN-Frage erscheinen soll, diese automatisch mit JA bzw. YES beantwortet wird
+  RUN apt-get -y upgrade # -y sorgt dafuer, dass wenn nach dem Ausfuehren des Befehls eine JA-NEIN-Frage erscheinen soll, diese automatisch mit JA bzw. YES beantwortet wird
   RUN apt-get -y install ros-noetic-rosbridge-server 
-  COPY ./start.sh start.sh #COPY-Befehl kopiert die Datei start.h auf unserem Image. COPY SOURCE-Verzeichnis DESTINATTION-Verzeichnis
+  COPY ./start.sh start.sh #COPY-Befehl kopiert die Datei start.h auf unser Image. COPY SOURCE-Verzeichnis DESTINATTION-Verzeichnis
   RUN chmod +x start.sh
   CMD ["./start.sh"] #Die Datei start.h wird ausgefuehrt
 \end{lstlisting}

@@ -83,3 +83,12 @@
 \newcommand{\CodeSmell}[1]{\Fachbegriff{#1}}
 \newcommand{\Metrik}[1]{\Fachbegriff{#1}}
 \newcommand{\DesignPattern}[1]{\Fachbegriff{#1}}
+
+\newcommand{\bverb}{\lstinline[
+    basicstyle=\ttfamily, 
+    breaklines=true, 
+    breakatwhitespace=false, ]}
+
+\makeatletter
+\def\lst@lettertrue{\let\lst@ifletter\iffalse}
+\makeatother
