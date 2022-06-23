@@ -48,8 +48,8 @@ kann ein neuer Prozess erzeugt werden.
 \begin{itemize}
     \item Der Pointer \bverb|pvTaskCode| zeigt auf die Funktion, die den Code des jeweiligen Prozesses beinhaltet. Diese Funktion muss eine Endlosschleife implementieren und darf nicht enden.
     \item \bverb|pcName| ist der Name der FreeRTOS Task
-    \item \bverb|usStackDepth| Jeder Prozess hat einen eigenen Stack. Die Größe wird beim Erstellen der Task statisch festgelegt und muss somit vom Programmierer geeignet dimensioniert werden.
-    Große lokale Arrays oder viele verschachtelte Funktionsaufrufe im Prozess benötigen einen größeren Stack.
+    \item \bverb|usStackDepth| Jeder Prozess hat einen eigenen Stack. Die Grö{\ss}e wird beim Erstellen der Task statisch festgelegt und muss somit vom Programmierer geeignet dimensioniert werden.
+    Gro{\ss}e lokale Arrays oder viele verschachtelte Funktionsaufrufe im Prozess benötigen einen grö{\ss}eren Stack.
     \item Über \bverb|pvParameters| können der Task Daten übergeben werden.
     \item \bverb|uxPriority| Jeder Prozess hat eine Priorität. Eine höhere Zahl bedeutet eine höhere Priorität. Prozesse mit höhere Priorität werden vom FreeRTOS Scheduler bevorzugt.
     \item Das Objekt \bverb|pxCreatedTask| repräsentiert den Prozess und kann z.B. zum Löschen oder Stoppen des Prozesses genutzt werden.
@@ -59,7 +59,7 @@ Die Tabelle \ref{tab:freertos_task} gibt einen Überblick über alle im ESP32 Co
 
 \begin{table}[H]
     \begin{tabular}{c|c|c|c|c}
-    Name                           & Komponente         & Klasse           & Priorität & \begin{tabular}[c]{@{}c@{}}Stackgröße\\ (Byte)\end{tabular} \\ \hline
+    Name                           & Komponente         & Klasse           & Priorität & \begin{tabular}[c]{@{}c@{}}Stackgrö{\ss}e\\ (Byte)\end{tabular} \\ \hline
     app\_main()                    & main               &                  & 0         &                                                             \\
     \_communication\_handler()     & RosBridgeClient    & NodeHandle       & 5         & 8192                                                        \\
     \_kalman\_filter\_loop\_task() & SensorPose         & KalmanFilter     & 9         & 8192                                                        \\
@@ -92,11 +92,11 @@ Empfängt der RosBridgeClient Daten auf der Geschwindigkeits-, Trajektorien- ode
 StateMachine informiert. Die Zustandsmaschine versetzt den Roboter basierend auf dem aktuellen Zustand und dem jeweiligen Aufruf in einen neuen Zustand und 
 aktiviert z.B. für einen empfangenen Zielpunkt oder einer Trajektorie den PositionController. Diese Komponente regelt die Position des Roboters und kann somit 
 einer Trajektorie folgen oder einen Zielpunkt anfahren. Hierfür besorgt sie sich die Roboterpose aus der Komponente SensorPose und gibt zyklisch einen neuen Sollgeschwindigkeitsvektor
-an OutputVelocity weiter. OutputVelocity transformiert den Geschwindigkeitsvektor in Solldrehzahlen für die beiden Motoren. Diese werden dann in MotorController ausgeregelt.
-Optional kann der Roboter auch in einen Simulationsmodus versetzt werden. Hierbei wird der Sollgeschwindigkeitsvektor an ROS gesendet. Außerdem erhält die Komponente SensorPose
+an OutputVelocity weiter. OutputVelocity transformiert den Geschwindigkeitsvektor in Solldrehzahlen für die beiden Motoren. Diese werden dann im MotorController ausgeregelt.
+Optional kann der Roboter auch in einen Simulationsmodus versetzt werden. Hierbei wird der Sollgeschwindigkeitsvektor an ROS gesendet. Au{\ss}erdem erhält die Komponente SensorPose
 eine Pose von ROS und nicht der Sensorik auf dem Roboter.
 Die Komponente Wifi übernimmt den Verbindungsauf- und -abbau mit dem verwendeten Wlan Access Point.
-LedStrip steurt das Led-Array auf dem Roboter. Mithilfe von DataLogger können Programmlogs erstellt und in das ROS-System gesendet werden.
+LedStrip steuert das Led-Array auf dem Roboter. Mithilfe von DataLogger können Programmlogs erstellt und in das ROS-System gesendet werden.
 RosMsgs definiert die Datentypen der Topics für die Kommunikation mit ROS. 
 Die Komponente esp-dsp ist eine von Espressife bereitgestellte Bibliothek zur digitalen Signalverarbeitung und stellt für dieses Projekt vor allem 
 Funktionen zur Matrizenrechnung bereit.
@@ -104,7 +104,7 @@ Funktionen zur Matrizenrechnung bereit.
 \section{Wifi}
 Die Komponente Wifi konfiguriert den ESP32 als WLAN Station und steuert Verbindungsaufbau sowie das Verhalten bei Verbindungsabbruch.
 Dies wird in den Methoden der gleichnamigen Singleton Klasse umgesetzt. Zunächst wird die Wifi und ESP-NETIF Bibliothek von Espressife initialisiert und 
-anschließend für bestimmte Wifi Events die Event Loop Library konfiguriert. Dabei handelt es sich um eine Zustandsmaschine, die bei Events wie z.B.
+anschlie{\ss}end für bestimmte Wifi Events die Event Loop Library konfiguriert. Dabei handelt es sich um eine Zustandsmaschine, die bei Events wie z.B.
 "`Verbindung hergestellt"' oder "`Verbindung abgebrochen"' eine Callback-Funktion im User Code ausführt. Hier kann das entsprechende Verhalten für die Events vom Programmierer gesteuert werden.
 Nach dem Initialisieren und Starten der Wifi Klasse über \bverb|init()| und \bverb|begin()| interagiert die Komponente nicht mehr mit anderen Komponenten.
 Das Steuern der Event Zustandsmaschine übernimmt ein interner Prozess der Espressife Bibliotheken. 
@@ -125,7 +125,7 @@ Eine Verbindung wird über ein Objekt der Klasse Socket gekapselt. Über die fol
 \begin{itemize}
     \item \bverb|Socket(int port, std::string ip_addr)| Dem Konstruktor müssen der Port sowie die IP-Adresse des Servers übergeben werden.
     \item Über \bverb|void connect_socket()| wird eine Verbindung mit dem Server aufgebaut. Die Methode blockiert solange bis erfolgreich eine Verbindung aufgebaut werden konnte.
-    Ist dies nicht der Fall, wird versucht durch Abbau und erneutem Aufbau eine Verbindungs herzustellen. Des Weiteren konfiguriert die Methode die POSIX Socket API als "O\_NONBLOCK".
+    Ist dies nicht der Fall, wird versucht durch Abbau und erneutem Aufbau eine Verbindungs herzustellen. Des Weiteren konfiguriert die Methode die POSIX Socket API als "`O\_NONBLOCK"'.
     Dies verhindert ein Blockieren beim Aufruf der POSIX Funktionen \bverb|recv()| und \bverb|send()|, da das Verhalten beim Senden und Empfangen durch die eigene Socket Klasse geregelt wird.
     \item \bverb|void disconnect_socket()| schlie{\ss}t die TCP-Verbindung.
     \item \bverb|int socket_receive(uint8_t* rx_buffer, int recv_bytes)| empfängt die mit \bverb|recv_bytes| übergebene Anzahl an Bytes aus dem internen TCP-Puffer. Die Methode blockiert solange bis
@@ -158,7 +158,7 @@ Das Klassendiagramm in Abbildung \ref{fig:ros_bridge_client_class} zeigt den Auf
 Für jede im Protokoll verwendete Topic wird ein Objekt der Klasse \bverb|Publisher| oder \bverb|SubscriberImpl| erstellt.
 Über Objekte der Klasse \bverb|Publisher| kann der Programmierer Nachrichten auf der jeweiligen Topic verschicken. 
 Objekte vom Typ \bverb|SubscriberImpl| werden nur intern von NodeHandle zum Empfangen von Topics verwendet.
-Empfängt SubscribeImpl eine Nachricht wird das restliche Programm über eine Callback Funktion informiert.
+Empfängt SubscribeImpl eine Nachricht, wird das restliche Programm über eine Callback Funktion informiert.
 Beide Klassen sind parametrierbar mit dem Nachrichtentyp der jeweiligen Topic.
 Die Schnittstellen \bverb|PublisherInterface| und \bverb|Subscriber| dienen zum Speichern der verschieden parametrierten Objekte in NodeHandle.
 \bverb|Publisher| oder \bverb|SubscriberImpl| haben beide einen privaten Konstruktor. Es ist somit nur möglich Objekte über die Methoden \bverb|advertise()| und \bverb|subscribe()| der Freundesklasse NodeHandle zu erstellen.
@@ -180,7 +180,7 @@ Im Folgenden wird auf die Methoden der Klasse \bverb|SubscriberImpl| eingegangen
     \item \bverb|void subscribe()| sendet das Subscribe Paket an den ROS-Server. Die Methode wird von der namensgleichen Methode aus NodeHandle oder beim Neustart des Protokolls ausgeführt.
     \item \bverb|void recvMessage()| interpretiert den Datenteil eines empfangenen Publish-Pakets. 
     Die Methode unterscheidet, ob es sich um Arraydaten oder reine Strukturdaten handelt.
-    Anschließend werden die Daten deserialisiert und die enstprechende Callback-Funktion aufgerufen.
+    Anschlie{\ss}end werden die Daten deserialisiert und die enstprechende Callback-Funktion aufgerufen.
     \item \bverb|bool compareTopic(std::string const& topic)| vergleicht den übergebenen Topicnamen mit dem Internen.
     Die Methode wird von NodeHandle verwendet, um für ein empfangenes Publish-Paket den richtigen Subscriber zu finden.
 \end{itemize}
@@ -258,7 +258,7 @@ Aus dem Grund müssen alle Nachrichtenklassen die folgenden Methoden implementie
 \end{figure}
 
 Die Komponente MotorController steuert die beiden Motoren des Roboters. Die Drehzahl der Motoren wird jeweils über einen PI-Regler geregelt.
-Das Stellsginal ist die Pulsbreite der Ausgangssignale für den Motortreiber. In der Software hat diese einen Wertebereich von -100.0 bis 100.0 Prozent.
+Das Stellsignal ist die Pulsbreite der Ausgangssignale für den Motortreiber. In der Software hat diese einen Wertebereich von -100.0 bis 100.0 Prozent.
 Ein Überschreiten des Wertebereichs wird durch eine Stellbegrenzung mit Begrenzungsbeobachter verhindert. 
 Die beiden Regelkreise laufen mit einer Widerholungsrate von $1000Hz$. Des Weiteren besitzt die Komponente einige Einstellungspunkte im KConfig Menü. 
 Es können die Pinbelegungen für die Signale xIN1, xIN2, Enable des Motortreibers DRV8841, die Hallsensoreingängen und die PWM Frequenz des Stellsignals verändert werden.
@@ -267,7 +267,7 @@ Die Komponente MotorController ist in die Klassen Motor und MotorController aufg
 \subsection*{Motor}
 Die Klasse Motor interagiert sehr viel mit der Hardware. Aus diesem Grund können nur zwei Objekte (Motor\_a, Motor\_b) für jeweils einen Motor erzeugt werden.
 Der ESP32 besitzt ein Hardwaremodul "'MCPWM\_UNIT"' zur Steuerung von Motoren. Dieses Hardwaremodul hat mehrere Timer Kanäle über die ein PWM Signal zur Steuerung 
-der IN1 oder IN2 Eingänge des Motortreibers erzeugt werden kann. Zur Erfassung der Motordrehzahl besitzt die "'MCPWM\_UNIT"' mehrere "Capture" Eingänge. 
+der IN1 oder IN2 Eingänge des Motortreibers erzeugt werden kann. Zur Erfassung der Motordrehzahl besitzt die "'MCPWM\_UNIT"' mehrere "'Capture"' Eingänge. 
 Mit diesen werden die beiden Hallsensoren eines Motors verbunden. Eine positive Flanke erzeugt ein Interrupt, in dem die Zeitdifferenz zwischen zwei Hallsensorflanken berechnet wird.
 Basierend darauf kann dann die Motordrehzahl ermittelt werden.
 Die Klasse Motor übernimmt somit die Einrichtung der "'MCPWM\_UNIT"' über die Hardwareabstraktionsschicht von Espressife und stellt die Interruptfunktion zur Verfügung.
@@ -289,8 +289,8 @@ Im Folgenden wird auf die Methoden der Klasse Motor eingegangen:
 Die Klasse MotorController steuert den PI-Regler in Motor. Ein Timer Interrupt des ESP32 führt jede Millisekunde eine Interruptfunktion aus MotorController aus.
 Die \bverb|updatePIControl()| Methode aus Motor wird allerdings nicht aus dem Interrupt ausgeführt. Der Aufruf befindet sich in einem FreeRTOS Prozess \bverb|_motor_control_loop_task()|.
 Dieser blockiert solange bis er aus der Interruptfunktion aufgeweckt wird. Dann holt sich der Prozess die aktuelle Drehzahl der Motoren \bverb|getActualVelocity()|, aktualisiert die PI-Regler \bverb|updatePIControl()|, setzt die neue Pulsbreite \bverb|setDuty()| und wartet,
-wieder darauf aus dem Interrupt aufgeweckt zu werden. Das Steuern eines Prozesses aus einem Interrupt wird "Deferred Interrupt Handling" genannt und hat den Vorteil, 
-dass das Interrupt möglichst schnell durchläuft und niemals blockiert wird. Außerdem wird aus MotorController der Enable Pin für den Motortreiber aktiviert.
+wieder darauf aus dem Interrupt aufgeweckt zu werden. Das Steuern eines Prozesses aus einem Interrupt wird "`Deferred Interrupt Handling"' genannt und hat den Vorteil, 
+dass das Interrupt möglichst schnell durchläuft und niemals blockiert wird. Au{\ss}erdem wird aus MotorController der Enable Pin für den Motortreiber aktiviert.
 
 Im Folgenden wird auf die Methoden der Klasse MotorController eingegangen:
 \begin{itemize}
@@ -341,7 +341,7 @@ Für die Transformation muss au{\ss}erdem der Radabstand $d$ und der Raddurchmes
 \]
 
 Die maximale Drehzahl der im Projekt verwendeten Polulu 20D Motoren beträgt 220 Umdrehungen pro Minute. 
-Ergibt die Transformation eine größere Drehzahl, werden beide Drehzahlen um den gleichen Faktor runterskaliert.
+Ergibt die Transformation eine grö{\ss}ere Drehzahl, werden beide Drehzahlen um den gleichen Faktor runterskaliert.
 \begin{itemize}
     \item \bverb|OutputVelocity& init(MotorController& motor_controller)| erzeugt das OuputVelocityImpl Objekt.
     \item \bverb|void setVelocity(ros_msgs_lw::Twist2D const& velocity)| setzt einen neuen Geschwindigkeitsvektor, transformiert diesen in Drehzahlen und gibt diese an MotorController weiter.
@@ -374,7 +374,7 @@ Die Positionsdaten der KalmanSensoren werden aufgwertet, so dass Positionsdaten 
 Ursprünglich war auch eine Sensorfusion mit z.B. Motordrehzahl und Messungen einer IMU geplant. Dies konnte allerdings nicht mehr aus Zeitgründen umgesetzt werden.
 
 \subsection*{SensorPose}
-Die Klasse SensorPose definiert die gemeinsame Schnittstelle aller Sensoren und ermöglicht somit eine einfaches Wechseln zwischen unterschiedlichen Sensoren.
+Die Klasse SensorPose definiert die gemeinsame Schnittstelle aller Sensoren und ermöglicht somit ein einfaches Wechseln zwischen unterschiedlichen Sensoren.
 SensorPose definiert zwei Möglichkeiten die Pose des Roboters zu lesen. 
 
 \begin{itemize}
@@ -486,7 +486,7 @@ Au{\ss}erdem wird noch die Kovarianz $P_t^+$ dieser Schätzung für den nächste
 \end{equation}
 
 Falls neue Messungen noch nicht verfügbar sind, kann der zweite Schritt auch übersprungen werden und für den nächsten Zyklus $\hat{z}_t^+ = \hat{z}_t^-$ und  $P_t^+ = P_t^-$ gesetzt werden. 
-Des Weiteren ist es - durch Wiederholung des zweiten Schrittes für unterschiedliche Sensoren - möglich mehrere Messungen zu Fusionieren.
+Des Weiteren ist es - durch Wiederholung des zweiten Schrittes für unterschiedliche Sensoren - möglich mehrere Messungen zu fusionieren.
 Dies wird im Projekt über eine Liste von KalmanSensoren umgesetzt. Diese wird in jedem Zyklus durchlaufen und die Zustandsvariablen aktualisiert, falls neue Messungen verfügbar sind.
 Die Berechnung geschieht in einem FreeRTOS Prozess \bverb|_kalman_filter_loop_task()|, der über einen Softwaretimer auf $100Hz$ getaktet wird.
 
@@ -526,7 +526,7 @@ Marvelmind definiert auch einige KConfig Menüeinstellungen für die UART Pins a
 
 \subsection*{SensorPoseSim}
 SensorPoseSim ist auch eine Unterklasse von SensorPose und KalmanSensor. Die Klasse dient zur Simulation des Roboters in ROS über z.B. den Turtlesim.
-Die Roboterpose wird auf der Topic "/robotername/pose" empfangen. Diese wird im Konstruktor des SensorPoseSim Objektes abonniert. Die Methode \bverb|void _setPose()| dient dabei als Callbackfunktion für den Subscriber. 
+Die Roboterpose wird auf der Topic "`/robotername/pose"' empfangen. Diese wird im Konstruktor des SensorPoseSim Objektes abonniert. Die Methode \bverb|void _setPose()| dient dabei als Callbackfunktion für den Subscriber. 
 
 
 \section{PositionController}
@@ -538,7 +538,7 @@ Die Roboterpose wird auf der Topic "/robotername/pose" empfangen. Diese wird im 
     \label{fig:position_controller_class}
 \end{figure}
 
-Die Komponente PositionController setzt den äußeren Regelkreise des Roboters um. Da der Roboter mit unterschiedlichen Regelaufgaben umgehen muss, ist kein Regler fest implementiert.
+Die Komponente PositionController setzt den äu{\ss}eren Regelkreise des Roboters um. Da der Roboter mit unterschiedlichen Regelaufgaben umgehen muss, ist kein Regler fest implementiert.
 Es wird dem Programmmierer erlaubt unterschiedliche Regler zu implementieren, 
 die über eine gemeinsame Schnittstelle angesteuert werden. Im Projekt wurde der p2pController, approxLinController, statInOutLinController und dynInOutLinController Regler implementiert.
 Mit dem ersten können Punkte angefahren werden. Die letzen drei dienen zum Folgen von Trajektorien.
@@ -546,7 +546,7 @@ Da Funktionsweise und mathematische Herleitung dieser Regler in der vorhergehend
 
 \subsection*{ControllerMaster}
 Die Klasse ControllerMaster schlie{\ss}t den Regelkreis der Positionsregelung. Es wird zunächst die aktuelle Position aus dem SensorPose Objekt bezogen.
-Anschlie{\ss}end wird ein neuer Geschwindigkeitsvektor als Stellgröße über das PositionController Objekt berechnet und dieser Vektor an das OutputVelocity Objekt weitergereicht.
+Anschlie{\ss}end wird ein neuer Geschwindigkeitsvektor als Stellgrö{\ss}e über das PositionController Objekt berechnet und dieser Vektor an das OutputVelocity Objekt weitergereicht.
 Zuletzt überprüft der ControllerMaster, ob das Ziel der Regelung erreicht wurde und beendet den Regelungszyklus. Durch eine Callbackfunktion werden andere Komponenten über das Ende der Regelung informiert. 
 Der FreeRTOS Prozess \bverb|_control_loop_task()| beinhaltet den Regelkreislauf und ein Softwaretimer taktet diesen auf $100Hz$.
 
@@ -565,7 +565,7 @@ Die Klasse PositionController definiert die gemeinsame Schnittstelle über die d
 Die Regelung ist komplett innerhalb der Unterklassen dieser Schnittstelle gekapselt. ControllerMaster besitzt somit keine Information über die Art der Regelung.
 
 \begin{itemize}
-    \item Mit \bverb|ros_msgs_lw::Twist2D update(ros_msgs_lw::Pose2D const& actual_pose)| wird für eine neue Istposition ein neuer Geschwindigkeitsvektor als Stellgröße berechnet.
+    \item Mit \bverb|ros_msgs_lw::Twist2D update(ros_msgs_lw::Pose2D const& actual_pose)| wird für eine neue Istposition ein neuer Geschwindigkeitsvektor als Stellgrö{\ss}e berechnet.
     Der ControllerMaster muss diese Methode alle $10ms$ aufrufen. 
     \item Mit \bverb|bool destination_reached()| kann der ControllerMaster überpüfen, ob das Ziel der Regelung (Zielpunkt oder Trajektorienende) erreicht wurde.
 \end{itemize}
@@ -575,7 +575,7 @@ Die Regelung ist komplett innerhalb der Unterklassen dieser Schnittstelle gekaps
 
 \subsection*{approxLin-, statInOutLin-, dynInOutLinController}
 Mit den Reglern "`approximierte Linearisierung"', "`statische Ein- und Ausgangslinearisierung"' und "`dynamische Ein- und Ausgangslinearisierung"' können Trajektorien abgefahren werden.
-Eine Trajektorie besteht aus einem Array von Trajektorienpunkten. Jeder Trajektorienpunkte beinhaltet Positions-, Geschwindigkeits, Beschleunigungsvektoren und einen Zeitstempel.
+Eine Trajektorie besteht aus einem Array von Trajektorienpunkten. Jeder Trajektorienpunkte beinhaltet Positions-, Geschwindigkeits-, Beschleunigungsvektoren und einen Zeitstempel.
 Über den Zeitstempel wird bei jedem Aufruf der \bverb|update()| Funktion der aktuellste Trajektorienpunkt als Sollwert für die Trajektorienregelung genommen.
 Da die Trajektorien als Nachrichten aus dem ROS-System entspringen, stimmt der Wert des Zeitstempels nicht mit der ESP32 internen Zeit überein. Diese Zeitdifferenz wird zum Beginn der Regelung berechnet und folgende Punkte korrigiert.
 
@@ -599,7 +599,7 @@ Somit würde z.B. eine empfangene Geschwindigkeitsvektor Nachricht einen Zustand
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/Softwarearchitektur_ESP32/Zustandsdiagramm.png}
-    \caption{Zustandsdiamm Roboter}
+    \caption{Zustandsdiagramm Roboter}
     \label{fig:zustandsdiagramm}
 \end{figure}
 
@@ -609,7 +609,7 @@ Somit würde z.B. eine empfangene Geschwindigkeitsvektor Nachricht einen Zustand
 Die Logging Dauer wird in der Nachricht als \bverb|ros_msgs::String| codierte Gleitkommazahl übermittelt.
 Über die Makrofunktion \bverb|LOG_DATA()| können Logging Einträge erstellt werden.
 Allerdings muss das Makro \bverb|DATA_LOGGING| vor dem Inkludieren der Header Datei "`DataLogger.h"' definiert sein. Dies ermöglicht das einfache Ein- und Ausschalten des Loggings in einer Sourcedatei.
-Die einzelnen Logs werden dann in einem Puffer zwischengespeichert, bis dieser eine bestimmte Größe erreicht hat. Anschlie{\ss}end wird der gesamte Puffer über den Nachrichtentyp \bverb|ros_msgs::String| 
+Die einzelnen Logs werden dann in einem Puffer zwischengespeichert, bis dieser eine bestimmte Grö{\ss}e erreicht hat. Anschlie{\ss}end wird der gesamte Puffer über den Nachrichtentyp \bverb|ros_msgs::String| 
 auf der Topic "`robotername/data\_log"' an das ROS-System gesendet. Das Logging wird automatisch nach der zu Beginn übermittelten Zeit beendet.
 DataLogger definiert auch einige KConfig Menüeinstellungen. Die Komponente Data Logger besteht aus einer Klasse. Im Folgenden wird auf die Methoden dieser Klasse eingegangen:
 \begin{itemize}
@@ -618,7 +618,7 @@ DataLogger definiert auch einige KConfig Menüeinstellungen. Die Komponente Data
     \item Über das Makro \bverb|LOG_DATA(format, ...)| kann ein Logeintrag erstellt werden. Die Parameter der Makrofunktion entsprechen den Parameter der \bverb|printf()| Funktion. 
     Es wird ein Formatstring und die in dem Formatstring definierten Variablen übergeben.
     \item \bverb|void logData(const char* format, ...)| wird von dem Makro \bverb|LOG_DATA()| aufgerufen. Es speichert die Logeinträge in einem Puffer zwischen.
-    \item \bverb|void _data_logger_task(void *pvParameters)| sendet den Puffer an das ROS-System, falls dieser eine maximale Größe erreicht hat.
+    \item \bverb|void _data_logger_task(void *pvParameters)| sendet den Puffer an das ROS-System, falls dieser eine maximale Grö{\ss}e erreicht hat.
 \end{itemize}
 
 \section{Main}
@@ -636,6 +636,7 @@ Diese sendet alle $100ms$ die aktuelle Postion des Roboters auf der Topic "'robo
 \end{itemize}
 
 \section{Starthilfe}
+\label{sec:ros-befehle}
 
 Die Sourcen für den ESP32 Code befinden sich im Projektordner oder können von dem GitHub Repository \url{https://github.com/maxdoesch/Roboterformation_ESP-IDF.git} geklont werden.
 Zunächst muss die ESP-IDF Toolchain installiert werden. Für das Projekt wird die Version ESP-IDF 4.4 oder neuer benötigt. Die Installation ist im Programming-Guide \cite{ESP-IDFProgrammingGuide} von Espressife beschrieben.

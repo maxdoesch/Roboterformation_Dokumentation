@@ -20,14 +20,14 @@ Für die Versorgung des Mikrocontrollers müssen die 12V mit einem Buck-Converte
 Au{\ss}erdem soll der Roboter für den Test-/Programmierbetrieb auch über die 5V der USB-C oder der JTAG/Programmierschnittstelle stationär betrieben werden können.
 Hierfür müssen die Spannungen elektronisch getrennt werden, um einen Kurzschluss zwischen den Potentialen zu verhindern.
 Der ESP32 kann über die USB-C Schnittstelle und eine separate serielle Schnittstelle programmiert werden.
-Für den 2 Quadranten betrieb der Motoren ist eine doppel H-Brücke vorgesehen. 
+Für den 2 Quadranten-Betrieb der Motoren ist eine doppel H-Brücke vorgesehen. 
 Die Ist-Geschwindigkeit wird über Hallsensoren auf den Bürstenmotoren ermittelt.
-Die Motoren werden jeweils über das Molex Micro-Fit Stecksystem auf die MainPCB Platine aufgesteckt und werden anschließend mittels 3D-Druck Halterung an die Platine angeschraubt.
+Die Motoren werden jeweils über das Molex Micro-Fit Stecksystem auf die MainPCB Platine aufgesteckt und werden anschlie{\ss}end mittels 3D-Druck Halterung an die Platine angeschraubt.
 Auf die zweite Platine wird der Marvelmind Mini-RX Empfänger aufgesteckt. Dieser kommuniziert über UART mit dem Mikrocontroller. 
 Die beiden externen Marvelmind Mikrofone können einfach auf die LED\_PCB Platine gelötet werden. 
 Das Marvelmind benötigt 5V. Diese werden auf der LED\_PCB Platine erzeugt.
 Die 43 RGB Led-ICs werden über die 12V Spannung versorgt und mittels einer Datenleitung vom Mikrocontroller angesteuert.
-Da die Led Bausteine 5V Logikpegel benötigen, wird das 3.3V Signal vom ESP32 mittels 1-Bit Level Shifter verstärkt.
+Da die Led Bausteine 5V Logikpegel benötigen, wird das 3.3V Signal vom ESP32 mittels eines 1-Bit Level Shifters verstärkt.
 
 
 
@@ -101,7 +101,7 @@ Diagramm \ref{fig:esp32pinlayout} und Tabelle \ref{tab:esp32pinbelegung} beschre
     \caption{ESP32 Power-Up}
     \label{fig:esp32powerup}
 \end{figure}
-Wie die Illustation \ref{fig:esp32powerup} zeigt, muss der Enable Pin (im Datenblatt \cite{ESP32} CHIP\_PU genannt) für eine bestimmte Zeit $t_0 = 50\mu s$ nach dem Power-Up auf Low gehalten werden.
+Wie die Illustration \ref{fig:esp32powerup} zeigt, muss der Enable Pin (im Datenblatt \cite{ESP32} CHIP\_PU genannt) für eine bestimmte Zeit $t_0 = 50\mu s$ nach dem Power-Up auf Low gehalten werden.
 Das Gleiche gilt für den Reset des Mikrocontrollers $t_1 = 50\mu s$. Die Power-Up/Reset Schaltung könnte zum Beispiel als Parallelschaltung eines RC Tiefpasses mit einem Taster umgesetzt werden.
 
 \subsubsection*{Boot-Mode}
@@ -135,7 +135,7 @@ Auf beiden Platinen sind Anschlüsse an den I2C-Bus des ESP32 vorgesehen. Über 
 Der Chip CP2102N \cite{CP2102N} wirkt als "'Übersetzer"' zwischen der USB2.0 Fullspeed Schnittstelle und dem UART Interface.
 Somit kann durch einen Virtual COM Port Treiber am Host-PC über USB- auf die UART-Schnittstelle zugegriffen werden.
 Die UART Seite wird über die Pins RXD/TXD und das differenzielle USB Signal über die D+/D- Pins mit dem CP2102N verbunden.
-Dies ermöglicht das Programmieren des ESP32 einfach über USB. Außerdem kann auch auf den seriellen Monitor zugegriffen werden.
+Dies ermöglicht das Programmieren des ESP32 einfach über USB. Au{\ss}erdem kann auch auf den seriellen Monitor zugegriffen werden.
 Des Weiteren kann das RTS (Ready to Send; LOW aktiv) und DTR (Data Terminal Ready; LOW aktiv) Signal zur Auswahl des Boot Modus und Neustarten des ESP32 Mikrocontrollers verwendet werden.
 Die folgende Tabelle \ref{tab:cp2102n_dtr_rts} zeigt die notwendige logische Verknüfung der Signale.
 
@@ -208,7 +208,7 @@ Die Pololu 20D Motoren haben einen Stillstandsstrom von maximal 1.6A.
 Somit sollte der Treiber auch ohne die interne Strombegrenzung sicher betrieben werden können.
 Dies bedeutet die Pins AI0, AI1, BI0, BI1 müssen nicht verbunden werden, ISENA und ISENB können direkt mit GND verbunden werden
 und AVREF, BVREF werden auf 3.3V gezogen.
-Geschwindigkeit und Drehrichtung der Motoren wird über die Pulseweite der (AIN1/AIN2; BIN1/BIN2) 
+Geschwindigkeit und Drehrichtung der Motoren wird über die Pulsweite der (AIN1/AIN2; BIN1/BIN2) 
 Eingangssignale gesteuert. Abbildung \ref{tab:drv8841_hbridgelogic} zeigt die logische Verknüfung der Eingangs- und Ausgangssignale der H-Brücke.
 Um den Motortreiber zu aktivieren, müssen nRESET und nSLEEP auf 3.3V gezogen werden.
 Des Weiteren ist auch noch ein Bootstrap-Kondensator zwischen den Pins CP1/CP2 als Ladepumpe notwendig.
@@ -251,7 +251,7 @@ Diese schneidet sich den ersten Farbwert ab und gibt den restlichen Datenstrom �
 Des Weiteren wird 0 und 1 nicht über den Wert der Spannungspegel codiert. Um ein Bit zu übertragen, benötigt es zu Beginn eine positive Flanke, dann eine negative und zum Schluss wieder ein positive Flanke.
 Der Wert wird dann in die Dauer der High und Low-Phasen codiert.
 Die LED wird mit 12V gespeist. Die Logikpegel der Datensignale arbeiten allerdings mit 5V Spannung. An den VCC Pin kann ein Entkopplungskondensator angeschlossen werden.
-Außerdem wird der Eingang BIN mit DO der vorletzten LED verbunden und bringt somit Redundanz beim Aufall einer LED.
+Au{\ss}erdem wird der Eingang BIN mit DO der vorletzten LED verbunden und bringt somit Redundanz beim Ausfall einer LED.
 
 \subsection{PI4ULS5V201}
 Da die LED-Treiber 5V Signalpegel benötigen, können diese nicht direkt mit dem ESP32 angesteuert werden.
@@ -267,7 +267,7 @@ Der Chip PI4ULS5V201 \cite{PI4ULS5V201} ist ein Level-Shifter IC und kann den 3.
 \end{figure}
 Auf den beiden Platinen existieren insgesamt drei verschiedene Spannungen (12V, 5V, 3.3V). 
 Mit dem Buck Converter TPS54331 \cite{TPS54331} werden jeweils 5V und 3.3V aus 12V erzeugt.
-Da mit 5V und 3.3V kein großer Verbraucher gespeist wird, ist der Baustein mit maximal 3A Dauerstrom ausreichend dimensioniert.
+Da mit 5V und 3.3V kein gro{\ss}er Verbraucher gespeist wird, ist der Baustein mit maximal 3A Dauerstrom ausreichend dimensioniert.
 Abbildung \ref{fig:tps54331_pinout} zeigt eine typische Verschaltung des Buck Converters.
 Die Ausgangsspannung kann über die beiden Widerstände $R_{D1}$ und $R_{D2}$ eingestellt werden.
 Das Datenblatt liefert eine Tabelle zur Dimensionierung aller passiven Bauelemente je nach benötigter Eingangs- und Ausgangsspannung.
@@ -290,9 +290,9 @@ Die vollständigen Schaltpläne für beide Platinen befinden sich im Anhang \ref
     \label{fig:kicad_hauptschalter_verpolungsschutz}
 \end{figure}
 Dieser Teil ermöglicht das Anschalten über einen mechanischen Schalter. 
-Außerdem wird die Platine vor Verpolung der LiIon Zellen und Überstrom/Kurzschluss geschützt.
+Au{\ss}erdem wird die Platine vor Verpolung der LiIon Zellen und Überstrom/Kurzschluss geschützt.
 Der IRF7404 ist ein PMOS Transistor mit niedrigem Drain-Source Widerstand.
-Befindet sich der Schalter SW1 in der dargestellten Stellung ist $V_{GS} = 0V$ und der Mosfet sperrt.
+Befindet sich der Schalter SW1 in der dargestellten Stellung, ist $V_{GS} = 0V$ und der Mosfet sperrt.
 In der zweiten Schalterstellung wird $V_{GS} = 0V - V_{+BATT} \approx -12V$ und der Mosfet wird leitend.
 Q2 wirkt als Verpolungsschutz für die gesamte Schaltung. Bei richtiger Polung von $V_{+BATT}$ ist die Body-Diode leitend und
 $V_{GS} \approx -12V$. Bei Verpolung hat das Transistor Gate das Potential 12V. $V_{GS} < 0V$ ist somit nicht möglich und der Mosfet sperrt.
@@ -310,10 +310,10 @@ Da dieser den Mikrocontroller versorgt, muss der Buck Converter über die LiIon 
 Es reicht nicht aus die verschiedenen Spannungschienen direkt zu verbinden, 
 da sonst die Gefahr eines Kurzschlusses zwischen den Potentialen besteht, wenn mehrere Spannungsquellen gleichzeitig aktiv sind.
 VBUS und 5VD werden durch Dioden vor Potentialausgleich geschützt. Diese Spannungen werden nur zum Debuggen verwendet. 
-Es fließt nur wenig Strom und der Spannungsabfall über den Dioden ist somit hinnehmbar. 
-Da die 12V den Roboter im Normalbetrieb mit teilweise großer Stromaufnahme versorgen, darf es keinen großen Spannungsabfall über der schützenden Komponente geben.
-Der PMOS Transistor AO3401 hat einen geringen Drain-Source Widerstand und somit wenig Leistungsverlust bei großem Strom.
-Sind 12V verbunden, schaltet Q3 immer durch da $V_{GS} < 0V$. Falls nur VBUS oder 5VD aktiv ist, wird $V_{GS} = 0V$. Die 12V Schiene bleibt somit Spannungsfrei.
+Es flie{\ss}t nur wenig Strom und der Spannungsabfall über den Dioden ist somit hinnehmbar. 
+Da die 12V den Roboter im Normalbetrieb mit teilweise gro{\ss}er Stromaufnahme versorgen, darf es keinen gro{\ss}en Spannungsabfall über der schützenden Komponente geben.
+Der PMOS Transistor AO3401 hat einen geringen Drain-Source Widerstand und somit wenig Leistungsverlust bei gro{\ss}em Strom.
+Sind 12V verbunden, schaltet Q3 immer durch da $V_{GS} < 0V$. Falls nur VBUS oder 5VD aktiv ist, wird $V_{GS} = 0V$. Die 12V Schiene bleibt somit spannungsfrei.
 
 \subsection*{Reset- und Bootmodeschaltung}
 \begin{figure}[H]
@@ -365,7 +365,7 @@ Der Dokumentation liegen einmal das fehlerhafte KiCad Projekt V1.0 und ein Proje
     \item[Fehlerbehebung:] Damit die Ausgänge RTS und DTR immer einen definiertem Pegel haben, muss der CP2102N dauerhaft über die 3.3V des Spannungswandlers versorgt sein. 
     Dazu muss REGIN mit 3.3V verbunden werden. Abbildung \ref{fig:cp2102nfehlerkorrektur} zeigt, dass die Eingänge mit dem Label \bverb{CP2102N_VDD} direkt mit 3.3V verbunden werden können.
     Auf den bestehenden Platinen kann der Fehler behoben werden, indem der CP2102N Chip abgelötet wird und die Leiterspur zwischen VBUS und REGIN aufgetrennt wird. (Abbildung \ref{fig:cp2102nfehlerkorrekturlayout} grün)
-    Anschlie{\ss}end muss REGIN mit VDD verbunden werden (Lötbrücke blau) und mithilfe von z.B. einem Kupferdraht mit 3.3V versorgt werden. (Abbildung \ref{fig:cp2102nfehlerkorrekturlayout} blau)
+    Anschlie{\ss}end muss REGIN mit VDD verbunden werden (Lötbrücke blau) und mithilfe beispielsweise eines Kupferdrahtes mit 3.3V versorgt werden. (Abbildung \ref{fig:cp2102nfehlerkorrekturlayout} blau)
 \end{description}
 
 \begin{figure}[H]
@@ -401,5 +401,5 @@ Im Folgenden sollen deshalb mögliche Verbesserungsvorschläge aufgelistet werde
     \item Momentan ist das Main\_PCB als 4 Layer Platine ausgelegt. Um die Kosten der einzelnen Platine zu senken, sollte das Layout auf 2 Layer reduziert werden.
     \item Die Pinbelegung \ref{fig:esp32pinlayout} des ESP32 zeigt, dass es kaum mehr freie Pins am Mikrocontroller gibt. Die Regelung der Motoren belegt alleine neun dieser Pins.
     Diese könnte auf einen zweiten Mikrocontroller ausgelagert werden. Somit würden wieder mehr Pins am ESP32 nutzbar sein. 
-    Außerdem wird die ESP32 Software-Architektur vereinfacht und Rechenleistung für zukünftige Software Erweiterungen frei.
+    Au{\ss}erdem wird die ESP32 Software-Architektur vereinfacht und Rechenleistung für zukünftige Software Erweiterungen frei.
 \end{itemize}
