@@ -248,6 +248,23 @@ Aus dem Grund müssen alle Nachrichtenklassen die folgenden Methoden implementie
 \end{itemize}
 
 
+\section{LedStrip}
+Die Klasse LedStrip ist für die Ansteuerung der LEDs zuständig. Das Ledband empfängt einen Bitstream, von welchem sich die einzelnen LEDs die ersten 24 Bits abschneiden und den verbleibenden Bitstream an die restlichen LEDs weiterführt.
+In den 24 Bits sind die RGB Werte enthalten, 8 Bit je Farbe.
+
+Im Folgenden wird auf die Methoden der Klasse LedStrip eingegangen:
+
+\begin{itemize}
+    \item \verb|LedStrip()| ist der Konstruktor der Klasse. Dort werden die Einstellungen für die LEDs, wie die Anzahl der LEDs und GPIO Pin, vorgenommen.
+    \item \verb|void hsv2rgb(uint32_t h, uint32_t s, uint32_t v, uint32_t *r, uint32_t *g, uint32_t *b)| Diese Methode wird für manche Animationen benötigt. Hierbei wird das Farbspektrum von HSV in RGB Werte umgerechnet. Dies vereinfacht das erstellen von Animationen.
+    \item \verb|void rgb2hue()| Um das Erstellen von Animationen zu vereinfachen, wurde diese Methode erstellt, um die RGB Werte in den Farbwinkel hue umzuwandeln.
+    \item \verb|void animation_callback(void *arg)| ist die Callbackfunktion der LedStrip Klasse. Über die Node wird ein String empfangen, welcher anschließend die richtige Animation in der \verb|led_handler|Methode aufruft.
+    \item Die \verb|void led_handler| Methode ist für das Abspielen der jeweiligen Animation zuständig. Die WebApp sendet einen string über die Callbackfunktion an die \verb|led_handler| Methode, welcher in die Einzelteile - Animation und RGB Werte - aufgeteilt wird. Mithilfe der Callback Funktion wird die richtige Animation aufgerufen. 
+\end{itemize}
+
+
+
+
 \section{MotorController}
 
 \begin{figure}[H]
