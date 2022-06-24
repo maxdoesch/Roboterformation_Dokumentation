@@ -488,9 +488,10 @@ Au{\ss}erdem wird die Unsicherheit $P_t^-$ dieser Schätzung mithilfe des Prozes
         P_t^- = F_t P_{t-1}^+ F_t^T + Q \\
         \\
     \end{gathered}
+    \label{eq:kalman_vorhersage}
 \end{equation}
 
-Im zweiten Update Schritt wird die Schätzung mithilfe der Positionsmessung $\tilde{y}_t$ von z.B. dem Marvelmindsensor korrigiert. Da auch jede Messung etwas Messrauschen $R$ besitzt, muss die Plausibilität der Messung und der Schätzung bestimmt werden.
+Im zweiten Update Schritt wird die Schätzung mithilfe der Positionsmessung $\tilde{y}_t$ von z.B. dem Marvelmindsensor korrigiert. Da jede Messung etwas Messrauschen $R$ besitzt, muss die Plausibilität der Messung im Vergleich zu der Schätzung bestimmt werden.
 Hierfür wird der Kalman Gain $K_t$ aus $P_t^-$ und $R$ berechnet. Der Kalman Gain bestimmt die Gewichtung der Messung in der abschlie{\ss}enden Positionsschätzung $\hat{z}_t^+$.
 Au{\ss}erdem wird noch die Kovarianz $P_t^+$ dieser Schätzung für den nächsten Durchlauf berechnet.
 
@@ -500,12 +501,14 @@ Au{\ss}erdem wird noch die Kovarianz $P_t^+$ dieser Schätzung für den nächste
         \hat{z}_t^+ = \hat{z}_t^- + K_t (\tilde{y}_t - H\hat{z}_t^-)) \\
         P_t^+ = (I - K_t H)P_t^-
     \end{gathered}
+    \label{eq:kalman_update}
 \end{equation}
 
 Falls neue Messungen noch nicht verfügbar sind, kann der zweite Schritt auch übersprungen werden und für den nächsten Zyklus $\hat{z}_t^+ = \hat{z}_t^-$ und  $P_t^+ = P_t^-$ gesetzt werden. 
-Des Weiteren ist es - durch Wiederholung des zweiten Schrittes für unterschiedliche Sensoren - möglich mehrere Messungen zu fusionieren.
-Dies wird im Projekt über eine Liste von KalmanSensoren umgesetzt. Diese wird in jedem Zyklus durchlaufen und die Zustandsvariablen aktualisiert, falls neue Messungen verfügbar sind.
-Die Berechnung geschieht in einem FreeRTOS Prozess \bverb|_kalman_filter_loop_task()|, der über einen Softwaretimer auf $100Hz$ getaktet wird.
+Des Weiteren ist es - durch Wiederholung des Update Schrittes für unterschiedliche Sensoren - möglich mehrere Messungen zu fusionieren.
+Dies wird im Projekt über eine Liste von KalmanSensoren umgesetzt. Diese Liste wird in jedem Zyklus durchlaufen. Die Zustandsvariablen werden aktualisiert, falls neue Messungen verfügbar sind.
+Die Berechnung der Vorhersage \ref{eq:kalman_vorhersage} befindet sich in einem FreeRTOS Prozess \bverb|_kalman_filter_loop_task()|, der über einen Softwaretimer auf $100Hz$ getaktet wird.
+Der Update Schritt \ref{eq:kalman_update} ist in den Unterklassen von KalmanSensor implementiert und wird über den FreeRTOS Prozess aufgerufen. 
 
 \begin{itemize}
     \item \bverb|SensorPose& init(std::initializer_list<KalmanSensor const*> const& sensor_list, OutputVelocity const& output_velocity)| erzeugt ein KalmanFilter Objekt. 
