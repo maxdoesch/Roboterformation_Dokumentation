@@ -33,7 +33,7 @@ Damit zwischen den einzelnen Roboter unterschieden werden kann, besteht der Topi
 \begin{center}
     \verb|/namespace/topicbezeichnung|
 \end{center}
-\verb|namespace| ist die Identifikationskonstante im Flash des ESP32 und wurde in diesem Projekt auf \verb|robot_| + Nummerierung gesetzt.
+\verb|namespace| ist die Identifikationskonstante im Flash des ESP32 und wurde in diesem Projekt auf \verb|robot_| plus Nummerierung gesetzt.
 Damit der ESP32 mit den Nachrichten auf den Topics umgehen kann, wurde für alle verwendeten ROS-Nachrichtentypen ein entsprechender Datentyp in der ESP32 Software implementiert.
 Tabelle \ref{tab:ros_topics} zeigt eine Auflistung aller vom Roboter genutzten Topics.
 
@@ -74,7 +74,7 @@ Damit das Gesamtsystem über eine benutzerfreundliche Schnittstelle einfach bedi
 Die Web-App läuft über den Browser auf verschiedenen Endgeräten und kommuniziert über das Websocket Protokoll mit einer weiteren ROS Node.
 Ursprünglich war geplant die Trajektoriengenerierung über ROS Service Calls aus der Web-App zu steuern. Dies konnte allerdings nicht mehr umgesetzt werden.
 Das Gleiche gilt für das Anzeigen der Roboterpose und Setzen von Zielpunkten.
-Zum Ende der Projektarbeit ist es möglich die Robotergeschwindigkeit und LED Muster/Farben über das Web Interface zu steuern.
+Zum derzeitigen Stand der Projektarbeit ist es möglich die Robotergeschwindigkeit und LED Muster/Farben über das Web Interface zu steuern.
 
 \section{Applikationsprotokoll}
 Für die Kommunikation zwischen Mikrocontroller und Host Rechner wurde ein eigenes Applikationsprotokoll entwickelt. 
@@ -92,11 +92,11 @@ Das Transmission Control Protocol baut eine virtuelle Verbindung zwischen Server
 garantiert somit eine verlustfreie Übertragung der Daten. 
 Aus diesem Grund wurde TCP als Transportunterschicht für das eigene Protokoll verwendet.
 In diesem Kapitel wird der Aufbau des Protokolls beschrieben. 
-Für die genaue Implementierung der Server und Client Seite wird auf die Kapitel \ref{ch:esp32} und \ref{ch:ros} verwiesen. 
+Für die genaue Implementierung der Server und Client Seite wird auf die Kapitel \ref{ch:rosbridgeclient} und \ref{ch:rosbridgeserver} verwiesen. 
 
 \subsection{Datenpakete}
 Die Kommunikation mit dem Applikationsprotokoll ist paketbasierend. 
-Diese müssen von der Software im Server oder Client aus dem TCP Datenstrom gefiltert werden.
+Diese Pakete müssen von der Software im Server oder Client aus dem TCP Datenstrom gefiltert werden.
 Das Protokoll definiert insgesamt 5 verschiedene Pakete:
 
 \begin{table}[H]
@@ -224,7 +224,7 @@ Der Client startet die Verbindung mit dem Initialisierungspaket und teilt dem Se
 Alle $500ms$ tauschen beide Seiten ihr Keep-Alive Paket mit dem jeweiligen Zeitstempel aus. 
 Daten zu den Topics werden mithilfe des Publish Pakets vom Client zum Server oder vom Server zum Client geschickt.
 Ein Verbindungsabbruch würde durch ein fehlendes Keep-Alive bemerkt werden. 
-Das Verhalten beider Seiten in diesem Fall wird in den Kapiteln \ref{ch:esp32} und \ref{ch:ros} beschrieben.
+Das Verhalten beider Seiten in diesem Fall wird in den Kapiteln \ref{ch:rosbridgeclient} und \ref{ch:ch:rosbridgeserver} beschrieben.
 
 
 

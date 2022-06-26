@@ -11,21 +11,22 @@ die Leds auf der oberen Platine (Led\_PCB) den richtigen Abstand zum Led-Diffuso
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{figures/Platinenentwurf/PCB_Blockdiagramm.png}
-    \caption{Blockdiagramm PCB}
+    \caption{Blockschaltbild PCB}
+    \label{fig:blockschaltbild_pcb}
 \end{figure}
-Das Blockdiagramm zeigt den Leistungs- und Signalfluss zwischen den Bauteilen auf beiden Platinen.
-Die primäre Stromversorgung übernehmen drei 18650 LiIon Zellen. Diese haben im geladenen Zustand eine Gesamtspannung von $3*4.2 = 12.6V$ 
-und können über einen Schalter an- und ausgeschalten werde. Der Roboter ist gegenüber Verpolung aller Zellen geschützt.
+Das Blockschaltbild \ref{fig:blockschaltbild_pcb} zeigt den Leistungs- und Signalfluss zwischen den Bauteilen auf beiden Platinen.
+Die primäre Stromversorgung übernehmen drei 18650 LiIon Zellen. Diese haben im geladenen Zustand eine Gesamtspannung von $3\cdot4.2V = 12.6V$ 
+und können über einen Schalter an- und ausgeschalten werden. Der Roboter ist gegenüber Verpolung aller Zellen geschützt.
 Für die Versorgung des Mikrocontrollers müssen die 12V mit einem Buck-Converter auf 3.3V gewandelt werden.
 Au{\ss}erdem soll der Roboter für den Test-/Programmierbetrieb auch über die 5V der USB-C oder der JTAG/Programmierschnittstelle stationär betrieben werden können.
 Hierfür müssen die Spannungen elektronisch getrennt werden, um einen Kurzschluss zwischen den Potentialen zu verhindern.
 Der ESP32 kann über die USB-C Schnittstelle und eine separate serielle Schnittstelle programmiert werden.
 Für den 2 Quadranten-Betrieb der Motoren ist eine doppel H-Brücke vorgesehen. 
 Die Ist-Geschwindigkeit wird über Hallsensoren auf den Bürstenmotoren ermittelt.
-Die Motoren werden jeweils über das Molex Micro-Fit Stecksystem auf die MainPCB Platine aufgesteckt und werden anschlie{\ss}end mittels 3D-Druck Halterung an die Platine angeschraubt.
+Die Motoren werden jeweils über das Molex Micro-Fit Stecksystem auf die MainPCB Platine aufgesteckt und anschlie{\ss}end mittels 3D-Druck Halterung an die Platine angeschraubt.
 Auf die zweite Platine wird der Marvelmind Mini-RX Empfänger aufgesteckt. Dieser kommuniziert über UART mit dem Mikrocontroller. 
 Die beiden externen Marvelmind Mikrofone können einfach auf die LED\_PCB Platine gelötet werden. 
-Das Marvelmind benötigt 5V. Diese werden auf der LED\_PCB Platine erzeugt.
+Das Marvelmind Modul benötigt 5V. Diese werden auf der LED\_PCB Platine erzeugt.
 Die 43 RGB Led-ICs werden über die 12V Spannung versorgt und mittels einer Datenleitung vom Mikrocontroller angesteuert.
 Da die Led Bausteine 5V Logikpegel benötigen, wird das 3.3V Signal vom ESP32 mittels eines 1-Bit Level Shifters verstärkt.
 
@@ -101,12 +102,13 @@ Diagramm \ref{fig:esp32pinlayout} und Tabelle \ref{tab:esp32pinbelegung} beschre
     \caption{ESP32 Power-Up}
     \label{fig:esp32powerup}
 \end{figure}
-Wie die Illustration \ref{fig:esp32powerup} zeigt, muss der Enable Pin (im Datenblatt \cite{ESP32} CHIP\_PU genannt) für eine bestimmte Zeit $t_0 = 50\mu s$ nach dem Power-Up auf Low gehalten werden.
-Das Gleiche gilt für den Reset des Mikrocontrollers $t_1 = 50\mu s$. Die Power-Up/Reset Schaltung könnte zum Beispiel als Parallelschaltung eines RC Tiefpasses mit einem Taster umgesetzt werden.
+Damit der ESP32 erfolgreich startet, muss der Enable Pin (im Datenblatt \cite{ESP32} CHIP\_PU genannt) für eine bestimmte Zeit $t_0 = 50\mu s$ nach dem Power-Up auf Low gehalten werden.
+Das Gleiche gilt für den Neustart des Mikrocontrollers $t_1 = 50\mu s$. Illustration \ref{fig:esp32powerup} veranschaulicht das Timing zwischen Stromversorgung VDD und CHIP\_PU. 
+Die Power-Up/Reset Schaltung könnte zum Beispiel als Parallelschaltung eines RC Tiefpasses mit einem Taster umgesetzt werden.
 
 \subsubsection*{Boot-Mode}
 Der ESP32 verfügt über zwei verschiedene Boot Modis. Beim SPI Boot wird die Firmware aus dem Flash in den Arbeitsspeicher geladen.
-Der Download Boot dient zum Flashen einer neuen Firmware. Für den Wechsel zwischen den Modis wertet der Mikrocontroller beim Power-Up die Strapping Pins GPIO0 und GPIO2 aus.
+Der Download Boot dient zum Flashen einer neuen Firmware. Für den Wechsel zwischen den Modis wertet der Mikrocontroller beim Start die Strapping Pins GPIO0 und GPIO2 aus.
 \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|l|l|}
@@ -122,7 +124,8 @@ Da GPIO2 intern auf LOW gezogen wird, muss dieser Pin nicht verbunden werden. Di
 
 \subsubsection*{UART0}
 Über die Pins UART0-RX/TX wird eine serielle Verbindung hergestellt. 
-Diese ermöglicht zum Beispiel das Schreiben in den Flash-Speicher im Dowload-Boot und einen seriellen Monitor für z.B. printf Debugging im SPI-Boot.
+Diese ermöglicht zum Beispiel das Schreiben in den Flash-Speicher im Dowload-Boot. 
+Außerdem ist über einen seriellen Monitor z.B. printf Debugging im SPI-Boot möglich.
 
 \subsubsection*{JTAG}
 TMS, TDI, TCK, TDO können für das JTAG-Debugging verwendet werden. 
@@ -235,7 +238,7 @@ Der Marvelmind Mini-Rx Beacon \cite{Marvelmind} empfängt die Ultraschallsignale
 Da das Modul eine dritte Platine ist, wurde darauf geachtet diese möglichst platzschonend in den Platinenstack zu integrieren.
 Hierfür musste das Gehäuse und der eingebaute Akku entfernt werden. Die 5V Stromversorgung wird von der LED Platine gewährleistet.
 Die 5V Spannung sowie die seriellen Signale RX/TX sind über die interne Molex PicoBlade Steckverbindung \ref{fig:marvelmind_molexpinout} mit dem Modul verbunden.
-Da die UART Schnittstelle mit 3.3V Logikpegeln arbeitet, kann diese ohne Probleme direkt mit dem ESP32 verbunden werden.
+Da die Marvelmind UART Schnittstelle mit 3.3V Logikpegeln arbeitet, kann diese ohne Probleme direkt mit dem ESP32 verbunden werden.
 Des Weiteren wurde das eingebaute Mikrofon durch zwei Externe ersetzt. Diese sind über das 2.0mm 2x4 Pinout mit dem Mini-RX verbunden \ref{fig:marvelmind_micpinout}.
 
 \subsection{WS2815B}
@@ -248,8 +251,7 @@ Des Weiteren wurde das eingebaute Mikrofon durch zwei Externe ersetzt. Diese sin
 Der Chip WS2815B ist eine RGB-Led mit integriertem LED-Treiber. Dieser Baustein kann über die Pins DO, DIN in Reihe zu einem Led-Array verschalten werden. 
 Der RGB Farbwert wird in einem 24Bit (8Bit grün, 8 Bit rot, 8 Bit blau) Feld codiert. Dieser Wert wird für alle LEDs in einem Datenstrom kaskadiert und an den Eingang DIN der erste LED gesendet.
 Diese schneidet sich den ersten Farbwert ab und gibt den restlichen Datenstrom über DO an die nächste LED weiter. Somit sind alle Bausteine einzeln adressierbar.
-Des Weiteren wird 0 und 1 nicht über den Wert der Spannungspegel codiert. Um ein Bit zu übertragen, benötigt es zu Beginn eine positive Flanke, dann eine negative und zum Schluss wieder ein positive Flanke.
-Der Wert wird dann in die Dauer der High und Low-Phasen codiert.
+Des Weiteren wird 1 Bit nicht über den Wert der Spannungspegel definiert, sondern in die Dauer der High und Low-Phasen codiert.
 Die LED wird mit 12V gespeist. Die Logikpegel der Datensignale arbeiten allerdings mit 5V Spannung. An den VCC Pin kann ein Entkopplungskondensator angeschlossen werden.
 Au{\ss}erdem wird der Eingang BIN mit DO der vorletzten LED verbunden und bringt somit Redundanz beim Ausfall einer LED.
 
@@ -308,7 +310,7 @@ Die Sicherung F1 schützt den Rest der Schaltung vor Überlast und Kurzschluss.
 Die obere Schaltung befindet sich am Eingang des 3.3V Spannungswandlers. 
 Da dieser den Mikrocontroller versorgt, muss der Buck Converter über die LiIon Akkus (12V), USB (5V) und JTAG-/Programmierinterface (5V) betrieben werden können. 
 Es reicht nicht aus die verschiedenen Spannungschienen direkt zu verbinden, 
-da sonst die Gefahr eines Kurzschlusses zwischen den Potentialen besteht, wenn mehrere Spannungsquellen gleichzeitig aktiv sind.
+da sonst die Gefahr eines Kurzschlusses zwischen den Potentialen bestünde, wenn mehrere Spannungsquellen gleichzeitig aktiv sind.
 VBUS und 5VD werden durch Dioden vor Potentialausgleich geschützt. Diese Spannungen werden nur zum Debuggen verwendet. 
 Es flie{\ss}t nur wenig Strom und der Spannungsabfall über den Dioden ist somit hinnehmbar. 
 Da die 12V den Roboter im Normalbetrieb mit teilweise gro{\ss}er Stromaufnahme versorgen, darf es keinen gro{\ss}en Spannungsabfall über der schützenden Komponente geben.
@@ -324,7 +326,7 @@ Sind 12V verbunden, schaltet Q3 immer durch da $V_{GS} < 0V$. Falls nur VBUS ode
 \end{figure}
 In Kapitel \ref{sub:cp2102n} wurde gezeigt, dass es möglich ist den ESP32 über das DTR und RTS Signal des CP2102N neuzustarten und den Bootmodus zu wechseln.
 Die obere Schaltung setzt die hierfür notwendige logische Verknüfung zwischen DTR/RTS und EN/GPIO0 \ref{tab:cp2102n_dtr_rts} um.
-Der SS8050 Baustein ist ein npn-Bipolartransistoren. Diese Schaltung ist parallel geschaltet zu der Möglichkeit ESP\_EN und ESP\_IO0 über einen Taster auf GND zu ziehen.
+Der SS8050 Baustein ist ein npn-Bipolartransistor. Diese Schaltung ist parallel geschaltet zu der Möglichkeit ESP\_EN und ESP\_IO0 über einen Taster auf GND zu ziehen.
 
 \section{Layout}
 Das Layout wurde mit dem Tool PCBNew aus KiCad erstellt. 
@@ -365,7 +367,7 @@ Der Dokumentation liegen einmal das fehlerhafte KiCad Projekt V1.0 und ein Proje
     \item[Fehlerbehebung:] Damit die Ausgänge RTS und DTR immer einen definiertem Pegel haben, muss der CP2102N dauerhaft über die 3.3V des Spannungswandlers versorgt sein. 
     Dazu muss REGIN mit 3.3V verbunden werden. Abbildung \ref{fig:cp2102nfehlerkorrektur} zeigt, dass die Eingänge mit dem Label \bverb{CP2102N_VDD} direkt mit 3.3V verbunden werden können.
     Auf den bestehenden Platinen kann der Fehler behoben werden, indem der CP2102N Chip abgelötet wird und die Leiterspur zwischen VBUS und REGIN aufgetrennt wird. (Abbildung \ref{fig:cp2102nfehlerkorrekturlayout} grün)
-    Anschlie{\ss}end muss REGIN mit VDD verbunden werden (Lötbrücke blau) und mithilfe beispielsweise eines Kupferdrahtes mit 3.3V versorgt werden. (Abbildung \ref{fig:cp2102nfehlerkorrekturlayout} blau)
+    Anschlie{\ss}end muss REGIN mit VDD verbunden werden (Lötbrücke blau) und mit Hilfe eines Kupferdrahtes mit 3.3V versorgt werden. (Abbildung \ref{fig:cp2102nfehlerkorrekturlayout} blau)
 \end{description}
 
 \begin{figure}[H]

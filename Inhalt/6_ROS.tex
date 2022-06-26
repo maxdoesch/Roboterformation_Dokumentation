@@ -5,7 +5,7 @@ Diese Projekt stützt die Entscheidung vorherige Roboterformations Projekte, ROS
 Das Framework bietet eine Robotik orientierte Schnittstelle zum Nachrichtenaustausch zwischen verschiedenen Programmen.
 Au{\ss}erdem bietet es auch viele Analysetools, die das Roboterdebugging und die Robotervisualiserung vereinfachen.
 
-\section{Ros Bridge Server}
+\section{Ros Bridge Server} \label{ch:rosbridgeserver}
 Da der ESP32 als externer Mikrocontroller nicht direkt in das ROS System eingebunden werden kann, wurde das Programm ROS Bridge Server entwickelt. 
 Dieser Server verbindet sich mit der Komponente RosBridgeClient auf dem ESP32 und kommuniziert über das Applikationsprotokoll ROS-Topics mit dem Roboter.
 Somit erscheint es innerhalb des ROS Systems, als wäre der Mikrocontroller des Roboters in das ROS System eingebunden.
@@ -79,19 +79,19 @@ Im Folgenden wird auf die Methoden von PublisherImpl eingegangen:
 \end{figure}
 
 Die Klasse CommunicationHandler steuert die Verbindung über das Applikationsprotokoll mit dem ESP32. Somit gibt es für jeden Client auch ein CommunicationHandler Objekt im RosBridgeServer Programm.
-Jedes CommunicationHandler Objekt kapselt einen eigenen Prozess. Dieser Prozess durchläuft ähnlich wie NodeHandle alle $50ms$ eine Schleife, die das Applikationsprotokoll steuert.
-Nach dem Empfangen des Init-Pakets ist die Verbindung über das Applikationsprotokoll aufgebaut. Dann wird zyklisch ein Advertise-Paket versendet und die empfangenen Pakete ausgewertet. 
-Wenn für mehr als $3000ms$ kein Advertise-Paket empfangen wurde oder beim Empfangen ein Fehler auftritt, wird die Verbindung mit dem Client geschlossen.
-Das entsprechende Socket und CommunicationHandler Objekt werden gelöscht.
+Jedes CommunicationHandler Objekt kapselt einen eigenen Prozess. Dieser Prozess durchläuft ähnlich wie NodeHandle aus Kapitel \ref{ch:rosbridgeclient} alle $50ms$ eine Schleife, die das Applikationsprotokoll steuert.
+Nach dem Empfangen des Init-Pakets ist die Verbindung über das Applikationsprotokoll aufgebaut. Dann wird zyklisch ein KeepAlive-Paket versendet und die empfangenen Pakete ausgewertet. 
+Wenn für mehr als $3000ms$ kein KeepAlive-Paket empfangen wurde oder beim Empfangen ein Fehler auftritt, wird die Verbindung mit dem Client geschlossen.
+Das entsprechende Socket und CommunicationHandler Objekt werden dann gelöscht.
 
 \begin{itemize}
     \item \bverb|void _communication_handler(CommunicationHandler *conn_handle)| ist der Prozess von CommunicationHandler.
     \item Der Konstruktor \bverb|CommunicationHandler(Socket& sock)| erstellt den Prozess \bverb|_communication_handler()|.
     \item \bverb|int _interpret_receive()| interpretiert die empfangenen Daten aus Socket. Hierfür wird zunächst basierend auf dem ersten Message ID Byte entschieden,
     ob ein Init, KeepAlive, Advertise, Subscribe oder ein Publish Paket empfangen wurde. Bei einem Init-Paket wird der Robotername entnommen und ein ros::NodeHandle Objekt mit dem Roboternamen erstellt. 
-    Falls ein Keep-Alive Paket empfangen wurde, wird der übertragene Zeitstempel aus dem Socket Puffer entnommen und abgespeichert.
+    Falls ein KeepAlive Paket empfangen wurde, wird der übertragene Zeitstempel aus dem Socket Puffer entnommen und abgespeichert.
     Bei einem Subscribe oder Advertise Paket werden die CommunicationHandler Methoden \bverb|_subscribe()| oder \bverb|_advertise()| ausgeführt.
-    Falls ein PublishPaket empfangen wurde, wird basierend auf dem übertragenen Topicnamen mithilfe der Methode \bverb|_getPublisher()| das richtige Publisher Objekt ermittelt und mit \bverb|recvMessage()| der Datenteil interpretiert.
+    Falls ein Publish-Paket empfangen wurde, wird basierend auf dem übertragenen Topicnamen mithilfe der Methode \bverb|_getPublisher()| das richtige Publisher Objekt ermittelt und mit \bverb|recvMessage()| aus PublisherImpl der Datenteil interpretiert.
     Läuft beim Empfangen oder Interpretieren etwas schief, gibt die Methode das Makro \bverb|SOCKET_FAIL| zurück.
     \item \bverb|void _send_keep_alive()| sendet das Keep-Alive Paket an den ROS-Server.
     \item \bverb|Publisher* _getPublisher(std::string const& topic)| gibt das jeweilige Publisher Objekt zu der Topic zurück.
@@ -102,9 +102,9 @@ Das entsprechende Socket und CommunicationHandler Objekt werden gelöscht.
 
 \section{DataLogger}
 
-Das ROS Programm DataLogger ist das Back-End zu der DataLogger Komponente im ESP32 Code. Nach Start des Programms wird eine Nachricht auf der Topic "'robotername/start\_log"' veröffentlicht. 
-Die durch den ESP32 nach ROS gesendete LOG-Pakete werden auf der Topic "'robotername/data\_log"' empfangen und in einer Datei abgespeichert. 
-Das Programm kann über ROS Parameter konfiguriert werden. Es können der Robotername, Logging Dauer, Dateiname und ein Logging Modus konfiguriert werden.
+Das ROS Programm DataLogger ist das Back-End zu der DataLogger Komponente im ESP32 Code (Kapitel \ref{ch:datalogger_esp}). Nach Start des Programms wird eine Nachricht auf der Topic "'robotername/start\_log"' veröffentlicht. 
+Die durch den ESP32 nach ROS gesendeten LOG-Pakete werden auf der Topic "'robotername/data\_log"' empfangen und in einer Datei abgespeichert. 
+Das Programm kann über ROS Parameter konfiguriert werden. Es können der Robotername, Logging Dauer, Dateiname und ein Logging Modus eingestellt werden.
 
 \section{RvizMsgTransformer}
 
@@ -112,7 +112,114 @@ Rviz ist ein von ROS bereitgestelltes Programm zur Roboter Visualisierung. Es k�
 In diesem Projekt wird Rviz zur Darstellung der Trajektorie und des Roboters in einem Koordinatensystem genutzt. Au{\ss}erdem soll ein Zielpunkt für den Punkt zu Punkt Regler gesetzt werden können.
 Da Rviz mit zu diesem Projekt verschiedenen ROS Nachrichtentypen arbeitet, dient RvizMsgTransformer zur Übersetzung der Rviz Nachrichten.
 
-\section{Trajektorienplanung}
+\section{ROS-Trajektorie}\label{ch:ros-trajec}
+Dieses Kapitel behandelt die Umsetzung der durch die Vorgänger-Mastergruppe entwickelte Trajektorienplanung.
+Genauso wird beschrieben, wie diese in ROS durchgeführt wird.
+Falls zukünftig Änderungen und Erweiterungen vorgenommen werden, sollte die Vorgehensweise dazu ersichtlich werden.
+
+\subsection{Trajektorienplanung}
+Bisher wurde durch den Code der Mastergruppe jeder berechneter Trajektorienpunkt einzeln an den jeweiligen Roboter geschickt.
+Da dies bei eventuell auftretenden Verbindungsschwierigkeiten dazu führen könnte, dass die Trajektorie nicht vollständig oder zeitversetzt übergeben wird, war es unsere Zielsetzung die komplett bestimmte Trajektorie gesammelt über das Verbindungsprotokoll zu verschicken.\\
+In der nachfolgend abgebildeten Funktion werden die einzelnen für die Trajektorie relevanten Parameter nacheinander in einem Vektor abgespeichert.
+Diesem wird jeweils ein Zeitstempel hinzugefügt, dass passend zu den errechneten Punkten und deren Ableitungen auch die entsprechenden Zeitinformationen vorhanden sind.
+Nachdem ein Punkt mit der x- und y-Koordinate sowie den dazugehörigen Geschwindigkeits- und Beschleunigungsvektoren mit Zeitinformation nun den eigens erstellten message Typ \texttt{c\_trajec} innehaben, werden diese Informationen im Vektor gespeichert.\\
+In Kapitel \ref{sec:msg-type} wird beschrieben, wie der message Typ individuell erstellt wird.
+\begin{lstlisting}[language=C++,caption={Speichern einzelner errechneter Punkte in einem Vektor},breaklines=true,basicstyle=\footnotesize]
+    void ToRobot::storeInTrajectory(pos_d trajectory_state)
+    {
+        trajecgenerator::c_trajec trajectory_state_vector;
+
+        trajectory_state_vector.x = trajectory_state.x;
+        trajectory_state_vector.y = trajectory_state.y;
+        trajectory_state_vector.dx = trajectory_state.dx;
+        trajectory_state_vector.dy = trajectory_state.dy;
+        trajectory_state_vector.ddx = trajectory_state.ddx;
+        trajectory_state_vector.ddy = trajectory_state.ddy;
+        trajectory_state_vector.timestamp = ros::Time::now().toNSec();
+
+        trajectory.points.push_back(trajectory_state_vector);
+    }
+    
+\end{lstlisting}
+Die Punkte der Trajektorie werden fortlaufend berechnet und in einem Vektor mit all ihren Informationen gespeichert.
+Damit festgestellt werden kann, zu welchem Zeitpunkt alle einzelnen Punkte berechnet und somit im Vektor gespeichert wurden, wurde in der folgenden Funktion eine Abbruchbedingung festgelegt.
+Ist die Distanz zwischen zwei nacheinander berrechneten Punkten geringer als 10 cm beziehungsweise wurden bereits 100 Punkte für die Trajektorie berechnet, bricht die Trajektoriengenerierung ab.
+Anschlie{\ss}end wird die fertige Trajektorie als Vektor komplett gepublisht.
+\begin{lstlisting}[language=C++,caption={Publishen der gesamten Trajektorie},breaklines=true,basicstyle=\footnotesize]
+    bool ToRobot::publish()
+    {
+        float dist = sqrt(pow(trajectory.points.front().x - trajectory.points.back().x, 2) + pow(trajectory.points.front().y - trajectory.points.back().y, 2));
+
+        if(dist < 0.1 && trajectory.points.size() > 100)
+        {
+            c_trajecPub.publish(trajectory);
+            trajectory.points.clear();
+
+            return true;
+        }
+
+        return false;
+    }
+
+\end{lstlisting}
+Beide Funktionen werden hierbei vom \texttt{Trajechandler} aufgerufen und in dessen \texttt{updateTrajectory}-Funktion ausgeführt.\\[\baselineskip]
+Mit diesen Parametern dauerte es circa 20 Sekunden bis alle Punkte der Trajektorie berechnet, die gesamte Trajektorie gepublisht und vom Roboter letztlich ausgeführt wurde.\\[\baselineskip]
+Die Befehle, die notwendig sind, um eine Trajektoriengenerierung zu starten, werden in Kapitel \ref*{sec:ros-befehle} aufgelistet.
+
+\subsection{Erstellen eines individuellen ROS Message-Types}
+\label{sec:msg-type}
+ Um die Trajektorie in einem Array speichern zu können, in dem alle für die auf dem Mikrocontroller implementierten Regler wichtigen Informationen enthalten sind, musste ein neuer, individueller "`message type"' in ROS implementiert werden.
+Da die Beschreibungen und Anleitungen hierzu im Internet etwas spärlich ausfallen, wird im Folgenden anhand des in der Projektarbeit verwendeten custom message Types "`c\_trajec.msg"' erklärt, wie ein neuer message Typ erstellt wird.
+Dies kann im Falle einer Erweiterung oder Änderung der ROS-Software von Bedeutung sein.
+ \begin{enumerate}
+    \item \textbf{Navigieren zum entsprechenden ROS Paket} \newline
+    \bverb|roscd trajecgenerator|
+    \item \textbf{Erstellen eines \texttt{msg} Ordners (sofern nicht bereits vorhanden)} \newline
+    \bverb|mkdir msg|
+    \item \textbf{Navigieren zum \texttt{msg} Ordner} \newline
+    \bverb|cd msg| 
+    \item \textbf{Erstellen der Definitionen des neuen Message Typs (entweder per Kommandozeile oder direkt in der Datei)} \newline
+    \bverb|echo "float32 x" > msg/c_trajec.msg| \newline
+    \bverb|echo "float32 y" > msg/c_trajec.msg| \newline
+    \bverb|echo "float32 dx" > msg/c_trajec.msg| \newline
+    \bverb|echo "float32 dy" > msg/c_trajec.msg| \newline
+    \bverb|echo "float32 ddx" > msg/c_trajec.msg| \newline
+    \bverb|echo "float32 ddy" > msg/c_trajec.msg| \newline
+    \bverb|echo "uint64 timestamp" > msg/c_trajec.msg|
+    \item \textbf{Überprüfen der Inhalte in der \texttt{c\_trajec.msg} Datei} \newline
+    \bverb|cat c_trajec.msg| 
+    \item \textbf{Editieren der \texttt{package.xml} Datei} \newline
+    In der Datei \texttt{package.xml} sicherstellen, dass die Inhalte \newline
+    \bverb|<build_depend>message_generation</build_depend>| \newline
+    \bverb|<run_depend>message_runtime</run_depend>| \newline vorhanden und auskommentiert sind.
+    \item \textbf{Editieren der \texttt{CmakeLists.txt} Datei} \newline
+    In der Datei \texttt{CmakeLists.txt} bei \texttt{COMPONENTS} den Inhalt \texttt{message\_generation} hinzufügen, damit mindestens Folgendes zu sehen ist: \newline
+    \bverb|find_package(catkin REQUIRED COMPONENTS| \newline
+    \bverb|     roscpp| \newline
+    \bverb|     rospy| \newline
+    \bverb|     std_msgs| \newline
+    \bverb|     message_generation| \newline
+    \bverb|)|
+    \item \textbf{Einstellen der Dependencies in der \texttt{CmakeLists.txt} Datei} \newline
+    \bverb|catkin_package(| \newline
+    \bverb|CATKIN_DEPENDS roscpp std_msgs| \newline
+    \bverb|)|
+    \item \textbf{Hinzufügen der Message-Datei in der \texttt{CmakeLists.txt} Datei} \newline
+    \bverb|add_message_files(| \newline
+    \bverb|FILES| \newline 
+    \bverb|c_trajec.msg| \newline
+    \bverb|# c_trajec_vector.msg| \newline
+    \bverb|)| \newline
+    \item \textbf{Editieren der \texttt{CmakeLists.txt} Datei} \newline
+    In der Datei \texttt{CmakeLists.txt} sicherstellen, dass die Inhalte \newline
+    \bverb|generate_messages(| \newline
+    \bverb|     DEPENDENCIES| \newline
+    \bverb|     std_msgs| \newline
+    \bverb|)| \newline vorhanden und auskommentiert sind.
+    \item \textbf{Erneutes Bauen des Packages} \newline
+    \bverb|roscd trajecgenerator| \newline
+    \bverb|catkin_make|
+\end{enumerate}
 
 \section{Starthilfe}
 Die Sourcen für den ROS Code befinden sich im Projektordner oder können von dem GitHub Repository \url{https://github.com/maxdoesch/Roboterformation_ROS.git} geklont werden.
@@ -139,7 +246,7 @@ Anschlie{\ss}end müssen die folgenden Schritte befolgt werden, um die ROS Progr
 
 Es muss mindestens die Node ROSBridgeServer gestartet werden. Die Roboter verbinden sich automatisch nach dem Einschalten mit dem Server und sind dann in ROS unter ihrem Namen als Namespace sichtbar.
 \footnote{Wenn ROS in einer virtuellen Maschine genutzt wird, muss eventuell der Serverport 2888 weitergeleitet werden. Au{\ss}erdem könnte der Port von der Host Firewall blockiert werden.}
-Jetzt kann mit dem Roboter auf ihren Topics kommuniziert werden. Eine Liste aller verfügbarbaren Topics bekommt man mit \bverb|rostopic list|.
+Jetzt kann mit den Robotern auf ihren Topics kommuniziert werden. Eine Liste aller verfügbarbaren Topics bekommt man mit \bverb|rostopic list|.
 
 Mit \bverb|rostopic pub <topic_name> <nachrichtentyp> <daten>| kann eine Nachricht auf einer Topic versendet werden und mit \bverb|rostopic echo <topic_name>| können Nachrichten empfangen werden. 
 Zum Beispiel kann mit dem Befehl \bverb|rostopic pub --once /robotername/goal_point geometry_msgs/Point| \bverb|"x: -2.0 y: 7.0 z: 0.0"| der Punkt (-2.0; 7.0) angefahren werden oder mit \bverb|rostopic echo /robot_1/pose2D| die Istposition ausgegeben werden.

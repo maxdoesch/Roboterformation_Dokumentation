@@ -7,14 +7,14 @@ Von Professor Bernhard Wagner betreut, soll im Laufe mehrerer Projektgruppen ein
 An die Ergebnisse unserer Vorgänger Bachelor- und Mastergruppen anknüpfend ist es unser Ziel den bestehenden Roboter zu verbessern und sowohl hardware- als auch softwaretechnisch so auszulegen, damit dieser für die Formation in massentauglicher Stückzahl produziert werden kann.
 Gleichzeitig ist es das Ziel, dass der Roboter genau einer vorgegebenen Trajektorie folgen kann. Hierbei liegt unser Fokus darin, die Grundlage dazu an einem bis zu maximal zwei Robotern zu schaffen.
 Der Aufbau von mehreren Robotern als Formation, die synchronisierte Bewegungsabläufe vollziehen, wird erst von nachfolgenden Gruppen bearbeitet werden.\\[\baselineskip]
-Die Hardware ist durch die vorangegangene Gruppe bereitgestellt worden.
+Die Hardware ist basierend auf Ergebnissen der vorherigen Projektgruppen entwickelt worden.
 Der Aufbau besteht aus zwei Rädern, die jeweils durch einen Motor angesteuert werden.
 Zusätzlich ist ein Stützrad angebracht, welches aus zwei Kugellagern besteht, sodass eine dreieckförmige Anordnung entsteht.
-Dadurch kann ein 360 Grad Fahren ermöglicht werden. Der hierzu benötigte Strom wird durch einen Akku mit 5V bereitgestellt.\\[\baselineskip]
+Dadurch kann ein 360 Grad Fahren ermöglicht werden. Der hierzu benötigte Strom wird durch einen Akku mit 12V bereitgestellt.\\[\baselineskip]
 Die Software wird zweigeteilt ausgeführt. Zum einen wird in einer ROS (Robot Operating System) Umgebung auf einem externen Computer die Trajektorienplanung des Roboters berechnet.
 Hierbei stellt ROS ein Softwarepaket dar, das viele Bibliotheken mit sich bringt, die das Programmieren eines Roboters deutlich vereinfachen und in verschiedene Nodes aufgeteilt wird.
-Der Code wird in der Programmiersprache C++ verfasst und sendet dann über sogenannte Publisher Daten an Topics.
-Der ROS-Server speichert diese Nachrichten und stellt sie anderen Nodes, die dieses Topic abonnieren, den sogenannten Subscribern, zur Verfügung.
+Der Code wird in der Programmiersprache C++ verfasst und sendet dann über sogenannte Publisher Daten auf Topics.
+Der ROS-Master speichert diese Nachrichten und stellt sie anderen Nodes, die dieses Topic abonnieren, den sogenannten Subscribern, zur Verfügung.
 Zum Bestimmen der Trajektorie werden einzelne Wegpunkte, die der Roboter auf dem Weg zum gewünschten Endpunkt abfahren soll, mit den geeigneten mathematischen Splines ermittelt.
 Nach der Berechnung wird die Trajektorie als Array mit allen errechneten Punkten und korrespondierenden Zeitwerten an den Mikrocontroller übergeben.
 Auf diesem findet der zweite Teil der Software-Entwicklung statt.\\[\baselineskip]
@@ -30,7 +30,7 @@ Da der Roboter und die zukünftige Formation besonders zu Werbezwecken aufgefüh
 Dazu befinden sich auf der Platine über 40 LEDs, die je nach Wunsch in verschiedenen Farben erleuchten. Zudem wurde mittels des 3D-Druckers ein transparentes Gehäuse gedruckt, durch das das LED-Licht gestreut wird.
 Auch die Ansteuerung des Lichts wird über den Mikrocontroller abgewickelt. 
 
-Unsere Webseite stellt die Oberfläche für den Endnutzer zur Verfügung.
+Unsere Web-App stellt die Oberfläche für den Endnutzer zur Verfügung.
 In den Programmiersprachen CSS und react.js verfasst, bietet sie die Schnittstelle zwischen der Eingabe der gewünschten Zielpunkte, Lichteffekte, manuellen Steuerung des Roboters sowie einer Anzeige der aktuellen Positionen der jeweiligen Roboter.
 Grundsätzlich kann man sich den Prozessablauf wie folgt vorstellen: Auf einem zentralgesteuerten PC wird die Trajektorie im ROS-System berechnet und über das selbst entwickelte Verbindungsprotokoll an den Mikrocontroller geschickt.
 Dieser sitzt auf der Platine, die auf dem Roboter aufgebracht ist.

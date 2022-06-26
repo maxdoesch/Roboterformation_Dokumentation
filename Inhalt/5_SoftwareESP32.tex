@@ -19,10 +19,10 @@ Hier können z.B. hardwarespezifische Einstellungen für den ESP32 gemacht werde
 Es ist allerdings auch möglich eigene Einstellungspunkte über die KConfig Syntax zu erstellen.
 Im Projekt sind zum Beispiel Einstellungspunkte für Wifi SSID, Password und Server IP Addresse definiert.
 Die Konfigurationen werden in der Datei sdkconfig gespeichert. Beim Bauen wird diese in eine Header Datei umgewandelt.
-Durch Inkludieren der Datei sdkconfig.h werden die Einstellungen über "`defines"' in die C/C++ Programme eingebunden.
+Durch Inkludieren der Datei sdkconfig.h werden die Einstellungen in die C/C++ Programme eingebunden.
 
 Die ESP-IDF ermöglicht die Unterteilung der Software in Komponenten. Dabei werden die Sourcen in einzelne Ordner unterteilt.
-Dies erhöht die Projektstruktur und Wiederverwendbarkeit des Codes. 
+Dies erhöht die Struktur und Wiederverwendbarkeit des Codes. 
 Jedes neu erstellte ESP-IDF Projekt enthält eine standard "`main"' Komponente. Diese beinhaltet die main() Funktion des Programms.
 Neue Komponenten können mit dem Befehl \emph{idf.py -C components create-component <Komponentenname>} erstellt werden.
 
@@ -34,7 +34,7 @@ Die folgende Auflistung enthält die für dieses Projekt wichtigsten Befehle:
     \item \emph{idf.py flash} Flasht die Binaries auf den Mikrocontroller
     \item \emph{idf.py monitor} Zeigt die Ausgabe der seriellen Schnittstelle
     \item \emph{idf.py menuconfig} Öffnet das Konfigurationsmenü
-    \item \emph{idf.py -C components create-component <Komponentenname>} Erstellt neue Komponente
+    \item \emph{idf.py -C components create-component <Komponentenname>} Erstellt eine neue Komponente
 \end{itemize}
 
 FreeRTOS ist ein Echtzeitbetriebssystem für Mikrocontroller. 
@@ -141,7 +141,7 @@ Eine Verbindung wird über ein Objekt der Klasse Socket gekapselt. Über die fol
 \end{itemize}
 
 
-\section{RosBridgeClient}
+\section{RosBridgeClient} \label{ch:rosbridgeclient}
 
 \begin{figure}[H]
     \centering
@@ -235,7 +235,7 @@ Wobei hier ausschlie{\ss}lich mit float im Gegensatz zu double bei \bverb|ros_ms
 dient \bverb|ros_msgs_lw| für Berechnungen und \bverb|ros_msgs| ausschlie{\ss}lich zur Kommunikation mit dem ROS Server. 
 Im Applikationsprotokoll gibt es Stuktur- und Arraynachrichtentypen. Der Aufbau dieser Nachrichten ist durch die Klassen in \bverb|ros_msgs| vorgegeben.  Identische Klassen extistieren auch in den Sourcen des ROS-Servers.
 Um einem Publisher oder Subscriber aus der Komponente RosBridgeClient einen Nachrichtentyp zu zuweisen, werden diese mit den Klassen aus \bverb|ros_msgs| parametriet. 
-Aus dem Grund müssen alle Nachrichtenklassen die folgenden Methoden implementieren:
+Aus diesem Grund müssen alle Nachrichtenklassen die folgenden Methoden implementieren:
 
 \begin{itemize}
     \item \bverb|size_t getSize()| gibt die Grö{\ss}e der Daten der entsprechenden Klasse in Bytes zurück.
@@ -244,12 +244,12 @@ Aus dem Grund müssen alle Nachrichtenklassen die folgenden Methoden implementie
     Für Stukturdatentypen muss nur ein leerer Methodenrumpf implementiert sein.
     \item \bverb|std::string getMsgType()| gibt den Namen des entsprechenden ROS Nachrichtentyps zurück.
     \item \bverb|void serialize(uint8_t* buffer)| wird von der Klasse Publisher aus RosBridgeClient zur Serialisierung der Daten verwendet.
-    \item \bverb|void deserialize(uint8_t* buffer)| wird von der Klasse Subscriber aus RosBridgeClient zur Deserialisierung der Daten verwendet.
+    \item \bverb|void deserialize(uint8_t* buffer)| wird von der Klasse SubscriberImpl aus RosBridgeClient zur Deserialisierung der Daten verwendet.
 \end{itemize}
 
 
 \section{LedStrip}
-Die Klasse LedStrip ist für die Ansteuerung der LEDs zuständig. Das Ledband empfängt einen Bitstream, von welchem sich die einzelnen LEDs die ersten 24 Bits abschneiden und den verbleibenden Bitstream an die restlichen LEDs weiterführt.
+Die Klasse LedStrip ist für die Ansteuerung der LEDs zuständig. Das Ledarray empfängt einen Bitstream, von welchem sich die einzelnen LEDs die ersten 24 Bits abschneiden und den verbleibenden Bitstream an die restlichen LEDs weiterführt.
 In den 24 Bits sind die RGB Werte enthalten, 8 Bit je Farbe.
 
 Im Folgenden wird auf die Methoden der Klasse LedStrip eingegangen:
@@ -289,14 +289,13 @@ Mit diesen werden die beiden Hallsensoren eines Motors verbunden. Eine positive 
 Basierend darauf kann dann die Motordrehzahl ermittelt werden.
 Die Klasse Motor übernimmt somit die Einrichtung der "'MCPWM\_UNIT"' über die Hardwareabstraktionsschicht von Espressife und stellt die Interruptfunktion zur Verfügung.
 Au{\ss}erdem befindet sich auch eine Methode zur Aktualisierung des PI-Reglers in der Motor Klasse. Diese Methode wird periodisch für beide Motoren von MotorController aufgerufen.
-
 Im Folgenden wird auf die Methoden der Klasse Motor eingegangen:
 \begin{itemize}
     \item \bverb|void init_a()| und \bverb|void init_b()| erzeugt das Motor\_a und Motor\_b Objekt.
     \item \bverb|void setSetpointVelocity(float setpoint_velocity)| setzt die Solldrehzahl des Motors.
     \item \bverb|float getSetpointVelocity()| gibt die Solldrehzahl des Motors zurück.
     \item \bverb|float getActualVelocity()| gibt die aktuelle Motordrehzahl zurück. Diese wird aus der im Interrupt berechneten Zeitdifferenz ermittelt.
-    \item \bverb|float updatePIControl(float actual_velocity)| aktualisiert den PI-Regler. Die Methode gibt die Pulsbreite des PWM Stellsignals zurück. 
+    \item \bverb|float updatePIControl(float actual_velocity)| aktualisiert den PI-Regler. Die Methode gibt die Pulsbreite des neuen PWM Stellsignals zurück. 
     \item \bverb|void setDuty(float duty_cycle)| setzt die Pulsbreite für den Motortreiber.
     \item \bverb|bool _encoder_callback(...)| wird von der "'MCPWM\_UNIT"' bei einem Interrupt durch eine positive Flanke auf einem der Hallsensoreingängen ausgeführt.
     Es wird die Zeitdifferenz zum letzten Aufruf ermittelt und über die Art der letzten Flanke (positiv/negativ) des zweiten Hallsignals die Drehrichtung bestimmt.
@@ -305,16 +304,15 @@ Im Folgenden wird auf die Methoden der Klasse Motor eingegangen:
 \subsection*{MotorController}
 Die Klasse MotorController steuert den PI-Regler in Motor. Ein Timer Interrupt des ESP32 führt jede Millisekunde eine Interruptfunktion aus MotorController aus.
 Die \bverb|updatePIControl()| Methode aus Motor wird allerdings nicht aus dem Interrupt ausgeführt. Der Aufruf befindet sich in einem FreeRTOS Prozess \bverb|_motor_control_loop_task()|.
-Dieser blockiert solange bis er aus der Interruptfunktion aufgeweckt wird. Dann holt sich der Prozess die aktuelle Drehzahl der Motoren \bverb|getActualVelocity()|, aktualisiert die PI-Regler \bverb|updatePIControl()|, setzt die neue Pulsbreite \bverb|setDuty()| und wartet,
+Dieser blockiert solange bis er aus der Interruptfunktion aufgeweckt wird. Dann holt sich der Prozess die aktuelle Drehzahl der Motoren \bverb|getActualVelocity()|, aktualisiert die PI-Regler der beiden Motoren\bverb|updatePIControl()|, setzt die neue Pulsbreite \bverb|setDuty()| und wartet,
 wieder darauf aus dem Interrupt aufgeweckt zu werden. Das Steuern eines Prozesses aus einem Interrupt wird "`Deferred Interrupt Handling"' genannt und hat den Vorteil, 
-dass das Interrupt möglichst schnell durchläuft und niemals blockiert wird. Au{\ss}erdem wird aus MotorController der Enable Pin für den Motortreiber aktiviert.
-
+dass das Interrupt möglichst schnell durchläuft und niemals blockiert wird. Zuletzt wird aus MotorController auch der Enable Pin für den Motortreiber aktiviert.
 Im Folgenden wird auf die Methoden der Klasse MotorController eingegangen:
 \begin{itemize}
     \item \bverb|MotorController& init(Motor& motor_a, Motor& motor_b)| erstellt das MotorController Objekt.
     \item \bverb|void setVelocity(float setpoint_velocity_a, float setpoint_velocity_b)| setzt die Solldrehzahlen beider Motoren.
     \item \bverb|void enablePIcontrol()| aktiviert den PI-Regler.
-    \item \bverb|void disablePIcontrol()| deaktiviert den PI-Regler. Wenn der PI-Regler deaktiviert ist, werden die Solldrehzahlen zur Steuerung der Pulsbreiten des PWM-Signals genommen.
+    \item \bverb|void disablePIcontrol()| deaktiviert den PI-Regler. Wenn der PI-Regler deaktiviert ist, werden die Solldrehzahlen zur Steuerung der Pulsbreiten des PWM-Signals verwendet.
     \item \bverb|void _motor_control_loop_task(void* pvParameters)| ist der FreeRTOS Prozess zur Steuerung des PI-Regelkreises.
     \item \bverb|bool _motor_control_interrupt(void* args)| ist die Interruptfunktion, die den Prozess zyklisch aktiviert.
 \end{itemize}
@@ -545,8 +543,8 @@ Die Pose kann dann über die Methoden der SensorsPose Schnittstelle ausgelesen w
 Marvelmind definiert auch einige KConfig Menüeinstellungen für die UART Pins am ESP32, Geschwindigkeit der UART Kommunikation und die Grö{\ss}e eines Empfangspuffers.
 
 \subsection*{SensorPoseSim}
-SensorPoseSim ist auch eine Unterklasse von SensorPose und KalmanSensor. Die Klasse dient zur Simulation des Roboters in ROS über z.B. den Turtlesim.
-Die Roboterpose wird auf der Topic "`/robotername/pose"' empfangen. Diese wird im Konstruktor des SensorPoseSim Objektes abonniert. Die Methode \bverb|void _setPose()| dient dabei als Callbackfunktion für den Subscriber. 
+SensorPoseSim ist auch eine Unterklasse von SensorPose und KalmanSensor. Die Klasse dient zur Simulation des Roboters in ROS über z.B. den Turtlesim Simulator.
+Die Roboterpose wird auf der Topic "`/robotername/pose"' empfangen. Diese wird im Konstruktor des SensorPoseSim Objektes abonniert. Die Methode \bverb|void _setPose()| dient dabei als Callbackfunktion für den RosBridgeClient Subscriber. 
 
 
 \section{PositionController}
@@ -573,8 +571,8 @@ Der FreeRTOS Prozess \bverb|_control_loop_task()| beinhaltet den Regelkreislauf 
 \begin{itemize}
     \item \bverb|ControllerMaster& init(OutputVelocity& output_velocity, SensorPose& sensor_pose)| erzeugt das ControllerMaster Objekt. 
     ControllerMaster ist eine Singleton Klasse. Es kann somit nur ein Objekt existieren.
-    \item \bverb|void start_controller(PositionController* pos_controller, std::function<void()>destination_reached_callback)| startet die Regelung. Falls eine Regelung bereits im Gange ist, wird diese beendet und mit der neuen ersetzt.
-    Der Methode wird neben dem PositionController Objekt auch die Callbackfunktion übergeben.
+    \item \bverb|void start_controller(PositionController* pos_controller, std::function<void()>destination_reached_callback)| startet die Regelung. Falls eine Regelung bereits im Gange ist, wird diese beendet und mit der Neuen ersetzt.
+    Der Methode wird neben dem PositionController Objekt auch eine Callbackfunktion übergeben. Diese Callbackfunktion wird ausgeführt, wenn das Ende der Regelaufgabe erreicht wurde.
     \item Mit \bverb|void stop_controller()| kann die Regelung von au{\ss}erhalb der PositionController Komponente beendet werden.
     \item \bverb|void _control_loop_task(void* pvParameters)| ist ein FreeRTOS Prozess und tätigt die Berechnung des Regelzyklus.
     \item \bverb|void _control_loop_timer(TimerHandle_t timer)| ist die Callbackfunktion des Softwaretimers über den der Prozess getaktet wird.
@@ -582,21 +580,23 @@ Der FreeRTOS Prozess \bverb|_control_loop_task()| beinhaltet den Regelkreislauf 
 
 \subsection*{PositionController}
 Die Klasse PositionController definiert die gemeinsame Schnittstelle über die die Regler vom ControllerMaster gesteuert werden.
-Die Regelung ist komplett innerhalb der Unterklassen dieser Schnittstelle gekapselt. ControllerMaster besitzt somit keine Information über die Art der Regelung.
+Die Regelung ist komplett innerhalb der Unterklassen dieser Schnittstelle gekapselt. ControllerMaster besitzt somit keine Information über die Art und das Ziel der Regelung.
 
 \begin{itemize}
     \item Mit \bverb|ros_msgs_lw::Twist2D update(ros_msgs_lw::Pose2D const& actual_pose)| wird für eine neue Istposition ein neuer Geschwindigkeitsvektor als Stellgrö{\ss}e berechnet.
-    Der ControllerMaster muss diese Methode alle $10ms$ aufrufen. 
     \item Mit \bverb|bool destination_reached()| kann der ControllerMaster überpüfen, ob das Ziel der Regelung (Zielpunkt oder Trajektorienende) erreicht wurde.
 \end{itemize}
 
 \subsection*{p2pController}
-Über den Punkt zu Punkt Regler können einzelne Punkte angefahren werden. Dieser Zielpunkt wird dem Konstruktor des Reglers übergeben.
+Über den Punkt zu Punkt Regler können einzelne Punkte angefahren werden. Der Zielpunkt wird dem Konstruktor bei der Erstellung des Reglerobjektes übergeben.
 
 \subsection*{approxLin-, statInOutLin-, dynInOutLinController}
 Mit den Reglern "`approximierte Linearisierung"', "`statische Ein- und Ausgangslinearisierung"' und "`dynamische Ein- und Ausgangslinearisierung"' können Trajektorien abgefahren werden.
-Eine Trajektorie besteht aus einem Array von Trajektorienpunkten. Jeder Trajektorienpunkte beinhaltet Positions-, Geschwindigkeits-, Beschleunigungsvektoren und einen Zeitstempel.
+Eine Trajektorie besteht aus einem Array von Trajektorienpunkten.
+
+Jeder Trajektorienpunkte beinhaltet Positions-, Geschwindigkeits-, Beschleunigungsvektoren und einen Zeitstempel.
 Über den Zeitstempel wird bei jedem Aufruf der \bverb|update()| Funktion der aktuellste Trajektorienpunkt als Sollwert für die Trajektorienregelung genommen.
+Somit ist die Geschwindigkeit mit der die Trajektorie durchlaufen wird, unabhängig von der Aktualisierungsrate des Reglers.
 Da die Trajektorien als Nachrichten aus dem ROS-System entspringen, stimmt der Wert des Zeitstempels nicht mit der ESP32 internen Zeit überein. Diese Zeitdifferenz wird zum Beginn der Regelung berechnet und folgende Punkte korrigiert.
 
 
@@ -609,7 +609,7 @@ Da die Trajektorien als Nachrichten aus dem ROS-System entspringen, stimmt der W
     \label{fig:state_machine_class}
 \end{figure}
 
-Die Komponente StateMachine steuert das Verhalten des Roboters auf der höchsten Ebene. Eine Zustandsmaschine kontrolliert das Verhalten bei bestimmten Aktionen.
+Die Komponente StateMachine steuert das Verhalten des Roboters auf höchster Ebene. Eine Zustandsmaschine kontrolliert das Verhalten bei bestimmten Aktionen.
 Die Zustandsmaschine ist nach dem "'State Pattern"' Entwurfsmuster implementiert. Für jede Methode des Objektes StateMachine definiert der Zustand eine Methode mit dem selben Namen.
 Ein Aufruf von StateMachine wird an die Methode des derzeitigen Zustandes weitergereicht. Somit ändert sich das Verhalten des StateMachine Objektes basierend auf dem internen Zustand.
 Abbildung \ref{fig:state_machine_class} zeigt das Klassendiagramm dieses Entwurfmusters. Die Übergänge der Zustandsmaschine sind von der Implementierung der Unterklassen von State abhängig.
@@ -623,7 +623,7 @@ Somit würde z.B. eine empfangene Geschwindigkeitsvektor Nachricht einen Zustand
     \label{fig:zustandsdiagramm}
 \end{figure}
 
-\section{DataLogger}
+\section{DataLogger} \label{ch:datalogger_esp}
 
 Über die Komponente DataLogger können Systemdaten zum Debugging aufgezeichnet werden. Das Logging wird mit einer Nachricht auf der Topic "`robotername/start\_log"' gestartet.
 Die Logging Dauer wird in der Nachricht als \bverb|ros_msgs::String| codierte Gleitkommazahl übermittelt.
@@ -638,7 +638,7 @@ DataLogger definiert auch einige KConfig Menüeinstellungen. Die Komponente Data
     \item Über das Makro \bverb|LOG_DATA(format, ...)| kann ein Logeintrag erstellt werden. Die Parameter der Makrofunktion entsprechen den Parameter der \bverb|printf()| Funktion. 
     Es wird ein Formatstring und die in dem Formatstring definierten Variablen übergeben.
     \item \bverb|void logData(const char* format, ...)| wird von dem Makro \bverb|LOG_DATA()| aufgerufen. Es speichert die Logeinträge in einem Puffer zwischen.
-    \item \bverb|void _data_logger_task(void *pvParameters)| sendet den Puffer an das ROS-System, falls dieser eine maximale Grö{\ss}e erreicht hat.
+    \item \bverb|void _data_logger_task(void *pvParameters)| sendet den Puffer an das ROS-System, wenn dieser eine maximale Grö{\ss}e erreicht hat.
 \end{itemize}
 
 \section{Main}
@@ -651,7 +651,7 @@ Diese sendet alle $100ms$ die aktuelle Postion des Roboters auf der Topic "'robo
 \begin{itemize}
     \item Mit \bverb|#define Data_Logging| wird die DataLogging Komponente aktiviert und konfiguriert.
     \item \bverb|#define KALMAN| aktiviert den Kalman Filter. Das SensorPose Objekt im Roboter ist somit vom Typ KalmanFilter.
-    \item \bverb|#define USE_SIM| konfiguriert den Roboter im Simulationsmodus. SensorPoseSim dient somit als Quelle der Postionsdaten und die Geschwindigkeitdaten werden an OutputVelocitySim gegeben.
+    \item \bverb|#define USE_SIM| konfiguriert den Roboter im Simulationsmodus. SensorPoseSim dient somit als Quelle der Postionsdaten und die Geschwindigkeitdaten werden an OutputVelocitySim weitergegeben.
     \item \bverb|#define STEP_RESPONSE| deaktiviert den PI Regler und kann z.B. zum Aufzeichnen der Sprungantwort des Roboters genutzt werden.
 \end{itemize}
 
@@ -667,7 +667,7 @@ Anschlie{\ss}end müssen die folgenden Schritte zur Einrichtung des Repositories
     \bverb|git clone https://github.com/maxdoesch/Roboterformation_ESP-IDF.git|
     \item Das esp-dsp Submodul initialisieren \newline
     \bverb|git submodule update --init --recursive| 
-    \item Das Arbeitsterminal mit den Skripten aus esp/esp-idf initialisieren \newline
+    \item Das Arbeitsterminal mit den Skripten aus dem Ordner "'esp/esp-idf"' initialisieren \newline
     \bverb|export.bat| (Windows) oder \bverb|source export.sh| (Unix)
     \item Chiptyp auf ESP32 einstellen \newline
     \bverb|idf.py set-target esp32|
@@ -679,7 +679,7 @@ Anschlie{\ss}end müssen die folgenden Schritte zur Einrichtung des Repositories
         \item Unter \bverb|Wifi Configuration| Wifi-SSID und Passowrt eingeben
         \item Unter \bverb|Socket Configuration| die IP-Adresse des ROS-Bridge-Server Computers eingeben
     \end{itemize}
-    \item Falls der Roboter im Simulationsmodus betrieben werden soll, \bverb|#define USE_SIM| in der main.cpp auskommentieren.
+    \item Falls der Roboter im Simulationsmodus betrieben werden soll, muss \bverb|#define USE_SIM| in der main.cpp auskommentiert werden.
     \item Jedem Roboter muss ein unterschiedlicher Name zugewiesen werden. Der Robotername wird in der main.cpp beim Aufruf von \bverb|ros::NodeHandle::init()| festgelegt.
     \item Projekt bauen \newline
     \bverb|idf.py build|
