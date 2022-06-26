@@ -249,7 +249,43 @@ Aus diesem Grund müssen alle Nachrichtenklassen die folgenden Methoden implemen
 
 
 \section{LedStrip}
-Die Klasse LedStrip ist für die Ansteuerung der LEDs zuständig. Das Ledarray empfängt einen Bitstream, von welchem sich die einzelnen LEDs die ersten 24 Bits abschneiden und den verbleibenden Bitstream an die restlichen LEDs weiterführt.
+Die Klasse LedStrip ist für die Ansteuerung der LEDs zuständig. Es ist möglich Animationen abzuspielen oder die LEDs einheitlich in einer Farbe anzusteuern. 
+Von der WebApp wird ein String an den ESP32 geschickt, welcher die Informationen über die Farbe und Animation enthält.
+
+Aktuell sind folgende fünf Animationen vorhanden:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+    Animation       & Erklärung     \\ \hline
+    rainbow         & Alle LEDs ändern ihre Farbe im Regenbogenverlauf          \\ \hline
+    pulse           & Alle LEDs ändern ihre Helligkeit von hell zu dunkel und anschließend von dunkel zu hell           \\ \hline
+    line            & Die LEDs erleuchten von innen nach außen           \\ \hline
+    circle          & Die LEDs wurden in drei Kreise eingeteilt. Diese erleuchten von innen nach außen           \\ \hline
+    specific        & Alle LEDs leuchten in der von der WebApp eingestellten Farbe           \\ \hline
+    \end{tabular}
+    \caption{Animationen}
+\end{table}
+
+
+Ein Beispiel für einen gesendeten String würde so aussehen: \bverb |pulse,255,255,0| und enthält folgende Informationen: 
+
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    Animation   & Red   & Green & Blue   \\ \hline
+    pulse       & 255   & 255   & 0      \\ \hline
+    \end{tabular}
+    \caption{Aufbau des Strings}
+\end{table}
+
+
+
+Die LEDs empfangen einen Bitstream, von welchem sich die einzelnen LEDs die ersten 24 Bits abschneiden und den verbleibenden Bitstream an die restlichen LEDs weiterführt.
 In den 24 Bits sind die RGB Werte enthalten, 8 Bit je Farbe.
 
 Im Folgenden wird auf die Methoden der Klasse LedStrip eingegangen:
